@@ -1,0 +1,161 @@
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans UltraLight'), 
+      local('Mona-Sans-UltraLight'),
+      url('/fonts/Mona-Sans-UltraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans Light'), 
+      local('Mona-Sans-Light'),
+      url('/fonts/Mona-Sans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mona-Sans";
+  src: local('Mona-Sans Regular'), 
+      local('Mona-Sans-Regular'),
+      url('/fonts/Mona-Sans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans Medium'), 
+      local('Mona-Sans-Medium'),
+      url('/fonts/Mona-Sans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans SemiBold'), 
+      local('Mona-Sans-SemiBold'),
+      url('/fonts/Mona-Sans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans Bold'), 
+      local('Mona-Sans-Bold'),
+      url('/fonts/Mona-Sans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans ExtraBold'), 
+      local('Mona-Sans-ExtraBold'),
+      url('/fonts/Mona-Sans-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans Black'), 
+      local('Mona-Sans-Black'),
+      url('/fonts/Mona-Sans-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Italic */
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans UltraLightItalic'), 
+      local('Mona-Sans-UltraLightItalic'),
+      url('/fonts/Mona-Sans-UltraLightItalic.woff2') format('woff2');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans LightItalic'), 
+      local('Mona-Sans-LightItalic'),
+      url('/fonts/Mona-Sans-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Mona-Sans";
+  src: local('Mona-Sans RegularItalic'), 
+      local('Mona-Sans-RegularItalic'),
+      url('/fonts/Mona-Sans-RegularItalic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans MediumItalic'), 
+      local('Mona-Sans-MediumItalic'),
+      url('/fonts/Mona-Sans-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans SemiBoldItalic'), 
+      local('Mona-Sans-SemiBoldItalic'),
+      url('/fonts/Mona-Sans-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans BoldItalic'), 
+      local('Mona-Sans-BoldItalic'),
+      url('/fonts/Mona-Sans-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans ExtraBoldItalic'), 
+      local('Mona-Sans-ExtraBoldItalic'),
+      url('/fonts/Mona-Sans-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Mona-Sans';
+  src: local('Mona-Sans BlackItalic'), 
+      local('Mona-Sans-BlackItalic'),
+      url('/fonts/Mona-Sans-BlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}

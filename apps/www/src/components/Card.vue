@@ -1,24 +1,21 @@
----
-export interface Props {
-  title: string;
-  body: string;
-  href: string;
-}
+<script setup>
+const props = defineProps(['href', 'title', 'body'])
+</script>
 
-const { href, title, body } = Astro.props;
----
-
+<template>
 <li class="link-card">
-  <a href={href}>
+  <a :href="href">
     <h2>
-      {title}
+      {{title}}
       <span>&rarr;</span>
     </h2>
     <p>
-      {body}
+      {{body}}
     </p>
   </a>
 </li>
+</template>
+
 <style>
   .link-card {
     list-style: none;
