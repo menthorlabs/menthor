@@ -8,6 +8,21 @@ module.exports = {
         sans: ["Mona-Sans", ...defaultTheme.fontFamily.sans],
       },
     },
+    container: {
+      center: true,
+      padding: "2.5rem",
+    },
+    screens: {
+      xl: "1190px",
+    },
   },
   plugins: [],
+  safelist: [
+    {
+      pattern: /fa.*/,
+    },
+    {
+      pattern: /svg.*/,
+    },
+  ],
 };
