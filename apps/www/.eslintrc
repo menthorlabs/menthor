@@ -1,0 +1,10 @@
+{
+  "root": true,
+  "extends": [
+    "@antfu",
+    "plugin:tailwindcss/recommended"
+  ],
+  "globals": {
+    "defineNuxtPlugin": true
+  }
+}
