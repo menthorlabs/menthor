@@ -7,4 +7,10 @@ export default defineNuxtConfig({
       autoprefixer: {},
     },
   },
+  modules: [
+    '@nuxt/image-edge',
+  ],
+  image: {
+    dir: 'assets',
+  },
 })

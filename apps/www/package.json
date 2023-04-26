@@ -16,13 +16,16 @@
   },
   "dependencies": {
     "@antfu/eslint-config": "^0.38.5",
+    "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
     "@fortawesome/free-solid-svg-icons": "^6.4.0",
     "@fortawesome/vue-fontawesome": "^3.0.3",
+    "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "autoprefixer": "^10.4.14",
     "eslint": "^8.39.0",
     "eslint-plugin-tailwindcss": "^3.11.0",
+    "humps": "^2.0.1",
     "postcss": "^8.4.23",
     "tailwindcss": "^3.3.2"
   }

@@ -1,5 +1,5 @@
 <template>
   <div>
-    Wolf
+    Wolf <font-awesome-icon icon="home" />
   </div>
 </template>
