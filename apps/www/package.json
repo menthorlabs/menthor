@@ -10,12 +10,20 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
+    "@rushstack/eslint-patch": "^1.2.0",
     "@types/node": "^18",
+    "@typescript-eslint/parser": "^5.59.1",
+    "@vue/eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-vue": "^9.11.0",
     "nuxt": "^3.4.2",
-    "typescript": "^5.0.4"
+    "prettier": "^2.8.8",
+    "prettier-plugin-tailwindcss": "^0.2.7",
+    "typescript": "^5.0.4",
+    "vite-plugin-eslint": "^1.8.1",
+    "vue-eslint-parser": "^9.1.1"
   },
   "dependencies": {
-    "@antfu/eslint-config": "^0.38.5",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",

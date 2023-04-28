@@ -1,16 +1,18 @@
-// https://nuxt.com/docs/api/configuration/nuxt-config
+import eslintPlugin from "vite-plugin-eslint";
+
 export default defineNuxtConfig({
-  css: ['~/styles/main.css', '@fortawesome/fontawesome-svg-core/styles.css'],
+  css: ["~/styles/main.css", "@fortawesome/fontawesome-svg-core/styles.css"],
   postcss: {
     plugins: {
       tailwindcss: {},
       autoprefixer: {},
     },
   },
-  modules: [
-    '@nuxt/image-edge',
-  ],
+  modules: ["@nuxt/image-edge"],
   image: {
-    dir: 'assets',
+    dir: "assets",
   },
-})
+  vite: {
+    plugins: [eslintPlugin()],
+  },
+});
