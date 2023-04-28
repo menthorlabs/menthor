@@ -16,6 +16,9 @@ module.exports = {
       fontFamily: {
         sans: ["Mona-Sans", ...defaultTheme.fontFamily.sans],
       },
+      backgroundImage: {
+        pattern: "url('/patterns/default.svg')",
+      },
     },
     container: {
       center: true,

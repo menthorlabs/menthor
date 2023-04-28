@@ -3,3 +3,18 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .mask-radial {
+    -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #D9D9D9 79.17%, rgba(217, 217, 217, 0) 100%);
+    mask-image: radial-gradient(50% 50% at 50% 50%, #D9D9D9 79.17%, rgba(217, 217, 217, 0) 100%);
+  }
+}
+
+body {
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
