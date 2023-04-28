@@ -1,7 +1,7 @@
 <script setup lang="ts">
 defineProps({
   text: String,
-  color: {
+  variant: {
     type: String,
     default: "primary",
   },
@@ -13,9 +13,13 @@ defineProps({
   iconRight: [String, Array],
 });
 
-const colors = {
-  primary: "bg-blue-600 text-white hover:bg-blue-700 focus:ring-blue-300",
-  secondary: "bg-zinc-900 text-white hover:bg-zinc-800 focus:ring-zinc-300",
+const variants = {
+  primary:
+    "bg-blue-600 text-white border-none hover:bg-blue-700 focus:ring-blue-300",
+  secondary:
+    "bg-zinc-900 text-white border-none hover:bg-zinc-800 focus:ring-zinc-300",
+  outline:
+    "bg-white text-zinc-950 border border-solid border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-300",
 };
 
 const sizes = {
@@ -28,8 +32,8 @@ const sizes = {
 <template>
   <button
     type="button"
-    class="flex cursor-pointer items-center gap-2 rounded-lg border-none font-medium focus:ring-4"
-    :class="[colors[color as keyof typeof colors], sizes[size as keyof typeof sizes]]"
+    class="flex cursor-pointer items-center gap-2 rounded-lg font-medium focus:ring-4"
+    :class="[variants[variant as keyof typeof variants], sizes[size as keyof typeof sizes]]"
   >
     <font-awesome-icon v-if="iconLeft" class="text-lg" :icon="iconLeft" />
     <span v-if="text"> {{ text }}</span>

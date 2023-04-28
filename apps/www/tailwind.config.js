@@ -29,5 +29,9 @@ module.exports = {
     },
   },
   plugins: [],
-  safelist: [/svg.*/, /fa.*/],
+  safelist: [
+    {
+      pattern: /fa.*/,
+    },
+  ],
 };

@@ -11,7 +11,7 @@
         <MButton
           icon-left="fa-brands fa-discord"
           text="Entre no discord"
-          color="secondary"
+          variant="secondary"
           size="sm"
         />
         <a
