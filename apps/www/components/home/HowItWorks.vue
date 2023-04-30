@@ -1,3 +1,26 @@
+<script setup>
+const cards = [
+  {
+    icon: "bookmark",
+    title: "Aulas em texto",
+    description:
+      "Busque os conteúdos de forma rápida e faça anotações durante seus estudos.",
+  },
+  {
+    icon: "users",
+    title: "Open source",
+    description:
+      "Contribua com melhorias na plataforma e no conteúdo das aulas.",
+  },
+  {
+    icon: "earth-americas",
+    title: "Aprendizagem colaborativa",
+    description:
+      "Tire dúvidas com os alunos que estão estudando junto com você.",
+  },
+];
+</script>
+
 <template>
   <section id="how_it_works" class="my-32">
     <div class="container">
@@ -13,8 +36,8 @@
         class="mb-12 grid grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] gap-6"
       >
         <div
-          v-for="i in 3"
-          :key="i"
+          v-for="card in cards"
+          :key="card"
           class="relative overflow-hidden rounded-lg border border-solid border-zinc-200 bg-white px-6 pb-8 pt-20"
         >
           <div
@@ -26,12 +49,11 @@
             <div
               class="mb-4 flex h-[32px] w-[32px] items-center justify-center rounded-full border border-solid border-zinc-300 text-sm text-zinc-700"
             >
-              <font-awesome-icon icon="bookmark" />
+              <font-awesome-icon :icon="card.icon" />
             </div>
-            <h3 class="text-lg font-medium">Aulas em texto</h3>
+            <h3 class="text-lg font-medium">{{ card.title }}</h3>
             <p class="text-base font-normal text-zinc-600">
-              Busque os conteúdos de forma rápida e faça anotações durante seus
-              estudos.
+              {{ card.description }}
             </p>
           </div>
         </div>

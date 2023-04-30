@@ -19,16 +19,16 @@
 <path d="M0 140L41.7488 129.303L84.6904 80.6796L127.036 99.1564L169.977 49.5606L213.515 30.1113L253.475 64.5087L286.874 8.71704L306 0" stroke="url(#paint3_linear_160_2118)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </g>
 <g filter="url(#filter0_b_160_2118)">
-<rect x="39" y="20" width="92" height="56" rx="4" fill="white" fill-opacity="0.1"/>
-<rect x="62.5" y="32" width="45" height="6" rx="3" fill="#CBD5E1"/>
-<rect x="59" y="46" width="52" height="4" rx="2" fill="#E2E8F0"/>
-<rect x="66.5" y="53" width="37" height="4" rx="2" fill="#E2E8F0"/>
-<rect x="47" y="60" width="76" height="4" rx="2" fill="#E2E8F0"/>
-<rect x="39.5" y="20.5" width="91" height="55" rx="3.5" stroke="#CBD5E1"/>
+<rect x="39" y="33" width="92" height="56" rx="4" fill="white" fill-opacity="0.9"/>
+<rect x="62.5" y="45" width="45" height="6" rx="3" fill="#CBD5E1"/>
+<rect x="59" y="59" width="52" height="4" rx="2" fill="#E2E8F0"/>
+<rect x="66.5" y="66" width="37" height="4" rx="2" fill="#E2E8F0"/>
+<rect x="47" y="73" width="76" height="4" rx="2" fill="#E2E8F0"/>
+<rect x="39.5" y="33.5" width="91" height="55" rx="3.5" stroke="#CBD5E1"/>
 </g>
 </g>
 <defs>
-<filter id="filter0_b_160_2118" x="23" y="4" width="124" height="88" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter0_b_160_2118" x="23" y="17" width="124" height="88" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feGaussianBlur in="BackgroundImageFix" stdDeviation="8"/>
 <feComposite in2="SourceAlpha" operator="in" result="effect1_backgroundBlur_160_2118"/>

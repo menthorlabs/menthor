@@ -9,6 +9,15 @@
   }
 }
 
+@layer utilities {
+  .pause {
+    animation-play-state: paused;
+  }
+  .start {
+    animation-play-state: running;
+  }
+}
+
 body {
   margin: 0;
 }

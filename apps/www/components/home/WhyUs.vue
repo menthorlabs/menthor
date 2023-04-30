@@ -1,3 +1,48 @@
+<script setup>
+const stacks = [
+  {
+    logo: "/logos/vue.svg",
+    name: "Vue",
+    link: "https://vuejs.org/",
+  },
+  {
+    logo: "/logos/tailwind.svg",
+    name: "Tailwind",
+    link: "https://tailwindcss.com/",
+  },
+  {
+    logo: "/logos/supabase.svg",
+    name: "Supabase",
+    link: "https://supabase.com/",
+  },
+  {
+    logo: "/logos/vercel.svg",
+    name: "Vercel",
+    link: "https://vercel.com/",
+  },
+  {
+    logo: "/logos/github.svg",
+    name: "GitHub",
+    link: "https://github.com/",
+  },
+  {
+    logo: "/logos/playwright.svg",
+    name: "Playwright",
+    link: "https://playwright.dev/",
+  },
+  {
+    logo: "/logos/nuxt.svg",
+    name: "Nuxt",
+    link: "https://nuxt.com/",
+  },
+  {
+    logo: "/logos/turborepo.svg",
+    name: "Turborepo",
+    link: "https://turbo.build/repo",
+  },
+];
+</script>
+
 <template>
   <section id="why_us" class="my-32">
     <div class="container">
@@ -11,47 +56,100 @@
       <div class="grid grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] gap-6">
         <div>
           <div
-            class="mb-6 overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-4 pt-10 text-3xl font-semibold"
+            class="group mb-6 overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-4 pt-10 text-3xl font-semibold"
           >
             <h3>Gratuito para</h3>
-            <p class="-translate-x-[300px] text-zinc-400">
-              eeeeeeeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
-                >sempre</strong
-              >eeeeeeeeeeeeeeeeeeee
-            </p>
-            <p class="-translate-x-[180px] text-zinc-400">
-              eeeeeeeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
-                >sempre</strong
-              >eeeeeeeeeeeeeeeeeeee
-            </p>
-            <p class="-translate-x-[260px] text-zinc-400">
-              eeeeeeeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
-                >sempre</strong
-              >eeeeeeeeeeeeeeeeeeee
-            </p>
-          </div>
-          <div
-            class="overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-6 pt-10 text-3xl font-semibold"
-          >
-            <h3 class="mb-6">Tecnologias modernas</h3>
-            <div class="mb-4 flex flex-nowrap items-center gap-4">
+            <div class="flex items-center">
               <div
-                v-for="i in 5"
+                class="animation-text-left !pause group-hover:!start flex min-w-full"
+                v-for="i in 2"
                 :key="i"
-                class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2"
               >
-                <nuxt-img src="/logos/vue.svg" width="auto" height="16" />
-                <span class="text-sm font-semibold">Vue</span>
+                <p class="-translate-x-[300px] text-zinc-400">
+                  eeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
+                    >sempre</strong
+                  >eeeeeeeeeeeeeee
+                </p>
               </div>
             </div>
-            <div class="flex flex-nowrap items-center gap-4">
+            <div class="flex items-center">
               <div
-                v-for="i in 5"
+                class="animation-text-right !pause group-hover:!start flex min-w-full"
+                v-for="i in 2"
                 :key="i"
-                class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2"
               >
-                <nuxt-img src="/logos/vue.svg" width="auto" height="16" />
-                <span class="text-sm font-medium">Vue</span>
+                <p class="-translate-x-[300px] text-zinc-400">
+                  eeeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
+                    >sempre</strong
+                  >eeeeeeeeeeeeeeeee
+                </p>
+              </div>
+            </div>
+            <div class="flex items-center">
+              <div
+                class="animation-text-left !pause group-hover:!start flex min-w-full"
+                v-for="i in 2"
+                :key="i"
+              >
+                <p class="-translate-x-[300px] text-zinc-400">
+                  eeee<strong class="font-semibold text-zinc-900">sempre</strong
+                  >eeeeeeeeeeeeeeeeeeeeeeee
+                </p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="group min-h-[258px] overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-6 pt-10 text-3xl font-semibold"
+          >
+            <h3 class="mb-6">Tecnologias modernas</h3>
+            <div class="-ml-8 mb-2 flex gap-2">
+              <div
+                class="group-hover:!pause animation-stacks-left flex min-w-full gap-2"
+                v-for="i in 2"
+                :key="i"
+              >
+                <a
+                  v-for="stack in stacks.slice(0, 4)"
+                  :key="stack"
+                  :href="stack.link"
+                  rel="noopener"
+                  target="_blank"
+                  class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2 hover:border-blue-500"
+                >
+                  <nuxt-img
+                    loading="lazy"
+                    :src="stack.logo"
+                    class="h-[16px] w-auto"
+                    width="auto"
+                    height="16"
+                  />
+                  <span class="text-sm font-semibold">{{ stack.name }}</span>
+                </a>
+              </div>
+            </div>
+            <div class="-ml-8 mb-2 flex gap-2">
+              <div
+                class="group-hover:!pause animation-stacks-right flex min-w-full gap-2"
+                v-for="i in 2"
+                :key="i"
+              >
+                <a
+                  v-for="stack in stacks.slice(4)"
+                  :key="stack"
+                  :href="stack.link"
+                  rel="noopener"
+                  target="_blank"
+                  class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2 hover:border-blue-500"
+                >
+                  <nuxt-img
+                    loading="lazy"
+                    :src="stack.logo"
+                    class="h-[16px] w-auto"
+                    width="auto"
+                    height="16"
+                  />
+                  <span class="text-sm font-semibold">{{ stack.name }}</span>
+                </a>
               </div>
             </div>
           </div>
@@ -70,6 +168,7 @@
             <h3 class="mb-9 w-full">Terminal integrado</h3>
             <div class="h-full min-w-[calc(100%_+_32px)] flex-1">
               <nuxt-img
+                loading="lazy"
                 src="/vectors/terminal.svg"
                 height="380"
                 width="334"
@@ -83,6 +182,7 @@
             class="relative mb-6 min-h-[258px] overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-6 pt-10 text-3xl font-semibold"
           >
             <nuxt-img
+              loading="lazy"
               src="/vectors/world_map.svg"
               height="264"
               width="810"
@@ -102,3 +202,73 @@
     </div>
   </section>
 </template>
+
+<style>
+#why_us {
+  --gap: 0.5rem;
+  --duration: 30s;
+  --scroll-start: 0;
+  --scroll-end: calc(-100%);
+}
+
+.animation-text-left {
+  flex-shrink: 0;
+  min-width: 100%;
+  animation: scroll-left var(--duration) linear infinite;
+}
+
+.animation-stacks-left {
+  --duration: 20s;
+  --scroll-end: calc(-100% - var(--gap));
+  flex-shrink: 0;
+  min-width: 100%;
+  animation: scroll-left var(--duration) linear infinite;
+}
+
+.animation-text-right {
+  flex-shrink: 0;
+  min-width: 100%;
+  animation: scroll-right var(--duration) linear infinite;
+}
+
+.animation-stacks-right {
+  --duration: 20s;
+  --scroll-end: calc(-100% - var(--gap));
+  flex-shrink: 0;
+  min-width: 100%;
+  animation: scroll-right var(--duration) linear infinite;
+}
+
+@keyframes scroll-left {
+  from {
+    transform: translateX(var(--scroll-start));
+  }
+  to {
+    transform: translateX(var(--scroll-end));
+  }
+}
+
+@keyframes scroll-right {
+  from {
+    transform: translateX(var(--scroll-end));
+  }
+  to {
+    transform: translateX(var(--scroll-start));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animation-text-left {
+    animation-play-state: paused;
+  }
+  .animation-stacks-left {
+    animation-play-state: paused;
+  }
+  .animation-text-right {
+    animation-play-state: paused;
+  }
+  .animation-stacks-right {
+    animation-play-state: paused;
+  }
+}
+</style>
