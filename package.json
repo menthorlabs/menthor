@@ -2,6 +2,7 @@
   "private": true,
   "scripts": {
     "build": "turbo run build --no-daemon",
+    "generate": "turbo run generate --no-daemon",
     "dev": "turbo run dev --no-daemon",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""

@@ -5,6 +5,9 @@
     "build": {
       "outputs": [".next/**", "!.next/cache/**"]
     },
+    "generate": {
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
     "lint": {},
     "dev": {
       "cache": false,
