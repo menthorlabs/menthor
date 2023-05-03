@@ -59,41 +59,44 @@ const stacks = [
             class="group mb-6 overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-4 pt-10 text-3xl font-semibold"
           >
             <h3>Gratuito para</h3>
-            <div class="flex items-center">
+            <div class="flex items-center" aria-hidden>
               <div
                 class="animation-text-left !pause group-hover:!start flex min-w-full"
                 v-for="i in 2"
                 :key="i"
               >
                 <p class="-translate-x-[300px] text-zinc-400">
-                  eeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
+                  eeeeeeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
                     >sempre</strong
-                  >eeeeeeeeeeeeeee
+                  >eeeeeeeeeeeeeeeeeeeee
                 </p>
               </div>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center" aria-hidden>
               <div
                 class="animation-text-right !pause group-hover:!start flex min-w-full"
                 v-for="i in 2"
                 :key="i"
               >
                 <p class="-translate-x-[300px] text-zinc-400">
-                  eeeeeeeeeeeeee<strong class="font-semibold text-zinc-900"
+                  eeeeeeeeeeeeeeeeeeeee<strong
+                    class="font-semibold text-zinc-900"
                     >sempre</strong
-                  >eeeeeeeeeeeeeeeee
+                  >eeeeeeeeee
                 </p>
               </div>
             </div>
-            <div class="flex items-center">
+            <div class="flex items-center" aria-hidden>
               <div
                 class="animation-text-left !pause group-hover:!start flex min-w-full"
                 v-for="i in 2"
                 :key="i"
               >
                 <p class="-translate-x-[300px] text-zinc-400">
-                  eeee<strong class="font-semibold text-zinc-900">sempre</strong
-                  >eeeeeeeeeeeeeeeeeeeeeeee
+                  eeeeeeeeeeeeeeeeeeeeeeee<strong
+                    class="font-semibold text-zinc-900"
+                    >sempre</strong
+                  >eeeeeeeeeeeeee
                 </p>
               </div>
             </div>

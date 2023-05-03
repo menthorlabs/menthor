@@ -143,7 +143,7 @@ const cards = [
 <style>
 #hero {
   --gap: 1.5rem;
-  --duration: 30s;
+  --duration: 50s;
   --scroll-start: 0;
   --scroll-end: calc(-100% - var(--gap));
 }
