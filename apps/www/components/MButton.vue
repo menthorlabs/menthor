@@ -32,7 +32,7 @@ const sizes = {
 <template>
   <button
     type="button"
-    class="flex cursor-pointer items-center gap-2 rounded-lg font-medium focus:ring-4"
+    class="flex cursor-pointer items-center justify-center gap-2 rounded-lg font-medium focus:ring-4"
     :class="[variants[variant as keyof typeof variants], sizes[size as keyof typeof sizes]]"
   >
     <font-awesome-icon v-if="iconLeft" class="text-lg" :icon="iconLeft" />

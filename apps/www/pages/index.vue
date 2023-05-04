@@ -6,4 +6,5 @@
   <MDiv />
   <HomeWhyUs />
   <HomeAreYouReady />
+  <NuxtPage />
 </template>
