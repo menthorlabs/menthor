@@ -19,6 +19,7 @@ module.exports = {
   globals: {
     defineNuxtConfig: true,
     defineNuxtPlugin: true,
+    useFetch: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

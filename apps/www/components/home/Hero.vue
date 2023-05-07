@@ -68,7 +68,9 @@ const cards = [
         área ou que querem construir seu próprio negócio.
       </p>
       <div class="mb-10 flex items-center justify-center">
-        <MButton text="Acesso antecipado" icon-left="rocket" size="lg" />
+        <nuxt-link to="/acesso-antecipado">
+          <MButton text="Acesso antecipado" icon-left="rocket" size="lg" />
+        </nuxt-link>
       </div>
       <div
         class="mx-auto mb-10 w-fit rounded-full bg-zinc-900 px-4 py-1 text-xs font-semibold text-white"

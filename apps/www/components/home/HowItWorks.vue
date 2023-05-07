@@ -1,5 +1,11 @@
-<script setup>
-const cards = [
+<script setup lang="ts">
+interface card {
+  icon: string;
+  title: string;
+  description: string;
+}
+
+const cards: card[] = [
   {
     icon: "bookmark",
     title: "Aulas em texto",
@@ -37,7 +43,7 @@ const cards = [
       >
         <div
           v-for="card in cards"
-          :key="card"
+          :key="card.title"
           class="relative overflow-hidden rounded-lg border border-solid border-zinc-200 bg-white px-6 pb-8 pt-20"
         >
           <div
@@ -59,13 +65,21 @@ const cards = [
         </div>
       </div>
       <div class="flex items-center justify-center gap-6">
-        <MButton text="Quero ser aluno" icon-left="graduation-cap" size="lg" />
-        <MButton
-          variant="outline"
-          text="Acessar comunidade"
-          :icon-left="['fab', 'discord']"
-          size="lg"
-        />
+        <nuxt-link to="/acesso-antecipado">
+          <MButton
+            text="Quero ser aluno"
+            icon-left="graduation-cap"
+            size="lg"
+          />
+        </nuxt-link>
+        <nuxt-link to="https://discord.gg/8BCByyXxq8" target="_blank">
+          <MButton
+            variant="outline"
+            text="Acessar comunidade"
+            :icon-left="['fab', 'discord']"
+            size="lg"
+          />
+        </nuxt-link>
       </div>
     </div>
   </section>

@@ -111,11 +111,10 @@ const stacks = [
                 v-for="i in 2"
                 :key="i"
               >
-                <a
+                <nuxt-link
                   v-for="stack in stacks.slice(0, 4)"
                   :key="stack"
-                  :href="stack.link"
-                  rel="noopener"
+                  :to="stack.link"
                   target="_blank"
                   class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2 hover:border-blue-500"
                 >
@@ -127,7 +126,7 @@ const stacks = [
                     height="16"
                   />
                   <span class="text-sm font-semibold">{{ stack.name }}</span>
-                </a>
+                </nuxt-link>
               </div>
             </div>
             <div class="-ml-8 mb-2 flex gap-2">
@@ -136,11 +135,10 @@ const stacks = [
                 v-for="i in 2"
                 :key="i"
               >
-                <a
+                <nuxt-link
                   v-for="stack in stacks.slice(4)"
                   :key="stack"
-                  :href="stack.link"
-                  rel="noopener"
+                  :to="stack.link"
                   target="_blank"
                   class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2 hover:border-blue-500"
                 >
@@ -152,7 +150,7 @@ const stacks = [
                     height="16"
                   />
                   <span class="text-sm font-semibold">{{ stack.name }}</span>
-                </a>
+                </nuxt-link>
               </div>
             </div>
           </div>

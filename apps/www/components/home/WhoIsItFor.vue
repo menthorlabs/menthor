@@ -1,5 +1,11 @@
-<script setup>
-const cards = [
+<script setup lang="ts">
+interface card {
+  image: string;
+  title: string;
+  description: string;
+  cta: string;
+}
+const cards: card[] = [
   {
     image: "/vectors/first_startup.svg",
     title: "Crie sua própria startup",
@@ -32,7 +38,7 @@ const cards = [
       >
         <div
           v-for="card in cards"
-          :key="card"
+          :key="card.title"
           class="rounded-lg border border-solid border-zinc-200 px-6 py-8"
         >
           <nuxt-img
@@ -46,15 +52,13 @@ const cards = [
           <p class="mb-6 text-base font-normal text-zinc-600">
             {{ card.description }}
           </p>
-          <a
-            href="#"
-            target="_blank"
-            rel="noopener"
+          <nuxt-link
+            to="/acesso-antecipado"
             class="flex items-center gap-2 text-blue-600 no-underline"
           >
             <span class="text-base font-medium">{{ card.cta }}</span>
             <font-awesome-icon icon="arrow-right" />
-          </a>
+          </nuxt-link>
         </div>
       </div>
     </div>
