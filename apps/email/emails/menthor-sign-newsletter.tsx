@@ -9,9 +9,7 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "";
+const baseUrl = "https://storagementhor.s3.sa-east-1.amazonaws.com";
 
 export const MenthorSignNewsletterEmail = () => (
   <Html style={html}>
@@ -20,7 +18,7 @@ export const MenthorSignNewsletterEmail = () => (
       <Container style={container}>
         <Section style={centerLogo}>
           <Img
-            src={`${baseUrl}/static/logo.svg`}
+            src={`${baseUrl}/logo.svg`}
             alt="Menthor"
             width="60"
             height="55"
@@ -38,7 +36,7 @@ export const MenthorSignNewsletterEmail = () => (
             comunidade do discord ou até mesmo nos ajudar a construir o projeto.
           </p>
           <Img
-            src={`${baseUrl}/static/Button.svg`}
+            src={`${baseUrl}/Button.svg`}
             alt="button"
             width="242"
             height="40"
@@ -51,7 +49,7 @@ export const MenthorSignNewsletterEmail = () => (
         </Section>
         <Section style={footerContainer}>
           <Img
-            src={`${baseUrl}/static/logo_with_text.svg`}
+            src={`${baseUrl}/logo_with_text.svg`}
             alt="button"
             width="100"
             height="18"
