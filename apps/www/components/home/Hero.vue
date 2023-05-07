@@ -58,24 +58,33 @@ const cards = [
     </div>
     <div class="container relative pt-24">
       <h1
-        class="mx-auto mb-6 max-w-[844px] text-center text-5xl font-extrabold"
+        class="mx-auto mb-6 max-w-[844px] text-4xl font-extrabold md:text-center md:text-5xl"
       >
         Aprenda a programar e construa sua própria startup
       </h1>
-      <p class="mx-auto mb-10 max-w-[844px] text-center text-lg text-zinc-700">
+      <p
+        class="mx-auto mb-16 max-w-[844px] text-lg text-zinc-700 md:mb-10 md:text-center"
+      >
         A Menthor é uma plataforma <b class="font-bold">gratuita</b> de ensino
         de programação web para pessoas que estão buscando o primeiro emprego na
         área ou que querem construir seu próprio negócio.
       </p>
-      <div class="mb-10 flex items-center justify-center">
-        <MButton text="Acesso antecipado" icon-left="rocket" size="lg" />
+      <div class="mb-4 flex items-center justify-center md:mb-10">
+        <nuxt-link to="/acesso-antecipado" class="w-full md:w-fit">
+          <MButton
+            text="Acesso antecipado"
+            icon-left="rocket"
+            size="lg"
+            class="w-full md:w-fit"
+          />
+        </nuxt-link>
       </div>
       <div
-        class="mx-auto mb-10 w-fit rounded-full bg-zinc-900 px-4 py-1 text-xs font-semibold text-white"
+        class="mx-auto mb-10 w-fit rounded-full bg-zinc-900 px-4 py-1 text-center text-[10px] font-semibold text-white md:text-xs"
       >
         ✨ Mais de 5000 alunos já solicitaram o acesso antecipado.
       </div>
-      <h2
+      <!-- <h2
         class="mb-3 text-center text-xs font-semibold uppercase text-zinc-500"
       >
         Apoiadores
@@ -102,9 +111,9 @@ const cards = [
           height="28"
           width="155"
         />
-      </div>
+      </div> -->
     </div>
-    <div class="overflow-hidden">
+    <div class="mt-20 overflow-hidden">
       <div class="flex gap-6">
         <div
           class="animation-group flex min-w-full items-center justify-around gap-6"

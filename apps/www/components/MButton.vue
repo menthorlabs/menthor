@@ -13,7 +13,13 @@ defineProps({
   iconRight: [String, Array],
 });
 
-const variants = {
+interface variant {
+  primary: string;
+  secondary: string;
+  outline: string;
+}
+
+const variants: variant = {
   primary:
     "bg-blue-600 text-white border-none hover:bg-blue-700 focus:ring-blue-300",
   secondary:
@@ -22,7 +28,13 @@ const variants = {
     "bg-white text-zinc-950 border border-solid border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-300",
 };
 
-const sizes = {
+interface size {
+  sm: string;
+  base: string;
+  lg: string;
+}
+
+const sizes: size = {
   sm: "px-3 py-[8.5px] text-sm",
   base: "px-5 py-2.5 text-sm",
   lg: "px-5 py-[14px] text-base",
@@ -33,10 +45,10 @@ const sizes = {
   <button
     type="button"
     class="flex cursor-pointer items-center justify-center gap-2 rounded-lg font-medium focus:ring-4"
-    :class="[variants[variant as keyof typeof variants], sizes[size as keyof typeof sizes]]"
+    :class="[variants[variant as keyof variant], sizes[size as keyof size]]"
   >
-    <font-awesome-icon v-if="iconLeft" class="text-lg" :icon="iconLeft" />
+    <font-awesome-icon v-if="iconLeft" class="text-base" :icon="iconLeft" />
     <span v-if="text"> {{ text }}</span>
-    <font-awesome-icon v-if="iconRight" class="text-lg" :icon="iconRight" />
+    <font-awesome-icon v-if="iconRight" class="text-base" :icon="iconRight" />
   </button>
 </template>
