@@ -53,6 +53,7 @@ const cards = [
           loading="lazy"
           src="/blobs/hero.svg"
           class="block h-full w-full object-cover object-center"
+          alt="Menthor hero blobs"
         />
       </div>
     </div>
@@ -132,6 +133,7 @@ const cards = [
                 width="510"
                 height="576"
                 class="absolute left-0 top-0 h-full w-full object-cover object-center"
+                :alt="card.text"
               />
               <div
                 class="absolute bottom-0 left-0 h-[95px] w-full bg-[linear-gradient(180deg,_rgba(0,_0,_0,_0)_0%,_#000000_100%)]"

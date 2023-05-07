@@ -51,6 +51,7 @@ const cards: card[] = [
             :src="card.image"
             width="306"
             height="140"
+            :alt="card.title"
           />
           <h3 class="mb-2 text-lg font-medium">{{ card.title }}</h3>
           <p class="mb-6 text-base font-normal text-zinc-600">

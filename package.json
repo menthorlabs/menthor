@@ -1,16 +1,18 @@
 {
   "private": true,
   "scripts": {
-    "build": "turbo run build --no-daemon",
+    "dev": "dotenv -e .env.development -- turbo run dev --parallel --no-daemon",
+    "build": "dotenv -e .env.production -- turbo run build --no-daemon",
+    "build:production": "dotenv -e .env.production -- turbo run build --no-daemon",
+    "build:development": "dotenv -e .env.development -- turbo run build --no-daemon",
     "generate": "turbo run generate --no-daemon",
-    "dev": "turbo run dev --no-daemon",
+    "generate:production": "dotenv -e .env.production -- turbo run generate --no-daemon",
+    "generate:development": "dotenv -e .env.development -- turbo run generate --no-daemon",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
   },
   "devDependencies": {
-    "eslint": "^7.32.0",
-    "eslint-config-custom": "*",
-    "prettier": "^2.5.1",
+    "dotenv-cli": "^6.0.0",
     "turbo": "latest"
   },
   "name": "my-turborepo",

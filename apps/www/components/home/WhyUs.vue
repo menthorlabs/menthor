@@ -130,6 +130,7 @@ const stacks = [
                     class="h-[16px] w-auto"
                     width="auto"
                     height="16"
+                    :alt="stack.name"
                   />
                   <span class="text-sm font-semibold">{{ stack.name }}</span>
                 </nuxt-link>
@@ -154,6 +155,7 @@ const stacks = [
                     class="h-[16px] w-auto"
                     width="auto"
                     height="16"
+                    :alt="stack.name"
                   />
                   <span class="text-sm font-semibold">{{ stack.name }}</span>
                 </nuxt-link>
@@ -177,6 +179,7 @@ const stacks = [
               <nuxt-img
                 loading="lazy"
                 src="/vectors/terminal.svg"
+                alt="Menthor terminal"
                 height="380"
                 width="334"
                 class="block h-full w-full rounded-l-lg border border-zinc-200 border-r-transparent object-cover object-left-top shadow-lg"
@@ -192,6 +195,7 @@ const stacks = [
               loading="lazy"
               src="/vectors/world_map.svg"
               height="264"
+              alt="Menthor mapa mundial"
               width="810"
               class="absolute -top-[8px] left-[62px] h-[264px] w-[810px]"
             />

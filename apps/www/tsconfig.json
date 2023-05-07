@@ -3,6 +3,6 @@
   "extends": "./.nuxt/tsconfig.json",
   "compilerOptions": {
     "noImplicitAny": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
   }
 }

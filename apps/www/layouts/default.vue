@@ -1,4 +1,32 @@
 <script setup lang="ts">
+const route = useRoute();
+useSchemaOrg([
+  defineOrganization({
+    name: "Menthor",
+    logo: "/brand/menthor-icon-dark.svg",
+    sameAs: [
+      "https://twitter.com/menthorlabs",
+      "https://github.com/menthorlabs/menthor",
+      "https://www.linkedin.com/company/menthorlabs",
+      "https://www.instagram.com/menthorlabs/",
+    ],
+  }),
+  defineWebSite({
+    name: route.meta.title ? `Menthor | ${route.meta.title}` : "Menthor",
+  }),
+  defineWebPage(),
+]);
+useHead({
+  titleTemplate: (): string =>
+    route.meta.title ? `Menthor | ${route.meta.title}` : "Menthor",
+});
+useSeoMeta({
+  ogTitle: "Menthor",
+  description: "Plataforma gratuita e open-source de ensino de programação.",
+  ogDescription: "Plataforma gratuita e open-source de ensino de programação.",
+  twitterCard: "summary_large_image",
+});
+
 interface Item {
   stargazers_count: number;
   forks_count: number;
@@ -31,6 +59,7 @@ const menuOpened = ref<boolean>(false);
           loading="lazy"
           class="h-[28px] w-auto"
           src="/brand/menthor-logo-dark.svg"
+          alt="Menthor logo"
           height="28"
           width="155"
         />
@@ -85,14 +114,15 @@ const menuOpened = ref<boolean>(false);
         loading="lazy"
         class="mx-auto mb-6 block h-[28px] w-auto"
         src="/brand/menthor-logo-dark.svg"
+        alt="Menthor logo"
         height="28"
         width="155"
       />
-      <div class="mb-10 text-center text-sm font-normal text-zinc-500">
+      <div class="text-center text-sm font-normal text-zinc-500">
         © Copyright {{ new Date().getFullYear() }} Menthor. Todos os direitos
         reservados.
       </div>
-      <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
+      <!-- <div class="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-8">
         <nuxt-link
           to="#"
           target="_blank"
@@ -107,7 +137,7 @@ const menuOpened = ref<boolean>(false);
         >
           Histórico de Atualizações
         </nuxt-link>
-      </div>
+      </div> -->
     </footer>
   </main>
 </template>
