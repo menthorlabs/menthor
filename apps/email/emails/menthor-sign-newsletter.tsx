@@ -18,7 +18,7 @@ export const MenthorSignNewsletterEmail = () => (
       <Container style={container}>
         <Section style={centerLogo}>
           <Img
-            src={`${baseUrl}/logo.svg`}
+            src={`${baseUrl}/logo.png`}
             alt="Menthor"
             width="60"
             height="55"
@@ -35,13 +35,15 @@ export const MenthorSignNewsletterEmail = () => (
             Enquanto isso você pode nos acompanhar nas redes sociais, entrar na
             comunidade do discord ou até mesmo nos ajudar a construir o projeto.
           </p>
-          <Img
-            src={`${baseUrl}/Button.svg`}
-            alt="button"
-            width="242"
-            height="40"
-            style={{ marginTop: "24px", marginBottom: "24px" }}
-          />
+          <Link href="https://github.com/menthorlabs/menthor">
+            <Img
+              src={`${baseUrl}/Button.png`}
+              alt="button"
+              width="242"
+              height="40"
+              style={{ marginTop: "24px", marginBottom: "24px" }}
+            />
+          </Link>
           <p style={footerText}>
             Se você não se inscreveu por favor ignore essa mensagem. Seu email
             será excluído da nossa lista em até 5 dias.
@@ -49,20 +51,20 @@ export const MenthorSignNewsletterEmail = () => (
         </Section>
         <Section style={footerContainer}>
           <Img
-            src={`${baseUrl}/logo_with_text.svg`}
+            src={`${baseUrl}/logo_with_text.png`}
             alt="button"
             width="100"
             height="18"
             style={{ marginBottom: "16px", color: "#fff" }}
           />
           <div>
-            <Link href="#" style={link}>
+            <Link href="https://github.com/menthorlabs/menthor" style={link}>
               GitHub
             </Link>
-            <Link href="#" style={link}>
+            <Link href="https://discord.com/invite/8BCByyXxq8" style={link}>
               Discord
             </Link>
-            <Link href="#" style={lastLink}>
+            <Link href="https://twitter.com/menthorlabs" style={lastLink}>
               Twitter
             </Link>
           </div>
@@ -85,6 +87,7 @@ const centerLogo = {
 };
 
 const main = {
+  backgroundColor: "#000000",
   fontFamily:
     '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Ubuntu,sans-serif',
 };
