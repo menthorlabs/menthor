@@ -1,5 +1,7 @@
 <template>
-  <div class="fixed left-0 top-0 z-10 flex h-full w-full justify-center">
+  <div
+    class="container fixed left-0 top-0 z-10 flex h-full w-full justify-center"
+  >
     <nuxt-link to="/" class="cursor-default">
       <div
         class="absolute left-0 top-0 h-full w-full bg-zinc-300/40 backdrop-blur-sm"
@@ -7,7 +9,7 @@
     </nuxt-link>
 
     <div
-      class="relative my-auto h-fit max-w-[480px] rounded-lg border border-solid border-zinc-300 bg-white p-10 shadow-2xl"
+      class="relative my-auto h-fit max-w-[480px] rounded-lg border border-solid border-zinc-300 bg-white p-6 shadow-2xl sm:p-10"
     >
       <nuxt-img
         src="/brand/menthor-icon-dark.svg"

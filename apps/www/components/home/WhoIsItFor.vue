@@ -24,17 +24,21 @@ const cards: card[] = [
 </script>
 
 <template>
-  <section id="who_is_it_for" class="my-32">
+  <section id="who_is_it_for" class="my-20 md:my-32">
     <div class="container">
-      <h2 class="mx-auto mb-6 max-w-[664px] text-center text-4xl font-bold">
+      <h2
+        class="mx-auto mb-6 max-w-[664px] text-3xl font-bold md:text-center md:text-4xl"
+      >
         Para quem é a menthor?
       </h2>
-      <p class="mx-auto mb-10 max-w-[664px] text-center text-lg text-zinc-700">
+      <p
+        class="mx-auto mb-10 max-w-[664px] text-zinc-700 md:text-center md:text-lg"
+      >
         Nosso objetivo é que você construa o seu próprio futuro através da
         programação, por isso nós vamos te ajudar a seguir por dois caminhos:
       </p>
       <div
-        class="mx-auto grid max-w-[732px] grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] gap-6"
+        class="mx-auto grid max-w-[732px] gap-6 sm:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]"
       >
         <div
           v-for="card in cards"

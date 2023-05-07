@@ -80,7 +80,7 @@ const menuOpened = ref<boolean>(false);
       </div>
     </header>
     <slot />
-    <footer class="border-t border-solid border-zinc-200 py-10">
+    <footer class="container border-t border-solid border-zinc-200 py-10">
       <nuxt-img
         loading="lazy"
         class="mx-auto mb-6 block h-[28px] w-auto"
@@ -92,11 +92,11 @@ const menuOpened = ref<boolean>(false);
         © Copyright {{ new Date().getFullYear() }} Menthor. Todos os direitos
         reservados.
       </div>
-      <div class="flex items-center justify-center gap-8">
+      <div class="flex flex-wrap items-center justify-center gap-4 md:gap-8">
         <nuxt-link
           to="#"
           target="_blank"
-          class="relative text-sm font-normal before:absolute before:-right-[16px] before:top-0 before:h-full before:w-[1px] before:bg-zinc-200 hover:underline"
+          class="relative text-sm font-normal before:absolute before:-right-[16px] before:top-0 before:hidden before:h-full before:w-[1px] before:bg-zinc-200 hover:underline md:before:block"
         >
           Políticas de Privacidade
         </nuxt-link>

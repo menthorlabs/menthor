@@ -44,19 +44,25 @@ const stacks = [
 </script>
 
 <template>
-  <section id="why_us" class="my-32">
+  <section id="why_us" class="my-20 md:my-32">
     <div class="container">
-      <h2 class="mx-auto mb-6 max-w-[664px] text-center text-4xl font-bold">
+      <h2
+        class="mx-auto mb-6 max-w-[664px] text-3xl font-bold md:text-center md:text-4xl"
+      >
         Porque a menthor?
       </h2>
-      <p class="mx-auto mb-10 max-w-[664px] text-center text-lg text-zinc-700">
+      <p
+        class="mx-auto mb-10 max-w-[664px] text-zinc-700 md:text-center md:text-lg"
+      >
         Nós acreditamos que todo tipo de ensino deve ser gratuito e queremos
         fornecer a melhor experiência de ensino para nossos alunos.
       </p>
-      <div class="grid grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] gap-6">
+      <div
+        class="space-y-6 sm:grid sm:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] sm:gap-6 sm:space-y-0"
+      >
         <div>
           <div
-            class="group mb-6 overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-4 pt-10 text-3xl font-semibold"
+            class="group mb-6 hidden overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-4 pt-10 text-3xl font-semibold md:block"
           >
             <h3>Gratuito para</h3>
             <div class="flex items-center" aria-hidden>
@@ -178,7 +184,7 @@ const stacks = [
             </div>
           </div>
         </div>
-        <div>
+        <div class="col-span-1 md:col-span-2 lg:col-span-1">
           <div
             class="relative mb-6 min-h-[258px] overflow-hidden rounded-lg border border-solid border-zinc-200 px-8 pb-6 pt-10 text-3xl font-semibold"
           >
@@ -192,7 +198,7 @@ const stacks = [
             <h3 class="relative mb-6">Networking com todo o Brasil</h3>
           </div>
           <div
-            class="flex min-h-[200px] items-center justify-center overflow-hidden rounded-lg border border-solid border-zinc-200 p-6 text-3xl font-semibold"
+            class="hidden min-h-[200px] items-center justify-center overflow-hidden rounded-lg border border-solid border-zinc-200 p-6 text-3xl font-semibold lg:flex"
           >
             <span class="text-sm font-normal text-zinc-500"
               >Ainda quer mais?</span

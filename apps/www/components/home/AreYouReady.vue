@@ -1,15 +1,17 @@
 <template>
-  <section id="are_you_ready" class="my-32">
+  <section id="are_you_ready" class="my-20 md:my-32">
     <div class="container">
-      <h2 class="mx-auto mb-6 max-w-[664px] text-center text-4xl font-bold">
+      <h2
+        class="mx-auto mb-6 max-w-[664px] text-center text-3xl font-bold md:text-4xl"
+      >
         Está pronto para começar? 🎉
       </h2>
-      <nuxt-link to="/acesso-antecipado">
+      <nuxt-link to="/acesso-antecipado" class="mx-auto block w-full md:w-fit">
         <MButton
           text="Garantir meu acesso"
           icon-left="rocket"
           size="lg"
-          class="mx-auto"
+          class="w-full"
         />
       </nuxt-link>
     </div>
