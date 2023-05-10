@@ -19,6 +19,9 @@ useSchemaOrg([
 useHead({
   titleTemplate: (): string =>
     route.meta.title ? `Menthor | ${route.meta.title}` : "Menthor",
+  htmlAttrs: {
+    lang: "pt-BR",
+  },
 });
 useSeoMeta({
   ogTitle: "Menthor",

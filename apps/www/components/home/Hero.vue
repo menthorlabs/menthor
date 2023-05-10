@@ -55,6 +55,8 @@ const cards = [
             src="/blobs/hero.svg"
             class="block h-full w-full object-cover object-center"
             alt="Menthor hero blobs"
+            width="1314"
+            height="651"
           />
         </div>
       </div>
@@ -130,9 +132,11 @@ const cards = [
               <div class="relative h-[288px] w-full overflow-hidden rounded-lg">
                 <nuxt-img
                   loading="lazy"
+                  format="webp"
+                  quality="85"
                   :src="card.image"
-                  width="510"
-                  height="576"
+                  width="205"
+                  height="288"
                   class="absolute left-0 top-0 h-full w-full object-cover object-center"
                   :alt="card.text"
                 />

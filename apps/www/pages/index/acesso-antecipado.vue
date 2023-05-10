@@ -6,21 +6,21 @@ const api = inject("api");
 
 const email = ref(null);
 const loading = ref(false);
+const sent = ref(false);
 
 async function sendEmail() {
   loading.value = true;
 
   try {
-    const response = await api("/mailing-list", {
+    await api("/mailing-list", {
       method: "POST",
       body: { email: email.value },
     });
 
-    console.log(response);
+    sent.value = true;
   } finally {
     loading.value = false;
   }
-  console.log(email.value);
 }
 </script>
 
@@ -46,6 +46,8 @@ async function sendEmail() {
             <nuxt-img
               loading="lazy"
               src="/blobs/hero.svg"
+              width="478"
+              height="380"
               class="block h-full w-full object-cover object-left-bottom"
               alt="Menthor hero blobs"
             />
@@ -81,6 +83,9 @@ async function sendEmail() {
             icon-right="arrow-right"
             :loading="loading"
           />
+          <div class="mt-4 text-center text-sm" v-if="sent">
+            Email enviado com sucesso! 🎉
+          </div>
         </div>
       </form>
     </div>
