@@ -44,48 +44,49 @@ const cards = [
 </script>
 
 <template>
-  <section id="hero" class="relative">
-    <div class="absolute left-0 top-0 flex h-full w-full justify-center">
-      <div
-        class="mask-radial h-full max-h-[651px] w-full max-w-[1314px] bg-pattern"
-      >
-        <nuxt-img
-          loading="lazy"
-          src="/blobs/hero.svg"
-          class="block h-full w-full object-cover object-center"
-          alt="Menthor hero blobs"
-        />
-      </div>
-    </div>
-    <div class="container relative pt-24">
-      <h1
-        class="mx-auto mb-6 max-w-[844px] text-4xl font-extrabold md:text-center md:text-5xl"
-      >
-        Aprenda a programar e construa sua própria startup
-      </h1>
-      <p
-        class="mx-auto mb-16 max-w-[844px] text-lg text-zinc-700 md:mb-10 md:text-center"
-      >
-        A Menthor é uma plataforma <b class="font-bold">gratuita</b> de ensino
-        de programação web para pessoas que estão buscando o primeiro emprego na
-        área ou que querem construir seu próprio negócio.
-      </p>
-      <div class="mb-4 flex items-center justify-center md:mb-10">
-        <nuxt-link to="/acesso-antecipado" class="w-full md:w-fit">
-          <MButton
-            text="Acesso antecipado"
-            icon-left="rocket"
-            size="lg"
-            class="w-full md:w-fit"
+  <DelayHydration>
+    <section id="hero" class="relative">
+      <div class="absolute left-0 top-0 flex h-full w-full justify-center">
+        <div
+          class="mask-radial h-full max-h-[651px] w-full max-w-[1314px] bg-pattern"
+        >
+          <nuxt-img
+            loading="lazy"
+            src="/blobs/hero.svg"
+            class="block h-full w-full object-cover object-center"
+            alt="Menthor hero blobs"
           />
-        </nuxt-link>
+        </div>
       </div>
-      <div
-        class="mx-auto mb-10 w-fit rounded-full bg-zinc-900 px-4 py-1 text-center text-[10px] font-semibold text-white md:text-xs"
-      >
-        ✨ Mais de 5000 alunos já solicitaram o acesso antecipado.
-      </div>
-      <!-- <h2
+      <div class="container relative pt-24">
+        <h1
+          class="mx-auto mb-6 max-w-[844px] text-4xl font-extrabold md:text-center md:text-5xl"
+        >
+          Aprenda a programar e construa sua própria startup
+        </h1>
+        <p
+          class="mx-auto mb-16 max-w-[844px] text-lg text-zinc-700 md:mb-10 md:text-center"
+        >
+          A Menthor é uma plataforma <b class="font-bold">gratuita</b> de ensino
+          de programação web para pessoas que estão buscando o primeiro emprego
+          na área ou que querem construir seu próprio negócio.
+        </p>
+        <div class="mb-4 flex items-center justify-center md:mb-10">
+          <nuxt-link to="/acesso-antecipado" class="w-full md:w-fit">
+            <MButton
+              text="Acesso antecipado"
+              icon-left="rocket"
+              size="lg"
+              class="w-full md:w-fit"
+            />
+          </nuxt-link>
+        </div>
+        <div
+          class="mx-auto mb-10 w-fit rounded-full bg-zinc-900 px-4 py-1 text-center text-[10px] font-semibold text-white md:text-xs"
+        >
+          ✨ Mais de 5000 alunos já solicitaram o acesso antecipado.
+        </div>
+        <!-- <h2
         class="mb-3 text-center text-xs font-semibold uppercase text-zinc-500"
       >
         Apoiadores
@@ -113,42 +114,43 @@ const cards = [
           width="155"
         />
       </div> -->
-    </div>
-    <div class="mt-20 overflow-hidden">
-      <div class="flex gap-6">
-        <div
-          class="animation-group flex min-w-full items-center justify-around gap-6"
-          v-for="i in 2"
-          :key="i"
-        >
+      </div>
+      <div class="mt-20 overflow-hidden">
+        <div class="flex gap-6">
           <div
-            class="flex h-[349px] w-[205px] min-w-[205px] flex-col even:justify-end"
-            v-for="card in cards"
-            :key="card"
+            class="animation-group flex min-w-full items-center justify-around gap-6"
+            v-for="i in 2"
+            :key="i"
           >
-            <div class="relative h-[288px] w-full overflow-hidden rounded-lg">
-              <nuxt-img
-                loading="lazy"
-                :src="card.image"
-                width="510"
-                height="576"
-                class="absolute left-0 top-0 h-full w-full object-cover object-center"
-                :alt="card.text"
-              />
-              <div
-                class="absolute bottom-0 left-0 h-[95px] w-full bg-[linear-gradient(180deg,_rgba(0,_0,_0,_0)_0%,_#000000_100%)]"
-              ></div>
-              <div class="relative flex h-full flex-col justify-end p-4">
-                <h2 class="m-0 text-center text-sm font-bold text-white">
-                  {{ card.text }}
-                </h2>
+            <div
+              class="flex h-[349px] w-[205px] min-w-[205px] flex-col even:justify-end"
+              v-for="card in cards"
+              :key="card"
+            >
+              <div class="relative h-[288px] w-full overflow-hidden rounded-lg">
+                <nuxt-img
+                  loading="lazy"
+                  :src="card.image"
+                  width="510"
+                  height="576"
+                  class="absolute left-0 top-0 h-full w-full object-cover object-center"
+                  :alt="card.text"
+                />
+                <div
+                  class="absolute bottom-0 left-0 h-[95px] w-full bg-[linear-gradient(180deg,_rgba(0,_0,_0,_0)_0%,_#000000_100%)]"
+                ></div>
+                <div class="relative flex h-full flex-col justify-end p-4">
+                  <h2 class="m-0 text-center text-sm font-bold text-white">
+                    {{ card.text }}
+                  </h2>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </DelayHydration>
 </template>
 
 <style>

@@ -14,7 +14,11 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        sans: ["Mona-Sans", ...defaultTheme.fontFamily.sans],
+        sans: [
+          "Mona-Sans",
+          "Mona-Sans override",
+          ...defaultTheme.fontFamily.sans,
+        ],
       },
       backgroundImage: {
         pattern: "url('/patterns/default.svg')",

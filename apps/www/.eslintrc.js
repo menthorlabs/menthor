@@ -29,6 +29,8 @@ module.exports = {
     useRoute: true,
     useHead: true,
     definePageMeta: true,
+    inject: true,
+    useRuntimeConfig: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

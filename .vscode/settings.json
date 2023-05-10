@@ -1,5 +1,5 @@
 {
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.language": "en,pt,pt-BR",
-  "cSpell.words": ["nuxt", "menthor"]
+  "cSpell.words": ["nuxt", "menthor", "ofetch"]
 }

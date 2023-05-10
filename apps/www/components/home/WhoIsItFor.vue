@@ -24,48 +24,50 @@ const cards: card[] = [
 </script>
 
 <template>
-  <section id="who_is_it_for" class="my-20 md:my-32">
-    <div class="container">
-      <h2
-        class="mx-auto mb-6 max-w-[664px] text-3xl font-bold md:text-center md:text-4xl"
-      >
-        Para quem é a menthor?
-      </h2>
-      <p
-        class="mx-auto mb-10 max-w-[664px] text-zinc-700 md:text-center md:text-lg"
-      >
-        Nosso objetivo é que você construa o seu próprio futuro através da
-        programação, por isso nós vamos te ajudar a seguir por dois caminhos:
-      </p>
-      <div
-        class="mx-auto grid max-w-[732px] gap-6 sm:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]"
-      >
-        <div
-          v-for="card in cards"
-          :key="card.title"
-          class="rounded-lg border border-solid border-zinc-200 px-6 py-8"
+  <DelayHydration>
+    <section id="who_is_it_for" class="my-20 md:my-32">
+      <div class="container">
+        <h2
+          class="mx-auto mb-6 max-w-[664px] text-3xl font-bold md:text-center md:text-4xl"
         >
-          <nuxt-img
-            loading="lazy"
-            class="mb-6 h-auto w-full"
-            :src="card.image"
-            width="306"
-            height="140"
-            :alt="card.title"
-          />
-          <h3 class="mb-2 text-lg font-medium">{{ card.title }}</h3>
-          <p class="mb-6 text-base font-normal text-zinc-600">
-            {{ card.description }}
-          </p>
-          <nuxt-link
-            to="/acesso-antecipado"
-            class="flex items-center gap-2 text-blue-600 no-underline"
+          Para quem é a menthor?
+        </h2>
+        <p
+          class="mx-auto mb-10 max-w-[664px] text-zinc-700 md:text-center md:text-lg"
+        >
+          Nosso objetivo é que você construa o seu próprio futuro através da
+          programação, por isso nós vamos te ajudar a seguir por dois caminhos:
+        </p>
+        <div
+          class="mx-auto grid max-w-[732px] gap-6 sm:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))]"
+        >
+          <div
+            v-for="card in cards"
+            :key="card.title"
+            class="rounded-lg border border-solid border-zinc-200 px-6 py-8"
           >
-            <span class="text-base font-medium">{{ card.cta }}</span>
-            <font-awesome-icon icon="arrow-right" />
-          </nuxt-link>
+            <nuxt-img
+              loading="lazy"
+              class="mb-6 h-auto w-full"
+              :src="card.image"
+              width="306"
+              height="140"
+              :alt="card.title"
+            />
+            <h3 class="mb-2 text-lg font-medium">{{ card.title }}</h3>
+            <p class="mb-6 text-base font-normal text-zinc-600">
+              {{ card.description }}
+            </p>
+            <nuxt-link
+              to="/acesso-antecipado"
+              class="flex items-center gap-2 text-blue-600 no-underline"
+            >
+              <span class="text-base font-medium">{{ card.cta }}</span>
+              <font-awesome-icon icon="arrow-right" />
+            </nuxt-link>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
+  </DelayHydration>
 </template>

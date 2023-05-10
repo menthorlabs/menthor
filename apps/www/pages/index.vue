@@ -5,14 +5,12 @@ definePageMeta({
 </script>
 
 <template>
-  <DelayHydration>
-    <HomeHero />
-    <HomeHowItWorks />
-    <MDiv />
-    <HomeWhoIsItFor />
-    <MDiv />
-    <HomeWhyUs />
-    <HomeAreYouReady />
-    <NuxtPage />
-  </DelayHydration>
+  <HomeHero />
+  <HomeHowItWorks />
+  <MDiv />
+  <HomeWhoIsItFor />
+  <MDiv />
+  <HomeWhyUs />
+  <HomeAreYouReady />
+  <NuxtPage />
 </template>

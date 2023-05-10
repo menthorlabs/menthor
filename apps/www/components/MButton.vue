@@ -1,6 +1,7 @@
 <script setup lang="ts">
 defineProps({
   text: String,
+  loading: Boolean,
   variant: {
     type: String,
     default: "primary",
@@ -47,8 +48,18 @@ const sizes: size = {
     class="flex cursor-pointer items-center justify-center gap-2 rounded-lg font-medium focus:ring-4"
     :class="[variants[variant as keyof variant], sizes[size as keyof size]]"
   >
-    <font-awesome-icon v-if="iconLeft" class="text-base" :icon="iconLeft" />
+    <MSpinner class="h-4 w-4 border-[2px]" v-if="loading && !iconRight" />
+    <font-awesome-icon
+      v-else-if="iconLeft"
+      class="text-base"
+      :icon="iconLeft"
+    />
     <span v-if="text"> {{ text }}</span>
-    <font-awesome-icon v-if="iconRight" class="text-base" :icon="iconRight" />
+    <MSpinner class="h-4 w-4 border-[2px]" v-if="loading && iconRight" />
+    <font-awesome-icon
+      v-else-if="iconRight"
+      class="text-base"
+      :icon="iconRight"
+    />
   </button>
 </template>
