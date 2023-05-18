@@ -25,9 +25,11 @@ useHead({
 });
 useSeoMeta({
   ogTitle: "Menthor",
+  ogImage: "/brand/menthor-cover.jpg",
   description: "Plataforma gratuita e open-source de ensino de programação.",
   ogDescription: "Plataforma gratuita e open-source de ensino de programação.",
   twitterCard: "summary_large_image",
+  twitterImage: "/brand/menthor-cover.jpg",
 });
 
 interface Item {

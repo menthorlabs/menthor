@@ -14,6 +14,6 @@
     "react-email": "1.9.3"
   },
   "devDependencies": {
-    "prettier": "1.18.2"
+    "prettier": "2.8.8"
   }
 }

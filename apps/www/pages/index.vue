@@ -5,12 +5,17 @@ definePageMeta({
 </script>
 
 <template>
-  <HomeHero />
-  <HomeHowItWorks />
-  <MDiv />
-  <HomeWhoIsItFor />
-  <MDiv />
-  <HomeWhyUs />
-  <HomeAreYouReady />
-  <NuxtPage />
+  <LazyHomeHero />
+  <LazyHomeHowItWorks
+    :transition="{
+      name: 'bounce',
+      mode: 'out-in',
+    }"
+  />
+  <LazyMDiv />
+  <LazyHomeWhoIsItFor />
+  <LazyMDiv />
+  <LazyHomeWhyUs />
+  <LazyHomeAreYouReady />
+  <LazyNuxtPage />
 </template>

@@ -6,6 +6,7 @@ const api = inject("api");
 
 const email = ref(null);
 const loading = ref(false);
+const error = ref(null);
 const sent = ref(false);
 
 async function sendEmail() {
@@ -18,6 +19,9 @@ async function sendEmail() {
     });
 
     sent.value = true;
+    error.value = null;
+  } catch (e) {
+    error.value = e.data?.error || "Não foi possível adicionar o email";
   } finally {
     loading.value = false;
   }
@@ -66,26 +70,31 @@ async function sendEmail() {
             Deixe seu e-mail e seja um dos primeiros a receber o acesso à
             plataforma.
           </p>
-          <MTextField
-            v-model="email"
-            class="mb-6"
-            id="email"
-            label="E-mail"
-            placeholder="harry.potter@hogwarts.com"
-            type="email"
-            required
-          />
-          <MButton
-            type="submit"
-            class="w-full"
-            variant="primary"
-            text="Solicitar acesso"
-            icon-right="arrow-right"
-            :loading="loading"
-          />
           <div class="mt-4 text-center text-sm" v-if="sent">
             Email enviado com sucesso! 🎉
           </div>
+          <template v-else>
+            <MTextField
+              v-model="email"
+              class="mb-6"
+              id="email"
+              label="E-mail"
+              placeholder="harry.potter@hogwarts.com"
+              type="email"
+              required
+            />
+            <MButton
+              type="submit"
+              class="w-full"
+              variant="primary"
+              text="Solicitar acesso"
+              icon-right="arrow-right"
+              :loading="loading"
+            />
+            <div class="mt-4 text-center text-sm" v-if="error">
+              {{ error }}
+            </div>
+          </template>
         </div>
       </form>
     </div>
