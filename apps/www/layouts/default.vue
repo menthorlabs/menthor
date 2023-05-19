@@ -22,14 +22,32 @@ useHead({
   htmlAttrs: {
     lang: "pt-BR",
   },
+  meta: [
+    {
+      name: "keywords",
+      content:
+        "Programação, Iniciantes, Codificação, Empreendedorismo, Desenvolvimento de software, Desenvolvimento web, Desenvolvimento de aplicativos, Linguagens de programação, Desenvolvimento de produto, Metodologias ágeis, Prototipagem",
+    },
+  ],
 });
 useSeoMeta({
-  ogTitle: "Menthor",
-  ogImage: "/brand/menthor-cover.jpg",
-  description: "Plataforma gratuita e open-source de ensino de programação.",
-  ogDescription: "Plataforma gratuita e open-source de ensino de programação.",
+  ogTitle: route.meta.title as string,
+  ogDescription: route.meta.title as string,
+  ogImage: "https://menthor.io/brand/menthor-cover.jpg",
+  ogType: "website",
+  ogUrl: "https://menthor.io",
+  ogSiteName: "Menthor",
+  ogImageWidth: "1200",
+  ogImageType: "image/jpeg",
+  ogLocale: "pt_BR",
+  description: route.meta.title as string,
   twitterCard: "summary_large_image",
-  twitterImage: "/brand/menthor-cover.jpg",
+  twitterImage: "https://menthor.io/brand/menthor-cover.jpg",
+  twitterTitle: route.meta.title as string,
+  twitterDescription:
+    "A Menthor é uma plataforma gratuita de ensino de programação web para pessoas que estão buscando o primeiro emprego na área ou que querem construir seu próprio negócio.",
+  twitterImageAlt: route.meta.title as string,
+  twitterSite: "@publisher_handle",
 });
 
 interface Item {
