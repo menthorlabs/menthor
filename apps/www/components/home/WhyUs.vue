@@ -127,7 +127,7 @@ const stacks = [
                   <nuxt-img
                     :src="stack.logo"
                     class="h-[16px] w-auto"
-                    width="auto"
+                    width="26"
                     height="16"
                     :alt="stack.name"
                   />
@@ -151,7 +151,7 @@ const stacks = [
                   <nuxt-img
                     :src="stack.logo"
                     class="h-[16px] w-auto"
-                    width="auto"
+                    width="26"
                     height="16"
                     :alt="stack.name"
                   />
