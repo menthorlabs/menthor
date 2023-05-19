@@ -32,7 +32,8 @@ useHead({
 });
 useSeoMeta({
   ogTitle: route.meta.title as string,
-  ogDescription: route.meta.title as string,
+  ogDescription:
+    "Plataforma gratuita de ensino de programação web para pessoas que estão buscando o primeiro emprego na área ou que querem construir seu próprio negócio.",
   ogImage: "https://menthor.io/brand/menthor-cover.jpg",
   ogType: "website",
   ogUrl: "https://menthor.io",
@@ -45,7 +46,7 @@ useSeoMeta({
   twitterImage: "https://menthor.io/brand/menthor-cover.jpg",
   twitterTitle: route.meta.title as string,
   twitterDescription:
-    "A Menthor é uma plataforma gratuita de ensino de programação web para pessoas que estão buscando o primeiro emprego na área ou que querem construir seu próprio negócio.",
+    "Plataforma gratuita de ensino de programação web para pessoas que estão buscando o primeiro emprego na área ou que querem construir seu próprio negócio.",
   twitterImageAlt: route.meta.title as string,
   twitterSite: "@publisher_handle",
 });
