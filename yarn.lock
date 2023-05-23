@@ -834,7 +834,7 @@
     unimport "^3.0.6"
     untyped "^1.3.2"
 
-"@nuxt/kit@3.5.0", "@nuxt/kit@^3.0.0", "@nuxt/kit@^3.1.2", "@nuxt/kit@^3.3.3", "@nuxt/kit@^3.4.0", "@nuxt/kit@^3.4.2":
+"@nuxt/kit@3.5.0", "@nuxt/kit@^3.0.0", "@nuxt/kit@^3.1.2", "@nuxt/kit@^3.3.3", "@nuxt/kit@^3.4.0":
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/@nuxt/kit/-/kit-3.5.0.tgz#ae8d8a64936714b3603230a2861539f95dbd218e"
   integrity sha512-QqhOPTan5cpaYCksSWdmtpldCGfnsqTd55blztMSF+OPxfGav4GE4BrBD3ZSMn2/5MxieF3GU/w5/tgcDXE3bA==
@@ -1452,6 +1452,11 @@
   resolved "https://registry.yarnpkg.com/@types/resolve/-/resolve-1.20.2.tgz#97d26e00cd4a0423b4af620abecf3e6f442b7975"
   integrity sha512-60BCwRFOZCQhDncwQdxxeOEEkbc5dIMccYLwbxsS4TUNeVECQ/pBJ0j09mrHOl/JJvpRPGwO9SvE4nR2Nb/a4Q==
 
+"@types/web-bluetooth@^0.0.17":
+  version "0.0.17"
+  resolved "https://registry.yarnpkg.com/@types/web-bluetooth/-/web-bluetooth-0.0.17.tgz#5c9f3c617f64a9735d7b72a7cc671e166d900c40"
+  integrity sha512-4p9vcSmxAayx72yn70joFoL44c9MO/0+iVEBIQXe3v2h2SiAsEIo/G5v6ObFWvNKRFjbrVadNf9LqEEZeQPzdA==
+
 "@typescript-eslint/parser@^5.59.1":
   version "5.59.6"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-5.59.6.tgz#bd36f71f5a529f828e20b627078d3ed6738dbb40"
@@ -1706,6 +1711,28 @@
   version "3.3.2"
   resolved "https://registry.yarnpkg.com/@vue/shared/-/shared-3.3.2.tgz#774cd9b4635ce801b70a3fc3713779a5ef5d77c3"
   integrity sha512-0rFu3h8JbclbnvvKrs7Fe5FNGV9/5X2rPD7KmOzhLSUAiQH5//Hq437Gv0fR5Mev3u/nbtvmLl8XgwCU20/ZfQ==
+
+"@vueuse/core@^10.1.2":
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/@vueuse/core/-/core-10.1.2.tgz#2499eadec36c5d7109338e3a2b73725040ae8011"
+  integrity sha512-roNn8WuerI56A5uiTyF/TEYX0Y+VKlhZAF94unUfdhbDUI+NfwQMn4FUnUscIRUhv3344qvAghopU4bzLPNFlA==
+  dependencies:
+    "@types/web-bluetooth" "^0.0.17"
+    "@vueuse/metadata" "10.1.2"
+    "@vueuse/shared" "10.1.2"
+    vue-demi ">=0.14.0"
+
+"@vueuse/metadata@10.1.2":
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/@vueuse/metadata/-/metadata-10.1.2.tgz#d8ffe557b1042efd03a0aa88540a00c25d193ee3"
+  integrity sha512-3mc5BqN9aU2SqBeBuWE7ne4OtXHoHKggNgxZR2K+zIW4YLsy6xoZ4/9vErQs6tvoKDX6QAqm3lvsrv0mczAwIQ==
+
+"@vueuse/shared@10.1.2":
+  version "10.1.2"
+  resolved "https://registry.yarnpkg.com/@vueuse/shared/-/shared-10.1.2.tgz#31d8733a217a6396eb67706319133bf62cdd8baa"
+  integrity sha512-1uoUTPBlgyscK9v6ScGeVYDDzlPSFXBlxuK7SfrDGyUTBiznb3mNceqhwvZHjtDRELZEN79V5uWPTF1VDV8svA==
+  dependencies:
+    vue-demi ">=0.14.0"
 
 abbrev@1, abbrev@^1.0.0:
   version "1.1.1"
@@ -4974,15 +5001,6 @@ nuxt-delay-hydration@^1.1.4:
     packrup "^0.1.0"
     radix3 "^1.0.0"
 
-nuxt-gtag@^0.5.7:
-  version "0.5.7"
-  resolved "https://registry.yarnpkg.com/nuxt-gtag/-/nuxt-gtag-0.5.7.tgz#7ef8d944852a65cf768965625ca46e1ad9811aa2"
-  integrity sha512-Q6NRndEJ0phEfKdS4uLy3hpVBkgWGnG5KJ2dhVyCmbLXcfakkmf19f2WJ5uM2yUOg8rAkYgDjRb9XyAfE+okuA==
-  dependencies:
-    "@nuxt/kit" "^3.4.2"
-    defu "^6.1.2"
-    pathe "^1.1.0"
-
 nuxt-schema-org@^2.1.3:
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/nuxt-schema-org/-/nuxt-schema-org-2.1.3.tgz#dcaf518da9cdbea6ca0582eef87e10898a9bb286"
@@ -5006,6 +5024,13 @@ nuxt-simple-sitemap@^2.4.23:
     pathe "^1.1.0"
     radix3 "^1.0.1"
     ufo "^1.1.2"
+
+nuxt-umami@^2.4.2:
+  version "2.4.2"
+  resolved "https://registry.yarnpkg.com/nuxt-umami/-/nuxt-umami-2.4.2.tgz#bc3af1232441e5f7d3e865c37195f9eb768661a3"
+  integrity sha512-nwBQTIwX6MnKbJODIkCd/3eRGj5FMGhJbLrj9gbtc7irIYi13KnFOobF2cptl3TA5O3IebqcgsjIl8SLy63oXQ==
+  dependencies:
+    "@vueuse/core" "^10.1.2"
 
 nuxt@^3.4.2:
   version "3.5.0"
@@ -7165,6 +7190,11 @@ vue-bundle-renderer@^1.0.3:
   integrity sha512-EfjX+5TTUl70bki9hPuVp+54JiZOvFIfoWBcfXsSwLzKEiDYyHNi5iX8srnqLIv3YRnvxgbntdcG1WPq0MvffQ==
   dependencies:
     ufo "^1.1.1"
+
+vue-demi@>=0.14.0:
+  version "0.14.5"
+  resolved "https://registry.yarnpkg.com/vue-demi/-/vue-demi-0.14.5.tgz#676d0463d1a1266d5ab5cba932e043d8f5f2fbd9"
+  integrity sha512-o9NUVpl/YlsGJ7t+xuqJKx8EBGf1quRhCiT6D/J0pfwmk9zUwYkC7yrF4SZCe6fETvSM3UNL2edcbYrSyc4QHA==
 
 vue-devtools-stub@^0.1.0:
   version "0.1.0"

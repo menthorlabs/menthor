@@ -1,12 +1,14 @@
 import eslintPlugin from "vite-plugin-eslint";
 
 export default defineNuxtConfig({
+  sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/",
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
+  extends: ["nuxt-umami"],
   css: [
     "~/styles/main.css",
     "~/styles/font.css",
@@ -20,7 +22,6 @@ export default defineNuxtConfig({
   },
   modules: [
     "@nuxt/image-edge",
-    "nuxt-gtag",
     "@nuxtjs/robots",
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
@@ -30,11 +31,14 @@ export default defineNuxtConfig({
   vite: {
     plugins: [eslintPlugin()],
   },
-  gtag: {
-    id: "G-ZTHLRGN0E3",
-  },
   delayHydration: {
     mode: "mount",
     debug: process.env.NODE_ENV === "development",
+  },
+  appConfig: {
+    umami: {
+      version: 2,
+      ignoreLocalhost: true,
+    },
   },
 });
