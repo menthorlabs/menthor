@@ -5,7 +5,7 @@
     "build": "dotenv -e .env.production -- turbo run build --no-daemon",
     "build:production": "dotenv -e .env.production -- turbo run build --no-daemon",
     "build:development": "dotenv -e .env.development -- turbo run build --no-daemon",
-    "generate": "turbo run generate --no-daemon",
+    "generate": "dotenv -e .env.production -- turbo run generate --no-daemon",
     "generate:production": "dotenv -e .env.production -- turbo run generate --no-daemon",
     "generate:development": "dotenv -e .env.development -- turbo run generate --no-daemon",
     "lint": "turbo run lint",
