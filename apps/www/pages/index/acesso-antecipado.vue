@@ -70,8 +70,31 @@ async function sendEmail() {
             Deixe seu e-mail e seja um dos primeiros a receber o acesso à
             plataforma.
           </p>
-          <div class="mt-4 text-center text-sm" v-if="sent">
-            Email enviado com sucesso! 🎉
+          <div
+            class="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-blue-400 to-pink-400 p-0.5 text-sm font-medium text-gray-900"
+            v-if="sent"
+          >
+            <div
+              class="to-pink-400-10 relative rounded-md bg-white bg-gradient-to-br from-blue-400/20 to-pink-400/20 p-6"
+            >
+              <h3 class="mb-4 text-base font-medium">
+                Obrigado por se cadastrar!
+              </h3>
+              <p class="mb-4 text-base font-normal text-zinc-700">
+                Apoie o projeto deixando uma estrela no repositório da menthor.
+              </p>
+              <nuxt-link
+                to="https://github.com/menthorlabs/menthor"
+                target="_blank"
+              >
+                <MButton
+                  :icon-left="['fab', 'github']"
+                  variant="secondary"
+                  text="Dar estrela no GitHub"
+                  class="w-full"
+                />
+              </nuxt-link>
+            </div>
           </div>
           <template v-else>
             <MTextField
