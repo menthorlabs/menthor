@@ -1,0 +1,10 @@
+{
+  "name": "ui",
+  "version": "0.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-config-custom": "*",
+    "tailwind-config": "*"
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "www",
+  "name": "app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -18,8 +18,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "eslint-config-custom": "*",
-    "tailwind-config": "*",
+    "@clerk/clerk-js": "^4.44.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",
@@ -27,8 +26,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "@nuxtjs/robots": "^3.0.0",
-    "humps": "^2.0.1",
-    "nuxt-delay-hydration": "^1.1.4",
-    "nuxt-umami": "^2.4.2"
+    "eslint-config-custom": "*",
+    "tailwind-config": "*"
   }
 }

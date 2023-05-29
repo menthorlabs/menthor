@@ -9,7 +9,6 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
-  extends: ["nuxt-umami"],
   css: [
     "@/styles/main.css",
     "@/styles/font.css",
@@ -33,20 +32,9 @@ export default defineNuxtConfig({
     "@nuxtjs/robots",
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
-    "nuxt-delay-hydration",
     "@nuxtjs/fontaine",
   ],
   vite: {
     plugins: [eslintPlugin()],
-  },
-  delayHydration: {
-    mode: "mount",
-    debug: process.env.NODE_ENV === "development",
-  },
-  appConfig: {
-    umami: {
-      version: 2,
-      ignoreLocalhost: true,
-    },
   },
 });

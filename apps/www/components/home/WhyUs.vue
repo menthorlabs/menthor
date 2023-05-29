@@ -1,5 +1,5 @@
-<script setup>
-const stacks = [
+<script setup lang="ts">
+const stacks: { logo: string; name: string; link: string }[] = [
   {
     logo: "/logos/vue.svg",
     name: "Vue",
@@ -119,7 +119,7 @@ const stacks = [
               >
                 <nuxt-link
                   v-for="stack in stacks.slice(0, 4)"
-                  :key="stack"
+                  :key="stack.link"
                   :to="stack.link"
                   target="_blank"
                   class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2 hover:border-blue-500"
@@ -143,7 +143,7 @@ const stacks = [
               >
                 <nuxt-link
                   v-for="stack in stacks.slice(4)"
-                  :key="stack"
+                  :key="stack.link"
                   :to="stack.link"
                   target="_blank"
                   class="flex h-[40px] min-w-fit items-center gap-2 rounded-full border border-solid border-zinc-200 px-4 py-2 hover:border-blue-500"
