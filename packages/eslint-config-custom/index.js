@@ -32,6 +32,8 @@ module.exports = {
     inject: true,
     useRuntimeConfig: true,
     onMounted: true,
+    $fetch: true,
+    Ref: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {
