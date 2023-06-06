@@ -10,6 +10,16 @@ export default defineNuxtConfig({
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     },
   },
+  vue: {
+    propsDestructure: true,
+  },
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        moduleResolution: "bundler",
+      },
+    },
+  },
   css: [
     "@/styles/main.css",
     "@/styles/font.css",
@@ -20,7 +30,7 @@ export default defineNuxtConfig({
   },
   components: [
     { path: "../../packages/ui/src", pathPrefix: false },
-    "~/components",
+    { path: "~/components", pathPrefix: false },
   ],
   postcss: {
     plugins: {

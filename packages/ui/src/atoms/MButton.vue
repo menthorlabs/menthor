@@ -14,13 +14,7 @@ defineProps({
   iconRight: [String, Array],
 });
 
-interface variant {
-  primary: string;
-  secondary: string;
-  outline: string;
-}
-
-const variants: variant = {
+const variants: { primary: string; secondary: string; outline: string } = {
   primary:
     "bg-blue-600 text-white border-none hover:bg-blue-700 focus:ring-blue-300",
   secondary:
@@ -29,13 +23,7 @@ const variants: variant = {
     "bg-white text-zinc-950 border border-solid border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-300",
 };
 
-interface size {
-  sm: string;
-  base: string;
-  lg: string;
-}
-
-const sizes: size = {
+const sizes: { sm: string; base: string; lg: string } = {
   sm: "px-3 py-[8.5px] text-sm",
   base: "px-5 py-2.5 text-sm",
   lg: "px-5 py-[14px] text-base",
@@ -46,7 +34,7 @@ const sizes: size = {
   <button
     type="button"
     class="flex cursor-pointer items-center justify-center gap-2 rounded-lg font-medium focus:ring-4"
-    :class="[variants[variant as keyof variant], sizes[size as keyof size]]"
+    :class="[variants[variant], sizes[size]]"
   >
     <MSpinner class="h-4 w-4 border-[2px]" v-if="loading && !iconRight" />
     <font-awesome-icon

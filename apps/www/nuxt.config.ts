@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   },
   components: [
     { path: "../../packages/ui/src", pathPrefix: false },
-    "~/components",
+    { path: "~/components", pathPrefix: false },
   ],
   postcss: {
     plugins: {

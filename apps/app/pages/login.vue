@@ -9,6 +9,10 @@ onMounted(async () => {
   console.log(clerk);
 });
 
+definePageMeta({
+  layout: "auth",
+});
+
 // async function createAccount() {
 //   loading.value = true;
 

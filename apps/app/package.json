@@ -12,7 +12,7 @@
   "devDependencies": {
     "@nuxtjs/fontaine": "^0.2.5",
     "@types/node": "^20.2.0",
-    "nuxt": "^3.4.2",
+    "nuxt": "^3.5.3",
     "nuxt-schema-org": "^2.1.3",
     "nuxt-simple-sitemap": "^2.4.23",
     "typescript": "^5.0.4"
@@ -27,6 +27,7 @@
     "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "@nuxtjs/robots": "^3.0.0",
     "eslint-config-custom": "*",
+    "splitpanes": "^3.1.5",
     "tailwind-config": "*"
   }
 }

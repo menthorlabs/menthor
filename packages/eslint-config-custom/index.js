@@ -15,6 +15,7 @@ module.exports = {
     "antfu/if-newline": "off",
     "vue/v-on-event-hyphenation": "off",
     "no-console": "off",
+    "vue/no-setup-props-destructure": "off",
   },
   globals: {
     defineNuxtConfig: true,
