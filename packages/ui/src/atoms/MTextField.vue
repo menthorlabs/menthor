@@ -1,10 +1,5 @@
-<script lang="ts">
-export default {
-  inheritAttrs: false,
-};
-</script>
-
 <script setup lang="ts">
+defineOptions({ inheritAttrs: false });
 defineProps({
   class: [String, Array, Object],
   label: String,

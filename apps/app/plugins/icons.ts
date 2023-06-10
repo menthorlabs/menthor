@@ -5,6 +5,8 @@ import {
   faHome,
   faMagnifyingGlass,
   faBookBookmark,
+  faArrowLeft,
+  faBell,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -18,6 +20,8 @@ library.add(
   faHome,
   faMagnifyingGlass,
   faBookBookmark,
+  faArrowLeft,
+  faBell,
   faGithub,
   faGoogle
 );

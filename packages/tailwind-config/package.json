@@ -8,9 +8,10 @@
     "lint": "eslint ."
   },
   "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
     "autoprefixer": "^10.4.14",
+    "eslint-config-custom": "*",
     "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2",
-    "eslint-config-custom": "*"
+    "tailwindcss": "^3.3.2"
   }
 }

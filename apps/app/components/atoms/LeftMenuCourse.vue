@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const {
   img = "/midjourney/characters/1.png",
-  name = "Menthor course",
+  name = "Vue 3",
   totalLessons = 28,
   finishedLessons = 10,
   timeToFinish = 3600,
@@ -33,7 +33,7 @@ const {
         <div class="w-[30%] bg-emerald-500"></div>
       </div>
       <div class="flex items-center text-[12px] leading-[12px] text-zinc-500">
-        <span class="flex-1">{{ totalLessons }}/{{ finishedLessons }}</span>
+        <span class="flex-1">{{ finishedLessons }}/{{ totalLessons }}</span>
         <span>{{ timeToFinish }}</span>
       </div>
     </div>

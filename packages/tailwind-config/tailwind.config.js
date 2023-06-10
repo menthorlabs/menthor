@@ -45,7 +45,7 @@ module.exports = {
       xl: "1190px",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/line-clamp")],
   safelist: [
     {
       pattern: /fa.*/,
