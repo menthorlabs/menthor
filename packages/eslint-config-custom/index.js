@@ -34,7 +34,8 @@ module.exports = {
     useRuntimeConfig: true,
     onMounted: true,
     $fetch: true,
-    Ref: true,
+    useAsyncData: true,
+    queryContent: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

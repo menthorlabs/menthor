@@ -16,13 +16,13 @@ const {
 
 <template>
   <div
-    class="flex cursor-pointer items-center gap-3 rounded p-[6px] pr-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100"
+    class="group flex cursor-pointer items-center gap-3 rounded p-[6px] pr-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100"
   >
     <div class="h-[48px] min-w-[48px] overflow-hidden rounded">
       <img
         :src="img"
         :alt="name"
-        class="h-full w-full object-cover object-center"
+        class="h-full w-full object-cover object-center transition-all group-hover:scale-110"
       />
     </div>
     <div class="flex-1">

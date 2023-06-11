@@ -1,0 +1,24 @@
+@layer base {
+  #nuxt_content h1 {
+    @apply text-3xl font-bold mb-1;
+  }
+  #nuxt_content h2 {
+    @apply text-xl font-bold;
+  }
+
+  #nuxt_content p {
+    @apply text-zinc-800 mt-6 mb-6;
+  }
+
+  #nuxt_content p a {
+    @apply font-bold border-b border-pink-500 hover:border-b-[2px];
+  }
+
+  #nuxt_content code .line {
+    @apply px-4;
+  }
+
+  #nuxt_content code .line.highlight {
+    @apply pl-3 pr-4 border-l-[4px] border-zinc-300 bg-zinc-50;
+  }
+}

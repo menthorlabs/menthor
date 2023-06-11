@@ -7,6 +7,10 @@ import {
   faBookBookmark,
   faArrowLeft,
   faBell,
+  faCheck,
+  faLock,
+  faClipboard,
+  faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 
@@ -22,6 +26,10 @@ library.add(
   faBookBookmark,
   faArrowLeft,
   faBell,
+  faCheck,
+  faLock,
+  faClipboard,
+  faCheckCircle,
   faGithub,
   faGoogle
 );

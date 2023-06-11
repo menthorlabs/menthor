@@ -10,6 +10,12 @@ export default defineNuxtConfig({
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     },
   },
+  content: {
+    highlight: {
+      // Theme used in all color schemes.
+      theme: "github-light",
+    },
+  },
   vue: {
     propsDestructure: true,
   },
@@ -31,6 +37,7 @@ export default defineNuxtConfig({
   components: [
     { path: "../../packages/ui/src", pathPrefix: false },
     { path: "~/components", pathPrefix: false },
+    { path: "~/components/content", pathPrefix: false },
   ],
   postcss: {
     plugins: {
@@ -44,6 +51,8 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
     "@nuxtjs/fontaine",
+    "@nuxt/content",
+    "@vueuse/nuxt",
   ],
   vite: {
     plugins: [eslintPlugin()],

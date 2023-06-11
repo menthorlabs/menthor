@@ -1,3 +1,5 @@
+@import './content.css';
+@import './scrollbar.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,6 +8,10 @@
   .mask-radial {
     -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #D9D9D9 79.17%, rgba(217, 217, 217, 0) 100%);
     mask-image: radial-gradient(50% 50% at 50% 50%, #D9D9D9 79.17%, rgba(217, 217, 217, 0) 100%);
+  }
+  .mask-radial-2 {
+    -webkit-mask-image: radial-gradient(50% 50% at 50% 50%, #D9D9D9 15%, rgba(217, 217, 217, 0) 100%);
+    mask-image: radial-gradient(50% 50% at 50% 50%, #D9D9D9 100%, rgba(217, 217, 217, 0) 100%);
   }
 }
 
@@ -18,32 +24,7 @@
   }
 }
 
-@layer base {
-  .scrollbox::-webkit-scrollbar {
-    background-color: transparent;
-    width: 0px;
-    height: 4px;
-  }
-  .scrollbox:hover::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
-  }
-  .scrollbox:hover::-webkit-scrollbar-thumb {
-    background-color: theme("colors.zinc.200");
-  }
-  .scrollbox::-webkit-scrollbar-thumb:hover {
-    background-color: theme("colors.zinc.300");
-  }
-  @media (hover: none) {
-    .scrollbox::-webkit-scrollbar {
-      width: 4px;
-      height: 4px;
-    }
-    .scrollbox::-webkit-scrollbar-thumb {
-      background-color: theme("colors.zinc.200");
-    }
-  }
-}
+
 
 body {
   margin: 0;

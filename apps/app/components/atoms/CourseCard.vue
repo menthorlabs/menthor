@@ -12,7 +12,7 @@
       />
     </div>
     <h2 class="mb-1 font-medium">Vue 3</h2>
-    <p class="min-w-0 text-zinc-700 line-clamp-2">
+    <p class="line-clamp-2 min-w-0 text-zinc-700">
       Reimagine a forma de desenvolver front-end.
     </p>
   </div>
