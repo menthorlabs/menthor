@@ -10,6 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     onRequest({ options }) {
       options.headers = {
         "Content-Type": "application/json",
+        Authorization: "Bearer MENTHOR-DEV",
       };
     },
     onResponseError({ response }) {

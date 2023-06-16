@@ -30,6 +30,7 @@ module.exports = {
     useRoute: true,
     useHead: true,
     definePageMeta: true,
+    useRouter: true,
     inject: true,
     useRuntimeConfig: true,
     onMounted: true,

@@ -1,3 +1,40 @@
+<script setup>
+const api = inject("api");
+const { params } = useRoute();
+const router = useRouter();
+const { data, error } = await useAsyncData("some-key", () =>
+  api("/course/content", { query: { name: params.course } })
+);
+
+if (data.value === null || error.value) {
+  router.push("/404");
+}
+
+// const { data } = await useAsyncData("hello", () =>
+//   queryContent(`/${params.course}`)
+//     .where({ _path: { $regex: params.lesson } })
+//     .findOne()
+// );
+
+const course = data.value?.pt_br;
+let lesson = null;
+
+console.log({ data, course });
+
+if (course) {
+  Object.keys(course).forEach((key) => {
+    const courseObjectList = course[key];
+    const lessonKeyMatchWithPath = Object.keys(courseObjectList).find(
+      (innerKey) => {
+        const courseValue = courseObjectList[innerKey];
+        return courseValue.path === params.lesson;
+      }
+    );
+    lesson = courseObjectList[lessonKeyMatchWithPath];
+  });
+}
+</script>
+
 <template>
   <div>
     <div class="mb-10 flex items-center gap-6 px-8">
@@ -16,7 +53,7 @@
           + 60 mil alunos
         </div>
         <h1 class="mb-3 text-4xl font-extrabold">
-          Crie um app descentralizado com Ethereum
+          {{ params.course }}
         </h1>
         <div class="flex items-center gap-2">
           <AppIconButton />
@@ -26,6 +63,6 @@
         </div>
       </div>
     </div>
-    <NuxtPage />
+    <NuxtPage :lesson="lesson" />
   </div>
 </template>
