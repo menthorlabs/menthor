@@ -37,6 +37,10 @@ module.exports = {
     $fetch: true,
     useAsyncData: true,
     queryContent: true,
+    fetchContentNavigation: true,
+    useContent: true,
+    useCourseAsideStore: true,
+    navigationItem: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

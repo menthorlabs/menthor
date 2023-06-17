@@ -20,7 +20,7 @@ const variants: { primary: string; secondary: string; outline: string } = {
   secondary:
     "bg-zinc-900 text-white border-none hover:bg-zinc-800 focus:ring-zinc-300",
   outline:
-    "bg-white text-zinc-950 border border-solid border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-300",
+    "bg-white text-zinc-900 border border-solid border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-300",
 };
 
 const sizes: { sm: string; base: string; lg: string } = {

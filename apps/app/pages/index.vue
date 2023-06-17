@@ -1,6 +1,4 @@
-<script setup>
-//https://winning-shad-32.accounts.dev/sign-up
-</script>
+<script setup></script>
 
 <template>
   <div class="px-8">
@@ -15,21 +13,20 @@
     </div>
     <h2 class="mb-4 text-lg font-bold">Recomendados para você</h2>
     <div class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(180px,_1fr))]">
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-    </div>
-    <h2 class="mb-4 text-lg font-bold">Você também pode gostar</h2>
-    <div class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(180px,_1fr))]">
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
-      <CourseCard />
+      <ContentNavigation v-slot="{ navigation }">
+        <NuxtLink
+          v-for="item of navigation"
+          :key="item._path"
+          :nav-item="item"
+          :href="item.children[0].children[0]._path"
+        >
+          <CourseCard
+            :title="item.title"
+            :description="item.description"
+            :image="item.image"
+          />
+        </NuxtLink>
+      </ContentNavigation>
     </div>
   </div>
 </template>

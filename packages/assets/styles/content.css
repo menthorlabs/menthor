@@ -1,13 +1,27 @@
 @layer base {
   #nuxt_content h1 {
-    @apply text-3xl font-bold mb-1;
+    @apply text-3xl font-bold mb-8;
   }
   #nuxt_content h2 {
-    @apply text-xl font-bold;
+    @apply text-xl font-bold mt-6 mb-4;
+  }
+  #nuxt_content h3 {
+    @apply text-lg font-bold mt-6 mb-4;
+  }
+  #nuxt_content h4 {
+    @apply text-base font-bold mt-6 mb-4;
   }
 
   #nuxt_content p {
-    @apply text-zinc-800 mt-6 mb-6;
+    @apply text-zinc-800 mb-4;
+  }
+
+  #nuxt_content ul {
+    @apply text-zinc-800 mb-4;
+  }
+
+  #nuxt_content ol {
+    @apply text-zinc-800 mb-4;
   }
 
   #nuxt_content p a {

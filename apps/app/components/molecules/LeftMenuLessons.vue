@@ -1,6 +1,16 @@
+<script setup lang="ts">
+const { navigation } = defineProps<{
+  navigation: navigationItem;
+}>();
+</script>
+
 <template>
-  <div class="flex-1 overflow-y-auto px-3 py-4">
-    <h5 class="mb-2 text-xs font-semibold">Introdução</h5>
-    <LeftMenuLessonItem />
+  <div class="mb-6">
+    <h5 class="mb-2 text-xs font-semibold">{{ navigation.title }}</h5>
+    <LeftMenuLessonItem
+      v-for="item in navigation.children"
+      :key="item._path"
+      :navigation="item"
+    />
   </div>
 </template>

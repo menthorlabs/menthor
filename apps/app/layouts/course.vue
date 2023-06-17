@@ -1,6 +1,8 @@
+<script setup></script>
+
 <template>
   <div class="flex h-screen w-full overflow-hidden">
-    <DefaultAside />
+    <CourseAside />
     <div class="relative flex-1 overflow-y-auto">
       <TopBar />
       <slot />

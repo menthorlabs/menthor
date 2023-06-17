@@ -1,5 +1,7 @@
+// @ts-expect-error avoid lint error
 import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
+import "./types";
 
 export default defineNuxtConfig({
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
@@ -14,6 +16,16 @@ export default defineNuxtConfig({
     highlight: {
       // Theme used in all color schemes.
       theme: "github-light",
+    },
+    sources: {
+      // github: {
+      //   driver: "github",
+      //   repo: "menthorlabs/lessons",
+      //   prefix: "/",
+      // },
+    },
+    navigation: {
+      fields: ["image", "description"],
     },
   },
   vue: {
@@ -53,8 +65,12 @@ export default defineNuxtConfig({
     "@nuxtjs/fontaine",
     "@nuxt/content",
     "@vueuse/nuxt",
+    "@pinia/nuxt",
   ],
   vite: {
     plugins: [eslintPlugin()],
+  },
+  imports: {
+    dirs: ["./composables", "./utils", "./stores/components"],
   },
 });
