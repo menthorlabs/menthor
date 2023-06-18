@@ -14,15 +14,14 @@ export default defineNuxtConfig({
   },
   content: {
     highlight: {
-      // Theme used in all color schemes.
       theme: "github-light",
     },
     sources: {
-      // github: {
-      //   driver: "github",
-      //   repo: "menthorlabs/lessons",
-      //   prefix: "/",
-      // },
+      github: {
+        driver: "github",
+        repo: "menthorlabs/courses",
+        prefix: "/",
+      },
     },
     navigation: {
       fields: ["image", "description"],
