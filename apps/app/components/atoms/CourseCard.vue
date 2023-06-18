@@ -15,7 +15,7 @@ const {
     class="group cursor-pointer rounded-md p-4 text-sm transition-all hover:bg-zinc-100/80"
   >
     <div
-      class="mb-3 h-[160px] w-[160px] overflow-hidden rounded border border-solid border-zinc-300"
+      class="mb-3 aspect-square w-full overflow-hidden rounded border border-solid border-zinc-300"
     >
       <img
         :src="image"

@@ -3,7 +3,7 @@
     class="group cursor-pointer rounded-md p-4 text-sm transition-all hover:bg-zinc-100/80"
   >
     <div
-      class="mb-3 h-[128px] w-full overflow-hidden rounded border border-solid border-zinc-300"
+      class="mb-3 aspect-video w-full overflow-hidden rounded border border-solid border-zinc-300"
     >
       <img
         src="/midjourney/characters/1.png"

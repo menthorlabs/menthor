@@ -10,6 +10,8 @@ import {
   faCheck,
   faLock,
   faClipboard,
+  faArrowRightFromBracket,
+  faCircleUser,
   faCheckCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
@@ -25,6 +27,8 @@ library.add(
   faCheck,
   faLock,
   faClipboard,
+  faArrowRightFromBracket,
+  faCircleUser,
   faCheckCircle,
   faGithub,
   faGoogle

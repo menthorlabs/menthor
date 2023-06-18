@@ -20,19 +20,18 @@ const { copy, copied } = useClipboard({ source });
 </script>
 
 <template>
-  <div class="relative rounded-lg border border-zinc-200">
-    <div class="flex h-[40px] items-end bg-zinc-100 pl-3 pt-1" v-if="filename">
-      <div
-        class="flex h-[36px] items-center rounded-t bg-white px-4 py-1 text-sm font-medium"
-      >
-        {{ filename }}
-      </div>
+  <div class="group relative mb-4 rounded-lg border border-zinc-200">
+    <div
+      class="absolute right-1 top-1 text-sm font-medium transition-all group-hover:opacity-0"
+      v-if="filename"
+    >
+      {{ filename }}
     </div>
     <MIconButton
       @click="copy(source)"
       variant="inherit"
       :icon="copied ? 'check' : 'clipboard'"
-      class="absolute right-3"
+      class="absolute right-1 opacity-0 transition-all group-hover:opacity-100"
       :class="{ 'top-[6px]': !filename, 'top-1': filename }"
     />
     <div class="overflow-x-auto py-3 text-sm font-medium">

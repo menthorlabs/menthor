@@ -20,15 +20,27 @@
     </div>
     <div class="flex items-center gap-2">
       <MIconButton icon="bell" />
-      <div
+      <VDropdown
+        :distance="6"
         class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"
+        placement="bottom-end"
       >
         <img
           src="/midjourney/characters/1.png"
           alt="Profile"
           class="h-full w-full object-cover object-center"
         />
-      </div>
+        <template #popper="{ hide }">
+          <div class="min-w-[140px] py-1" @click="hide()">
+            <NuxtLink to="/profile">
+              <DropdownItem icon="circle-user" name="Perfil" />
+            </NuxtLink>
+            <NuxtLink to="/login">
+              <DropdownItem icon="arrow-right-from-bracket" name="Sair" />
+            </NuxtLink>
+          </div>
+        </template>
+      </VDropdown>
     </div>
   </div>
 </template>
