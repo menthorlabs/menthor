@@ -42,13 +42,10 @@ export default defineNuxtConfig({
     "@/styles/font.css",
     "@fortawesome/fontawesome-svg-core/styles.css",
   ],
-  alias: {
-    "@": path.resolve(__dirname, "../../packages/assets"),
-  },
   components: [
-    { path: "../../packages/ui/src", pathPrefix: false },
-    { path: "~/components", pathPrefix: false },
-    { path: "~/components/content", pathPrefix: false },
+    { path: "../../packages/ui/src", pathPrefix: false, extensions: [".vue"] },
+    { path: "~/components", pathPrefix: false, extensions: [".vue"] },
+    { path: "~/components/content", pathPrefix: false, extensions: [".vue"] },
   ],
   postcss: {
     plugins: {
@@ -68,6 +65,15 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [eslintPlugin()],
+    optimizeDeps: {
+      exclude: ["@clerk/clerk-js"],
+    },
+  },
+  // build: {
+  //   transpile: ["@clerk/clerk-js"],
+  // },
+  alias: {
+    "@": path.resolve(__dirname, "../../packages/assets"),
   },
   imports: {
     dirs: ["./composables", "./utils", "./stores/components"],

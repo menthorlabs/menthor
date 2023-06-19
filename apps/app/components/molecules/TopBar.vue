@@ -1,3 +1,24 @@
+<script setup lang="ts">
+const router = useRouter();
+// const state = reactive({
+//   forward: false,
+//   back: false,
+// });
+
+// onMounted(() => {
+//   window.addEventListener("popstate", (event) => {
+//     state.back = event.state.back != null;
+//     state.forward = event.state.forward != null;
+//   });
+
+//   router.afterEach(() => {
+//     console.log("dale");
+//     state.back = true;
+//     state.forward = false;
+//   });
+// });
+</script>
+
 <template>
   <div
     class="absolute left-0 top-0 flex h-[90px] w-full justify-center overflow-hidden"
@@ -15,8 +36,8 @@
     class="sticky left-0 top-0 z-10 flex h-[56px] w-full items-center px-8 py-2"
   >
     <div class="flex flex-1 items-center gap-2">
-      <MIconButton icon="arrow-left" />
-      <MIconButton icon="arrow-right" />
+      <MIconButton @click="router.back()" icon="arrow-left" />
+      <MIconButton @click="router.forward()" icon="arrow-right" />
     </div>
     <div class="flex items-center gap-2">
       <MIconButton icon="bell" />

@@ -19,7 +19,7 @@
     "typescript": "^5.0.4"
   },
   "dependencies": {
-    "@clerk/clerk-js": "^4.44.0",
+    "@clerk/clerk-js": "^4.47.2",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
     "@fortawesome/free-brands-svg-icons": "^6.4.0",
     "@fortawesome/free-regular-svg-icons": "^6.4.0",

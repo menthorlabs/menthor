@@ -41,6 +41,7 @@ module.exports = {
     useContent: true,
     useCourseAsideStore: true,
     navigationItem: true,
+    reactive: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {
