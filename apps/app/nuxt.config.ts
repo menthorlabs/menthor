@@ -65,13 +65,7 @@ export default defineNuxtConfig({
   ],
   vite: {
     plugins: [eslintPlugin()],
-    optimizeDeps: {
-      exclude: ["@clerk/clerk-js"],
-    },
   },
-  // build: {
-  //   transpile: ["@clerk/clerk-js"],
-  // },
   alias: {
     "@": path.resolve(__dirname, "../../packages/assets"),
   },

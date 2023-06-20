@@ -56,7 +56,7 @@ const router = useRouter();
             <NuxtLink to="/profile">
               <DropdownItem icon="circle-user" name="Perfil" />
             </NuxtLink>
-            <NuxtLink to="/login">
+            <NuxtLink to="/sign-in">
               <DropdownItem icon="arrow-right-from-bracket" name="Sair" />
             </NuxtLink>
           </div>

@@ -42,6 +42,7 @@ module.exports = {
     useCourseAsideStore: true,
     navigationItem: true,
     reactive: true,
+    useSakura: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

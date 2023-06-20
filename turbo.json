@@ -3,10 +3,10 @@
   "globalDependencies": ["**/.env.*local"],
   "pipeline": {
     "build": {
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".nuxt/**", "!.nuxt/content-cache/**"]
     },
     "generate": {
-      "outputs": [".next/**", "!.next/cache/**"]
+      "outputs": [".nuxt/**", "!.nuxt/content-cache/**"]
     },
     "lint": {},
     "dev": {
