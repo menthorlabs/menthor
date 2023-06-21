@@ -43,6 +43,8 @@ module.exports = {
     navigationItem: true,
     reactive: true,
     useSakura: true,
+    useSignUpStore: true,
+    useSessionStore: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

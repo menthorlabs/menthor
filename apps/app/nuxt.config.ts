@@ -70,6 +70,6 @@ export default defineNuxtConfig({
     "@": path.resolve(__dirname, "../../packages/assets"),
   },
   imports: {
-    dirs: ["./composables", "./utils", "./stores/components"],
+    dirs: ["./composables", "./utils", "./stores/*"],
   },
 });

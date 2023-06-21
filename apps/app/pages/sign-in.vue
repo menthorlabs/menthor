@@ -2,31 +2,35 @@
 const clerk = inject("clerk");
 const email = ref(null);
 const password = ref(null);
+const sessionStore = useSessionStore();
 //const code = ref(null);
 const loading = ref(false);
 
 onMounted(async () => {
   console.log(clerk);
+  await sessionStore.getToken();
+  console.log(sessionStore.sessions);
 });
 
 definePageMeta({
   layout: "auth",
 });
 
-// async function createAccount() {
-//   loading.value = true;
+async function signIn() {
+  loading.value = true;
 
-//   try {
-//     signUp = await clerk.client.signUp.create({
-//       emailAddress: email.value,
-//       password: password.value,
-//     });
+  try {
+    const response = await clerk.client.signIn.create({
+      identifier: email.value,
+      password: password.value,
+      strategy: "password",
+    });
 
-//     await signUp.prepareEmailAddressVerification();
-//   } finally {
-//     loading.value = false;
-//   }
-// }
+    console.log(response);
+  } finally {
+    loading.value = false;
+  }
+}
 
 // async function verifyAddress() {
 //   loading.value = true;
@@ -69,13 +73,13 @@ definePageMeta({
         variant="outline"
         :icon-left="['fab', 'github']"
         text="Entre com GitHub"
-        :loading="loading"
+        :class="{ '!pointer-events-none': loading }"
       />
       <MButton
         variant="outline"
         :icon-left="['fab', 'google']"
         text="Entre com Google"
-        :loading="loading"
+        :class="{ '!pointer-events-none': loading }"
       />
     </div>
     <MTextField class="mb-4" label="Email" type="email" v-model="email" />
@@ -90,7 +94,7 @@ definePageMeta({
       class="mb-4 w-full"
       text="Entrar"
       icon-right="arrow-right"
-      @click="createAccount()"
+      @click="signIn()"
       :loading="loading"
     />
     <div class="text-center text-sm text-zinc-700">

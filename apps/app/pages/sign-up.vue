@@ -1,60 +1,44 @@
 <script setup>
-const clerk = inject("clerk");
+const router = useRouter();
+const signUpStore = useSignUpStore();
 const email = ref(null);
 const password = ref(null);
 //const code = ref(null);
 const loading = ref(false);
 
-onMounted(async () => {
-  console.log(clerk);
-});
-
 definePageMeta({
   layout: "auth",
 });
 
-// async function createAccount() {
-//   loading.value = true;
+async function createAccount() {
+  loading.value = true;
 
-//   try {
-//     signUp = await clerk.client.signUp.create({
-//       emailAddress: email.value,
-//       password: password.value,
-//     });
+  try {
+    await signUpStore.create({
+      emailAddress: email.value,
+      password: password.value,
+    });
+    await signUpStore.signUp.prepareEmailAddressVerification();
+    router.push("/code");
+  } finally {
+    loading.value = false;
+  }
+}
 
-//     await signUp.prepareEmailAddressVerification();
-//   } finally {
-//     loading.value = false;
-//   }
-// }
+async function clerkOAuth(strategy) {
+  loading.value = true;
 
-// async function verifyAddress() {
-//   loading.value = true;
-
-//   try {
-//     const response = await signUp.attemptEmailAddressVerification({
-//       code: code.value,
-//     });
-//     console.log(response);
-//   } finally {
-//     loading.value = false;
-//   }
-// }
-
-// async function clerkOAuth() {
-//   loading.value = true;
-
-//   try {
-//     const response = await clerk.client.signUp.authenticateWithRedirect({
-//       strategy: "oauth_google",
-//       redirectUrl: "/sso-callback",
-//       redirectUrlComplete: "/",
-//     });
-//     console.log(response);
-//   } finally {
-//     loading.value = false;
-//   }
-// }
+  try {
+    const response = await signUpStore.authenticateWithRedirect({
+      strategy: strategy,
+      redirectUrl: "/sso-callback",
+      redirectUrlComplete: "/",
+    });
+    console.log(response);
+  } finally {
+    loading.value = false;
+  }
+}
 
 //https://winning-shad-32.accounts.dev/sign-up
 </script>
@@ -69,13 +53,13 @@ definePageMeta({
         variant="outline"
         :icon-left="['fab', 'github']"
         text="Crie com GitHub"
-        :loading="loading"
+        @click="clerkOAuth('oauth_google')"
       />
       <MButton
         variant="outline"
         :icon-left="['fab', 'google']"
         text="Crie com Google"
-        :loading="loading"
+        @click="clerkOAuth('oauth_google')"
       />
     </div>
     <MTextField class="mb-4" label="Email" type="email" v-model="email" />
@@ -88,7 +72,7 @@ definePageMeta({
     <MButton
       variant="secondary"
       class="mb-4 w-full"
-      text="Entrar"
+      text="Criar conta"
       icon-right="arrow-right"
       @click="createAccount()"
       :loading="loading"

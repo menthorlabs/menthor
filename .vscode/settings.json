@@ -2,6 +2,6 @@
   "typescript.tsdk": "node_modules/typescript/lib",
   "cSpell.language": "en,pt,pt-BR",
   "cSpell.enabledLanguageIds": ["javascript", "typescript"],
-  "cSpell.words": ["nuxt", "menthor", "ofetch", "menthorlabs"],
+  "cSpell.words": ["nuxt", "menthor", "ofetch", "menthorlabs", "sakura"],
   "prettier.prettierPath": "./node_modules/prettier"
 }
