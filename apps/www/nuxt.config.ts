@@ -20,7 +20,7 @@ export default defineNuxtConfig({
   },
   components: [
     { path: "../../packages/ui/src", pathPrefix: false },
-    { path: "~/components", pathPrefix: false },
+    { path: "~/components" },
   ],
   postcss: {
     plugins: {
@@ -30,7 +30,6 @@ export default defineNuxtConfig({
   },
   modules: [
     "@nuxt/image-edge",
-    "@nuxtjs/robots",
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
     "nuxt-delay-hydration",

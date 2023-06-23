@@ -16,6 +16,12 @@ module.exports = {
     "vue/v-on-event-hyphenation": "off",
     "no-console": "off",
     "vue/no-setup-props-destructure": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        endOfLine: "auto",
+      },
+    ],
   },
   globals: {
     defineNuxtConfig: true,
@@ -45,6 +51,8 @@ module.exports = {
     useSakura: true,
     useSignUpStore: true,
     useSessionStore: true,
+    defineNuxtRouteMiddleware: true,
+    navigateTo: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

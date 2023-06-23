@@ -43,9 +43,9 @@ export default defineNuxtConfig({
     "@fortawesome/fontawesome-svg-core/styles.css",
   ],
   components: [
-    { path: "../../packages/ui/src", pathPrefix: false, extensions: [".vue"] },
-    { path: "~/components", pathPrefix: false, extensions: [".vue"] },
-    { path: "~/components/content", pathPrefix: false, extensions: [".vue"] },
+    { path: "../../packages/ui/src", pathPrefix: false },
+    { path: "~/components", pathPrefix: false },
+    { path: "~/components/content", pathPrefix: false },
   ],
   postcss: {
     plugins: {
