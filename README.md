@@ -1,81 +1,65 @@
-# Turborepo starter
+<div align="center">
+  <a href="https://menthor.io/">
+    <img
+      src="https://menthor.io/brand/menthor-icon-dark.svg"
+      alt="Menthor Logo"
+      height="64"
+    />
+  </a>
+  <br />
+  <p>
+    <h3>
+      <b>
+        Menthor
+      </b>
+    </h3>
+  </p>
+  <p>
+    <b>
+      Plataforma open-source de ensino de programação.
+    </b>
+  </p>
+  <p>
 
-This is an official starter Turborepo.
+[![Website](https://img.shields.io/website?url=https%3A%2F%2Fmenthor.io&logo=menthor)](https://menthor.io) [![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fmenthor.io%2F)](https://twitter.com/intent/tweet?text=%F0%9F%93%9AConhe%C3%A7a%20a%20menthor,%20plataforma%20gratuita%20e%20open-source%20de%20ensino%20de%20programa%C3%A7%C3%A3o.%20https%3A//menthor.io%20%23menthor%20via%20%40menthorlabs)
 
-## Using this example
+  </p>
+  <p>
+    <sub>
+      Built with ❤︎ by
+      <a href="https://github.com/menthorlabs/menthor/graphs/contributors">
+        contributors
+      </a>
+    </sub>
+  </p>
+  <br />
+  <p>
+    <a href="https://menthor.io/" target="_blank">
+      <img
+        src="https://media.licdn.com/dms/image/D4D22AQEqK8Vk8AQ31A/feedshare-shrink_2048_1536/0/1685227498306?e=1688601600&v=beta&t=MLr-zSNCZqKjAC75ouNqh52OHmyygKLwJ4rS6azgKDY"
+        alt="Menthor"
+        width="100%"
+      />
+    </a>
+  </p>
+</div>
 
-Run the following command:
+#### **Support**
 
-```sh
-npx create-turbo@latest
-```
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/8BCByyXxq8) [![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/menthorlabs/menthor/discussions)
 
-## What's inside?
+### Apps
 
-This Turborepo includes the following packages/apps:
+- `app`: plataforma da Menthor desenvolvida com [Nuxt](https://nuxt.com/)
+- `email`: templates de e-mail da Menthor desenvolvidos com [React Email](https://react.email/)
+- `www`: landing page da Menthor desenvolvida com [Nuxt](https://nuxt.com/)
 
-### Apps and Packages
+### Como rodar na sua máquina
 
-- `docs`: a [Next.js](https://nextjs.org/) app
-- `web`: another [Next.js](https://nextjs.org/) app
-- `ui`: a stub React component library shared by both `web` and `docs` applications
-- `eslint-config-custom`: `eslint` configurations (includes `eslint-config-next` and `eslint-config-prettier`)
-- `tsconfig`: `tsconfig.json`s used throughout the monorepo
+Todo diretório é gerenciado pelo [Turborepo](https://turbo.build/repo), então dê uma olhada na documentação deles.
 
-Each package/app is 100% [TypeScript](https://www.typescriptlang.org/).
+Para rodar um projeto você precisa ter o node instalado (versão 16 pra cima) e seguir os seguintes passos:
 
-### Utilities
-
-This Turborepo has some additional tools already setup for you:
-
-- [TypeScript](https://www.typescriptlang.org/) for static type checking
-- [ESLint](https://eslint.org/) for code linting
-- [Prettier](https://prettier.io) for code formatting
-
-### Build
-
-To build all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm build
-```
-
-### Develop
-
-To develop all apps and packages, run the following command:
-
-```
-cd my-turborepo
-pnpm dev
-```
-
-### Remote Caching
-
-Turborepo can use a technique known as [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching) to share cache artifacts across machines, enabling you to share build caches with your team and CI/CD pipelines.
-
-By default, Turborepo will cache locally. To enable Remote Caching you will need an account with Vercel. If you don't have an account you can [create one](https://vercel.com/signup), then enter the following commands:
-
-```
-cd my-turborepo
-npx turbo login
-```
-
-This will authenticate the Turborepo CLI with your [Vercel account](https://vercel.com/docs/concepts/personal-accounts/overview).
-
-Next, you can link your Turborepo to your Remote Cache by running the following command from the root of your Turborepo:
-
-```
-npx turbo link
-```
-
-## Useful Links
-
-Learn more about the power of Turborepo:
-
-- [Tasks](https://turbo.build/repo/docs/core-concepts/monorepos/running-tasks)
-- [Caching](https://turbo.build/repo/docs/core-concepts/caching)
-- [Remote Caching](https://turbo.build/repo/docs/core-concepts/remote-caching)
-- [Filtering](https://turbo.build/repo/docs/core-concepts/monorepos/filtering)
-- [Configuration Options](https://turbo.build/repo/docs/reference/configuration)
-- [CLI Usage](https://turbo.build/repo/docs/reference/command-line-reference)
+- `npm i -g yarn`: esse comando vai instalar o yarn globalmente na sua máquina
+- `yarn install`: esse comando vai instalar todas as dependências do projeto
+- `yarn dev --filter=www`: esse comando vai rodar o app `www` localmente, se quiser rodar outro é só usar o comando `yarn dev --filter={nome-do-app}`
