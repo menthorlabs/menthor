@@ -26,9 +26,9 @@
   </p>
   <p>
     <sub>
-      Built with ❤︎ by
+      Feito com ❤︎ pelos
       <a href="https://github.com/menthorlabs/menthor/graphs/contributors">
-        contributors
+        contribuidores
       </a>
     </sub>
   </p>
@@ -44,9 +44,9 @@
   </p>
 </div>
 
-#### **Support**
+#### **Suporte**
 
-[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/8BCByyXxq8) [![Discuss on GitHub](https://img.shields.io/badge/discussions-GitHub-333333?logo=github)](https://github.com/menthorlabs/menthor/discussions)
+[![Chat on Discord](https://img.shields.io/badge/chat-Discord-7289DA?logo=discord)](https://discord.gg/8BCByyXxq8)
 
 ### Apps
 
