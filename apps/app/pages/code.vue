@@ -114,6 +114,7 @@ async function sendCode() {
       text="Enviar"
       icon-right="arrow-right"
       @click="sendCode()"
+      :disabled="code.length < 6"
       :loading="loading"
     />
     <div class="text-center text-sm text-zinc-700">

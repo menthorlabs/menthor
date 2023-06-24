@@ -6,7 +6,9 @@ const { icon = "", name = "" } = defineProps<{
 </script>
 
 <template>
-  <div class="flex items-center gap-3 px-4 py-2 text-sm hover:bg-zinc-100">
+  <div
+    class="flex cursor-pointer items-center gap-3 px-4 py-2 text-sm hover:bg-zinc-100"
+  >
     <font-awesome-icon :icon="icon" />
     <span>{{ name }}</span>
   </div>

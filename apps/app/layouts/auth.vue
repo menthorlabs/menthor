@@ -1,7 +1,7 @@
 <script setup>
-onMounted(() => {
-  new useSakura("#login_background");
-});
+// onMounted(() => {
+//   new useSakura("#login_background");
+// });
 </script>
 
 <template>

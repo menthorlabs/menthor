@@ -29,12 +29,13 @@ async function clerkOAuth(strategy) {
   loading.value = true;
 
   try {
-    const response = await signUpStore.authenticateWithRedirect({
+    await signUpStore.authenticateWithRedirect({
       strategy: strategy,
-      redirectUrl: "/sso-callback",
+      redirectUrl: `/sign-in?error=${encodeURIComponent(
+        "Essa conta já existe. Faça login."
+      )}`,
       redirectUrlComplete: "/",
     });
-    console.log(response);
   } finally {
     loading.value = false;
   }
@@ -53,30 +54,42 @@ async function clerkOAuth(strategy) {
         variant="outline"
         :icon-left="['fab', 'github']"
         text="Crie com GitHub"
+        :class="{ '!pointer-events-none': loading }"
         @click="clerkOAuth('oauth_google')"
       />
       <MButton
         variant="outline"
         :icon-left="['fab', 'google']"
         text="Crie com Google"
+        :class="{ '!pointer-events-none': loading }"
         @click="clerkOAuth('oauth_google')"
       />
     </div>
-    <MTextField class="mb-4" label="Email" type="email" v-model="email" />
-    <MTextField
-      class="mb-6"
-      label="Password"
-      type="password"
-      v-model="password"
-    />
-    <MButton
-      variant="secondary"
-      class="mb-4 w-full"
-      text="Criar conta"
-      icon-right="arrow-right"
-      @click="createAccount()"
-      :loading="loading"
-    />
+    <MForm>
+      <MTextField
+        class="mb-4"
+        label="Email"
+        type="email"
+        v-model="email"
+        :rules="['email']"
+      />
+      <MTextField
+        class="mb-6"
+        label="Password"
+        type="password"
+        v-model="password"
+        :rules="['password']"
+      />
+      <MButton
+        variant="secondary"
+        class="mb-4 w-full"
+        text="Criar conta"
+        icon-right="arrow-right"
+        @click="createAccount()"
+        :loading="loading"
+      />
+    </MForm>
+
     <div class="text-center text-sm text-zinc-700">
       Já tem uma conta?
       <nuxt-link to="/sign-in" class="font-semibold text-zinc-900 underline"

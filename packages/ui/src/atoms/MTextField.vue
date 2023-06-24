@@ -1,16 +1,37 @@
-<script setup lang="ts">
+<script setup>
 defineOptions({ inheritAttrs: false });
-defineProps({
+const props = defineProps({
   class: [String, Array, Object],
   label: String,
-  modelValue: [String, Number],
+  required: Boolean,
+  rules: Array,
 });
-const emit = defineEmits(["update:modelValue"]);
+const modelValue = defineModel();
+const error = ref(false);
+const errorMessage = ref("");
+const formValidator = useFormValidator();
+const menthorForm = inject("menthorForm", undefined);
+const input = ref(null);
 
-function onInput($event: Event) {
-  const target = $event.target as HTMLTextAreaElement;
-  emit("update:modelValue", target.value);
-  //this.checkError();
+watch(
+  () => menthorForm,
+  () => {
+    checkError();
+  },
+  { deep: true }
+);
+
+function checkError() {
+  const validated = formValidator.validate(
+    modelValue.value,
+    formValidator.allRules(props.required, props.rules)
+  );
+  error.value = !validated.isValid;
+  errorMessage.value = validated.errorMessage;
+
+  if (error.value && input.value) {
+    input.value.focus();
+  }
 }
 </script>
 
@@ -18,16 +39,20 @@ function onInput($event: Event) {
   <!--eslint-disable-next-line vue/no-parsing-error-->
   <div :class="class">
     <label
-      :for="($attrs.id as string)"
+      :for="$attrs.id"
       class="mb-2 block text-sm font-medium text-zinc-900"
     >
       {{ label }}
     </label>
     <input
+      ref="input"
       v-bind="$attrs"
-      :value="modelValue"
-      @input="onInput"
+      v-model="modelValue"
+      @input="checkError"
       class="block w-full rounded-lg border border-zinc-300 bg-zinc-50 px-3 py-[9px] text-sm text-zinc-900 outline-none outline-offset-0 placeholder:text-zinc-400 hover:bg-zinc-100 focus:bg-zinc-50 focus:outline focus:outline-2 focus:outline-offset-1 focus:outline-zinc-300"
     />
+    <div v-if="error" class="mt-2 text-sm font-normal text-red-600">
+      {{ errorMessage }}
+    </div>
   </div>
 </template>

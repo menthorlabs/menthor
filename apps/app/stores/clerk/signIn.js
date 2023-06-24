@@ -1,13 +1,13 @@
 import { defineStore } from "pinia";
 
-export const useSignUpStore = defineStore("signUp", {
+export const useSignInStore = defineStore("signIn", {
   state: () => ({
-    signUp: null,
+    signIn: null,
   }),
   actions: {
     async create({ emailAddress, password }) {
-      this.signUp = await this.$clerk.client.signUp.create({
-        emailAddress,
+      this.signIn = await this.$clerk.client.signIn.create({
+        identifier: emailAddress,
         password,
       });
     },
@@ -16,15 +16,10 @@ export const useSignUpStore = defineStore("signUp", {
       redirectUrl = "/sso-callback",
       redirectUrlComplete = "/?refreshToken=true",
     }) {
-      await this.$clerk.client.signUp.authenticateWithRedirect({
+      await this.$clerk.client.signIn.authenticateWithRedirect({
         strategy: strategy,
         redirectUrl: redirectUrl,
         redirectUrlComplete: redirectUrlComplete,
-      });
-    },
-    async attemptEmailAddressVerification({ code }) {
-      await this.$clerk.client.signUp.attemptEmailAddressVerification({
-        code,
       });
     },
   },

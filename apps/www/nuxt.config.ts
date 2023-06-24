@@ -9,6 +9,10 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
+  vue: {
+    propsDestructure: true,
+    defineModel: true,
+  },
   extends: ["nuxt-umami"],
   css: [
     "@/styles/main.css",

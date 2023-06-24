@@ -1,1 +1,0 @@
-<template>SSO Callback</template>

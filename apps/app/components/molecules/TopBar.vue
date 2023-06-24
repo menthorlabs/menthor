@@ -1,5 +1,6 @@
 <script setup lang="ts">
 const router = useRouter();
+const sessionStore = useSessionStore();
 // const state = reactive({
 //   forward: false,
 //   back: false,
@@ -56,9 +57,11 @@ const router = useRouter();
             <NuxtLink to="/profile">
               <DropdownItem icon="circle-user" name="Perfil" />
             </NuxtLink>
-            <NuxtLink to="/sign-in">
-              <DropdownItem icon="arrow-right-from-bracket" name="Sair" />
-            </NuxtLink>
+            <DropdownItem
+              icon="arrow-right-from-bracket"
+              name="Sair"
+              @click="sessionStore.signOut()"
+            />
           </div>
         </template>
       </VDropdown>

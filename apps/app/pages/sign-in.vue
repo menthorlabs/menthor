@@ -1,5 +1,6 @@
 <script setup>
-const clerk = inject("clerk");
+const router = useRouter();
+const signInStore = useSignInStore();
 const email = ref(null);
 const password = ref(null);
 const sessionStore = useSessionStore();
@@ -7,9 +8,8 @@ const sessionStore = useSessionStore();
 const loading = ref(false);
 
 onMounted(async () => {
-  console.log(clerk);
-  await sessionStore.getToken();
-  console.log(sessionStore.sessions);
+  await sessionStore.refreshToken();
+  console.log(sessionStore.token);
 });
 
 definePageMeta({
@@ -20,45 +20,33 @@ async function signIn() {
   loading.value = true;
 
   try {
-    const response = await clerk.client.signIn.create({
-      identifier: email.value,
+    await signInStore.create({
+      emailAddress: email.value,
       password: password.value,
-      strategy: "password",
     });
 
-    console.log(response);
+    router.push("/");
   } finally {
     loading.value = false;
   }
 }
 
-// async function verifyAddress() {
-//   loading.value = true;
+async function clerkOAuth() {
+  loading.value = true;
 
-//   try {
-//     const response = await signUp.attemptEmailAddressVerification({
-//       code: code.value,
-//     });
-//     console.log(response);
-//   } finally {
-//     loading.value = false;
-//   }
-// }
-
-// async function clerkOAuth() {
-//   loading.value = true;
-
-//   try {
-//     const response = await clerk.client.signUp.authenticateWithRedirect({
-//       strategy: "oauth_google",
-//       redirectUrl: "/sso-callback",
-//       redirectUrlComplete: "/",
-//     });
-//     console.log(response);
-//   } finally {
-//     loading.value = false;
-//   }
-// }
+  try {
+    const response = await signInStore.authenticateWithRedirect({
+      strategy: "oauth_google",
+      redirectUrl: `/sign-up?error=${encodeURIComponent(
+        "Essa conta não existe. Crie uma conta."
+      )}`,
+      redirectUrlComplete: "/",
+    });
+    console.log(response);
+  } finally {
+    loading.value = false;
+  }
+}
 
 //https://winning-shad-32.accounts.dev/sign-up
 </script>
@@ -74,29 +62,43 @@ async function signIn() {
         :icon-left="['fab', 'github']"
         text="Entre com GitHub"
         :class="{ '!pointer-events-none': loading }"
+        @click="clerkOAuth('oauth_google')"
       />
       <MButton
         variant="outline"
         :icon-left="['fab', 'google']"
         text="Entre com Google"
         :class="{ '!pointer-events-none': loading }"
+        @click="clerkOAuth('oauth_google')"
       />
     </div>
-    <MTextField class="mb-4" label="Email" type="email" v-model="email" />
-    <MTextField
-      class="mb-6"
-      label="Password"
-      type="password"
-      v-model="password"
-    />
-    <MButton
-      variant="secondary"
-      class="mb-4 w-full"
-      text="Entrar"
-      icon-right="arrow-right"
-      @click="signIn()"
-      :loading="loading"
-    />
+    <MForm @submit="signIn()">
+      <MTextField
+        class="mb-4"
+        label="Email"
+        v-model="email"
+        required
+        :rules="['email']"
+        type="email"
+      />
+      <MTextField
+        class="mb-6"
+        label="Password"
+        type="password"
+        v-model="password"
+        :rules="['password']"
+        required
+      />
+      <MButton
+        variant="secondary"
+        class="mb-4 w-full"
+        text="Entrar"
+        icon-right="arrow-right"
+        type="submit"
+        :loading="loading"
+      />
+    </MForm>
+
     <div class="text-center text-sm text-zinc-700">
       Não tem uma conta?
       <nuxt-link to="/sign-up" class="font-semibold text-zinc-900 underline"

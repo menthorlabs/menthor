@@ -1,5 +1,4 @@
 export function useSakura(selector, options) {
-  console.log({ selector });
   if (typeof selector === "undefined") {
     throw new Error("No selector present. Define an element.");
   }
