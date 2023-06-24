@@ -47,7 +47,6 @@ function handleInput(event: Event) {
       }
     }
   }
-  console.log(code);
 }
 function handleDelete(event: Event) {
   //keydown event = move to previous element then only delete number

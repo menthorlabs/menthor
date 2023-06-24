@@ -9,7 +9,6 @@ const loading = ref(false);
 
 onMounted(async () => {
   await sessionStore.refreshToken();
-  console.log(sessionStore.token);
 });
 
 definePageMeta({
@@ -35,14 +34,13 @@ async function clerkOAuth() {
   loading.value = true;
 
   try {
-    const response = await signInStore.authenticateWithRedirect({
+    await signInStore.authenticateWithRedirect({
       strategy: "oauth_google",
       redirectUrl: `/sign-up?error=${encodeURIComponent(
         "Essa conta não existe. Crie uma conta."
       )}`,
       redirectUrlComplete: "/",
     });
-    console.log(response);
   } finally {
     loading.value = false;
   }
