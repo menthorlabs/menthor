@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 const router = useRouter();
 const signInStore = useSignInStore();
 const email = ref(null);
@@ -6,6 +6,7 @@ const password = ref(null);
 const sessionStore = useSessionStore();
 //const code = ref(null);
 const loading = ref(false);
+const toast: { error: Function } | undefined = inject("toast");
 
 onMounted(async () => {
   await sessionStore.refreshToken();
@@ -25,17 +26,19 @@ async function signIn() {
     });
 
     router.push("/");
+  } catch (e) {
+    toast?.error("Email ou senha incorretos.");
   } finally {
     loading.value = false;
   }
 }
 
-async function clerkOAuth() {
+async function clerkOAuth({ strategy }: { strategy: string }) {
   loading.value = true;
 
   try {
     await signInStore.authenticateWithRedirect({
-      strategy: "oauth_google",
+      strategy: strategy,
       redirectUrl: `/sign-up?error=${encodeURIComponent(
         "Essa conta não existe. Crie uma conta."
       )}`,
@@ -60,14 +63,14 @@ async function clerkOAuth() {
         :icon-left="['fab', 'github']"
         text="Entre com GitHub"
         :class="{ '!pointer-events-none': loading }"
-        @click="clerkOAuth('oauth_google')"
+        @click="clerkOAuth({ strategy: 'oauth_google' })"
       />
       <MButton
         variant="outline"
         :icon-left="['fab', 'google']"
         text="Entre com Google"
         :class="{ '!pointer-events-none': loading }"
-        @click="clerkOAuth('oauth_google')"
+        @click="clerkOAuth({ strategy: 'oauth_google' })"
       />
     </div>
     <MForm @submit="signIn()">

@@ -13,6 +13,9 @@ import {
   faArrowRightFromBracket,
   faCircleUser,
   faCheckCircle,
+  faXmark,
+  faCircleCheck,
+  faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
 import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
 config.autoAddCss = false;
@@ -30,6 +33,9 @@ library.add(
   faArrowRightFromBracket,
   faCircleUser,
   faCheckCircle,
+  faXmark,
+  faCircleCheck,
+  faCircleXmark,
   faGithub,
   faGoogle
 );

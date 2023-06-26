@@ -5,6 +5,7 @@ const email = ref(null);
 const password = ref(null);
 //const code = ref(null);
 const loading = ref(false);
+const toast = inject("toast");
 
 definePageMeta({
   layout: "auth",
@@ -36,6 +37,8 @@ async function clerkOAuth(strategy) {
       )}`,
       redirectUrlComplete: "/",
     });
+  } catch (e) {
+    toast?.error("Email ou senha incorretos.");
   } finally {
     loading.value = false;
   }

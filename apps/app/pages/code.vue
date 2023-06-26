@@ -5,6 +5,7 @@ definePageMeta({
 const signUpStore = useSignUpStore();
 const loading = ref(false);
 const router = useRouter();
+const toast: { error: Function } | undefined = inject("toast");
 
 let code: string[] = Array(6);
 let dataFromPaste: string[] | undefined;
@@ -77,6 +78,8 @@ async function sendCode() {
       code: code.join(""),
     });
     router.push("/");
+  } catch (e) {
+    toast?.error("Código incorreto ou expirado.");
   } finally {
     loading.value = false;
   }
