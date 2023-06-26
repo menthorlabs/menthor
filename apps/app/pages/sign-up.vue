@@ -1,5 +1,6 @@
 <script setup>
 const router = useRouter();
+const route = useRoute();
 const signUpStore = useSignUpStore();
 const email = ref(null);
 const password = ref(null);
@@ -20,7 +21,9 @@ async function createAccount() {
       password: password.value,
     });
     await signUpStore.signUp.prepareEmailAddressVerification();
-    router.push("/code");
+    router.push({ path: "/code", query: { redirect: route.query?.redirect } });
+  } catch (e) {
+    toast?.error("Parece que essa conta já existe.");
   } finally {
     loading.value = false;
   }
@@ -35,10 +38,10 @@ async function clerkOAuth(strategy) {
       redirectUrl: `/sign-in?error=${encodeURIComponent(
         "Essa conta já existe. Faça login."
       )}`,
-      redirectUrlComplete: "/",
+      redirectUrlComplete: route.query?.redirect
+        ? decodeURIComponent(route.query?.redirect)
+        : "/",
     });
-  } catch (e) {
-    toast?.error("Email ou senha incorretos.");
   } finally {
     loading.value = false;
   }

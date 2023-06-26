@@ -5,6 +5,7 @@ definePageMeta({
 const signUpStore = useSignUpStore();
 const loading = ref(false);
 const router = useRouter();
+const route = useRoute();
 const toast: { error: Function } | undefined = inject("toast");
 
 let code: string[] = Array(6);
@@ -77,7 +78,11 @@ async function sendCode() {
     await signUpStore.attemptEmailAddressVerification({
       code: code.join(""),
     });
-    router.push("/");
+    router.push({
+      path: route.query?.redirect
+        ? decodeURIComponent(String(route.query.redirect))
+        : "/",
+    });
   } catch (e) {
     toast?.error("Código incorreto ou expirado.");
   } finally {
