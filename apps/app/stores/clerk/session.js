@@ -21,7 +21,7 @@ export const useSessionStore = defineStore("session", {
       clerkToken.value = null;
       this.cleared = true;
 
-      await this.$clerk.session.end();
+      await this.$clerk.signOut();
 
       this.$router.push("/sign-in");
     },
