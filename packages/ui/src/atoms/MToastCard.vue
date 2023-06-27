@@ -36,7 +36,6 @@ closeWhenTimeExpires();
     <MIconButton
       class="absolute right-[8px] top-[10px]"
       icon="xmark"
-      variant="inherit"
       @click="$emit('close')"
     />
     <div class="flex items-center">

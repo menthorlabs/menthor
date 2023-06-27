@@ -37,11 +37,15 @@ const sessionStore = useSessionStore();
     class="sticky left-0 top-0 z-10 flex h-[56px] w-full items-center px-8 py-2"
   >
     <div class="flex flex-1 items-center gap-2">
-      <MIconButton @click="router.back()" icon="arrow-left" />
-      <MIconButton @click="router.forward()" icon="arrow-right" />
+      <MIconButton @click="router.back()" icon="arrow-left" variant="glass" />
+      <MIconButton
+        @click="router.forward()"
+        icon="arrow-right"
+        variant="glass"
+      />
     </div>
     <div class="flex items-center gap-2">
-      <MIconButton icon="bell" />
+      <MIconButton icon="bell" variant="glass" />
       <VDropdown
         :distance="6"
         class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"

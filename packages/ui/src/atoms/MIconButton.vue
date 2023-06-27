@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { icon = "home", variant = "glass" } = defineProps<{
+const { icon = "home", variant = "inherit" } = defineProps<{
   icon?: string;
   variant?: string;
 }>();

@@ -61,6 +61,7 @@ module.exports = {
     useSlots: true,
     watch: true,
     useCookie: true,
+    useEnrollmentModalStore: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

@@ -29,7 +29,6 @@ const { copy, copied } = useClipboard({ source });
     </div>
     <MIconButton
       @click="copy(source)"
-      variant="inherit"
       :icon="copied ? 'check' : 'clipboard'"
       class="absolute right-1 opacity-0 transition-all group-hover:opacity-100"
       :class="{ 'top-[6px]': !filename, 'top-1': filename }"

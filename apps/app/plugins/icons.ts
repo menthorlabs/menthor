@@ -8,16 +8,25 @@ import {
   faArrowLeft,
   faBell,
   faCheck,
+  faEdit,
+  faShare,
+  faStar,
   faLock,
   faClipboard,
   faArrowRightFromBracket,
   faCircleUser,
+  faSignature,
   faCheckCircle,
   faXmark,
   faCircleCheck,
   faCircleXmark,
 } from "@fortawesome/free-solid-svg-icons";
-import { faGoogle, faGithub } from "@fortawesome/free-brands-svg-icons";
+import {
+  faGoogle,
+  faDiscord,
+  faTwitter,
+  faGithub,
+} from "@fortawesome/free-brands-svg-icons";
 config.autoAddCss = false;
 
 library.add(
@@ -28,16 +37,22 @@ library.add(
   faArrowLeft,
   faBell,
   faCheck,
+  faEdit,
+  faShare,
+  faStar,
   faLock,
   faClipboard,
   faArrowRightFromBracket,
   faCircleUser,
+  faSignature,
   faCheckCircle,
   faXmark,
   faCircleCheck,
   faCircleXmark,
   faGithub,
-  faGoogle
+  faGoogle,
+  faDiscord,
+  faTwitter
 );
 
 export default defineNuxtPlugin((nuxtApp) => {

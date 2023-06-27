@@ -14,13 +14,20 @@ defineProps({
   iconRight: [String, Array],
 });
 
-const variants: { primary: string; secondary: string; outline: string } = {
+const variants: {
+  primary: string;
+  secondary: string;
+  outline: string;
+  inherit: string;
+} = {
   primary:
     "bg-blue-600 text-white border-none hover:bg-blue-700 focus:ring-blue-300",
   secondary:
     "bg-zinc-900 text-white border-none hover:bg-zinc-800 focus:ring-zinc-300",
   outline:
     "bg-white text-zinc-900 border border-solid border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-300",
+  inherit:
+    "bg-white text-zinc-700 border border-solid border-white hover:bg-zinc-100 focus:ring-zinc-300",
 };
 
 const sizes: { sm: string; base: string; lg: string } = {
