@@ -38,12 +38,12 @@ const enrollmentModalStore = useEnrollmentModalStore();
           />
         </EnrollmentStep>
         <EnrollmentStep
-          title="Conecte-se no discord"
+          title="Habilite o curso no Discord"
           description="Obtenha acesso aos canais desse curso no discord e comece a tirar dúvida com outros alunos."
         >
           <MButton
             variant="outline"
-            text="Conectar no discord"
+            text="Habilitar curso"
             :icon-left="['fab', 'discord']"
           />
         </EnrollmentStep>

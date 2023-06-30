@@ -62,6 +62,7 @@ module.exports = {
     watch: true,
     useCookie: true,
     useEnrollmentModalStore: true,
+    useUserStore: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

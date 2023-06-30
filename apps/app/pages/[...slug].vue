@@ -7,7 +7,7 @@ const enrollmentModalStore = useEnrollmentModalStore();
 const { params } = useRoute();
 const finishLesson = ref(false);
 const router = useRouter();
-const isEnrolled = ref(true);
+const isEnrolled = ref(false);
 
 const { data } = await useAsyncData("course", async () => {
   const [course, lesson, surround] = await Promise.all([
@@ -91,7 +91,7 @@ function goToNextLesson() {
           class="cursor-pointer rounded border border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
         >
           <div class="mb-1 text-right text-xs font-medium text-zinc-700">
-            Aula Anterior
+            Aula anterior
           </div>
           <div class="flex items-center justify-end gap-2">
             <font-awesome-icon class="text-sm" icon="arrow-left" />

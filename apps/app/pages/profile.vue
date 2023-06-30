@@ -1,10 +1,14 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const userStore = useUserStore();
+</script>
 
 <template>
   <main class="relative">
+    <ProfileModal />
     <div class="mb-10 flex items-center gap-6 px-8">
       <div
-        class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
+        class="h-[160px] w-[160px] min-w-[160px] cursor-pointer overflow-hidden rounded shadow-lg"
+        @click="userStore.modalOpened = true"
       >
         <img
           src="https://pbs.twimg.com/profile_images/1661479918394306560/Hmd0j2wL_400x400.jpg"

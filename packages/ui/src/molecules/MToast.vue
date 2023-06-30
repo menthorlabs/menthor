@@ -14,7 +14,7 @@ function removeItem(index) {
 <template>
   <TransitionGroup
     tag="div"
-    class="pointer-events-none fixed left-0 top-0 flex h-screen w-screen flex-col-reverse items-start p-4"
+    class="pointer-events-none fixed left-0 top-0 z-50 flex h-screen w-screen flex-col-reverse items-start p-4"
     name="toast"
   >
     <MToastCard
