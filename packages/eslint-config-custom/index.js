@@ -63,6 +63,7 @@ module.exports = {
     useCookie: true,
     useEnrollmentModalStore: true,
     useUserStore: true,
+    authenticate: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

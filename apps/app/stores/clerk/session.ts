@@ -1,14 +1,14 @@
 import { defineStore } from "pinia";
 
 export const useSessionStore = defineStore("session", {
-  state: () => ({
+  state: (): { token: string | null; cleared: boolean } => ({
     token: null,
     cleared: false,
   }),
   getters: {
     hasSession(state) {
       const clerkToken = useCookie("__session");
-      return !state.cleared && clerkToken.value?.length > 0;
+      return !state.cleared && String(clerkToken?.value).length > 0;
     },
   },
   actions: {

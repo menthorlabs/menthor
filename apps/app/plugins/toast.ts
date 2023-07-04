@@ -1,7 +1,32 @@
 export default defineNuxtPlugin((nuxtApp) => {
   const app = nuxtApp.vueApp;
   app.config.globalProperties.$toastItems = reactive([]);
-  const addToast = ({ title, description, variant, buttons, time }) => {
+  type button = {
+    text: string;
+    loading: boolean;
+    variant: {
+      type: string;
+      default: "primary";
+    };
+    size: {
+      type: string;
+      default: "base";
+    };
+    iconLeft: string;
+    iconRight: string;
+  };
+  type toast = {
+    title: string;
+    description: string;
+    variant: {
+      type: string;
+      default: "danger";
+    };
+    buttons: button[];
+    time: number;
+  };
+
+  const addToast = ({ title, description, variant, buttons, time }: toast) => {
     app.config.globalProperties.$toastItems.push({
       title,
       description,
@@ -11,7 +36,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     });
   };
 
-  const addErrorToast = (title) => {
+  const addErrorToast = (title: string) => {
     app.config.globalProperties.$toastItems.push({
       title,
       variant: "danger",
@@ -19,7 +44,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     });
   };
 
-  const addSuccessToast = (title) => {
+  const addSuccessToast = (title: string) => {
     app.config.globalProperties.$toastItems.push({
       title,
       variant: "success",

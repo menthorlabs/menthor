@@ -1,7 +1,7 @@
 // @ts-expect-error avoid lint error
 import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
-import "./types";
+import "./types/index.d.ts";
 
 export default defineNuxtConfig({
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
