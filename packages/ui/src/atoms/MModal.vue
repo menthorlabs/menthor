@@ -3,9 +3,14 @@
 defineOptions({ inheritAttrs: false });
 defineEmits(["confirm", "close", "update:modelValue"]);
 
-const { footer = false, modelValue = false } = defineProps<{
+const {
+  footer = false,
+  modelValue = false,
+  closeable = true,
+} = defineProps<{
   footer?: boolean;
   modelValue: boolean;
+  closeable?: boolean;
 }>();
 </script>
 
@@ -36,6 +41,7 @@ const { footer = false, modelValue = false } = defineProps<{
               </div>
             </div>
             <MIconButton
+              v-if="closeable"
               icon="times"
               @click="$emit('update:modelValue', false)"
             />

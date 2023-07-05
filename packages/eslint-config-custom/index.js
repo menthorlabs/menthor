@@ -62,6 +62,7 @@ module.exports = {
     watch: true,
     useCookie: true,
     useEnrollmentModalStore: true,
+    useSearchModalStore: true,
     useUserStore: true,
     authenticate: true,
   },

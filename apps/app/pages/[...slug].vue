@@ -52,6 +52,7 @@ function goToNextLesson() {
             Para finalizar essa aula você deverá enviar uma captura de tela do
             seu terminal mostrando que está funcionando.
           </p>
+          <MDropzone />
         </MModal>
       </Teleport>
     </ClientOnly>
