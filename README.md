@@ -34,7 +34,7 @@
   </p>
   <br />
   <p>
-    <a href="https://i.imgur.com/ejqNDDe.jpg" target="_blank">
+    <a href="https://menthor.io/?ref=github" target="_blank">
       <img
         src="https://i.imgur.com/ejqNDDe.jpg"
         alt="Menthor"
