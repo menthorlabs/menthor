@@ -1,5 +1,5 @@
 <template>
-  <NuxtLayout class="z-0 text-zinc-900">
+  <NuxtLayout class="z-0 text-zinc-950">
     <NuxtPage />
   </NuxtLayout>
   <EnrollmentModal />

@@ -98,7 +98,7 @@ async function clerkOAuth(strategy) {
 
     <div class="text-center text-sm text-zinc-700">
       Já tem uma conta?
-      <nuxt-link to="/sign-in" class="font-semibold text-zinc-900 underline"
+      <nuxt-link to="/sign-in" class="font-semibold text-zinc-950 underline"
         >Entrar agora!</nuxt-link
       >
     </div>

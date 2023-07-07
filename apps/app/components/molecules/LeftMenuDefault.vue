@@ -27,7 +27,7 @@ const labels: { name: string }[] = [
         <div
           v-for="label in labels"
           :key="label.name"
-          class="flex h-8 cursor-pointer items-center whitespace-nowrap rounded-full bg-zinc-100 px-4 py-1 text-sm font-medium text-zinc-900 first:ml-3 hover:bg-zinc-200"
+          class="flex h-8 cursor-pointer items-center whitespace-nowrap rounded-full bg-zinc-100 px-4 py-1 text-sm font-medium text-zinc-950 first:ml-3 hover:bg-zinc-200"
         >
           {{ label.name }}
         </div>

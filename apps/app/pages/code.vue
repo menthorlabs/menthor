@@ -126,7 +126,7 @@ async function sendCode() {
     />
     <div class="text-center text-sm text-zinc-700">
       Não recebeu um código?
-      <nuxt-link to="/sign-up" class="font-semibold text-zinc-900 underline"
+      <nuxt-link to="/sign-up" class="font-semibold text-zinc-950 underline"
         >Solicite novamente</nuxt-link
       >
     </div>

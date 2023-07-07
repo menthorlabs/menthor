@@ -8,7 +8,7 @@
       </nuxt-link>
       <LeftMenuItem icon="magnifying-glass" text="Buscar">
         <span class="text-sm font-semibold text-zinc-500">
-          Ctrl <span class="text-zinc-900">K</span>
+          Ctrl <span class="text-zinc-950">K</span>
         </span>
       </LeftMenuItem>
     </div>

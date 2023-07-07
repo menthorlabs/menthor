@@ -65,6 +65,7 @@ module.exports = {
     useSearchModalStore: true,
     useUserStore: true,
     authenticate: true,
+    defineNitroPlugin: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {
