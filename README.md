@@ -34,9 +34,9 @@
   </p>
   <br />
   <p>
-    <a href="https://menthor.io/" target="_blank">
+    <a href="https://menthor.io/?ref=github" target="_blank">
       <img
-        src="https://media.licdn.com/dms/image/D4D22AQEqK8Vk8AQ31A/feedshare-shrink_2048_1536/0/1685227498306?e=1688601600&v=beta&t=MLr-zSNCZqKjAC75ouNqh52OHmyygKLwJ4rS6azgKDY"
+        src="https://i.imgur.com/ejqNDDe.jpg"
         alt="Menthor"
         width="100%"
       />
