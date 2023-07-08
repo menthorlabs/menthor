@@ -16,10 +16,15 @@ const {
 
 <template>
   <Transition :duration="550" name="nested">
-    <div class="fixed left-0 top-0 z-10 h-full w-full" v-if="modelValue">
-      <div class="container flex h-full w-full justify-center overflow-hidden">
+    <div
+      class="fixed left-0 top-0 z-10 h-screen max-h-screen w-full overflow-y-auto"
+      v-if="modelValue"
+    >
+      <div
+        class="container flex h-fit min-h-full w-full justify-center overflow-hidden py-10"
+      >
         <div
-          class="absolute left-0 top-0 h-full w-full cursor-default bg-zinc-300/40 backdrop-blur-sm"
+          class="fixed left-0 top-0 h-full w-full cursor-default bg-zinc-300/40 backdrop-blur-sm"
           @click="$emit('update:modelValue', false)"
         />
 

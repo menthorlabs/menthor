@@ -1,3 +1,7 @@
+<script setup lang="ts">
+useShortcuts();
+</script>
+
 <template>
   <NuxtLayout class="z-0 text-zinc-950">
     <NuxtPage />

@@ -66,6 +66,8 @@ module.exports = {
     useUserStore: true,
     authenticate: true,
     defineNitroPlugin: true,
+    Ref: true,
+    useShortcuts: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

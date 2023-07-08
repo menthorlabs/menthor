@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 onMounted(() => {
   new useSakura("#login_background");
 });
