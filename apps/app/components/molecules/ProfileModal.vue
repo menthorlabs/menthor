@@ -4,6 +4,8 @@ const loading = ref(false);
 const toast: { error: Function } | undefined = inject("toast");
 onMounted(() => {
   userStore.setUser();
+
+  console.log(userStore.user);
 });
 
 async function updateUser() {
@@ -26,20 +28,28 @@ async function updateUser() {
           <div class="flex items-center gap-4">
             <div class="h-[80px] min-w-[80px] overflow-hidden rounded">
               <img
-                src="/midjourney/characters/1.png"
+                :src="userStore.user?.profileImageUrl"
                 alt="Course image"
                 class="h-full w-full object-cover object-center"
               />
             </div>
-            <div>
-              <div class="text-xl font-bold">Bernardo Simonassi</div>
-              <p class="text-base font-normal text-zinc-700">
-                bernardosimonassi@hotmail.com
+            <div class="min-w-0 flex-1">
+              <div class="text-xl font-bold">
+                {{ userStore.user?.fullName || "Sem nome" }}
+              </div>
+              <p class="min-w-0 truncate text-base font-normal text-zinc-700">
+                {{ userStore.user?.primaryEmailAddress.emailAddress }}
               </p>
             </div>
           </div>
         </template>
         <MForm @submit="updateUser" class="space-y-4" v-if="userStore?.user">
+          <MTextField
+            placeholder="Username"
+            label="Username"
+            v-model="userStore.user.username"
+            required
+          />
           <div class="grid grid-cols-2 gap-4">
             <MTextField
               placeholder="Nome"
@@ -61,7 +71,7 @@ async function updateUser() {
             required
             :rules="['email']"
           />
-          <MTextField placeholder="Link de perfil" label="Link de perfil" />
+          <!-- <MTextField placeholder="Link de perfil" label="Link de perfil" /> -->
           <div class="flex items-center justify-end gap-3">
             <MButton
               variant="outline"

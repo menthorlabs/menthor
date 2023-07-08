@@ -344,6 +344,13 @@
   dependencies:
     csstype "3.1.1"
 
+"@clerk/types@^3.46.1":
+  version "3.46.1"
+  resolved "https://registry.yarnpkg.com/@clerk/types/-/types-3.46.1.tgz#7ad5b2852c111127ff9ac388f02b5d3393b50cae"
+  integrity sha512-IA/iSXJJZym4Z6f9OcT9OJayK2opVhxUVJky15aY4iVsJCPScgApBuuzC7N4vfXwA6RI/wGebFbvmsEQ3oI/UA==
+  dependencies:
+    csstype "3.1.1"
+
 "@cloudflare/kv-asset-handler@^0.3.0":
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/@cloudflare/kv-asset-handler/-/kv-asset-handler-0.3.0.tgz#11f0af0749a400ddadcca16dcd6f4696d7036991"

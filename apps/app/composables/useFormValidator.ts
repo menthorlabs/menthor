@@ -2,6 +2,7 @@ import validators from "../../../packages/utils/validators";
 
 export function useFormValidator() {
   function allRules(required: boolean, rules: string[]) {
+    if (!rules) return [];
     if (required && !rules.includes("required")) {
       return ["required", ...rules];
     }
