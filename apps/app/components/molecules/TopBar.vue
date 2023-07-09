@@ -1,23 +1,11 @@
 <script setup lang="ts">
 const router = useRouter();
 const sessionStore = useSessionStore();
-// const state = reactive({
-//   forward: false,
-//   back: false,
-// });
+const userStore = useUserStore();
 
-// onMounted(() => {
-//   window.addEventListener("popstate", (event) => {
-//     state.back = event.state.back != null;
-//     state.forward = event.state.forward != null;
-//   });
-
-//   router.afterEach(() => {
-//     console.log("dale");
-//     state.back = true;
-//     state.forward = false;
-//   });
-// });
+onMounted(() => {
+  userStore.setUser();
+});
 </script>
 
 <template>
@@ -46,29 +34,36 @@ const sessionStore = useSessionStore();
     </div>
     <div class="flex items-center gap-2">
       <MIconButton icon="bell" variant="glass" />
-      <VDropdown
-        :distance="6"
-        class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"
-        placement="bottom-end"
-      >
-        <img
-          src="/midjourney/characters/1.png"
-          alt="Profile"
-          class="h-full w-full object-cover object-center"
-        />
-        <template #popper="{ hide }">
-          <div class="min-w-[140px] py-1" @click="hide()">
-            <NuxtLink to="/profile">
-              <DropdownItem icon="circle-user" name="Perfil" />
-            </NuxtLink>
-            <DropdownItem
-              icon="arrow-right-from-bracket"
-              name="Sair"
-              @click="sessionStore.signOut()"
-            />
-          </div>
-        </template>
-      </VDropdown>
+      <div v-if="userStore.user?.profileImageUrl">
+        <VDropdown
+          :distance="6"
+          class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"
+          placement="bottom-end"
+        >
+          <img
+            :src="userStore.user?.profileImageUrl"
+            alt="Profile"
+            class="h-full w-full object-cover object-center"
+          />
+          <template #popper="{ hide }">
+            <div class="min-w-[140px] py-1" @click="hide()">
+              <NuxtLink to="/profile">
+                <DropdownItem icon="circle-user" name="Perfil" />
+              </NuxtLink>
+              <DropdownItem
+                icon="arrow-right-from-bracket"
+                name="Sair"
+                @click="sessionStore.signOut()"
+              />
+            </div>
+          </template>
+        </VDropdown>
+      </div>
+      <div v-else>
+        <NuxtLink to="/sign-in">
+          <MButton text="Fazer login" variant="outline" size="sm" />
+        </NuxtLink>
+      </div>
     </div>
   </div>
 </template>

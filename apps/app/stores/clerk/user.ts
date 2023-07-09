@@ -1,6 +1,6 @@
 import { defineStore } from "pinia";
 // import { useUser } from "@clerk/clerk-js";
-import type { UpdateUserParams } from "@clerk/types";
+import type { UpdateUserParams, SetProfileImageParams } from "@clerk/types";
 
 export type user = {
   profileImageUrl: string;
@@ -14,20 +14,34 @@ export type user = {
 };
 
 export const useUserStore = defineStore("user", {
-  state: (): { user: user | null; modalOpened: boolean } => ({
+  state: (): {
+    user: user | null;
+    modalOpened: boolean;
+    triggerPictureInput: boolean;
+  } => ({
     user: null,
     modalOpened: false,
+    triggerPictureInput: false,
   }),
   actions: {
     setUser() {
-      this.user = this.$clerk.user;
+      const userData = this.$clerk.user
+        ? this.$clerk.user
+        : this.$clerk.client.sessions[0].user;
+      this.user = userData;
+      const userCookie = useCookie("m-user");
+      userCookie.value = userData;
     },
     async updateUser() {
-      const response = await this.$clerk.user.update<UpdateUserParams>({
-        username: this.user?.username,
+      await this.$clerk.user.update<UpdateUserParams>({
+        first_name: this.user?.firstName,
+        last_name: this.user?.lastName,
       });
       this.setUser();
-      console.log(response);
+    },
+    async setProfileImage(file: File | null) {
+      await this.$clerk.user.setProfileImage<SetProfileImageParams>({ file });
+      this.setUser();
     },
   },
 });

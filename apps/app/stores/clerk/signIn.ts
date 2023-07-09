@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import type { SignInCreateParams } from "@clerk/types";
 
 export const useSignInStore = defineStore("signIn", {
   actions: {
@@ -6,13 +7,15 @@ export const useSignInStore = defineStore("signIn", {
       emailAddress,
       password,
     }: {
-      emailAddress: string;
-      password: string;
+      emailAddress: string | null;
+      password: string | null;
     }) {
-      await this.$clerk.client.signIn.create({
+      await this.$clerk.client.signIn.create<SignInCreateParams>({
         identifier: emailAddress,
         password,
       });
+      this.$clerk.user = this.$clerk.client.sessions[0].user;
+      console.log(this.$clerk);
     },
     async authenticateWithRedirect({
       strategy,

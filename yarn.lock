@@ -306,14 +306,14 @@
     cross-fetch "^3.0.4"
     fontkit "^1.8.1"
 
-"@clerk/clerk-js@4.38.4":
-  version "4.38.4"
-  resolved "https://registry.yarnpkg.com/@clerk/clerk-js/-/clerk-js-4.38.4.tgz#0c0e1251fa80194935c8a5e6428dce66d50ad888"
-  integrity sha512-oQycF/GuWw05sekzwXWOdBkZYZf9MoIv4Or8iDbLqzWnV6fcMXju82GtDr4Zlly+mgLxJyE+ORSLud+l4g4OAg==
+"@clerk/clerk-js@4.44.0":
+  version "4.44.0"
+  resolved "https://registry.yarnpkg.com/@clerk/clerk-js/-/clerk-js-4.44.0.tgz#2c6caf0011ab12650225ab1bfc8419ac62ee3a58"
+  integrity sha512-CIs1ZeCsD18sPWYizZSGiK8a4yd+fgJUB6V96AMlKstXwB4308TW2oh4LLpKA7AVbDszHQRdJnzcsPwcIt5OBA==
   dependencies:
-    "@clerk/localizations" "^1.11.3"
-    "@clerk/shared" "^0.15.6"
-    "@clerk/types" "^3.35.3"
+    "@clerk/localizations" "^1.16.0"
+    "@clerk/shared" "^0.17.1"
+    "@clerk/types" "^3.40.0"
     "@emotion/cache" "11.10.5"
     "@emotion/react" "11.10.5"
     "@floating-ui/react" "0.19.0"
@@ -325,26 +325,21 @@
     qs "6.11.0"
     regenerator-runtime "0.13.11"
 
-"@clerk/localizations@^1.11.3":
-  version "1.21.1"
-  resolved "https://registry.yarnpkg.com/@clerk/localizations/-/localizations-1.21.1.tgz#42250f6c987ab06e2e09d5c16daec4f6037c5a3a"
-  integrity sha512-abW6TlKP2CjqAYVHmJHad+QktYAoDPzRSZQr93qf/AvnISV12JFeTcBRgLl8928Ck7qt3KdwykMZMdSAS13YCA==
+"@clerk/localizations@^1.16.0":
+  version "1.22.1"
+  resolved "https://registry.yarnpkg.com/@clerk/localizations/-/localizations-1.22.1.tgz#19d5a4773d97f657a2fee97a5e57b729ae6f4ebb"
+  integrity sha512-QjKr6+q2u1gACemoi5OX8krOa49UHT+0x5R7C/38D8ip2V6b/8F36Ci+dCEtbVJJFhGzbXsakVx25Bxcfs0N7g==
   dependencies:
-    "@clerk/types" "^3.46.0"
+    "@clerk/types" "^3.46.1"
 
-"@clerk/shared@^0.15.6":
-  version "0.15.8"
-  resolved "https://registry.yarnpkg.com/@clerk/shared/-/shared-0.15.8.tgz#b0134ea6810a176cf7355a7912104c7585b4abf9"
-  integrity sha512-wbZ52k+udAeLpGMV0f9gm9S7xiiv3vtHgt6zJFuS2if9UGokpMlZDcqhBu+BxSxKn1TQSpXzmN5XP9bZ+lg5jg==
-
-"@clerk/types@^3.35.3", "@clerk/types@^3.46.0":
-  version "3.46.0"
-  resolved "https://registry.yarnpkg.com/@clerk/types/-/types-3.46.0.tgz#60df5da46479db9f0ff735cb6e07906b49869f3f"
-  integrity sha512-IooGZ64uARKg+GS6b38usrWqhzU0PcrDbZBaZm4JmtYd5CZbWABklBNkiXQhnnaKYdvHr5K8vhJd5spsJarNpw==
+"@clerk/shared@^0.17.1":
+  version "0.17.2"
+  resolved "https://registry.yarnpkg.com/@clerk/shared/-/shared-0.17.2.tgz#031401065ea8344b19ff4d26e5172173159f24d6"
+  integrity sha512-JG4t+hnFX1NryPyyLSc6XImuWMfU2kWey7AxKjbv1MfDrkIKYBp593Whu2KXBP7H+ylQpUKP3k5lNtQ0eV5EMw==
   dependencies:
-    csstype "3.1.1"
+    glob-to-regexp "0.4.1"
 
-"@clerk/types@^3.46.1":
+"@clerk/types@^3.40.0", "@clerk/types@^3.46.1":
   version "3.46.1"
   resolved "https://registry.yarnpkg.com/@clerk/types/-/types-3.46.1.tgz#7ad5b2852c111127ff9ac388f02b5d3393b50cae"
   integrity sha512-IA/iSXJJZym4Z6f9OcT9OJayK2opVhxUVJky15aY4iVsJCPScgApBuuzC7N4vfXwA6RI/wGebFbvmsEQ3oI/UA==
@@ -4075,6 +4070,11 @@ glob-parent@^6.0.2:
   integrity sha512-XxwI8EOhVQgWp6iDL+3b0r86f4d6AX6zSU55HfB4ydCEuXLXc5FcYeOu+nnGftS4TEju/11rt4KJPTMgbfmv4A==
   dependencies:
     is-glob "^4.0.3"
+
+glob-to-regexp@0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/glob-to-regexp/-/glob-to-regexp-0.4.1.tgz#c75297087c851b9a578bd217dd59a92f59fe546e"
+  integrity sha512-lkX1HJXwyMcprw/5YUZc2s7DrpAiHB21/V+E1rHUrVNokkvB6bqMzT0VfV6/86ZNabt1k14YOIaT7nDvOX3Iiw==
 
 glob@7.1.6:
   version "7.1.6"

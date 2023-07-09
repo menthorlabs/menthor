@@ -119,7 +119,8 @@ function goToNextLesson() {
         class="mt-6 flex items-center justify-center gap-2 border-t border-dashed border-zinc-300 pt-6"
       >
         <nuxt-link
-          :to="`https://github.com/menthorlabs/courses/edit/main/${currentLesson._file}`"
+          v-if="currentLesson?._file"
+          :to="`https://github.com/menthorlabs/courses/edit/main/${currentLesson?._file}`"
           target="_blank"
         >
           <MButton
@@ -143,7 +144,7 @@ function goToNextLesson() {
         />
       </div>
       <div
-        v-if="!sessionStore.hasSession"
+        v-if="!sessionStore?.hasSession"
         class="group relative mb-2 mr-2 mt-7 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-blue-400 to-pink-400 p-0.5 text-sm font-medium text-gray-900"
       >
         <div

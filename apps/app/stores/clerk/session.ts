@@ -7,8 +7,16 @@ export const useSessionStore = defineStore("session", {
   }),
   getters: {
     hasSession(state) {
+      const clientSession = this.$clerk?.client?.sessions[0];
+      if (!state.cleared && clientSession) return true;
+
       const clerkToken = useCookie("__session");
-      return !state.cleared && String(clerkToken?.value).length > 0;
+
+      return (
+        !state.cleared &&
+        clerkToken?.value &&
+        String(clerkToken?.value).length > 0
+      );
     },
   },
   actions: {
@@ -18,6 +26,8 @@ export const useSessionStore = defineStore("session", {
     },
     async signOut() {
       const clerkToken = useCookie("__session");
+      const userCookie = useCookie("m-user");
+      userCookie.value = null;
       clerkToken.value = null;
       this.cleared = true;
 

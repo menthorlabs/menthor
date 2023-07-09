@@ -10,6 +10,7 @@ const toast: { error: Function } | undefined = inject("toast");
 
 onMounted(async () => {
   await sessionStore.refreshToken();
+  sessionStore.cleared = false;
 });
 
 definePageMeta({
@@ -26,6 +27,7 @@ async function signIn() {
     });
 
     router.push("/");
+    location.reload();
   } catch (e) {
     toast?.error("Email ou senha incorretos.");
   } finally {

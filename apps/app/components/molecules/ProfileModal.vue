@@ -4,14 +4,28 @@ const loading = ref(false);
 const toast: { error: Function } | undefined = inject("toast");
 onMounted(() => {
   userStore.setUser();
-
-  console.log(userStore.user);
 });
 
 async function updateUser() {
   try {
     loading.value = true;
     await userStore.updateUser();
+  } catch (e) {
+    toast?.error(e);
+  } finally {
+    loading.value = false;
+  }
+}
+
+function onInput(event: Event) {
+  const files = (event.target as HTMLInputElement).files;
+  setProfileImage(files ? files[0] : null);
+}
+
+async function setProfileImage(file: File | null) {
+  try {
+    loading.value = true;
+    await userStore.setProfileImage(file);
   } catch (e) {
     toast?.error(e);
   } finally {
@@ -26,13 +40,25 @@ async function updateUser() {
       <MModal v-model="userStore.modalOpened" class="w-full max-w-[480px]">
         <template #header>
           <div class="flex items-center gap-4">
-            <div class="h-[80px] min-w-[80px] overflow-hidden rounded">
+            <label
+              for="profile_picture"
+              class="group block h-[80px] min-w-[80px] cursor-pointer overflow-hidden rounded"
+            >
               <img
                 :src="userStore.user?.profileImageUrl"
                 alt="Course image"
-                class="h-full w-full object-cover object-center"
+                class="h-full w-full object-cover object-center transition-all group-hover:scale-110"
               />
-            </div>
+              <input
+                ref="pictureInput"
+                id="profile_picture"
+                name="profile_picture"
+                type="file"
+                accept="image/*"
+                class="hidden"
+                @input="onInput"
+              />
+            </label>
             <div class="min-w-0 flex-1">
               <div class="text-xl font-bold">
                 {{ userStore.user?.fullName || "Sem nome" }}
@@ -44,12 +70,6 @@ async function updateUser() {
           </div>
         </template>
         <MForm @submit="updateUser" class="space-y-4" v-if="userStore?.user">
-          <MTextField
-            placeholder="Username"
-            label="Username"
-            v-model="userStore.user.username"
-            required
-          />
           <div class="grid grid-cols-2 gap-4">
             <MTextField
               placeholder="Nome"
@@ -61,10 +81,11 @@ async function updateUser() {
               placeholder="Sobrenome"
               label="Sobrenome"
               v-model="userStore.user.lastName"
-              required
+              :rules="['required']"
             />
           </div>
           <MTextField
+            disabled
             placeholder="Email"
             label="Email"
             v-model="userStore.user.primaryEmailAddress.emailAddress"

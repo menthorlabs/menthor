@@ -2,6 +2,7 @@
 definePageMeta({
   layout: "auth",
 });
+const userStore = useUserStore();
 const signUpStore = useSignUpStore();
 const loading = ref(false);
 const router = useRouter();
@@ -78,11 +79,13 @@ async function sendCode() {
     await signUpStore.attemptEmailAddressVerification({
       code: code.join(""),
     });
+    userStore.setUser();
     router.push({
       path: route.query?.redirect
         ? decodeURIComponent(String(route.query.redirect))
         : "/",
     });
+    location.reload();
   } catch (e) {
     toast?.error("Código incorreto ou expirado.");
   } finally {

@@ -18,7 +18,7 @@ export default {
   },
   required: (value: string | boolean) => {
     return {
-      isValid: String(value).length > 0 || value === true,
+      isValid: (value && String(value).length > 0) || value === true,
       errorMessage: "Esse campo é obrigatório.",
     };
   },
