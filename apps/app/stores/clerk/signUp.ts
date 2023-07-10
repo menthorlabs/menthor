@@ -32,7 +32,6 @@ export const useSignUpStore = defineStore("signUp", {
       await this.$clerk.client.signUp.attemptEmailAddressVerification({
         code,
       });
-      await this.$clerk.load();
     },
   },
 });

@@ -15,7 +15,7 @@ const {
 </script>
 
 <template>
-  <Transition :duration="550" name="nested">
+  <Transition :duration="200" name="nested">
     <div
       class="fixed left-0 top-0 z-10 h-screen max-h-screen w-full overflow-y-auto"
       v-if="modelValue"
@@ -89,7 +89,6 @@ const {
 
 .nested-enter-from,
 .nested-leave-to {
-  transform: translateY(30px);
   opacity: 0;
 }
 

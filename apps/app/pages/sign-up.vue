@@ -61,7 +61,7 @@ async function clerkOAuth(strategy) {
         :icon-left="['fab', 'github']"
         text="Crie com GitHub"
         :class="{ '!pointer-events-none': loading }"
-        @click="clerkOAuth('oauth_google')"
+        @click="clerkOAuth('oauth_github')"
       />
       <MButton
         variant="outline"

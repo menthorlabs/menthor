@@ -7,7 +7,7 @@ export default defineNuxtRouteMiddleware(async (to) => {
     userStore.user = userCookie.value;
   }
 
-  const serverHasSession = userCookie.value || sessionStore.hasSession;
+  const serverHasSession = userCookie.value || sessionStore.hasSession();
 
   if (["profile"].includes(String(to.name)) && !serverHasSession) {
     return navigateTo("/sign-in");

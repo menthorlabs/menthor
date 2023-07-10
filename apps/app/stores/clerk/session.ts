@@ -5,21 +5,23 @@ export const useSessionStore = defineStore("session", {
     token: null,
     cleared: false,
   }),
-  getters: {
-    hasSession(state) {
+  actions: {
+    hasSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
-      if (!state.cleared && clientSession) return true;
+      if (!this.cleared && clientSession) return true;
 
       const clerkToken = useCookie("__session");
 
       return (
-        !state.cleared &&
+        !this.cleared &&
         clerkToken?.value &&
         String(clerkToken?.value).length > 0
       );
     },
-  },
-  actions: {
+    async refreshSession() {
+      const clientSession = this.$clerk?.client?.sessions[0];
+      await this.$clerk.setSession(clientSession);
+    },
     async refreshToken() {
       if (!this.$clerk.session) return;
       this.token = await this.$clerk.session.getToken();

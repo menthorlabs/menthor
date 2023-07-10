@@ -14,8 +14,6 @@ export const useSignInStore = defineStore("signIn", {
         identifier: emailAddress,
         password,
       });
-      this.$clerk.user = this.$clerk.client.sessions[0].user;
-      console.log(this.$clerk);
     },
     async authenticateWithRedirect({
       strategy,

@@ -4,6 +4,7 @@ definePageMeta({
 });
 const userStore = useUserStore();
 const signUpStore = useSignUpStore();
+const sessionStore = useSessionStore();
 const loading = ref(false);
 const router = useRouter();
 const route = useRoute();
@@ -85,7 +86,7 @@ async function sendCode() {
         ? decodeURIComponent(String(route.query.redirect))
         : "/",
     });
-    location.reload();
+    sessionStore.refreshSession();
   } catch (e) {
     toast?.error("Código incorreto ou expirado.");
   } finally {

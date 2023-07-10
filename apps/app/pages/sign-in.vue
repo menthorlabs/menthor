@@ -27,7 +27,7 @@ async function signIn() {
     });
 
     router.push("/");
-    location.reload();
+    sessionStore.refreshSession();
   } catch (e) {
     toast?.error("Email ou senha incorretos.");
   } finally {
@@ -65,7 +65,7 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
         :icon-left="['fab', 'github']"
         text="Entre com GitHub"
         :class="{ '!pointer-events-none': loading }"
-        @click="clerkOAuth({ strategy: 'oauth_google' })"
+        @click="clerkOAuth({ strategy: 'oauth_github' })"
       />
       <MButton
         variant="outline"
