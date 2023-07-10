@@ -9,6 +9,9 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
     },
   },
+  imports: {
+    dirs: ["composables", "../../packages/composables"],
+  },
   vue: {
     propsDestructure: true,
     defineModel: true,

@@ -37,8 +37,7 @@ async function sendEmail() {
       >
       </nuxt-link>
 
-      <form
-        @submit.prevent="sendEmail"
+      <div
         class="relative my-auto h-fit max-w-[480px] overflow-hidden rounded-lg border border-solid border-zinc-300 bg-white p-6 shadow-2xl sm:p-10"
       >
         <div
@@ -96,7 +95,7 @@ async function sendEmail() {
               </nuxt-link>
             </div>
           </div>
-          <template v-else>
+          <MForm @submit="sendEmail" v-else>
             <MTextField
               v-model="email"
               class="mb-6"
@@ -104,6 +103,7 @@ async function sendEmail() {
               label="E-mail"
               placeholder="harry.potter@hogwarts.com"
               type="email"
+              :rules="['email']"
               required
             />
             <MButton
@@ -117,9 +117,9 @@ async function sendEmail() {
             <div class="mt-4 text-center text-sm" v-if="error">
               {{ error }}
             </div>
-          </template>
+          </MForm>
         </div>
-      </form>
+      </div>
     </div>
   </div>
 </template>
