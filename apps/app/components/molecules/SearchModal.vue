@@ -126,6 +126,7 @@ async function searchContent() {
             <NuxtLink
               v-if="item.course.navigation?.children[0]?.children[0]?._path"
               :to="item.course.navigation.children[0].children[0]._path"
+              @click="searchModalStore.opened = false"
             >
               <SearchModalCourseItem
                 :img="item.course.image"
@@ -137,6 +138,7 @@ async function searchContent() {
               v-for="lesson in item.lessons"
               :key="lesson.title"
               :to="lesson._path"
+              @click="searchModalStore.opened = false"
             >
               <SearchModalLessonItem
                 :label="lesson.categoryName"

@@ -40,6 +40,7 @@ export default defineNuxtConfig({
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
     "nuxt-delay-hydration",
+    "nuxt-simple-robots",
     "@nuxtjs/fontaine",
   ],
   vite: {

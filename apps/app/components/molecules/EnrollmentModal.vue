@@ -11,7 +11,7 @@ const enrollmentModalStore = useEnrollmentModalStore();
       >
         <template #header>
           <div class="flex items-center gap-4">
-            <div class="h-[80px] min-w-[80px] overflow-hidden rounded">
+            <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded">
               <img
                 src="/midjourney/characters/1.png"
                 alt="Course image"

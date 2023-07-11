@@ -59,10 +59,13 @@ const cards: card[] = [
           </p>
           <nuxt-link
             to="/acesso-antecipado"
-            class="flex items-center gap-2 text-blue-600 no-underline"
+            class="group flex items-center gap-2 text-blue-600 no-underline transition-all hover:text-blue-800"
           >
             <span class="text-base font-medium">{{ card.cta }}</span>
-            <font-awesome-icon icon="arrow-right" />
+            <font-awesome-icon
+              icon="arrow-right"
+              class="transition-all group-hover:translate-x-1"
+            />
           </nuxt-link>
         </div>
       </div>

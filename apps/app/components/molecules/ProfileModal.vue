@@ -42,7 +42,7 @@ async function setProfileImage(file: File | null) {
           <div class="flex items-center gap-4">
             <label
               for="profile_picture"
-              class="group block h-[80px] min-w-[80px] cursor-pointer overflow-hidden rounded"
+              class="group block h-[80px] w-[80px] min-w-[80px] cursor-pointer overflow-hidden rounded"
             >
               <img
                 :src="userStore.user?.profileImageUrl"

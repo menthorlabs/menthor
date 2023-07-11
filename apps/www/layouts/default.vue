@@ -143,8 +143,8 @@ const menuOpened = ref<boolean>(false);
         width="155"
       />
       <div class="text-center text-sm font-normal text-zinc-500">
-        © Copyright {{ new Date().getFullYear() }} Menthor. Todos os direitos
-        reservados.
+        © Copyright {{ new Date().getFullYear() }} Menthor 51.004.207/0001-75.
+        Todos os direitos reservados.
       </div>
       <!-- <div class="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-8">
         <nuxt-link

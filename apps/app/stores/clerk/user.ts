@@ -27,7 +27,9 @@ export const useUserStore = defineStore("user", {
     setUser() {
       const userData = this.$clerk.user
         ? this.$clerk.user
-        : this.$clerk.client.sessions[0].user;
+        : this.$clerk.client.sessions[0]?.user;
+      if (!userData) return;
+
       this.user = userData;
       const userCookie = useCookie("m-user");
       userCookie.value = userData;
