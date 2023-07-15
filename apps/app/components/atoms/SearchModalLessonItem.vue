@@ -1,8 +1,23 @@
 <script setup lang="ts">
-const { label = "Lesson label", name = "Lesson name" } = defineProps<{
+const {
+  label = "Lesson label",
+  name = "Lesson name",
+  plainText = "",
+  searchText = "",
+} = defineProps<{
   label?: string;
   name?: string;
+  plainText?: string;
+  searchText?: string | null;
 }>();
+
+const contentText = computed(() => {
+  const parsedText = plainText.replace(/[\r\n]/gm, " ");
+  const regex = new RegExp(`.{20}(?:${searchText}).{20}`, "g");
+  const matchedText = parsedText.match(regex);
+
+  return matchedText ? matchedText[0] : "";
+});
 </script>
 
 <template>
@@ -22,6 +37,12 @@ const { label = "Lesson label", name = "Lesson name" } = defineProps<{
         {{ label }}
       </div>
       <div>{{ name }}</div>
+      <div
+        class="mt-1 rounded border border-zinc-200 bg-zinc-50 px-1"
+        v-if="contentText"
+      >
+        ... {{ contentText }} ...
+      </div>
     </div>
   </div>
 </template>

@@ -68,6 +68,8 @@ module.exports = {
     defineNitroPlugin: true,
     Ref: true,
     useShortcuts: true,
+    defineExpose: true,
+    nextTick: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

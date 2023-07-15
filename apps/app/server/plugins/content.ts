@@ -12,6 +12,4 @@ export default defineNitroPlugin((nitroApp) => {
       file.plainText = files[file._id];
     }
   });
-
-  console.log(files);
 });
