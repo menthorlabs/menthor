@@ -70,6 +70,8 @@ module.exports = {
     useShortcuts: true,
     defineExpose: true,
     nextTick: true,
+    useSubmissionsStore: true,
+    useCoursesStore: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {

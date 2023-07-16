@@ -91,91 +91,88 @@ async function searchContent() {
   searchResults.value = results?.filter((result) => result.lessons.length > 0);
 }
 
+const searchInput = ref<HTMLInputElement | null>();
+
 watch(searchModalStore, async (newValue) => {
-  console.log(newValue.opened);
   if (newValue.opened === true) {
     await nextTick();
-    const teste = ref<HTMLInputElement | null>();
-    console.log(teste);
-    teste?.value?.focus();
+    searchInput?.value?.focus();
   }
 });
-
-const inputRef = ref<HTMLInputElement | null>();
-console.log(inputRef);
 </script>
 
 <template>
-  <LeftMenuItem text="wolf" icon="star">
-    <div ref="inputRef">Dalee</div>
-  </LeftMenuItem>
-  <MModal
-    v-model="searchModalStore.opened"
-    class="w-full max-w-[640px]"
-    :closeable="false"
-  >
-    <template #header>
-      <input
-        ref="teste"
-        type="search"
-        v-model="search"
-        @input="searchContent"
-        autocomplete="off"
-        placeholder="Pesquise aulas ou escreva um comando..."
-        class="mb-3 block w-full pt-2 text-base font-medium text-zinc-950 !outline-none placeholder:text-zinc-500"
-      />
-      <div class="flex items-center text-sm">
-        <div class="flex flex-1 items-center gap-2 text-zinc-700">
-          <Command icon="arrow-up" />
-          <Command icon="arrow-down" />
-          <span>para navegar</span>
-        </div>
-        <div class="flex items-center gap-2">
-          <Command text="Esc" />
-          <span>para fechar</span>
-        </div>
-      </div>
-    </template>
-    <div
-      class="-ml-6 w-[calc(100%_+_3rem)]"
-      v-if="searchResults && searchResults.length > 0"
-    >
-      <h2 class="mb-1 pl-6 text-sm font-medium">Cursos</h2>
-      <template v-for="item in searchResults" :key="item.course.title">
-        <NuxtLink
-          v-if="item.course.navigation?.children[0]?.children[0]?._path"
-          :to="item.course.navigation.children[0].children[0]._path"
-          @click="searchModalStore.opened = false"
-        >
-          <SearchModalCourseItem
-            :img="item.course.image"
-            :name="item.course.title"
-            :description="item.course.description"
+  <ClientOnly>
+    <Teleport to="#modals">
+      <MModal
+        v-model="searchModalStore.opened"
+        class="w-full max-w-[640px]"
+        :closeable="false"
+      >
+        <template #header>
+          <input
+            ref="searchInput"
+            type="search"
+            v-model="search"
+            @input="searchContent"
+            autocomplete="off"
+            placeholder="Pesquise aulas ou escreva um comando..."
+            class="mb-3 block w-full pt-2 text-base font-medium text-zinc-950 !outline-none placeholder:text-zinc-500"
           />
-        </NuxtLink>
-        <NuxtLink
-          v-for="lesson in item.lessons"
-          :key="lesson.title"
-          :to="lesson._path"
-          @click="searchModalStore.opened = false"
+          <div class="flex items-center text-sm">
+            <div class="flex flex-1 items-center gap-2 text-zinc-700">
+              <Command icon="arrow-up" />
+              <Command icon="arrow-down" />
+              <span>para navegar</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <Command text="Esc" />
+              <span>para fechar</span>
+            </div>
+          </div>
+        </template>
+        <div
+          class="-ml-6 w-[calc(100%_+_3rem)]"
+          v-if="searchResults && searchResults.length > 0"
         >
-          <SearchModalLessonItem
-            :label="lesson.categoryName"
-            :name="lesson.title"
-            :plain-text="lesson.plainText"
-            :search-text="search"
-          />
-        </NuxtLink>
-      </template>
+          <h2 class="mb-1 pl-6 text-sm font-medium">Cursos</h2>
+          <template v-for="item in searchResults" :key="item.course.title">
+            <NuxtLink
+              v-if="item.course.navigation?.children[0]?.children[0]?._path"
+              :to="item.course.navigation.children[0].children[0]._path"
+              @click="searchModalStore.opened = false"
+            >
+              <SearchModalCourseItem
+                :img="item.course.image"
+                :name="item.course.title"
+                :description="item.course.description"
+              />
+            </NuxtLink>
+            <NuxtLink
+              v-for="lesson in item.lessons"
+              :key="lesson.title"
+              :to="lesson._path"
+              @click="searchModalStore.opened = false"
+            >
+              <SearchModalLessonItem
+                :label="lesson.categoryName"
+                :name="lesson.title"
+                :plain-text="lesson.plainText"
+                :search-text="search"
+              />
+            </NuxtLink>
+          </template>
 
-      <!-- <h2 class="mb-1 pl-6 pt-4 text-sm font-medium">Comandos</h2>
+          <!-- <h2 class="mb-1 pl-6 pt-4 text-sm font-medium">Comandos</h2>
           <SearchModalCommandItem icon="moon" name="Mudar para tema escuro">
             <Command text="Ctrl" />
             <Command text="A" />
           </SearchModalCommandItem> -->
-    </div>
-    <div v-else class="p-6 text-center text-sm text-zinc-500">
-      Não encontramos nenhum resultado 😥
-    </div>
-  </MModal>
+        </div>
+        <div v-else class="p-6 text-center text-sm text-zinc-500">
+          Não encontramos nenhum resultado 😥
+        </div>
+      </MModal>
+    </Teleport>
+  </ClientOnly>
 </template>

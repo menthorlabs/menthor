@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import type { Router } from "vue-router";
 import type { Clerk } from "@clerk/clerk-js";
+import type { ofetch } from "ofetch";
 
 declare global {
   type navigationItem = {
@@ -22,6 +23,7 @@ declare module "vue" {
   interface ComponentCustomProperties {
     $pinia?: string;
     $toastItems: { push: Function };
+    $toastError: Function;
   }
 }
 
@@ -30,6 +32,7 @@ declare module "pinia" {
     // type the router added by the plugin above (#adding-new-external-properties)
     $router: Router;
     $clerk: Clerk;
+    $api: ofetch;
   }
 }
 

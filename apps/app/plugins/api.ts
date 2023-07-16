@@ -14,7 +14,9 @@ export default defineNuxtPlugin((nuxtApp) => {
       };
     },
     onResponseError({ response }) {
-      console.log(response);
+      app.config.globalProperties.$toastError(
+        response._data?.message || response._data?.error
+      );
     },
   });
 

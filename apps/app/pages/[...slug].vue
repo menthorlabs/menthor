@@ -3,11 +3,16 @@ definePageMeta({
   layout: "course",
 });
 const sessionStore = useSessionStore();
+const submissionsStore = useSubmissionsStore();
+const coursesStore = useCoursesStore();
 const enrollmentModalStore = useEnrollmentModalStore();
 const { params } = useRoute();
 const finishLesson = ref(false);
 const router = useRouter();
 const isEnrolled = ref(false);
+const loading = ref(null);
+const submissionContent = ref(null);
+const config = useRuntimeConfig();
 
 const { data } = await useAsyncData("course", async () => {
   const [course, lesson, surround] = await Promise.all([
@@ -26,11 +31,42 @@ const previousLesson = data.value.data.surround[0];
 const nextLesson = data.value.data.surround[1];
 const currentLesson = data.value.data.lesson;
 
-const { description, image, title, tags } = data.value.data.course._dir;
+const currentCourse = data.value.data.course._dir;
 
-function goToNextLesson() {
+function redirectToNextLesson() {
   finishLesson.value = false;
   router.push(nextLesson._path);
+}
+
+onMounted(async () => {
+  try {
+    await coursesStore.createCourse({
+      Progress: 10,
+      CurrentLessonUrl: currentLesson._id,
+      ContentUrl: params.slug[0],
+      Done: false,
+    });
+    console.log("wolf");
+  } catch (e) {
+    console.log(e.message);
+  }
+});
+
+async function sendSubmission() {
+  try {
+    loading.value = true;
+    await submissionsStore.createSubmission({
+      Content: submissionContent.value,
+      SubmissionType: currentLesson.submissionContent,
+      SubmissionStatus: "Pending",
+      LessonUrl: `${config.public.appUrl}${currentLesson._path}`,
+      Lesson_Id: currentLesson._id,
+    });
+
+    redirectToNextLesson();
+  } finally {
+    loading.value = false;
+  }
 }
 </script>
 
@@ -41,18 +77,35 @@ function goToNextLesson() {
         <MModal
           v-model="finishLesson"
           class="w-full max-w-[480px]"
-          @confirm="goToNextLesson"
-          footer
+          @confirm="redirectToNextLesson"
         >
           <template #header> Finalizar aula </template>
           <template #description>
             Envie seu progresso antes de continuar
           </template>
-          <p class="mb-4 text-sm font-normal text-zinc-700">
-            Para finalizar essa aula você deverá enviar uma captura de tela do
-            seu terminal mostrando que está funcionando.
-          </p>
-          <MDropzone />
+          <MForm @submit="sendSubmission">
+            <p class="mb-4 text-sm font-normal text-zinc-700">
+              {{ currentLesson.submissionDescription }}
+            </p>
+            <MDropzone v-if="currentLesson.submissionContent === 'Image'" />
+            <MTextField
+              v-model="submissionContent"
+              v-if="currentLesson.submissionContent === 'Content'"
+            />
+            <div class="mt-6 flex items-center justify-end gap-3">
+              <MButton
+                variant="outline"
+                text="Cancelar"
+                @click="finishLesson = false"
+              />
+              <MButton
+                variant="primary"
+                text="Confirmar"
+                type="submit"
+                :loading="loading"
+              />
+            </div>
+          </MForm>
         </MModal>
       </Teleport>
     </ClientOnly>
@@ -61,7 +114,10 @@ function goToNextLesson() {
       <div
         class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
       >
-        <img :src="image" class="h-full w-full object-cover object-center" />
+        <img
+          :src="currentCourse.image"
+          class="h-full w-full object-cover object-center"
+        />
       </div>
       <div class="flex-1">
         <div
@@ -70,13 +126,13 @@ function goToNextLesson() {
           + 60 mil alunos
         </div>
         <h1 class="text-3xl font-extrabold">
-          {{ title }}
+          {{ currentCourse.title }}
         </h1>
         <p class="mb-3 text-base text-zinc-700">
-          {{ description }}
+          {{ currentCourse.description }}
         </p>
         <div class="flex items-center gap-2">
-          <AppIconButton v-for="tag in tags" :app="tag" />
+          <AppIconButton v-for="tag in currentCourse.tags" :app="tag" />
         </div>
       </div>
     </div>

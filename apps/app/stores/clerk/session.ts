@@ -8,15 +8,7 @@ export const useSessionStore = defineStore("session", {
   actions: {
     hasSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
-      if (!this.cleared && clientSession) return true;
-
-      const clerkToken = useCookie("__session");
-
-      return (
-        !this.cleared &&
-        clerkToken?.value &&
-        String(clerkToken?.value).length > 0
-      );
+      return !this.cleared && clientSession;
     },
     async refreshSession() {
       const clientSession = this.$clerk?.client?.sessions[0];

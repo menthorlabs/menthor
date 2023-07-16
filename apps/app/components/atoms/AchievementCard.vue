@@ -13,10 +13,7 @@ const {
 </script>
 
 <template>
-  <div
-    class="group rounded-md p-4 text-sm transition-all"
-    :class="{ 'cursor-pointer hover:bg-zinc-100/80': !disabled }"
-  >
+  <div class="group rounded-md p-4 text-sm transition-all">
     <div class="mb-3 aspect-square w-full rounded">
       <img
         :src="image"

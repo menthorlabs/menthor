@@ -10,6 +10,7 @@ export default defineNuxtConfig({
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/",
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+      appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
     },
   },
   content: {

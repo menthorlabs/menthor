@@ -13,7 +13,7 @@ const {
 
 const contentText = computed(() => {
   const parsedText = plainText.replace(/[\r\n]/gm, " ");
-  const regex = new RegExp(`.{20}(?:${searchText}).{20}`, "g");
+  const regex = new RegExp(`.{20}(?:${searchText}).{20}`, "gi");
   const matchedText = parsedText.match(regex);
 
   return matchedText ? matchedText[0] : "";

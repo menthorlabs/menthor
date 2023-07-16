@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/",
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
+      appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
     },
   },
   imports: {
