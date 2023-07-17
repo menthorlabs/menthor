@@ -26,8 +26,9 @@ export const useCoursesStore = defineStore("courses", {
     },
     async getCourses() {
       try {
-        const { _data } = await this.$api(`/course`);
-        this.courses = _data;
+        const response = await this.$api(`/course`);
+        this.courses = response;
+        return response;
       } catch (e) {
         throw new Error((e as Error).message);
       }

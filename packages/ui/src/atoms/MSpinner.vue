@@ -1,6 +1,6 @@
 <template>
   <div
-    class="text-white-600 inline-block animate-spin rounded-full border-[3px] border-current border-t-transparent"
+    class="inline-block animate-spin rounded-full border-[2px] border-current border-t-transparent"
     role="status"
     aria-label="loading"
   >

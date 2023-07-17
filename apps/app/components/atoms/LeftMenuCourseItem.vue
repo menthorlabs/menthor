@@ -2,16 +2,18 @@
 const {
   img = "/midjourney/characters/1.png",
   name = "Vue 3",
-  totalLessons = 28,
-  finishedLessons = 10,
-  timeToFinish = 3600,
+  currentLesson = "",
 } = defineProps<{
   img?: string;
   name?: string;
-  totalLessons?: number;
-  finishedLessons?: number;
-  timeToFinish?: number;
+  currentLesson?: string;
 }>();
+
+console.log(currentLesson);
+
+const totalLessons = ref(0);
+const finishedLessons = ref(0);
+const timeToFinish = ref(0);
 </script>
 
 <template>

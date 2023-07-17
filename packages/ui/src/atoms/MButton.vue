@@ -43,14 +43,14 @@ const sizes: { sm: string; base: string; lg: string } = {
     class="flex cursor-pointer items-center justify-center gap-2 rounded-lg font-medium focus:ring-4"
     :class="[variants[variant], sizes[size]]"
   >
-    <MSpinner class="h-4 w-4 border-[2px]" v-if="loading && !iconRight" />
+    <MSpinner class="h-4 w-4" v-if="loading && !iconRight" />
     <font-awesome-icon
       v-else-if="iconLeft"
       class="text-base"
       :icon="iconLeft"
     />
     <span v-if="text"> {{ text }}</span>
-    <MSpinner class="h-4 w-4 border-[2px]" v-if="loading && iconRight" />
+    <MSpinner class="h-4 w-4" v-if="loading && iconRight" />
     <font-awesome-icon
       v-else-if="iconRight"
       class="text-base"

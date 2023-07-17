@@ -72,6 +72,7 @@ module.exports = {
     nextTick: true,
     useSubmissionsStore: true,
     useCoursesStore: true,
+    ComputedRef: true,
   },
   parser: "vue-eslint-parser",
   parserOptions: {
