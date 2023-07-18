@@ -19,7 +19,10 @@ const {
       class="absolute -left-[4px] top-0 h-[7px] w-[7px] rounded-full bg-zinc-900 group-last:-left-[3px]"
       :class="{ '!bg-zinc-400': !active }"
     ></div>
-    <div class="mb-1 font-medium" :class="{ 'text-zinc-500': !active }">
+    <div
+      class="-translate-y-1 font-medium"
+      :class="{ 'text-zinc-500': !active }"
+    >
       {{ title }}
     </div>
     <div
@@ -29,6 +32,8 @@ const {
     >
       {{ description }}
     </div>
-    <slot></slot>
+    <div v-if="active">
+      <slot></slot>
+    </div>
   </div>
 </template>

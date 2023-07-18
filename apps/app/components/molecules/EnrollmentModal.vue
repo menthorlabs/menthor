@@ -1,5 +1,24 @@
 <script setup lang="ts">
+import type { ParsedContent } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
 const enrollmentModalStore = useEnrollmentModalStore();
+const coursesStore = useCoursesStore();
+const loadingEnrollment = ref(false);
+const { course } = defineProps<{
+  course: ParsedContent;
+}>();
+
+async function enrollCourse() {
+  try {
+    loadingEnrollment.value = true;
+    await coursesStore.createCourse({
+      ContentId: course._id,
+      TimeTrack: 0,
+      Done: false,
+    });
+  } finally {
+    loadingEnrollment.value = false;
+  }
+}
 </script>
 
 <template>
@@ -32,9 +51,11 @@ const enrollmentModalStore = useEnrollmentModalStore();
           description="Comece a salvar seu progresso, receber recompensas e consiga seu certificado."
         >
           <MButton
+            @click="enrollCourse"
             variant="outline"
             text="Fazer matrícula"
             icon-left="signature"
+            :loading="loadingEnrollment"
           />
         </EnrollmentStep>
         <EnrollmentStep

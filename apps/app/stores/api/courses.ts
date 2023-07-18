@@ -1,10 +1,12 @@
 import { defineStore } from "pinia";
 
 type CourseParams = {
-  Progress: number;
-  CurrentLessonUrl: string;
-  ContentUrl: string;
+  TimeTrack: number;
+  CurrentLessonUrl?: string;
+  ContentId: string;
   Done: boolean;
+  Lessons?: string[];
+  Id?: string;
 };
 
 export const useCoursesStore = defineStore("courses", {
@@ -18,8 +20,8 @@ export const useCoursesStore = defineStore("courses", {
   actions: {
     async getCourse(id: string) {
       try {
-        const { _data } = await this.$api(`/course/${id}`);
-        this.course = _data;
+        const response = await this.$api(`/course/${id}`);
+        this.course = response[0] || null;
       } catch (e) {
         throw new Error((e as Error).message);
       }
@@ -49,6 +51,25 @@ export const useCoursesStore = defineStore("courses", {
           method: "PUT",
           body: payload,
         });
+      } catch (e) {
+        throw new Error((e as Error).message);
+      }
+    },
+    async updateCourseLessons(lessonId: string) {
+      try {
+        const lessons = new Set(this.course?.Lessons);
+        lessons.add(lessonId);
+
+        await this.$api(`/course/${this.course?.Id}`, {
+          method: "PATCH",
+          body: {
+            lessons: [...lessons],
+          },
+        });
+
+        if (this.course) {
+          this.course.Lessons = [...lessons];
+        }
       } catch (e) {
         throw new Error((e as Error).message);
       }

@@ -15,7 +15,7 @@ const availableCourses: ComputedRef<ParsedContent[] | undefined> = computed(
   () => {
     return allCourses.value?.reduce((filtered: ParsedContent[], course) => {
       const courseIsAvailable = coursesStore.courses?.find(
-        (e) => e.ContentUrl === course._dir
+        (e) => e.ContentId === course._dir
       );
 
       if (courseIsAvailable) {
@@ -57,7 +57,10 @@ onMounted(async () => {
       <MSpinner class="h-4 w-4 border-zinc-400" />
     </div>
     <template v-else>
-      <div class="scrollbox -ml-3 mb-1 w-[calc(100%_+_1.5rem)] overflow-x-auto">
+      <div
+        class="scrollbox -ml-3 mb-1 w-[calc(100%_+_1.5rem)] overflow-x-auto"
+        :class="{ '!mb-2': quickFilterOptions.size < 3 }"
+      >
         <div class="flex items-center space-x-2">
           <div
             v-for="label in quickFilterOptions"
