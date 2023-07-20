@@ -7,10 +7,14 @@ export default defineNuxtPlugin((nuxtApp) => {
   const apiFetch = ofetch.create({
     baseURL: config.public.apiUrl as string,
     retry: 0,
-    onRequest({ options }) {
+    async onRequest({ options }) {
+      const jwt = await app.config.globalProperties.$clerk.session.getToken({
+        template: "menthor-be",
+      });
+
       options.headers = {
         "Content-Type": "application/json",
-        Authorization: "Bearer MENTHOR-DEV",
+        Authorization: `Bearer ${jwt}`,
       };
     },
     onResponseError({ response }) {

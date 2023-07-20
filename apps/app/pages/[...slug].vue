@@ -46,7 +46,7 @@ onMounted(async () => {
   try {
     await coursesStore.getCourse(params.slug[0]);
   } catch (e) {
-    console.log(e.message);
+    console.error(e.message);
   }
 });
 

@@ -24,6 +24,7 @@ declare module "vue" {
     $pinia?: string;
     $toastItems: { push: Function };
     $toastError: Function;
+    $clerk: Clerk;
   }
 }
 
