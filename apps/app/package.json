@@ -28,12 +28,12 @@
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@nuxt/image-edge": "^1.0.0-28020728.5df24eb",
     "@pinia/nuxt": "^0.4.11",
-    "@vueuse/nuxt": "^10.1.2",
-    "eslint-config-custom": "*",
+    "@vueuse/nuxt": "^10.2.1",
+    "eslint-config-custom": "workspace:*",
     "floating-vue": "^2.0.0-beta.22",
     "pinia": "^2.1.4",
     "splitpanes": "^3.1.5",
-    "tailwind-config": "*",
+    "tailwind-config": "workspace:*",
     "unstorage": "^1.6.1"
   }
 }

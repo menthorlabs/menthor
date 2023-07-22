@@ -60,6 +60,6 @@ Todo diretório é gerenciado pelo [Turborepo](https://turbo.build/repo), então
 
 Para rodar um projeto você precisa ter o node instalado (versão 16 pra cima) e seguir os seguintes passos:
 
-- `npm i -g yarn`: esse comando vai instalar o yarn globalmente na sua máquina
-- `yarn install`: esse comando vai instalar todas as dependências do projeto
-- `yarn dev --filter=www`: esse comando vai rodar o app `www` localmente, se quiser rodar outro é só usar o comando `yarn dev --filter={nome-do-app}`
+- `npm i -g pnpm`: esse comando vai instalar o pnpm globalmente na sua máquina
+- `pnpm install`: esse comando vai instalar todas as dependências do projeto
+- `pnpm dev --filter=www`: esse comando vai rodar o app `www` localmente, se quiser rodar outro é só usar o comando `pnpm dev --filter={nome-do-app}`

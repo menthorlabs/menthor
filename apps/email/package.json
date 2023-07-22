@@ -1,5 +1,5 @@
 {
-  "name": "emails",
+  "name": "email",
   "version": "0.0.18",
   "private": true,
   "workspaces": [

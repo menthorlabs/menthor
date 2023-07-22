@@ -1,0 +1,8 @@
+{
+  "name": "utils",
+  "version": "0.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "eslint-config-custom": "workspace:*"
+  }
+}
