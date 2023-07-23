@@ -12,7 +12,7 @@ const totalLessons = computed(() => {
 });
 
 const doneLessons = computed(() => {
-  return course.Lessons?.length;
+  return course.Lessons?.length || 0;
 });
 
 const percentageDone = computed(() => {

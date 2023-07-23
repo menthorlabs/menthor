@@ -139,7 +139,11 @@ async function sendSubmission() {
           {{ currentCourse.description }}
         </p>
         <div class="flex items-center gap-2">
-          <AppIconButton v-for="tag in currentCourse.tags" :app="tag" />
+          <AppIconButton
+            v-for="tag in currentCourse.tags"
+            :app="tag"
+            v-tooltip="tag"
+          />
         </div>
       </div>
     </div>
@@ -227,7 +231,7 @@ async function sendSubmission() {
                 text="Editar no GitHub"
               />
             </nuxt-link>
-            <MButton
+            <!-- <MButton
               icon-left="hashtag"
               size="sm"
               variant="inherit"
@@ -238,7 +242,7 @@ async function sendSubmission() {
               size="sm"
               variant="inherit"
               text="Avaliar Aula"
-            />
+            /> -->
           </div>
         </template>
         <div
