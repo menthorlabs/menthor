@@ -162,7 +162,7 @@ async function sendSubmission() {
           </div>
           <nuxt-link
             :to="{
-              path: '/sign-up',
+              path: '/sign-in',
               query: { redirect: encodeURIComponent($route.path) },
             }"
           >

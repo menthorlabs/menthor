@@ -2,12 +2,12 @@ export default defineNuxtRouteMiddleware(async (to) => {
   const queryStore = useQueryStore();
 
   if (queryStore.redirect && to.path === "/") {
-    navigateTo(queryStore.redirect);
+    const pathToRedirect = queryStore.redirect;
     queryStore.redirect = null;
-    return;
+    return navigateTo(pathToRedirect);
   }
 
-  if (!queryStore.redirect) {
+  if (to.query?.redirect) {
     const decodedRedirect = decodeURIComponent(String(to.query?.redirect));
     queryStore.redirect = to.query?.redirect ? decodedRedirect : null;
   }
