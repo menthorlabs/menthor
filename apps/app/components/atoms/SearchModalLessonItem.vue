@@ -37,10 +37,7 @@ const contentText = computed(() => {
         {{ label }}
       </div>
       <div>{{ name }}</div>
-      <div
-        class="mt-1 rounded border border-zinc-200 bg-zinc-50 px-1"
-        v-if="contentText"
-      >
+      <div class="mt-1 text-xs text-zinc-500" v-if="contentText">
         ... {{ contentText }} ...
       </div>
     </div>

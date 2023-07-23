@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const { label = "", value = "" } = defineProps<{
   label: string;
-  value: string;
+  value: string | number;
 }>();
 </script>
 

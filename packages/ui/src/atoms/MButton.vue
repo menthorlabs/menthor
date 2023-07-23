@@ -31,9 +31,9 @@ const variants: {
 };
 
 const sizes: { sm: string; base: string; lg: string } = {
-  sm: "px-3 py-[7.5px] text-sm",
-  base: "px-5 py-[9px] text-sm",
-  lg: "px-5 py-[13px] text-base",
+  sm: "px-3 py-[8px] text-sm leading-[19px]",
+  base: "px-5 py-[9.5px] text-sm leading-[19px]",
+  lg: "px-5 py-[13.5px] text-base leading-[23px]",
 };
 </script>
 

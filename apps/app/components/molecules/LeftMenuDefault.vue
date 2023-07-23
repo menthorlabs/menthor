@@ -2,6 +2,7 @@
 import type { NavItem } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
 
 const route = useRoute();
+const sessionStore = useSessionStore();
 
 const { data: allCoursesNavigation } = await useAsyncData(
   "allCoursesNavigation",
@@ -61,11 +62,30 @@ onMounted(async () => {
       </div>
       <div class="flex-1">Seus cursos</div>
     </div>
+    <div v-if="!sessionStore.isConnected()" class="px-8">
+      <p class="text-xs text-center text-zinc-500 mb-2">
+        Entre agora e comece a salvar seu progresso de estudo
+      </p>
+      <NuxtLink to="/sign-in">
+        <MButton
+          text="Fazer login"
+          size="sm"
+          variant="outline"
+          class="w-full"
+        />
+      </NuxtLink>
+    </div>
     <div
-      v-if="loading && Array(coursesStore.courses).length <= 0"
+      v-else-if="loading && !coursesStore.courses"
       class="flex justify-center"
     >
       <MSpinner class="h-4 w-4 border-zinc-400" />
+    </div>
+    <div
+      v-else-if="coursesStore.courses && coursesStore.courses.length <= 0"
+      class="text-xs text-center text-zinc-500 px-8"
+    >
+      Você ainda não se matriculou em nenhum curso
     </div>
     <template v-else>
       <div

@@ -19,7 +19,7 @@ export const useLessonsStore = defineStore("lessons", {
   actions: {
     async getLesson(id: string) {
       try {
-        const { _data } = await this.$api(`/lesson/${id}`);
+        const { _data } = await this.$api(`/lessons/${id}`);
         this.lesson = _data;
       } catch (e) {
         throw new Error((e as Error).message);
@@ -27,7 +27,7 @@ export const useLessonsStore = defineStore("lessons", {
     },
     async getLessons() {
       try {
-        const { _data } = await this.$api(`/lesson`);
+        const { _data } = await this.$api(`/lessons`);
         this.lessons = _data;
       } catch (e) {
         throw new Error((e as Error).message);
@@ -35,7 +35,7 @@ export const useLessonsStore = defineStore("lessons", {
     },
     async createLesson(payload: LessonParams) {
       try {
-        await this.$api(`/lesson`, {
+        await this.$api(`/lessons`, {
           method: "POST",
           body: payload,
         });
@@ -45,7 +45,7 @@ export const useLessonsStore = defineStore("lessons", {
     },
     async updateLesson(payload: LessonParams & { id: string }) {
       try {
-        await this.$api(`/lesson/${payload.id}`, {
+        await this.$api(`/lessons/${payload.id}`, {
           method: "PUT",
           body: payload,
         });

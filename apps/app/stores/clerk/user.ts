@@ -11,6 +11,7 @@ export type user = {
   firstName: string;
   lastName: string;
   username: string;
+  publicMetadata: Record<"badges", any>;
 };
 
 export const useUserStore = defineStore("user", {
@@ -23,6 +24,13 @@ export const useUserStore = defineStore("user", {
     modalOpened: false,
     triggerPictureInput: false,
   }),
+  getters: {
+    badges(state) {
+      if (!state.user?.publicMetadata) return [];
+
+      return state.user?.publicMetadata?.badges;
+    },
+  },
   actions: {
     setUser() {
       const userData = this.$clerk.user

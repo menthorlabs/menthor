@@ -27,7 +27,7 @@ export const useCoursesStore = defineStore("courses", {
       const sessionStore = useSessionStore();
       if (!sessionStore.isConnected()) return;
       try {
-        const response = await this.$api(`/course/${id}`);
+        const response = await this.$api(`/courses/${id}`);
         this.course = response[0] || null;
       } catch (e) {
         throw new Error((e as Error).message);
@@ -37,7 +37,7 @@ export const useCoursesStore = defineStore("courses", {
       const sessionStore = useSessionStore();
       if (!sessionStore.isConnected()) return;
       try {
-        const response = await this.$api(`/course`);
+        const response = await this.$api(`/courses`);
         this.courses = response;
         return response;
       } catch (e) {
@@ -49,7 +49,7 @@ export const useCoursesStore = defineStore("courses", {
       if (!sessionStore.isConnected()) return;
       try {
         this.course = payload;
-        await this.$api(`/course`, {
+        await this.$api(`/courses`, {
           method: "POST",
           body: payload,
         });
@@ -66,7 +66,7 @@ export const useCoursesStore = defineStore("courses", {
       const lastState = Object.freeze({ ...this.course });
       this.course = { ...this.course, ...payload };
       try {
-        await this.$api(`/course/${this.course.Id}`, {
+        await this.$api(`/courses/${this.course.Id}`, {
           method: "PATCH",
           body: payload,
         });
@@ -84,7 +84,7 @@ export const useCoursesStore = defineStore("courses", {
           this.course.Lessons = [...lessons];
         }
 
-        await this.$api(`/course/${this.course?.Id}`, {
+        await this.$api(`/courses/${this.course?.Id}`, {
           method: "PATCH",
           body: {
             lessons: [...lessons],

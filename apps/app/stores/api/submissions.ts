@@ -24,7 +24,7 @@ export const useSubmissionsStore = defineStore("submissions", {
   actions: {
     async getSubmission(id: string) {
       try {
-        const { _data } = await this.$api(`/submission/${id}`);
+        const { _data } = await this.$api(`/submissions/${id}`);
         this.submission = _data;
       } catch (e) {
         throw new Error((e as Error).message);
@@ -32,7 +32,7 @@ export const useSubmissionsStore = defineStore("submissions", {
     },
     async getSubmissions() {
       try {
-        const { _data } = await this.$api(`/submission`);
+        const { _data } = await this.$api(`/submissions`);
         this.submissions = _data;
       } catch (e) {
         throw new Error((e as Error).message);
@@ -40,7 +40,7 @@ export const useSubmissionsStore = defineStore("submissions", {
     },
     async createSubmission(payload: SubmissionParams) {
       try {
-        await this.$api(`/submission`, {
+        await this.$api(`/submissions`, {
           method: "POST",
           body: payload,
         });
@@ -50,7 +50,7 @@ export const useSubmissionsStore = defineStore("submissions", {
     },
     async updateSubmission(payload: SubmissionParams & { id: string }) {
       try {
-        await this.$api(`/submission/${payload.id}`, {
+        await this.$api(`/submissions/${payload.id}`, {
           method: "PUT",
           body: payload,
         });
