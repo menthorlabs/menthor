@@ -1,10 +1,10 @@
 import { defineStore } from "pinia";
 
 type CourseParams = {
-  TimeTrack: number;
-  CurrentLessonUrl?: string;
-  ContentId: string;
-  Done: boolean;
+  TimeTrack?: number;
+  CurrentLessonId?: string;
+  ContentId?: string;
+  Done?: boolean;
   Lessons?: string[];
   Id?: string;
 };
@@ -17,6 +17,11 @@ export const useCoursesStore = defineStore("courses", {
     course: null,
     courses: null,
   }),
+  getters: {
+    isEnrolled(state): boolean {
+      return !!state.course?.ContentId;
+    },
+  },
   actions: {
     async getCourse(id: string) {
       try {
@@ -37,28 +42,38 @@ export const useCoursesStore = defineStore("courses", {
     },
     async createCourse(payload: CourseParams) {
       try {
+        this.course = payload;
         await this.$api(`/course`, {
           method: "POST",
           body: payload,
         });
       } catch (e) {
+        this.course = null;
         throw new Error((e as Error).message);
       }
     },
-    async updateCourse(payload: CourseParams & { id: string }) {
+    async updateCourse(payload: CourseParams) {
+      if (!this.course) return;
+
+      const lastState = Object.freeze({ ...this.course });
+      this.course = { ...this.course, ...payload };
       try {
-        await this.$api(`/course/${payload.id}`, {
-          method: "PUT",
+        await this.$api(`/course/${this.course.Id}`, {
+          method: "PATCH",
           body: payload,
         });
       } catch (e) {
+        this.course = lastState;
         throw new Error((e as Error).message);
       }
     },
     async updateCourseLessons(lessonId: string) {
+      const lessons = new Set(this.course?.Lessons);
+      lessons.add(lessonId);
       try {
-        const lessons = new Set(this.course?.Lessons);
-        lessons.add(lessonId);
+        if (this.course) {
+          this.course.Lessons = [...lessons];
+        }
 
         await this.$api(`/course/${this.course?.Id}`, {
           method: "PATCH",
@@ -66,11 +81,11 @@ export const useCoursesStore = defineStore("courses", {
             lessons: [...lessons],
           },
         });
-
+      } catch (e) {
+        lessons.delete(lessonId);
         if (this.course) {
           this.course.Lessons = [...lessons];
         }
-      } catch (e) {
         throw new Error((e as Error).message);
       }
     },

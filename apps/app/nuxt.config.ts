@@ -25,7 +25,7 @@ export default defineNuxtConfig({
       },
     },
     navigation: {
-      fields: ["image", "description"],
+      fields: ["image", "description", "_id", "_dir", "areas"],
     },
   },
   vue: {

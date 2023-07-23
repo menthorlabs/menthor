@@ -39,7 +39,6 @@ function onChange(files: dropzoneFile[]) {
 }
 
 function dragover(e) {
-  console.log("dragover");
   e.preventDefault();
   isDragging.value = true;
 }

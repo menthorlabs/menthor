@@ -1,38 +1,40 @@
 <script setup lang="ts">
-import type { ParsedContent } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
+import type { NavItem } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
 
-const { data: allCourses } = await useAsyncData("allCourses", () =>
-  queryContent("/")
-    .where({ _extension: "yml", image: { $exists: true } })
-    .find()
+const route = useRoute();
+
+const { data: allCoursesNavigation } = await useAsyncData(
+  "allCoursesNavigation",
+  () => fetchContentNavigation(),
+  {
+    watch: [route],
+  }
 );
 
 const coursesStore = useCoursesStore();
 const loading: Ref<boolean> = ref(true);
 const quickFilterOptions = reactive(new Set<string>());
 
-const availableCourses: ComputedRef<ParsedContent[] | undefined> = computed(
-  () => {
-    return allCourses.value?.reduce((filtered: ParsedContent[], course) => {
-      const courseIsAvailable = coursesStore.courses?.find(
-        (e) => e.ContentId === course._dir
-      );
+const availableCourses: ComputedRef<NavItem[] | undefined> = computed(() => {
+  return allCoursesNavigation.value?.reduce((filtered: NavItem[], course) => {
+    const courseIsAvailable = coursesStore.courses?.find(
+      (e) => e.ContentId === course._dir
+    );
 
-      if (courseIsAvailable) {
-        const updatedCourse: ParsedContent & typeof courseIsAvailable = {
-          ...course,
-          ...courseIsAvailable,
-        };
+    if (courseIsAvailable) {
+      const updatedCourse: NavItem & typeof courseIsAvailable = {
+        ...course,
+        ...courseIsAvailable,
+      };
 
-        updatedCourse.areas.forEach(quickFilterOptions.add, quickFilterOptions);
+      updatedCourse.areas.forEach(quickFilterOptions.add, quickFilterOptions);
 
-        filtered.push(updatedCourse);
-      }
+      filtered.push(updatedCourse);
+    }
 
-      return filtered;
-    }, []);
-  }
-);
+    return filtered;
+  }, []);
+});
 
 onMounted(async () => {
   try {
@@ -53,7 +55,10 @@ onMounted(async () => {
       </div>
       <div class="flex-1">Seus cursos</div>
     </div>
-    <div v-if="loading" class="flex justify-center">
+    <div
+      v-if="loading && Array(coursesStore.courses).length <= 0"
+      class="flex justify-center"
+    >
       <MSpinner class="h-4 w-4 border-zinc-400" />
     </div>
     <template v-else>
@@ -71,13 +76,7 @@ onMounted(async () => {
           </div>
         </div>
       </div>
-      <LeftMenuCourseItem
-        v-for="course in availableCourses"
-        :key="course._id"
-        :img="course.image"
-        :name="course.title"
-        :current-lesson="course.CurrentLessonUrl"
-      />
+      <LeftMenuCourseItem v-for="course in availableCourses" :course="course" />
     </template>
   </div>
 </template>

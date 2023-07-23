@@ -1,6 +1,7 @@
 @import './content.css';
 @import './scrollbar.css';
 @import './sakura.css';
+@import './popper.css';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

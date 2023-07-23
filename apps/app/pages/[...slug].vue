@@ -45,6 +45,10 @@ function redirectToNextLesson() {
 onMounted(async () => {
   try {
     await coursesStore.getCourse(params.slug[0]);
+
+    if (coursesStore.isEnrolled) {
+      await coursesStore.updateCourse({ CurrentLessonId: currentLesson._id });
+    }
   } catch (e) {
     console.error(e.message);
   }
@@ -70,7 +74,11 @@ async function sendSubmission() {
 
 <template>
   <main class="relative">
-    <EnrollmentModal :course="currentCourse" />
+    <EnrollmentModal
+      :course="currentCourse"
+      :current-lesson="currentLesson"
+      :id="params.slug[0]"
+    />
     <ClientOnly>
       <Teleport to="#modals">
         <MModal
@@ -122,7 +130,7 @@ async function sendSubmission() {
         <div
           class="mb-2 w-fit rounded-full bg-zinc-900 px-3 py-[2px] text-xs font-medium text-white"
         >
-          + 60 mil alunos
+          {{ $filters.level(currentCourse.level) }}
         </div>
         <h1 class="text-3xl font-extrabold">
           {{ currentCourse.title }}
@@ -139,7 +147,7 @@ async function sendSubmission() {
       <ContentDoc id="nuxt_content" />
 
       <div
-        v-if="!sessionStore.hasSession()"
+        v-if="!sessionStore.isConnected()"
         class="group relative mb-2 mr-2 mt-7 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-blue-400 to-pink-400 p-0.5 text-sm font-medium text-gray-900"
       >
         <div
@@ -168,7 +176,7 @@ async function sendSubmission() {
         </div>
       </div>
       <template v-else>
-        <template v-if="coursesStore.course">
+        <template v-if="coursesStore.isEnrolled">
           <div
             class="mt-10 flex justify-between gap-4"
             :class="{ '!justify-end': !previousLesson }"

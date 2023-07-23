@@ -10,6 +10,7 @@ declare global {
     image: string | undefined;
     _path: string;
     children: navigationItem[];
+    _id: string;
   };
 
   type authenticate = {
@@ -25,6 +26,9 @@ declare module "vue" {
     $toastItems: { push: Function };
     $toastError: Function;
     $clerk: Clerk;
+    $filters: {
+      level: Function;
+    };
   }
 }
 

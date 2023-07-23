@@ -3,15 +3,18 @@ import type { ParsedContent } from "../../../../node_modules/@nuxt/content/dist/
 const enrollmentModalStore = useEnrollmentModalStore();
 const coursesStore = useCoursesStore();
 const loadingEnrollment = ref(false);
-const { course } = defineProps<{
+const { course, id, currentLesson } = defineProps<{
   course: ParsedContent;
+  id: string;
+  currentLesson: ParsedContent;
 }>();
 
 async function enrollCourse() {
   try {
     loadingEnrollment.value = true;
     await coursesStore.createCourse({
-      ContentId: course._id,
+      CurrentLessonId: currentLesson._id,
+      ContentId: id,
       TimeTrack: 0,
       Done: false,
     });
@@ -32,25 +35,26 @@ async function enrollCourse() {
           <div class="flex items-center gap-4">
             <div class="h-[80px] w-[80px] min-w-[80px] overflow-hidden rounded">
               <img
-                src="/midjourney/characters/1.png"
-                alt="Course image"
+                :src="course.image"
+                :alt="course.title"
                 class="h-full w-full object-cover object-center"
               />
             </div>
             <div>
-              <div class="text-xl font-bold">dApp com Ethereum</div>
+              <div class="text-xl font-bold">{{ course.title }}</div>
               <p class="text-base font-normal text-zinc-700">
-                Crie um app descentralizado com ethereum
+                {{ course.description }}
               </p>
             </div>
           </div>
         </template>
         <EnrollmentStep
-          active
+          :active="!coursesStore.isEnrolled"
           title="Faça sua matrícula"
           description="Comece a salvar seu progresso, receber recompensas e consiga seu certificado."
         >
           <MButton
+            v-if="!coursesStore.isEnrolled"
             @click="enrollCourse"
             variant="outline"
             text="Fazer matrícula"
@@ -59,6 +63,7 @@ async function enrollCourse() {
           />
         </EnrollmentStep>
         <EnrollmentStep
+          :active="coursesStore.isEnrolled"
           title="Habilite o curso no Discord"
           description="Obtenha acesso aos canais desse curso no discord e comece a tirar dúvida com outros alunos."
         >

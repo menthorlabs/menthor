@@ -6,6 +6,10 @@ export const useSessionStore = defineStore("session", {
     cleared: false,
   }),
   actions: {
+    isConnected(): boolean {
+      const userStore = useUserStore();
+      return !!userStore.user?.primaryEmailAddress;
+    },
     hasSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
       return !this.cleared && clientSession;
