@@ -8,6 +8,8 @@ export default defineNuxtPlugin((nuxtApp) => {
     baseURL: config.public.apiUrl as string,
     retry: 0,
     async onRequest({ options }) {
+      if (!app.config.globalProperties.$clerk?.session) return;
+
       const jwt = await app.config.globalProperties.$clerk.session.getToken({
         template: "menthor-be",
       });

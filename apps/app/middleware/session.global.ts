@@ -7,8 +7,6 @@ export default defineNuxtRouteMiddleware(async (to) => {
     userStore.user = userCookie.value;
   }
 
-  console.log(sessionStore.hasSession());
-
   const serverHasSession = userCookie.value || sessionStore.hasSession();
 
   if (["profile"].includes(String(to.name)) && !serverHasSession) {

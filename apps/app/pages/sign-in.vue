@@ -4,7 +4,7 @@ const signInStore = useSignInStore();
 const email = ref(null);
 const password = ref(null);
 const sessionStore = useSessionStore();
-//const code = ref(null);
+const queryStore = useQueryStore();
 const loading = ref(false);
 const toast: { error: Function } | undefined = inject("toast");
 
@@ -25,9 +25,8 @@ async function signIn() {
       emailAddress: email.value,
       password: password.value,
     });
-
+    await sessionStore.refreshSession();
     router.push("/");
-    sessionStore.refreshSession();
   } catch (e) {
     toast?.error("Email ou senha incorretos.");
   } finally {
@@ -44,7 +43,7 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
       redirectUrl: `/sign-up?error=${encodeURIComponent(
         "Essa conta não existe. Crie uma conta."
       )}`,
-      redirectUrlComplete: "/",
+      redirectUrlComplete: queryStore.redirect ? queryStore.redirect : "/",
     });
   } finally {
     loading.value = false;

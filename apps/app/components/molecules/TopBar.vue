@@ -10,7 +10,7 @@ onMounted(() => {
 
 <template>
   <div
-    class="absolute left-0 top-0 flex h-[90px] w-full justify-center overflow-hidden"
+    class="absolute left-0 top-0 flex h-[90px] w-full justify-center overflow-hidden pointer-events-none"
   >
     <div class="relative h-full w-full max-w-[1017px]">
       <div
@@ -34,7 +34,7 @@ onMounted(() => {
     </div>
     <div class="flex items-center gap-2">
       <MIconButton icon="bell" variant="glass" />
-      <div v-if="sessionStore.isConnected">
+      <div v-if="sessionStore.isConnected()">
         <VDropdown
           :distance="6"
           class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"

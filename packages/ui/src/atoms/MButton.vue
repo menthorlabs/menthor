@@ -21,9 +21,9 @@ const variants: {
   inherit: string;
 } = {
   primary:
-    "bg-blue-600 text-white border-none hover:bg-blue-700 focus:ring-blue-300",
+    "bg-blue-600 text-white border border-solid border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-300",
   secondary:
-    "bg-zinc-900 text-white border-none hover:bg-zinc-800 focus:ring-zinc-300",
+    "bg-zinc-900 text-white border border-solid border-zinc-900 hover:bg-zinc-800 hover:border-zinc-800 focus:ring-zinc-300",
   outline:
     "bg-white text-zinc-900 border border-solid border-zinc-300 hover:bg-zinc-100 focus:ring-zinc-300",
   inherit:
@@ -31,9 +31,9 @@ const variants: {
 };
 
 const sizes: { sm: string; base: string; lg: string } = {
-  sm: "px-3 py-[8.5px] text-sm",
-  base: "px-5 py-2.5 text-sm",
-  lg: "px-5 py-[14px] text-base",
+  sm: "px-3 py-[7.5px] text-sm",
+  base: "px-5 py-[9px] text-sm",
+  lg: "px-5 py-[13px] text-base",
 };
 </script>
 

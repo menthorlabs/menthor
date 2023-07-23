@@ -7,7 +7,6 @@ const signUpStore = useSignUpStore();
 const sessionStore = useSessionStore();
 const loading = ref(false);
 const router = useRouter();
-const route = useRoute();
 const toast: { error: Function } | undefined = inject("toast");
 
 let code: string[] = Array(6);
@@ -81,11 +80,7 @@ async function sendCode() {
       code: code.join(""),
     });
     userStore.setUser();
-    router.push({
-      path: route.query?.redirect
-        ? decodeURIComponent(String(route.query.redirect))
-        : "/",
-    });
+    router.push("/");
     sessionStore.refreshSession();
   } catch (e) {
     toast?.error("Código incorreto ou expirado.");

@@ -14,31 +14,37 @@ const { data: allCoursesNavigation } = await useAsyncData(
 const coursesStore = useCoursesStore();
 const loading: Ref<boolean> = ref(true);
 const quickFilterOptions = reactive(new Set<string>());
+const availableCourses: Ref<NavItem[] | undefined> = ref([]);
 
-const availableCourses: ComputedRef<NavItem[] | undefined> = computed(() => {
-  return allCoursesNavigation.value?.reduce((filtered: NavItem[], course) => {
-    const courseIsAvailable = coursesStore.courses?.find(
-      (e) => e.ContentId === course._dir
-    );
+function setAvailableCourses() {
+  availableCourses.value = allCoursesNavigation.value?.reduce(
+    (filtered: NavItem[], course) => {
+      const courseIsAvailable = coursesStore.courses?.find(
+        (e) => e.ContentId === course._dir
+      );
 
-    if (courseIsAvailable) {
-      const updatedCourse: NavItem & typeof courseIsAvailable = {
-        ...course,
-        ...courseIsAvailable,
-      };
+      if (courseIsAvailable) {
+        const updatedCourse: NavItem & typeof courseIsAvailable = {
+          ...course,
+          ...courseIsAvailable,
+        };
 
-      updatedCourse.areas.forEach(quickFilterOptions.add, quickFilterOptions);
+        updatedCourse.areas.forEach(quickFilterOptions.add, quickFilterOptions);
 
-      filtered.push(updatedCourse);
-    }
+        filtered.push(updatedCourse);
+      }
 
-    return filtered;
-  }, []);
-});
+      return filtered;
+    },
+    []
+  );
+}
 
 onMounted(async () => {
   try {
+    loading.value = true;
     await coursesStore.getCourses();
+    setAvailableCourses();
   } finally {
     loading.value = false;
   }

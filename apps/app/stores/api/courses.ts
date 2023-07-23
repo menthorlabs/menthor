@@ -24,6 +24,8 @@ export const useCoursesStore = defineStore("courses", {
   },
   actions: {
     async getCourse(id: string) {
+      const sessionStore = useSessionStore();
+      if (!sessionStore.isConnected()) return;
       try {
         const response = await this.$api(`/course/${id}`);
         this.course = response[0] || null;
@@ -32,6 +34,8 @@ export const useCoursesStore = defineStore("courses", {
       }
     },
     async getCourses() {
+      const sessionStore = useSessionStore();
+      if (!sessionStore.isConnected()) return;
       try {
         const response = await this.$api(`/course`);
         this.courses = response;
@@ -41,6 +45,8 @@ export const useCoursesStore = defineStore("courses", {
       }
     },
     async createCourse(payload: CourseParams) {
+      const sessionStore = useSessionStore();
+      if (!sessionStore.isConnected()) return;
       try {
         this.course = payload;
         await this.$api(`/course`, {
@@ -53,6 +59,8 @@ export const useCoursesStore = defineStore("courses", {
       }
     },
     async updateCourse(payload: CourseParams) {
+      const sessionStore = useSessionStore();
+      if (!sessionStore.isConnected()) return;
       if (!this.course) return;
 
       const lastState = Object.freeze({ ...this.course });
@@ -68,8 +76,9 @@ export const useCoursesStore = defineStore("courses", {
       }
     },
     async updateCourseLessons(lessonId: string) {
+      const sessionStore = useSessionStore();
+      if (!sessionStore.isConnected()) return;
       const lessons = new Set(this.course?.Lessons);
-      lessons.add(lessonId);
       try {
         if (this.course) {
           this.course.Lessons = [...lessons];
