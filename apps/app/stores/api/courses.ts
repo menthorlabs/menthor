@@ -80,6 +80,7 @@ export const useCoursesStore = defineStore("courses", {
       if (!sessionStore.isConnected()) return;
       const lessons = new Set(this.course?.Lessons);
       try {
+        lessons.add(lessonId);
         if (this.course) {
           this.course.Lessons = [...lessons];
         }

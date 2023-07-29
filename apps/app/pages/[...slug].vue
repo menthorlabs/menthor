@@ -139,11 +139,7 @@ async function sendSubmission() {
           {{ currentCourse.description }}
         </p>
         <div class="flex items-center gap-2">
-          <AppIconButton
-            v-for="tag in currentCourse.tags"
-            :app="tag"
-            v-tooltip="tag"
-          />
+          <AppIconButton v-for="tag in currentCourse.tags" :app="tag" />
         </div>
       </div>
     </div>

@@ -2,11 +2,25 @@
 import type { ParsedContent } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
 
 import { useMagicKeys } from "@vueuse/core";
-const { escape } = useMagicKeys();
+const { escape, arrowdown } = useMagicKeys();
+const navigatedIndex: Ref<number> = ref(-1);
 
 watch(escape, (v) => {
   if (v) searchModalStore.opened = false;
 });
+
+watch(arrowdown, (v) => {
+  if (
+    v &&
+    searchResults.value &&
+    Number(navigatedIndex.value) < searchResults.value.length
+  )
+    navigatedIndex.value++;
+});
+
+function resetNavigatedIndex() {
+  navigatedIndex.value = -1;
+}
 
 const searchModalStore = useSearchModalStore();
 
@@ -49,6 +63,7 @@ function resetSearch() {
 }
 
 async function searchContent() {
+  resetNavigatedIndex();
   if (String(search.value).length <= 0) {
     resetSearch();
     return;
@@ -136,11 +151,13 @@ watch(searchModalStore, async (newValue) => {
           v-if="searchResults && searchResults.length > 0"
         >
           <h2 class="mb-1 pl-6 text-sm font-medium">Cursos</h2>
-          <template v-for="item in searchResults" :key="item.course.title">
+          <template v-for="(item, i) in searchResults" :key="item.course.title">
             <NuxtLink
               v-if="item.course.navigation?.children[0]?.children[0]?._path"
               :to="item.course.navigation.children[0].children[0]._path"
               @click="searchModalStore.opened = false"
+              class="block"
+              :class="{ 'bg-zinc-100': i === navigatedIndex }"
             >
               <SearchModalCourseItem
                 :img="item.course.image"
@@ -153,6 +170,8 @@ watch(searchModalStore, async (newValue) => {
               :key="lesson.title"
               :to="lesson._path"
               @click="searchModalStore.opened = false"
+              class="block"
+              :class="{ 'bg-zinc-100': i === navigatedIndex }"
             >
               <SearchModalLessonItem
                 :label="lesson.categoryName"

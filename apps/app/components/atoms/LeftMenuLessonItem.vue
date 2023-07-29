@@ -23,7 +23,8 @@ function finishTask() {
     :title="navigation.title"
   >
     <div class="flex-1 min-w-0 truncate">{{ navigation.title }}</div>
-    <div
+    <button
+      @click.prevent
       class="hidden group-hover:flex"
       v-if="!done && coursesStore.isEnrolled"
     >
@@ -33,6 +34,6 @@ function finishTask() {
         class="hover:text-zinc-950 transition-all text-zinc-500"
         icon="check"
       />
-    </div>
+    </button>
   </nuxt-link>
 </template>
