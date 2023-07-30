@@ -1,17 +1,15 @@
-<script setup>
+<script setup lang="ts">
+import type { RouteLocationRaw } from "~/.nuxt/vue-router";
 definePageMeta({
   layout: "course",
 });
 const sessionStore = useSessionStore();
-const submissionsStore = useSubmissionsStore();
+const taskModalStore = useTaskModalStore();
 const coursesStore = useCoursesStore();
 const enrollmentModalStore = useEnrollmentModalStore();
 const { params } = useRoute();
-const finishLesson = ref(false);
 const router = useRouter();
-const loading = ref(null);
-const submissionContent = ref(null);
-const config = useRuntimeConfig();
+const loading = ref(true);
 
 const { data } = await useAsyncData("course", async () => {
   const [course, lesson, surround] = await Promise.all([
@@ -26,20 +24,28 @@ const { data } = await useAsyncData("course", async () => {
   return { data: { course, lesson, surround } };
 });
 
-const previousLesson = data.value.data.surround[0];
-const nextLesson = data.value.data.surround[1];
-const currentLesson = data.value.data.lesson;
+const previousLesson = data.value?.data.surround[0];
+const nextLesson = data.value?.data.surround[1];
+const currentLesson = data.value?.data.lesson;
 
-const currentCourse = data.value.data.course._dir;
+const currentCourse = data.value?.data.course._dir;
 
-function openSubmission() {
-  finishLesson.value = true;
-  coursesStore.updateCourseLessons(currentLesson._id);
-}
+const hasTask = computed(() => {
+  return ["Content", "Image"].includes(currentLesson?.submissionContent);
+});
 
 function redirectToNextLesson() {
-  finishLesson.value = false;
-  router.push(nextLesson._path);
+  if (!nextLesson) return;
+  router.push(nextLesson._path as RouteLocationRaw);
+}
+
+function openSubmission() {
+  if (!hasTask.value) {
+    redirectToNextLesson();
+    return;
+  }
+  taskModalStore.opened = true;
+  coursesStore.updateCourseLessons(currentLesson ? currentLesson._id : "");
 }
 
 onMounted(async () => {
@@ -47,29 +53,14 @@ onMounted(async () => {
     await coursesStore.getCourse(params.slug[0]);
 
     if (coursesStore.isEnrolled) {
-      await coursesStore.updateCourse({ CurrentLessonId: currentLesson._id });
+      await coursesStore.updateCourse({
+        CurrentLessonId: currentLesson ? currentLesson._id : "",
+      });
     }
-  } catch (e) {
-    console.error(e.message);
-  }
-});
-
-async function sendSubmission() {
-  try {
-    loading.value = true;
-    await submissionsStore.createSubmission({
-      Content: submissionContent.value,
-      SubmissionType: currentLesson.submissionContent,
-      SubmissionStatus: "Pending",
-      LessonUrl: `${config.public.appUrl}${currentLesson._path}`,
-      Lesson_Id: currentLesson._id,
-    });
-
-    redirectToNextLesson();
   } finally {
     loading.value = false;
   }
-}
+});
 </script>
 
 <template>
@@ -79,43 +70,7 @@ async function sendSubmission() {
       :current-lesson="currentLesson"
       :id="params.slug[0]"
     />
-    <ClientOnly>
-      <Teleport to="#modals">
-        <MModal
-          v-model="finishLesson"
-          class="w-full max-w-[480px]"
-          @confirm="redirectToNextLesson"
-        >
-          <template #header> Finalizar aula </template>
-          <template #description>
-            Envie seu progresso antes de continuar
-          </template>
-          <MForm @submit="sendSubmission">
-            <p class="mb-4 text-sm font-normal text-zinc-700">
-              {{ currentLesson.submissionDescription }}
-            </p>
-            <MDropzone v-if="currentLesson.submissionContent === 'Image'" />
-            <MTextField
-              v-model="submissionContent"
-              v-if="currentLesson.submissionContent === 'Content'"
-            />
-            <div class="mt-6 flex items-center justify-end gap-3">
-              <MButton
-                variant="outline"
-                text="Cancelar"
-                @click="finishLesson = false"
-              />
-              <MButton
-                variant="primary"
-                text="Confirmar"
-                type="submit"
-                :loading="loading"
-              />
-            </div>
-          </MForm>
-        </MModal>
-      </Teleport>
-    </ClientOnly>
+    <TaskModal :current-lesson="currentLesson" @next="redirectToNextLesson" />
 
     <div class="mb-10 flex items-center gap-6 px-8">
       <div
@@ -227,12 +182,22 @@ async function sendSubmission() {
                 text="Editar no GitHub"
               />
             </nuxt-link>
-            <!-- <MButton
-              icon-left="hashtag"
+            <MButton
+              icon-left="signature"
               size="sm"
               variant="inherit"
-              text="Construa em Público"
+              text="Matrícula"
+              @click="enrollmentModalStore.opened = true"
             />
+            <MButton
+              v-if="hasTask"
+              icon-left="list-check"
+              size="sm"
+              variant="inherit"
+              text="Enviar tarefa"
+              @click="taskModalStore.opened = true"
+            />
+            <!-- 
             <MButton
               icon-left="star"
               size="sm"

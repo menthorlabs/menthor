@@ -7,6 +7,5 @@ useShortcuts();
     <NuxtPage />
   </NuxtLayout>
   <SearchModal />
-  <div id="modals"></div>
   <MToast v-model="$toastItems" class="z-20" />
 </template>

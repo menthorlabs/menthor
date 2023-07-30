@@ -1,4 +1,14 @@
-/* eslint-disable no-unused-vars */
+type ValidatorObject = {
+  isValid: boolean;
+  errorMessage: string;
+};
+
+export type Validators = Record<
+  "email" | "password" | "required",
+  // eslint-disable-next-line no-unused-vars
+  (value: string | boolean) => ValidatorObject
+>;
+
 export default {
   email: (value: string | boolean) => {
     return {
@@ -22,7 +32,4 @@ export default {
       errorMessage: "Esse campo é obrigatório.",
     };
   },
-} as Record<
-  "email" | "password" | "required",
-  (value: string | boolean) => { isValid: boolean; errorMessage: string }
->;
+} as Validators;

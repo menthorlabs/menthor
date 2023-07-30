@@ -7,6 +7,7 @@ type CourseParams = {
   Done?: boolean;
   Lessons?: string[];
   Id?: string;
+  EnrollStatus?: "course" | "discord" | "share";
 };
 
 export const useCoursesStore = defineStore("courses", {

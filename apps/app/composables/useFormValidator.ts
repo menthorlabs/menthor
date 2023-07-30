@@ -1,4 +1,6 @@
-import validators from "../../../packages/utils/validators";
+import validators, { Validators } from "../../../packages/utils/validators";
+
+type Rules = keyof Validators;
 
 export function useFormValidator() {
   function allRules(required: boolean, rules: string[]) {
@@ -26,8 +28,7 @@ export function useFormValidator() {
       (rule: string | { isValid: Function; errorMessage: string }) => {
         if (
           typeof rule === "function" ||
-          (validators[rule as "email" | "password" | "required"] == null &&
-            typeof rule !== "object")
+          (validators[rule as Rules] == null && typeof rule !== "object")
         ) {
           return false;
         }
@@ -35,10 +36,7 @@ export function useFormValidator() {
         if (typeof rule === "object") {
           return !rule.isValid(value);
         }
-        return (
-          validators[rule as "email" | "password" | "required"](value)
-            .isValid === false
-        );
+        return validators[rule as Rules](value).isValid === false;
       }
     );
 
@@ -47,8 +45,7 @@ export function useFormValidator() {
         errorMessage.value = failedRule.errorMessage;
         return !failedRule;
       }
-      const failedValidator =
-        validators[failedRule as "email" | "password" | "required"](value);
+      const failedValidator = validators[failedRule as Rules](value);
       errorMessage.value = failedValidator.errorMessage;
     }
 
