@@ -1,10 +1,27 @@
-<script setup>
+<script setup lang="ts">
 const searchModalStore = useSearchModalStore();
+const route = useRoute();
+
+const queryBuilder = computed(() => {
+  return queryContent(`/${route.params?.slug ? route.params.slug[0] : ""}`);
+});
+
+const { data: navigation } = await useAsyncData(
+  "navigation",
+  () => fetchContentNavigation(queryBuilder.value),
+  {
+    watch: [route],
+  }
+);
+
+const isLesson = computed(() => {
+  return !!route.meta?.lesson;
+});
 </script>
 
 <template>
   <aside
-    class="flex w-[270px] min-w-[270px] flex-col border-r border-solid border-zinc-200"
+    class="flex w-[270px] min-w-[270px] flex-col border-r border-solid border-zinc-200 overflow-hidden"
   >
     <div class="w-full border-b border-solid border-zinc-200 p-3">
       <nuxt-link to="/">
@@ -20,6 +37,47 @@ const searchModalStore = useSearchModalStore();
         </div>
       </LeftMenuItem>
     </div>
-    <LeftMenuDefault />
+    <div class="relative flex-1 overflow-auto">
+      <Transition name="slide-fade">
+        <div class="px-3 py-4" v-if="isLesson && navigation">
+          <LeftMenuLessons
+            v-for="item in navigation[0].children"
+            :key="item._path"
+            :navigation="item"
+          />
+        </div>
+      </Transition>
+      <Transition name="slide-fade-reverse">
+        <LeftMenuDefault v-if="!isLesson" />
+      </Transition>
+    </div>
   </aside>
 </template>
+
+<style>
+.slide-fade-enter-active,
+.slide-fade-reverse-enter-active {
+  transition: all 0.3s;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  overflow: hidden;
+}
+
+.slide-fade-leave-active,
+.slide-fade-reverse-leave-active {
+  transition: all 0.3s;
+}
+
+.slide-fade-enter-from,
+.slide-fade-leave-to {
+  transform: translateX(100%);
+}
+
+.slide-fade-reverse-enter-from,
+.slide-fade-reverse-leave-to {
+  transform: translateX(-100%);
+}
+</style>

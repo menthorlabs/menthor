@@ -1,15 +1,18 @@
 <script setup lang="ts">
+import type { NavItem } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
 const { navigation } = defineProps<{
-  navigation: navigationItem;
+  navigation: NavItem;
 }>();
 
 const coursesStore = useCoursesStore();
 
 const done = computed(() => {
+  if (!navigation._id) return;
   return coursesStore.course?.Lessons?.includes(navigation._id);
 });
 
 function finishTask() {
+  if (!navigation._id) return;
   coursesStore.updateCourseLessons(navigation._id);
 }
 </script>

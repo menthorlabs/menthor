@@ -1,6 +1,7 @@
 <script setup lang="ts">
+import type { NavItem } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
 const { navigation } = defineProps<{
-  navigation: navigationItem;
+  navigation: NavItem;
 }>();
 </script>
 

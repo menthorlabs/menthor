@@ -1,8 +1,9 @@
 <script setup lang="ts">
 import type { RouteLocationRaw } from "~/.nuxt/vue-router";
 definePageMeta({
-  layout: "course",
+  lesson: true,
 });
+
 const sessionStore = useSessionStore();
 const taskModalStore = useTaskModalStore();
 const coursesStore = useCoursesStore();
@@ -72,7 +73,7 @@ onMounted(async () => {
     />
     <TaskModal :current-lesson="currentLesson" @next="redirectToNextLesson" />
 
-    <div class="mb-10 flex items-center gap-6 px-8">
+    <div class="mb-10 flex items-center gap-6 px-8" v-if="currentCourse">
       <div
         class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
       >
