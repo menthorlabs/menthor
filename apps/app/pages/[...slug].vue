@@ -102,6 +102,21 @@ onMounted(async () => {
     <div class="mx-auto max-w-[816px] px-8 pb-10">
       <ContentDoc id="nuxt_content" />
 
+      <nuxt-link
+        v-if="previousLesson"
+        :to="previousLesson._path"
+        class="block max-w-[0] max-h-[0] opacity-0 w-0 h-0 pointer-events-none"
+      >
+        {{ previousLesson.title }}
+      </nuxt-link>
+      <nuxt-link
+        v-if="nextLesson"
+        :to="nextLesson._path"
+        class="block max-w-[0] max-h-[0] opacity-0 w-0 h-0 pointer-events-none"
+      >
+        {{ nextLesson.title }}
+      </nuxt-link>
+
       <div
         v-if="!sessionStore.isConnected()"
         class="group relative mb-2 mr-2 mt-7 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-blue-400 to-pink-400 p-0.5 text-sm font-medium text-gray-900"

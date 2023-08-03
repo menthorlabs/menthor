@@ -3,7 +3,7 @@
 <template>
   <div class="px-8">
     <h1 class="mb-4 text-xl font-bold">
-      Bem vindo Bernardo, o que vamos aprender hoje?
+      Bem-vindo, o que vamos aprender hoje?
     </h1>
     <!-- <div class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(270px,_1fr))]">
       <RoadMapCard />

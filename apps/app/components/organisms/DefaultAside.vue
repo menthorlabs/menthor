@@ -39,7 +39,7 @@ const isLesson = computed(() => {
     </div>
     <div class="relative flex-1 overflow-auto">
       <Transition name="slide-fade">
-        <div class="px-3 py-4" v-if="isLesson && navigation">
+        <div class="px-3 py-4" v-if="isLesson && navigation && navigation[0]">
           <LeftMenuLessons
             v-for="item in navigation[0].children"
             :key="item._path"

@@ -3,6 +3,8 @@ import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
 import "./types/index.d.ts";
 
+const baseURL = "/app/";
+
 export default defineNuxtConfig({
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
@@ -11,6 +13,19 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
       appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
+    },
+  },
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+    },
+  },
+  app: {
+    baseURL,
+  },
+  image: {
+    ipx: {
+      baseURL: "/_ipx/",
     },
   },
   content: {
@@ -22,6 +37,7 @@ export default defineNuxtConfig({
         driver: "github",
         repo: "menthorlabs/courses",
         prefix: "/",
+        dir: "content",
       },
     },
     navigation: {
@@ -56,8 +72,8 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    "nuxt-simple-sitemap",
     "@nuxt/image-edge",
-    "nuxt-simple-robots",
     "nuxt-schema-org",
     "@nuxtjs/fontaine",
     "@nuxt/content",

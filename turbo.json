@@ -6,7 +6,7 @@
       "outputs": [".nuxt/**", "!.nuxt/content-cache/**"]
     },
     "generate": {
-      "outputs": [".nuxt/**", "!.nuxt/content-cache/**"]
+      "cache": false
     },
     "lint": {},
     "dev": {
