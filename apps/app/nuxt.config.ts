@@ -13,9 +13,11 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
       appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
+      baseURL,
     },
   },
   nitro: {
+    baseURL,
     prerender: {
       crawlLinks: true,
     },
@@ -25,7 +27,8 @@ export default defineNuxtConfig({
   },
   image: {
     ipx: {
-      baseURL: "/_ipx/",
+      baseURL:
+        process.env.NODE_ENV === "development" ? "/_ipx/" : `${baseURL}_ipx/`,
     },
   },
   content: {

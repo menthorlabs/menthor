@@ -40,7 +40,7 @@ const {
     <div v-if="active">
       <slot></slot>
     </div>
-    <div v-else>
+    <div v-else-if="done">
       <slot name="retry"></slot>
     </div>
   </div>

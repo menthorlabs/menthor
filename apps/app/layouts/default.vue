@@ -1,3 +1,11 @@
+<script setup lang="ts">
+const userStore = useUserStore();
+
+onMounted(() => {
+  userStore.setUser();
+});
+</script>
+
 <template>
   <div class="flex h-screen w-full overflow-hidden">
     <DefaultAside />

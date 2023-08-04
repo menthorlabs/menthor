@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  layout: "auth",
+});
+
 const router = useRouter();
 const signInStore = useSignInStore();
 const email = ref(null);
@@ -7,14 +11,16 @@ const sessionStore = useSessionStore();
 const queryStore = useQueryStore();
 const loading = ref(false);
 const toast: { error: Function } | undefined = inject("toast");
+const runtimeConfig = useRuntimeConfig();
+const route = useRoute();
 
 onMounted(async () => {
   await sessionStore.refreshToken();
   sessionStore.cleared = false;
-});
 
-definePageMeta({
-  layout: "auth",
+  if (route.query?.error) {
+    toast?.error(route.query?.error);
+  }
 });
 
 async function signIn() {
@@ -40,10 +46,14 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
   try {
     await signInStore.authenticateWithRedirect({
       strategy: strategy,
-      redirectUrl: `/sign-up?error=${encodeURIComponent(
+      redirectUrl: `${
+        runtimeConfig.public.baseURL
+      }sign-up?error=${encodeURIComponent(
         "Essa conta não existe. Crie uma conta."
       )}`,
-      redirectUrlComplete: queryStore.redirect ? queryStore.redirect : "/",
+      redirectUrlComplete: queryStore.redirect
+        ? queryStore.redirect
+        : runtimeConfig.public.baseURL,
     });
   } finally {
     loading.value = false;

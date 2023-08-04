@@ -1,15 +1,22 @@
 <script setup>
+definePageMeta({
+  layout: "auth",
+});
+
 const router = useRouter();
 const signUpStore = useSignUpStore();
 const email = ref(null);
 const password = ref(null);
-//const code = ref(null);
 const loading = ref(false);
 const toast = inject("toast");
 const queryStore = useQueryStore();
+const runtimeConfig = useRuntimeConfig();
+const route = useRoute();
 
-definePageMeta({
-  layout: "auth",
+onMounted(() => {
+  if (route.query?.error) {
+    toast?.error(route.query?.error);
+  }
 });
 
 async function createAccount() {
@@ -35,10 +42,14 @@ async function clerkOAuth(strategy) {
   try {
     await signUpStore.authenticateWithRedirect({
       strategy: strategy,
-      redirectUrl: `/sign-in?error=${encodeURIComponent(
+      redirectUrl: `${
+        runtimeConfig.public.baseURL
+      }sign-in?error=${encodeURIComponent(
         "Essa conta já existe. Faça login."
       )}`,
-      redirectUrlComplete: queryStore.redirect ? queryStore.redirect : "/",
+      redirectUrlComplete: queryStore.redirect
+        ? queryStore.redirect
+        : runtimeConfig.public.baseURL,
     });
   } finally {
     loading.value = false;

@@ -2,10 +2,6 @@
 const router = useRouter();
 const sessionStore = useSessionStore();
 const userStore = useUserStore();
-
-onMounted(() => {
-  userStore.setUser();
-});
 </script>
 
 <template>
