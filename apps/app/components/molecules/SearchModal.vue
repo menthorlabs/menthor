@@ -2,21 +2,21 @@
 import type { ParsedContent } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
 
 import { useMagicKeys } from "@vueuse/core";
-const { escape, arrowdown } = useMagicKeys();
+const { escape } = useMagicKeys();
 const navigatedIndex: Ref<number> = ref(-1);
 
 watch(escape, (v) => {
   if (v) searchModalStore.opened = false;
 });
 
-watch(arrowdown, (v) => {
-  if (
-    v &&
-    searchResults.value &&
-    Number(navigatedIndex.value) < searchResults.value.length
-  )
-    navigatedIndex.value++;
-});
+// watch(arrowdown, (v) => {
+//   if (
+//     v &&
+//     searchResults.value &&
+//     Number(navigatedIndex.value) < searchResults.value.length
+//   )
+//     navigatedIndex.value++;
+// });
 
 function resetNavigatedIndex() {
   navigatedIndex.value = -1;
@@ -122,6 +122,7 @@ watch(searchModalStore, async (newValue) => {
       <MModal
         v-model="searchModalStore.opened"
         class="w-full max-w-[640px]"
+        behavior="fixed"
         :closeable="false"
       >
         <template #header>

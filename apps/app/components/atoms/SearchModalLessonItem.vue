@@ -33,11 +33,11 @@ const contentText = computed(() => {
       />
     </div>
     <div class="text-sm font-normal">
-      <div class="text-xs font-normal text-zinc-500 group-hover:text-zinc-950">
-        {{ label }}
+      <div>
+        <span class="text-zinc-700">{{ label }}:</span>
+        {{ name }}
       </div>
-      <div>{{ name }}</div>
-      <div class="mt-1 text-xs text-zinc-500" v-if="contentText">
+      <div class="text-xs text-zinc-500" v-if="contentText">
         ... {{ contentText }} ...
       </div>
     </div>

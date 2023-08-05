@@ -30,15 +30,9 @@ function openProfileModal() {
           <StatsCard label="Conquistas" :value="userStore.badges?.length || 0">
             <span class="font-normal text-zinc-400">/???</span>
           </StatsCard>
-          <StatsCard label="Cursos completos" value="6">
+          <!-- <StatsCard label="Cursos completos" value="6">
             <span class="font-normal text-zinc-400">/28</span>
-          </StatsCard>
-          <!-- <StatsCard label="Horas estudadas" value="40">
-            <span class="pb-[3px] text-sm font-normal text-zinc-400"
-              >horas</span
-            >
-          </StatsCard>
-          <StatsCard label="Posição no ranking" value="4985"></StatsCard> -->
+          </StatsCard> -->
         </div>
       </div>
     </div>

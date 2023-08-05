@@ -16,11 +16,11 @@ const sizes: Record<typeof size, string> = {
 </script>
 
 <template>
-  <div
-    class="flex items-center justify-center rounded border border-zinc-200 bg-zinc-50 text-zinc-500"
+  <kbd
+    class="flex font-sans items-center justify-center rounded border border-zinc-200 bg-zinc-50 text-zinc-500"
     :class="[sizes[size]]"
   >
     <font-awesome-icon v-if="icon" :icon="icon" />
     <span class="leading-[15px]" v-if="text">{{ text }}</span>
-  </div>
+  </kbd>
 </template>

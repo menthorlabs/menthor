@@ -7,10 +7,12 @@ const {
   footer = false,
   modelValue = false,
   closeable = true,
+  behavior = "centered",
 } = defineProps<{
   footer?: boolean;
   modelValue: boolean;
   closeable?: boolean;
+  behavior?: "centered" | "fixed";
 }>();
 </script>
 
@@ -30,8 +32,8 @@ const {
 
         <div
           v-if="modelValue"
-          :class="$attrs.class"
-          class="inner relative my-auto h-fit overflow-hidden rounded-lg border border-solid border-zinc-300 bg-white shadow-2xl"
+          class="inner relative h-fit overflow-hidden rounded-lg border border-solid border-zinc-300 bg-white shadow-2xl"
+          :class="[$attrs.class, { 'my-auto': behavior === 'centered' }]"
         >
           <div class="flex border-b border-zinc-200 bg-white px-6 py-4">
             <div class="min-w-0 flex-1">
