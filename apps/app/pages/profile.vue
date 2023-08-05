@@ -1,8 +1,5 @@
 <script setup lang="ts">
 const userStore = useUserStore();
-onMounted(() => {
-  userStore.setUser();
-});
 
 function openProfileModal() {
   userStore.user ? (userStore.modalOpened = true) : null;

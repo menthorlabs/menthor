@@ -1,14 +1,17 @@
 import { defineStore } from "pinia";
 
+export type SubmissionStatus =
+  | "Approved"
+  | "Rejected"
+  | "Pending"
+  | "Done"
+  | "Draft"
+  | "ChangesRequested";
+
 export type SubmissionParams = {
   Content: string;
   SubmissionType: "Content" | "Image";
-  SubmissionStatus:
-    | "Approved"
-    | "Rejected"
-    | "Pending"
-    | "Draft"
-    | "ChangesRequested";
+  SubmissionStatus: SubmissionStatus;
   LessonUrl: string;
   Lesson_Id: string;
   Id?: string;
@@ -64,6 +67,14 @@ export const useSubmissionsStore = defineStore("submissions", {
       } catch (e) {
         throw new Error((e as Error).message);
       }
+    },
+    getStatusName(status: SubmissionStatus) {
+      const statusMap: Record<string, string> = {
+        Pending: "Pendente",
+        Done: "Finalizado",
+      };
+
+      return statusMap[status];
     },
   },
 });

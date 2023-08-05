@@ -21,7 +21,7 @@ const percentageDone = computed(() => {
   );
 });
 
-const { data: currentLesson } = await useAsyncData("currentLesson", () =>
+const { data: currentLesson } = await useAsyncData(course.Id, () =>
   queryContent("/").where({ _id: course.CurrentLessonId }).findOne()
 );
 </script>

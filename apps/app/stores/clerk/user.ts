@@ -1,5 +1,4 @@
 import { defineStore } from "pinia";
-// import { useUser } from "@clerk/clerk-js";
 import type { UpdateUserParams, SetProfileImageParams } from "@clerk/types";
 
 export type user = {

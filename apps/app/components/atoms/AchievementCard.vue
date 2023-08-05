@@ -24,31 +24,35 @@ const badges: Record<availableBadges, badgeState> = {
     image: "/achievements/map.png",
   },
   FE_MASTER: {
-    title: "???",
-    description: "???",
+    title: "",
+    description: "",
     image: "/achievements/sword.png",
   },
   BE_MASTER: {
-    title: "???",
-    description: "???",
+    title: "",
+    description: "",
     image: "/achievements/bow.png",
   },
   DESIGN_MASTER: {
-    title: "???",
-    description: "???",
+    title: "",
+    description: "",
     image: "/achievements/hammer.png",
   },
   DEVOPS_MASTER: {
-    title: "???",
-    description: "???",
+    title: "",
+    description: "",
     image: "/achievements/shield.png",
   },
 };
 </script>
 
 <template>
-  <div class="group rounded-md p-4 text-sm transition-all">
-    <div class="mb-3 aspect-square w-full rounded">
+  <div class="group rounded-md p-4 text-sm">
+    <div class="mb-3 aspect-square w-full rounded relative">
+      <div
+        v-if="!disabled"
+        class="absolute w-full h-full left-0 top-0 bg-[linear-gradient(45deg,transparent_25%,rgba(256,256,256,.5)_50%,transparent_75%,transparent_100%)] overflow-hidden bg-[length:250%_250%,100%_100%] bg-[position:-100%_0,0_0] bg-no-repeat duration-[1500ms] ease-in-out transition-[background-position_0s] group-hover:bg-[position:200%_0,0_0]"
+      ></div>
       <nuxt-img
         :src="badges[badge].image"
         alt="Achievement"
@@ -57,7 +61,6 @@ const badges: Record<availableBadges, badgeState> = {
         class="h-full w-full object-contain object-center"
         :class="{
           grayscale: disabled,
-          'transition-all group-hover:scale-110': !disabled,
         }"
       />
     </div>
