@@ -2,6 +2,9 @@
 definePageMeta({
   layout: "auth",
 });
+useSeoMeta({
+  title: "Crie sua conta",
+});
 
 const router = useRouter();
 const signUpStore = useSignUpStore();
@@ -48,15 +51,13 @@ async function clerkOAuth(strategy) {
         "Essa conta já existe. Faça login."
       )}`,
       redirectUrlComplete: queryStore.redirect
-        ? queryStore.redirect
+        ? runtimeConfig.public.baseURL + queryStore.redirect.slice(1)
         : runtimeConfig.public.baseURL,
     });
   } finally {
     loading.value = false;
   }
 }
-
-//https://winning-shad-32.accounts.dev/sign-up
 </script>
 
 <template>

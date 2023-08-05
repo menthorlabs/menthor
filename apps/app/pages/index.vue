@@ -1,9 +1,25 @@
-<script setup></script>
+<script setup lang="ts">
+const userStore = useUserStore();
+
+const title = computed(() => {
+  return `Bem-vindo${userStore.user ? ` ${userStore.user?.firstName}` : ""}, o
+      que vamos aprender hoje?`;
+});
+
+const description =
+  "Plataforma gratuita de ensino de programação web para pessoas que estão buscando o primeiro emprego na área ou que querem construir seu próprio negócio.";
+useSeoMeta({
+  title: title,
+  description: description,
+  ogDescription: description,
+  ogImage: "https://menthor.io/brand/menthor-cover.jpg",
+});
+</script>
 
 <template>
   <div class="px-8">
     <h1 class="mb-4 text-xl font-bold">
-      Bem-vindo, o que vamos aprender hoje?
+      {{ title }}
     </h1>
     <!-- <div class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(270px,_1fr))]">
       <RoadMapCard />

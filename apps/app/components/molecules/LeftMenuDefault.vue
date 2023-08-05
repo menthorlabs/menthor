@@ -88,7 +88,7 @@ onMounted(async () => {
       Você ainda não se matriculou em nenhum curso
     </div>
     <template v-else>
-      <div
+      <!-- <div
         class="scrollbox -ml-3 mb-1 w-[calc(100%_+_1.5rem)] overflow-x-auto"
         :class="{ '!mb-2': quickFilterOptions.size < 3 }"
       >
@@ -101,7 +101,7 @@ onMounted(async () => {
             <span class="first-letter:capitalize">{{ label }}</span>
           </div>
         </div>
-      </div>
+      </div> -->
       <LeftMenuCourseItem v-for="course in availableCourses" :course="course" />
     </template>
   </div>

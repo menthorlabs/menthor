@@ -33,6 +33,6 @@
   }
 
   #nuxt_content code .line.highlight {
-    @apply pl-3 pr-4 border-l-[4px] border-zinc-300 bg-zinc-50;
+    @apply pl-3 pr-4 border-l-[2px] border-zinc-950 bg-zinc-50;
   }
 }

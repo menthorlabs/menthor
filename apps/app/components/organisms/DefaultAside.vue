@@ -7,7 +7,7 @@ const queryBuilder = computed(() => {
 });
 
 const { data: navigation } = await useAsyncData(
-  "navigation",
+  route.params?.slug ? route.params.slug[0] : "navigation",
   () => fetchContentNavigation(queryBuilder.value),
   {
     watch: [route],

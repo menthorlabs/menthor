@@ -33,7 +33,13 @@ const {
         <div
           v-if="modelValue"
           class="inner relative h-fit overflow-hidden rounded-lg border border-solid border-zinc-300 bg-white shadow-2xl"
-          :class="[$attrs.class, { 'my-auto': behavior === 'centered' }]"
+          :class="[
+            $attrs.class,
+            {
+              'my-auto': behavior === 'centered',
+              'mt-10': behavior === 'fixed',
+            },
+          ]"
         >
           <div class="flex border-b border-zinc-200 bg-white px-6 py-4">
             <div class="min-w-0 flex-1">

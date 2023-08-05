@@ -19,7 +19,10 @@ const { data } = await useAsyncData("course", async () => {
       `/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}`
     ).findOne(),
     queryContent()
-      .where({ _type: "markdown" })
+      .where({
+        _type: "markdown",
+        _id: { $contains: `github:${params.slug[0]}` },
+      })
       .findSurround(`/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}`),
   ]);
   return { data: { course, lesson, surround } };
@@ -147,7 +150,10 @@ onMounted(async () => {
         </div>
       </div>
       <template v-else>
-        <template v-if="coursesStore.isEnrolled">
+        <div v-if="loading" class="flex justify-center mt-10">
+          <MSpinner class="h-4 w-4 border-zinc-400" />
+        </div>
+        <template v-else-if="coursesStore.isEnrolled">
           <div
             class="mt-10 flex justify-between gap-4"
             :class="{ '!justify-end': !previousLesson }"
@@ -155,14 +161,17 @@ onMounted(async () => {
             <nuxt-link
               v-if="previousLesson"
               :to="previousLesson._path"
-              class="cursor-pointer rounded border border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
+              class="cursor-pointer rounded w-full max-w-[214px] border border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
+              :title="previousLesson.title"
             >
               <div class="mb-1 text-right text-xs font-medium text-zinc-700">
                 Aula anterior
               </div>
               <div class="flex items-center justify-end gap-2">
                 <font-awesome-icon class="text-sm" icon="arrow-left" />
-                <span class="text-sm font-medium leading-[14px]">
+                <span
+                  class="text-sm font-medium leading-[14px] truncate flex-1 text-right"
+                >
                   {{ previousLesson.title }}
                 </span>
               </div>
@@ -170,13 +179,16 @@ onMounted(async () => {
             <div
               v-if="nextLesson"
               @click="openSubmission"
-              class="cursor-pointer rounded border border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
+              class="cursor-pointer rounded border w-full max-w-[214px] border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
+              :title="nextLesson.title"
             >
               <div class="mb-1 text-xs font-medium text-zinc-700">
                 Próxima aula
               </div>
               <div class="flex items-center gap-2">
-                <span class="text-sm font-medium leading-[14px]">
+                <span
+                  class="text-sm font-medium leading-[14px] truncate flex-1"
+                >
                   {{ nextLesson.title }}
                 </span>
                 <font-awesome-icon class="text-sm" icon="arrow-right" />
@@ -188,7 +200,7 @@ onMounted(async () => {
           >
             <nuxt-link
               v-if="currentLesson?._file"
-              :to="`https://github.com/menthorlabs/courses/edit/main/${currentLesson?._file}`"
+              :to="`https://github.com/menthorlabs/courses/edit/main/content/${currentLesson?._file}`"
               target="_blank"
             >
               <MButton

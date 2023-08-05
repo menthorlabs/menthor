@@ -2,6 +2,9 @@
 definePageMeta({
   layout: "auth",
 });
+useSeoMeta({
+  title: "Insira o código que enviamos para seu email",
+});
 const userStore = useUserStore();
 const signUpStore = useSignUpStore();
 const sessionStore = useSessionStore();

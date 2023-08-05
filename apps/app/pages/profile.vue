@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const userStore = useUserStore();
+useSeoMeta({
+  title: "Seu perfil",
+});
 
 function openProfileModal() {
   userStore.user ? (userStore.modalOpened = true) : null;
