@@ -49,7 +49,11 @@ async function requestDiscordRole() {
 }
 
 function shareOnTwitter() {
-  window.open("https://twitter.com/intent/tweet?text=Hello%20world", "_blank");
+  const shareMessage = `Não sei vocês, mas eu comecei a fazer o curso ${course.title} na menthor.io @sseraphini #construaempublico`;
+  window.open(
+    `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareMessage)}`,
+    "_blank"
+  );
 }
 
 async function shareCourse() {

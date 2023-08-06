@@ -29,7 +29,7 @@ const userStore = useUserStore();
       />
     </div>
     <div class="flex items-center gap-2">
-      <MIconButton icon="bell" variant="glass" />
+      <!-- <MIconButton icon="bell" variant="glass" /> -->
       <div v-if="sessionStore.isConnected()">
         <VDropdown
           :distance="6"
