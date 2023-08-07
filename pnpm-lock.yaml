@@ -56,6 +56,9 @@ importers:
       nuxt-simple-sitemap:
         specifier: ^3.1.4
         version: 3.1.4(nuxt@3.5.3)(vite@4.4.8)
+      nuxt-umami:
+        specifier: ^2.5.2
+        version: 2.5.2(vue@3.3.4)
       pinia:
         specifier: ^2.1.6
         version: 2.1.6(typescript@5.1.6)(vue@3.3.4)

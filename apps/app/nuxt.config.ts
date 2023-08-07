@@ -51,6 +51,7 @@ export default defineNuxtConfig({
     propsDestructure: true,
     defineModel: true,
   },
+  extends: ["nuxt-umami"],
   typescript: {
     tsConfig: {
       compilerOptions: {
@@ -91,5 +92,13 @@ export default defineNuxtConfig({
   },
   imports: {
     dirs: ["./composables", "./utils", "./stores/*"],
+  },
+  appConfig: {
+    umami: {
+      version: 2,
+      ignoreLocalhost: true,
+      id: process.env.NUXT_PUBLIC_APP_UMAMI_ID,
+      host: process.env.NUXT_PUBLIC_UMAMI_HOST,
+    },
   },
 });
