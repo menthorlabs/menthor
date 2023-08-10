@@ -19,6 +19,7 @@ async function updateUser() {
 
 function onInput(event: Event) {
   const files = (event.target as HTMLInputElement).files;
+  if (!files || files.length <= 0) return;
   setProfileImage(files ? files[0] : null);
 }
 

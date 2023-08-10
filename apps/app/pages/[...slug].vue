@@ -12,7 +12,7 @@ const { params } = useRoute();
 const router = useRouter();
 const loading = ref(true);
 
-const { data } = await useAsyncData("course", async () => {
+const { data } = await useAsyncData(`course${params.slug[0]}`, async () => {
   const [course, lesson, surround] = await Promise.all([
     queryContent(`/${params.slug[0]}`).findOne(),
     queryContent(
@@ -49,7 +49,6 @@ function openSubmission() {
     return;
   }
   taskModalStore.opened = true;
-  coursesStore.updateCourseLessons(currentLesson ? currentLesson._id : "");
 }
 
 onMounted(async () => {

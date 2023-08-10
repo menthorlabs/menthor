@@ -10,7 +10,6 @@ export const useDiscordStore = defineStore("discord", {
         const response = await this.$api(`/discord/user`, {
           method: "POST",
         });
-        console.log(response);
         return response;
       } catch (e) {
         throw new Error((e as Error).message);

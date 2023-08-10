@@ -19,8 +19,8 @@ const isDragging = ref(false);
 
 type dropzoneFile = File & { loading: boolean; accepted: boolean };
 
-function onInput(event) {
-  onChange(event.target.files);
+function onInput(event: Event) {
+  onChange((event.target as HTMLInputElement).files);
 }
 
 function onChange(files: dropzoneFile[]) {
@@ -29,6 +29,8 @@ function onChange(files: dropzoneFile[]) {
     e.accepted = true;
     return e;
   });
+
+  if (mappedFiles.length <= 0) return;
 
   if (!multiple) {
     emit("update:modelValue", mappedFiles[0]);

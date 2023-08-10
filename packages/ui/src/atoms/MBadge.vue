@@ -1,9 +1,15 @@
 <script setup lang="ts">
 type Variant = "primary" | "secondary" | "outline" | "inherit";
+type Status = "success" | "warning" | "error" | "default";
 
-const { variant = "outline", text = "Badge" } = defineProps<{
+const {
+  variant = "outline",
+  text = "Badge",
+  status,
+} = defineProps<{
   variant?: Variant;
   text: string;
+  status?: Status | null;
 }>();
 
 const variants: Record<Variant, string> = {
@@ -16,13 +22,25 @@ const variants: Record<Variant, string> = {
   inherit:
     "bg-white text-zinc-700 border border-solid border-white hover:bg-zinc-100 focus:ring-zinc-300",
 };
+
+const statusColors: Record<Status, string> = {
+  success: "bg-green-500",
+  warning: "bg-yellow-500",
+  error: "bg-red-500",
+  default: "bg-zinc-300",
+};
 </script>
 
 <template>
   <div
-    class="px-2.5 py-0.5 text-xs font-semibold rounded-full"
+    class="px-2.5 py-0.5 text-xs font-semibold rounded-full flex items-center gap-2"
     :class="variants[variant]"
   >
-    {{ text }}
+    <div
+      v-if="status"
+      class="h-[6px] w-[6px] rounded-full"
+      :class="statusColors[status]"
+    ></div>
+    <span>{{ text }}</span>
   </div>
 </template>
