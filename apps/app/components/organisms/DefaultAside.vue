@@ -24,8 +24,12 @@ const isLesson = computed(() => {
     class="flex w-[270px] min-w-[270px] flex-col border-r border-solid border-zinc-200 overflow-hidden"
   >
     <div class="w-full border-b border-solid border-zinc-200 p-3">
-      <nuxt-link to="/">
-        <LeftMenuItem icon="home" text="Início" />
+      <nuxt-link to="/" class="group" exact-active-class="is-active">
+        <LeftMenuItem
+          icon="home"
+          text="Início"
+          class="group-[.is-active]:text-zinc-950"
+        />
       </nuxt-link>
       <LeftMenuItem
         @click="searchModalStore.opened = true"

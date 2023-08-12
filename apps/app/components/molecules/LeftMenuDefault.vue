@@ -64,7 +64,7 @@ onMounted(async () => {
     </div>
     <div v-if="!sessionStore.isConnected()" class="px-8">
       <p class="text-xs text-center text-zinc-500 mb-2">
-        Entre agora e comece a salvar seu progresso de estudo
+        Entre agora e comece a salvar seu progresso 🚀
       </p>
       <NuxtLink to="/sign-in">
         <MButton

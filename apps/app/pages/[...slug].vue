@@ -75,7 +75,7 @@ onMounted(async () => {
     />
     <TaskModal :current-lesson="currentLesson" @next="redirectToNextLesson" />
 
-    <div class="mb-10 flex items-center gap-6 px-8" v-if="currentCourse">
+    <div class="mb-10 flex items-center gap-6 px-8">
       <div
         class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
       >
