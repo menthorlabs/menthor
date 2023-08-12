@@ -1,0 +1,34 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - name: Install dependencies
+        run: pnpm install
+      - name: Build
+        run: pnpm generate --filter=app
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-region: sa-east-1
+          role-to-assume: arn:aws:iam::928571631969:role/gh-actions-menthorlabs-menthor
+      - name: Install AWS Cli
+        id: install-aws-cli
+        uses: unfor19/install-aws-cli-action@master
+      - name: Push to S3
+        run: aws s3 cp apps/app/dist s3://menthor.io-app/app --recursive
+      - name: Invalidate CloudFront
+        run: aws cloudfront create-invalidation --distribution-id E2B0K34D9WKXHA --paths "/*"
