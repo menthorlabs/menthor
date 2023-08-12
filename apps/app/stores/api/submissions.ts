@@ -63,10 +63,16 @@ export const useSubmissionsStore = defineStore("submissions", {
         throw new Error((e as Error).message);
       }
     },
-    async requestUrl() {
+    async requestUrl(contentType: string) {
       try {
         const response = await this.$api(
-          `/submissions/request-url/${this.submission?.Id}`
+          `/submissions/request-url/${this.submission?.Id}`,
+          {
+            method: "POST",
+            body: {
+              contentType,
+            },
+          }
         );
 
         this.uploadUrl = response.url;
@@ -78,11 +84,9 @@ export const useSubmissionsStore = defineStore("submissions", {
       if (!this.uploadUrl?.url) return;
 
       try {
-        const formData = new FormData();
-        formData.append("image", file);
         const response = await $fetch(this.uploadUrl.url, {
           method: "PUT",
-          body: formData,
+          body: file,
           headers: {
             "Content-Type": file.type,
           },

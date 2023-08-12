@@ -61,7 +61,7 @@ async function sendSubmission(status: "Pending" | "Draft") {
       submissionsStore.submission?.SubmissionType === "Image" &&
       uploadedFile.value
     ) {
-      await submissionsStore.requestUrl();
+      await submissionsStore.requestUrl(uploadedFile.value.type);
       await submissionsStore.uploadFileOnUrl(uploadedFile.value);
       submissionsStore.submission.Content = `https://menthor-lessons.s3.sa-east-1.amazonaws.com/${submissionsStore.uploadUrl?.fileName}`;
       await submissionsStore.updateSubmission();
