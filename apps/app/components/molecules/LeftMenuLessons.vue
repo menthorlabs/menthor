@@ -8,10 +8,15 @@ const { navigation } = defineProps<{
 <template>
   <div class="mb-6">
     <h5 class="mb-2 text-xs font-semibold">{{ navigation.title }}</h5>
-    <LeftMenuLessonItem
+    <nuxt-link
       v-for="item in navigation.children"
       :key="item._id"
-      :navigation="item"
-    />
+      :title="item.title"
+      :to="item._path"
+      class="group"
+      exact-active-class="is-active"
+    >
+      <LeftMenuLessonItem :navigation="item" />
+    </nuxt-link>
   </div>
 </template>
