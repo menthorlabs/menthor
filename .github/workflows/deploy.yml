@@ -10,10 +10,6 @@ on:
         required: true
         type: string
 
-permissions:
-  id-token: write
-  contents: read
-
 jobs:
   build:
     runs-on: ubuntu-latest
