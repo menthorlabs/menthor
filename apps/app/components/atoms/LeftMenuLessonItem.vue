@@ -22,7 +22,7 @@ function finishTask() {
     :to="navigation._path"
     class="group flex h-[32px] items-center gap-2 rounded-tr border-l border-zinc-300 px-3 py-1 text-sm font-normal text-zinc-500 hover:bg-zinc-50 hover:text-zinc-950"
     :class="{ '!border-l-2 !border-green-600 !text-zinc-950': done }"
-    active-class="bg-zinc-100 text-zinc-950 border-zinc-900"
+    exact-active-class="bg-zinc-100 text-zinc-950 border-zinc-900"
     :title="navigation.title"
   >
     <div class="flex-1 min-w-0 truncate">{{ navigation.title }}</div>

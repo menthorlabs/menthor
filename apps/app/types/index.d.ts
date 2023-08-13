@@ -4,15 +4,6 @@ import type { Clerk } from "@clerk/clerk-js";
 import type { ofetch } from "ofetch";
 
 declare global {
-  type navigationItem = {
-    title: string | null;
-    description: string | null;
-    image: string | undefined;
-    _path: string;
-    children: navigationItem[];
-    _id: string;
-  };
-
   type authenticate = {
     strategy: string;
     redirectUrl?: string;
