@@ -52,7 +52,9 @@ const isLesson = computed(() => {
         </div>
       </Transition>
       <Transition name="slide-fade-reverse">
-        <LeftMenuDefault v-if="!isLesson" />
+        <div v-if="!isLesson">
+          <LeftMenuDefault />
+        </div>
       </Transition>
     </div>
   </aside>
