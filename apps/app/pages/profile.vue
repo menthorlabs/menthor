@@ -1,5 +1,8 @@
 <script setup lang="ts">
 const userStore = useUserStore();
+const router = useRouter();
+
+if (!userStore.user) router.push("/sign-in");
 useSeoMeta({
   title: "Seu perfil",
 });
