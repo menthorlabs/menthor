@@ -33,7 +33,7 @@ async function sendEmail() {
     <div class="container flex h-full w-full justify-center overflow-hidden">
       <nuxt-link
         to="/"
-        class="absolute left-0 top-0 h-full w-full cursor-default bg-zinc-300/40 backdrop-blur-sm"
+        class="absolute left-0 top-0 h-full w-full cursor-default bg-zinc-300/40 backdrop-blur-sm blur-performance"
       >
       </nuxt-link>
 

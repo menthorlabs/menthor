@@ -72,7 +72,7 @@ const menuOpened = ref<boolean>(false);
     <header
       class="top-0 z-10 flex w-full flex-col items-center justify-between md:container md:flex-row md:py-[11.5px]"
       :class="{
-        'fixed h-screen bg-zinc-300/40 backdrop-blur-sm md:sticky md:h-fit md:bg-inherit md:backdrop-blur-none':
+        'fixed h-screen bg-zinc-300/40 backdrop-blur-sm blur-performance md:sticky md:h-fit md:bg-inherit md:backdrop-blur-none':
           menuOpened,
         sticky: !menuOpened,
       }"

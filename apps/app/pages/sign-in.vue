@@ -66,7 +66,7 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
 
 <template>
   <div>
-    <h1 class="mb-6 text-center text-2xl font-bold">Bem-vindo de volta!</h1>
+    <h1 class="mb-6 text-center text-2xl font-bold">Continue a sua jornada!</h1>
     <div
       class="mb-6 grid grid-cols-2 gap-4 border-b border-dashed border-zinc-300 pb-6"
     >

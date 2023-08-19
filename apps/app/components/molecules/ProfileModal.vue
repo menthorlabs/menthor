@@ -102,7 +102,7 @@ async function setProfileImage(file: File | null) {
             />
             <MButton
               variant="primary"
-              text="Confirmar"
+              text="Salvar"
               type="submit"
               :loading="loading"
             />

@@ -26,7 +26,7 @@ const {
         class="container flex h-fit min-h-full w-full justify-center overflow-hidden py-10"
       >
         <div
-          class="fixed left-0 top-0 h-full w-full cursor-default bg-zinc-300/40 backdrop-blur-sm"
+          class="fixed left-0 top-0 h-full w-full cursor-default bg-zinc-300/40 backdrop-blur-sm blur-performance"
           @click="$emit('update:modelValue', false)"
         />
 
