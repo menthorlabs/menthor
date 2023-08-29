@@ -13,17 +13,28 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
       appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
-      baseURL,
     },
   },
+  routeRules: {
+    "/**": { ssr: false },
+    "/profile": { ssr: true },
+  },
   nitro: {
+    preset: "cloudflare",
     baseURL,
     prerender: {
       crawlLinks: true,
     },
+    runtimeConfig: {
+      app: {
+        buildAssetsDir: "_nuxt",
+      },
+    },
   },
   app: {
     baseURL,
+    buildAssetsDir:
+      process.env.NODE_ENV === "development" ? "/_nuxt/" : `${baseURL}_nuxt/`,
   },
   image: {
     ipx: {
