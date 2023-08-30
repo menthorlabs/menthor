@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/**": { ssr: false },
+    "/": { prerender: true },
     "/profile": { ssr: true },
   },
   nitro: {
