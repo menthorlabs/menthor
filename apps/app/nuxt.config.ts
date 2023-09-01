@@ -3,16 +3,17 @@ import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
 import "./types/index.d.ts";
 
+const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/";
 const baseURL = "/app/";
 
 export default defineNuxtConfig({
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
     public: {
-      siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/",
+      siteUrl,
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-      appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
+      appUrl: `${siteUrl}${baseURL.slice(1)}` || "https://menthor.io/app",
     },
   },
   routeRules: {
@@ -35,6 +36,9 @@ export default defineNuxtConfig({
     baseURL,
     buildAssetsDir:
       process.env.NODE_ENV === "development" ? "/_nuxt/" : `${baseURL}_nuxt/`,
+    head: {
+      link: [{ rel: "icon", type: "image/png", href: "/app/favicon.ico" }],
+    },
   },
   image: {
     ipx: {

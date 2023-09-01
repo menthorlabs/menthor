@@ -13,7 +13,7 @@ onMounted(() => {
       <div class="mask-radial h-full w-full max-w-[1440px]">
         <nuxt-img
           loading="lazy"
-          src="/midjourney/backgrounds/login.png"
+          src="/app/midjourney/backgrounds/login.png"
           class="block h-full w-full object-cover object-left-top"
           alt="Menthor login background"
           width="1440"
@@ -27,7 +27,7 @@ onMounted(() => {
     >
       <nuxt-img
         loading="lazy"
-        src="/brand/menthor-icon-dark.svg"
+        src="/app/brand/menthor-icon-dark.svg"
         class="mx-auto mb-8 block h-auto w-[54px]"
         alt="Menthor Icon Dark"
         width="54"

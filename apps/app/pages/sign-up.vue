@@ -46,13 +46,13 @@ async function clerkOAuth(strategy) {
     await signUpStore.authenticateWithRedirect({
       strategy: strategy,
       redirectUrl: `${
-        runtimeConfig.public.baseURL
+        runtimeConfig.public.appUrl
       }sign-in?error=${encodeURIComponent(
         "Essa conta já existe. Faça login."
       )}`,
       redirectUrlComplete: queryStore.redirect
-        ? runtimeConfig.public.baseURL + queryStore.redirect.slice(1)
-        : runtimeConfig.public.baseURL,
+        ? runtimeConfig.public.appUrl + queryStore.redirect.slice(1)
+        : runtimeConfig.public.appUrl,
     });
   } finally {
     loading.value = false;
