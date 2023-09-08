@@ -12,7 +12,10 @@ export default defineNuxtPlugin((nuxtApp) => {
 
       const jwt = await app.config.globalProperties.$clerk.session.getToken({
         template: "menthor-be",
+        skipCache: true,
       });
+
+      console.log({ jwt });
 
       options.headers = {
         "Content-Type": "application/json",
