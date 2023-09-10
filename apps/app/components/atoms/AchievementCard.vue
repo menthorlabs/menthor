@@ -58,6 +58,8 @@ const badges: Record<availableBadges, badgeState> = {
         alt="Achievement"
         width="400"
         height="400"
+        format="webp"
+        quality="85"
         class="h-full w-full object-contain object-center"
         :class="{
           grayscale: disabled,

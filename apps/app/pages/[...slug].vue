@@ -79,8 +79,13 @@ onMounted(async () => {
       <div
         class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
       >
-        <img
+        <nuxt-img
           :src="currentCourse.image"
+          :quality="85"
+          format="webp"
+          width="320"
+          height="320"
+          alt="Roadmap"
           class="h-full w-full object-cover object-center"
         />
       </div>

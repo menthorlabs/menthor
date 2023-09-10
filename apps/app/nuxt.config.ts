@@ -13,7 +13,7 @@ export default defineNuxtConfig({
       siteUrl,
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       clerkPublishableKey: process.env.NUXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
-      appUrl: `${siteUrl}${baseURL.slice(1)}` || "https://menthor.io/app",
+      appUrl: process.env.NUXT_PUBLIC_APP_URL,
     },
   },
   routeRules: {
@@ -41,6 +41,7 @@ export default defineNuxtConfig({
     },
   },
   image: {
+    domains: ["raw.githubusercontent.com"],
     ipx: {
       baseURL:
         process.env.NODE_ENV === "development" ? "/_ipx/" : `${baseURL}_ipx/`,

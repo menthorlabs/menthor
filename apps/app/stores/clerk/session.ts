@@ -10,6 +10,13 @@ export const useSessionStore = defineStore("session", {
       const userStore = useUserStore();
       return !!userStore.user?.primaryEmailAddress;
     },
+    checkSessionStatus() {
+      const clientSession = this.$clerk?.client?.sessions[0];
+      if (clientSession?.status === "expired" || !this.$clerk.session) {
+        console.log("expired");
+        this.signOut();
+      }
+    },
     hasSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
       return !this.cleared && clientSession;
@@ -30,8 +37,6 @@ export const useSessionStore = defineStore("session", {
       this.cleared = true;
 
       await this.$clerk.signOut();
-
-      this.$router.push("/sign-in");
     },
   },
 });

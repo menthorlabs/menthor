@@ -45,18 +45,24 @@ async function signIn() {
 
 async function clerkOAuth({ strategy }: { strategy: string }) {
   loading.value = true;
+  const redirectUrl = `${
+    runtimeConfig.public.appUrl
+  }sign-up?error=${encodeURIComponent(
+    "Essa conta não existe. Crie uma conta."
+  )}`;
+
+  const redirectUrlComplete = queryStore.redirect
+    ? runtimeConfig.public.appUrl + queryStore.redirect.slice(1)
+    : runtimeConfig.public.appUrl;
+
+  console.log(runtimeConfig.public);
+  console.log({ redirectUrl, redirectUrlComplete });
 
   try {
     await signInStore.authenticateWithRedirect({
       strategy: strategy,
-      redirectUrl: `${
-        runtimeConfig.public.appUrl
-      }sign-up?error=${encodeURIComponent(
-        "Essa conta não existe. Crie uma conta."
-      )}`,
-      redirectUrlComplete: queryStore.redirect
-        ? runtimeConfig.public.appUrl + queryStore.redirect.slice(1)
-        : runtimeConfig.public.appUrl,
+      redirectUrl,
+      redirectUrlComplete,
     });
   } finally {
     loading.value = false;

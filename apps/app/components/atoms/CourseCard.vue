@@ -19,6 +19,8 @@ const {
     >
       <nuxt-img
         :src="image"
+        :quality="85"
+        format="webp"
         width="364"
         height="364"
         alt="Roadmap"

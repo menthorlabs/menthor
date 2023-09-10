@@ -2,6 +2,11 @@
 const router = useRouter();
 const sessionStore = useSessionStore();
 const userStore = useUserStore();
+
+function signOut() {
+  sessionStore.signOut();
+  router.push("/sign-in");
+}
 </script>
 
 <template>
@@ -49,7 +54,7 @@ const userStore = useUserStore();
               <DropdownItem
                 icon="arrow-right-from-bracket"
                 name="Sair"
-                @click="sessionStore.signOut()"
+                @click="signOut"
               />
             </div>
           </template>

@@ -1,8 +1,10 @@
 <script setup lang="ts">
 const userStore = useUserStore();
+const sessionStore = useSessionStore();
 
 onMounted(() => {
   userStore.setUser();
+  sessionStore.checkSessionStatus();
 });
 </script>
 
