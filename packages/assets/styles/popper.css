@@ -1,13 +1,3 @@
-/* @layer base {
-  .v-popper--theme-tooltip .v-popper__wrapper .v-popper__inner {
-    @apply bg-white text-zinc-950 border border-zinc-300 shadow text-sm;
-  }
-
-  .v-popper--theme-tooltip .v-popper__wrapper .v-popper__arrow-container {
-    @apply hidden;
-  }
-} */
-
 .v-popper--theme-tooltip .v-popper__wrapper .v-popper__inner {
   background: white;
   color: #09090B;

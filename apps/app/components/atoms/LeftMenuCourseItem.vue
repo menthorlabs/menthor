@@ -32,13 +32,17 @@ const { data: currentLesson } = await useAsyncData(course.Id, () =>
     class="group flex cursor-pointer items-center gap-3 rounded p-[6px] pr-3 text-sm font-medium text-zinc-700 hover:bg-zinc-100"
   >
     <div class="h-[48px] min-w-[48px] overflow-hidden rounded">
-      <img
+      <nuxt-img
+        :quality="85"
+        format="webp"
+        width="96"
+        height="96"
         :src="course.image"
         :alt="course.title"
         class="h-full w-full object-cover object-center transition-all group-hover:scale-110"
       />
     </div>
-    <div class="flex-1">
+    <div class="flex-1 min-w-0">
       <div class="mb-1 min-w-0 truncate overflow-ellipsis">
         {{ course.title }}
       </div>
