@@ -35,4 +35,8 @@
   #nuxt_content code .line.highlight {
     @apply pl-3 pr-4 border-l-[2px] border-zinc-950 bg-zinc-50;
   }
+
+  #nuxt_content iframe {
+    @apply w-full aspect-video h-auto;
+  }
 }
