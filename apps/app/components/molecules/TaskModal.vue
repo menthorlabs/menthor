@@ -7,6 +7,7 @@ const emit = defineEmits(["next"]);
 const taskModalStore = useTaskModalStore();
 
 const submissionsStore = useSubmissionsStore();
+const coursesStore = useCoursesStore();
 const config = useRuntimeConfig();
 const loadingButton = ref(false);
 const loading = ref(true);
@@ -66,6 +67,7 @@ async function sendSubmission(status: "Pending" | "Draft") {
       submissionsStore.submission.Content = `https://menthor-lessons.s3.sa-east-1.amazonaws.com/${submissionsStore.uploadUrl?.fileName}`;
       await submissionsStore.updateSubmission();
     }
+    coursesStore.updateCourseLessons(currentLesson._id);
     taskModalStore.opened = false;
     emit("next");
   } finally {
