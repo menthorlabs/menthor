@@ -18,7 +18,6 @@ const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 
 onMounted(async () => {
-  await sessionStore.refreshToken();
   sessionStore.cleared = false;
 
   if (route.query?.error) {
@@ -55,14 +54,11 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
     ? runtimeConfig.public.appUrl + queryStore.redirect.slice(1)
     : runtimeConfig.public.appUrl;
 
-  console.log(runtimeConfig.public);
-  console.log({ redirectUrl, redirectUrlComplete });
-
   try {
     await signInStore.authenticateWithRedirect({
       strategy: strategy,
       redirectUrl,
-      redirectUrlComplete,
+      redirectUrlComplete: `${redirectUrlComplete}?oauth=true`,
     });
   } finally {
     loading.value = false;

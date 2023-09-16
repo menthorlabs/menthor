@@ -15,10 +15,10 @@ function signOut() {
   >
     <div class="relative h-full w-full max-w-[1017px]">
       <div
-        class="mask-radial-2 absolute bottom-0 left-0 h-[179px] w-[678px] bg-blue-500/20"
+        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(236,_72,_153,_0.2)_0%,_rgba(236,_72,_153,_0)_100%)] absolute bottom-0 left-0 h-[179px] w-[678px]"
       ></div>
       <div
-        class="mask-radial-2 absolute bottom-0 right-0 h-[179px] w-[678px] bg-pink-500/20"
+        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(37,_99,_235,_0.2)_0%,_rgba(28,_100,_242,_0)_100%)] absolute bottom-0 right-0 h-[179px] w-[678px]"
       ></div>
     </div>
   </div>

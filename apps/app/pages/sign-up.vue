@@ -42,17 +42,19 @@ async function createAccount() {
 async function clerkOAuth(strategy) {
   loading.value = true;
 
+  const redirectUrl = `${
+    runtimeConfig.public.appUrl
+  }sign-in?error=${encodeURIComponent("Essa conta já existe. Faça login.")}`;
+
+  const redirectUrlComplete = queryStore.redirect
+    ? runtimeConfig.public.appUrl + queryStore.redirect.slice(1)
+    : runtimeConfig.public.appUrl;
+
   try {
     await signUpStore.authenticateWithRedirect({
       strategy: strategy,
-      redirectUrl: `${
-        runtimeConfig.public.appUrl
-      }sign-in?error=${encodeURIComponent(
-        "Essa conta já existe. Faça login."
-      )}`,
-      redirectUrlComplete: queryStore.redirect
-        ? runtimeConfig.public.appUrl + queryStore.redirect.slice(1)
-        : runtimeConfig.public.appUrl,
+      redirectUrl,
+      redirectUrlComplete: `${redirectUrlComplete}?oauth=true`,
     });
   } finally {
     loading.value = false;

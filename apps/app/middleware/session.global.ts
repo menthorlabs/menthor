@@ -1,4 +1,6 @@
 export default defineNuxtRouteMiddleware(async (to) => {
+  if (to.query.oauth) return;
+
   const sessionStore = useSessionStore();
   const userStore = useUserStore();
 

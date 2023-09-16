@@ -83,8 +83,8 @@ async function sendCode() {
       code: code.join(""),
     });
     userStore.setUser();
-    router.push("/");
     sessionStore.refreshSession();
+    router.push("/");
   } catch (e) {
     toast?.error("Código incorreto ou expirado.");
   } finally {

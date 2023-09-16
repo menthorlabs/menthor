@@ -18,7 +18,7 @@ export const useSignInStore = defineStore("signIn", {
     async authenticateWithRedirect({
       strategy,
       redirectUrl = "/sso-callback",
-      redirectUrlComplete = "/?refreshToken=true",
+      redirectUrlComplete = "/",
     }: authenticate) {
       await this.$clerk.client.signIn.authenticateWithRedirect({
         strategy: strategy,

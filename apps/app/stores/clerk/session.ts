@@ -12,9 +12,9 @@ export const useSessionStore = defineStore("session", {
     },
     checkSessionStatus() {
       const clientSession = this.$clerk?.client?.sessions[0];
-      if (clientSession?.status === "expired" || !this.$clerk.session) {
-        console.log("expired");
+      if (clientSession?.status === "expired") {
         this.signOut();
+        this.$router.push("/sign-in");
       }
     },
     hasSession() {
@@ -23,11 +23,8 @@ export const useSessionStore = defineStore("session", {
     },
     async refreshSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
+      console.log({ clientSession });
       await this.$clerk.setSession(clientSession);
-    },
-    async refreshToken() {
-      if (!this.$clerk.session) return;
-      this.token = await this.$clerk.session.getToken();
     },
     async signOut() {
       const clerkToken = useCookie("__session");
