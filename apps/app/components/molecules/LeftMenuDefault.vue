@@ -44,6 +44,7 @@ function setAvailableCourses() {
 onMounted(async () => {
   try {
     loading.value = true;
+    setAvailableCourses();
     await coursesStore.getCourses();
     setAvailableCourses();
   } finally {

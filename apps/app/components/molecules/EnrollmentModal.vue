@@ -72,7 +72,7 @@ async function shareCourse() {
 
 <template>
   <ClientOnly>
-    <Teleport to="#modals">
+    <Teleport to="body">
       <MModal
         v-model="enrollmentModalStore.opened"
         class="w-full max-w-[480px]"

@@ -37,7 +37,7 @@ async function setProfileImage(file: File | null) {
 
 <template>
   <ClientOnly>
-    <Teleport to="#modals">
+    <Teleport to="body">
       <MModal v-model="userStore.modalOpened" class="w-full max-w-[480px]">
         <template #header>
           <div class="flex items-center gap-4">

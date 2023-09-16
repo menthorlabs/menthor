@@ -90,7 +90,7 @@ async function uploadFile(file: File) {
 
 <template>
   <ClientOnly>
-    <Teleport to="#modals">
+    <Teleport to="body">
       <MModal v-model="taskModalStore.opened" class="w-full max-w-[480px]">
         <template #header> Finalizar aula </template>
         <template #description>

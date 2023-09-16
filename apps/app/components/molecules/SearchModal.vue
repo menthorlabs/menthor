@@ -118,7 +118,7 @@ watch(searchModalStore, async (newValue) => {
 
 <template>
   <ClientOnly>
-    <Teleport to="#modals">
+    <Teleport to="body">
       <MModal
         v-model="searchModalStore.opened"
         class="w-full max-w-[640px]"

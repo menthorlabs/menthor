@@ -15,8 +15,6 @@ export default defineNuxtPlugin((nuxtApp) => {
         skipCache: true,
       });
 
-      console.log({ jwt });
-
       options.headers = {
         "Content-Type": "application/json",
         Authorization: `Bearer ${jwt}`,
