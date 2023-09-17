@@ -26,7 +26,7 @@ async function enrollCourse() {
 }
 
 const redirectUri = computed(() => {
-  return `${config.public.appUrl}/discord/role/${course.discordRole}`;
+  return `${config.public.appUrl}discord/role/${course.discordRole}`;
 });
 
 function openDiscordOAuth() {

@@ -7,16 +7,12 @@ const route = useRoute();
 const error = ref(false);
 const discordStore = useDiscordStore();
 
-const redirectUri = computed(() => {
-  return `${config.public.appUrl}/discord/role/${route.params.id}`;
-});
-
 async function assignDiscordRole() {
   try {
     await discordStore.requestRole({
       roleId: String(route.params.id),
       code: String(route.query.code),
-      redirectUri: redirectUri.value,
+      redirectUri: `${config.public.appUrl}discord/role/${route.params.id}`,
     });
     window.close();
   } catch (e) {

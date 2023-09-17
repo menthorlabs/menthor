@@ -41,8 +41,9 @@ export default defineNuxtConfig({
     },
   },
   image: {
+    provider: "ipxStatic",
     domains: ["raw.githubusercontent.com"],
-    ipx: {
+    ipxStatic: {
       baseURL:
         process.env.NODE_ENV === "development" ? "/_ipx/" : `${baseURL}_ipx/`,
     },

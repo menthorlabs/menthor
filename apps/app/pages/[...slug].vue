@@ -53,6 +53,10 @@ function openSubmission() {
 
 onMounted(async () => {
   try {
+    if (coursesStore.course?.ContentId === params.slug[0]) {
+      return;
+    }
+
     await coursesStore.getCourse(params.slug[0]);
 
     if (coursesStore.isEnrolled) {
