@@ -22,7 +22,7 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "cloudflare",
-    baseURL,
+    baseURL: process.env.NODE_ENV === "development" ? "/" : baseURL,
     prerender: {
       crawlLinks: true,
     },
@@ -33,7 +33,7 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    baseURL,
+    baseURL: process.env.NODE_ENV === "development" ? "/" : baseURL,
     buildAssetsDir:
       process.env.NODE_ENV === "development" ? "/_nuxt/" : `${baseURL}_nuxt/`,
     head: {
@@ -41,12 +41,11 @@ export default defineNuxtConfig({
     },
   },
   image: {
-    provider: "ipxStatic",
     domains: ["raw.githubusercontent.com"],
-    ipxStatic: {
-      baseURL:
-        process.env.NODE_ENV === "development" ? "/_ipx/" : `${baseURL}_ipx/`,
-    },
+    // ipxStatic: {
+    //   baseURL:
+    //     process.env.NODE_ENV === "development" ? "/_ipx/" : `${baseURL}_ipx/`,
+    // },
   },
   content: {
     highlight: {
