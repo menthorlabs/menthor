@@ -8,11 +8,12 @@ const error = ref(false);
 const discordStore = useDiscordStore();
 
 async function assignDiscordRole() {
+  const discordRoleId = localStorage.getItem("m-discord-role");
   try {
     await discordStore.requestRole({
-      roleId: String(route.params.id),
+      roleId: discordRoleId as string,
       code: String(route.query.code),
-      redirectUri: `${config.public.appUrl}discord/role/${route.params.id}`,
+      redirectUri: `${config.public.appUrl}discord/role`,
     });
     window.close();
   } catch (e) {
@@ -20,7 +21,9 @@ async function assignDiscordRole() {
   }
 }
 
-assignDiscordRole();
+onMounted(() => {
+  assignDiscordRole();
+});
 </script>
 
 <template>
