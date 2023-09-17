@@ -37,6 +37,6 @@
   }
 
   #nuxt_content iframe {
-    @apply w-full aspect-video h-auto;
+    @apply w-full aspect-video h-auto mb-4;
   }
 }

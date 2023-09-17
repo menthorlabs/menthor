@@ -72,12 +72,29 @@ const cards = [
         de programação web para pessoas que estão buscando o primeiro emprego na
         área ou que querem construir seu próprio negócio.
       </p>
-      <div class="mb-4 flex items-center justify-center md:mb-10">
-        <nuxt-link to="/acesso-antecipado" class="w-full md:w-fit">
+      <div
+        class="mb-4 flex flex-wrap items-center gap-4 justify-center md:mb-10"
+      >
+        <nuxt-link
+          :to="`${$config.public.appUrl}sign-up?utm_source=landing_page`"
+          class="w-full md:w-fit"
+        >
           <MButton
-            text="Acesso antecipado"
+            text="Começar agora"
             icon-left="rocket"
             size="lg"
+            class="w-full md:w-fit"
+          />
+        </nuxt-link>
+        <nuxt-link
+          :to="`${$config.public.appUrl}?utm_source=landing_page`"
+          class="w-full md:w-fit"
+        >
+          <MButton
+            text="Ver cursos disponíveis"
+            icon-left="magnifying-glass"
+            size="lg"
+            variant="outline"
             class="w-full md:w-fit"
           />
         </nuxt-link>
@@ -85,7 +102,7 @@ const cards = [
       <div
         class="mx-auto mb-10 w-fit rounded-full bg-zinc-900 px-4 py-1 text-center text-[10px] font-semibold text-white md:text-xs"
       >
-        ✨ Mais de 5000 alunos já solicitaram o acesso antecipado.
+        ✨ Seja um dos 1000 primeiros alunos e ganhe uma conquista!
       </div>
       <!-- <h2
         class="mb-3 text-center text-xs font-semibold uppercase text-zinc-500"

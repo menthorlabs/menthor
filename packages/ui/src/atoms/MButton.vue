@@ -1,4 +1,7 @@
 <script setup lang="ts">
+type Variant = "primary" | "secondary" | "outline" | "inherit";
+type Size = "sm" | "base" | "lg";
+
 defineProps({
   text: String,
   loading: Boolean,
@@ -14,12 +17,7 @@ defineProps({
   iconRight: [String, Array],
 });
 
-const variants: {
-  primary: string;
-  secondary: string;
-  outline: string;
-  inherit: string;
-} = {
+const variants: Record<Variant, string> = {
   primary:
     "bg-blue-600 text-white border border-solid border-blue-600 hover:bg-blue-700 hover:border-blue-700 focus:ring-blue-300",
   secondary:
@@ -30,7 +28,7 @@ const variants: {
     "bg-white text-zinc-700 border border-solid border-white hover:bg-zinc-100 focus:ring-zinc-300",
 };
 
-const sizes: { sm: string; base: string; lg: string } = {
+const sizes: Record<Size, string> = {
   sm: "px-3 py-[8px] text-sm leading-[19px]",
   base: "px-5 py-[9.5px] text-sm leading-[19px]",
   lg: "px-5 py-[13.5px] text-base leading-[23px]",
@@ -41,7 +39,7 @@ const sizes: { sm: string; base: string; lg: string } = {
   <button
     type="button"
     class="flex cursor-pointer items-center justify-center gap-2 rounded-lg font-medium focus:ring-4"
-    :class="[variants[variant], sizes[size]]"
+    :class="[variants[variant as Variant], sizes[size as Size]]"
   >
     <MSpinner class="h-4 w-4" v-if="loading && !iconRight" />
     <font-awesome-icon

@@ -4,12 +4,15 @@
       <h2
         class="mx-auto mb-6 max-w-[664px] text-center text-3xl font-bold md:text-4xl"
       >
-        Está pronto para começar? 🎉
+        Ainda não está convencido? 🤔
       </h2>
-      <nuxt-link to="/acesso-antecipado" class="mx-auto block w-full md:w-fit">
+      <nuxt-link
+        :to="`${$config.public.appUrl}?utm_source=landing_page`"
+        class="mx-auto block w-full md:w-fit"
+      >
         <MButton
-          text="Garantir meu acesso"
-          icon-left="rocket"
+          text="Ver todos os cursos"
+          icon-right="arrow-right"
           size="lg"
           class="w-full"
         />

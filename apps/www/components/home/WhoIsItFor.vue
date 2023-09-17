@@ -58,7 +58,7 @@ const cards: card[] = [
             {{ card.description }}
           </p>
           <nuxt-link
-            to="/acesso-antecipado"
+            :to="`${$config.public.appUrl}sign-up?utm_source=landing_page`"
             class="group flex items-center gap-2 text-blue-600 no-underline transition-all hover:text-blue-800"
           >
             <span class="text-base font-medium">{{ card.cta }}</span>

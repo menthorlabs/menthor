@@ -100,18 +100,10 @@ const menuOpened = ref<boolean>(false);
         class="w-full flex-1 gap-6 space-y-4 p-4 md:flex md:h-fit md:items-center md:justify-end md:space-y-0 md:p-0"
         :class="{ block: menuOpened, hidden: !menuOpened }"
       >
-        <nuxt-link to="https://discord.gg/8BCByyXxq8" target="_blank">
-          <MButton
-            icon-left="fa-brands fa-discord"
-            text="Entre no discord"
-            variant="secondary"
-            size="sm"
-            class="w-full md:w-fit"
-          />
-        </nuxt-link>
         <nuxt-link
           to="https://github.com/menthorlabs/menthor"
           target="_blank"
+          external
           class="group flex w-full cursor-pointer items-center justify-center gap-2 text-zinc-700 no-underline hover:text-zinc-900 md:w-fit"
         >
           <font-awesome-icon :icon="['fab', 'github']" class="text-xl" />
@@ -130,6 +122,40 @@ const menuOpened = ref<boolean>(false);
               </div>
             </div>
           </div>
+        </nuxt-link>
+        <nuxt-link
+          class="hidden md:block"
+          to="https://discord.gg/8BCByyXxq8"
+          target="_blank"
+          external
+        >
+          <MIconButton variant="glass" icon="fa-brands fa-discord" />
+        </nuxt-link>
+        <nuxt-link
+          class="block md:hidden"
+          to="https://discord.gg/8BCByyXxq8"
+          target="_blank"
+          external
+        >
+          <MButton
+            icon-left="fa-brands fa-discord"
+            text="Entre no discord"
+            variant="outline"
+            size="sm"
+            class="w-full md:w-fit"
+          />
+        </nuxt-link>
+        <nuxt-link
+          class="block"
+          :to="`${$config.public.appUrl}sign-in?utm_source=landing_page`"
+        >
+          <MButton
+            icon-right="arrow-right"
+            text="Acessar plataforma"
+            variant="secondary"
+            size="sm"
+            class="w-full md:w-fit"
+          />
         </nuxt-link>
       </div>
     </header>
@@ -150,14 +176,14 @@ const menuOpened = ref<boolean>(false);
       <!-- <div class="mt-10 flex flex-wrap items-center justify-center gap-4 md:gap-8">
         <nuxt-link
           to="#"
-          target="_blank"
+          target="_blank" external
           class="relative text-sm font-normal before:absolute before:-right-[16px] before:top-0 before:hidden before:h-full before:w-[1px] before:bg-zinc-200 hover:underline md:before:block"
         >
           Políticas de Privacidade
         </nuxt-link>
         <nuxt-link
           to="#"
-          target="_blank"
+          target="_blank" external
           class="text-sm font-normal hover:underline"
         >
           Histórico de Atualizações

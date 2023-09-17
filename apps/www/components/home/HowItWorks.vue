@@ -69,9 +69,12 @@ const cards: card[] = [
         </div>
       </div>
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-6">
-        <nuxt-link to="/acesso-antecipado" class="block w-full sm:w-fit">
+        <nuxt-link
+          :to="`${$config.public.appUrl}sign-up?utm_source=landing_page`"
+          class="block w-full sm:w-fit"
+        >
           <MButton
-            text="Quero ser aluno"
+            text="Criar minha conta"
             icon-left="graduation-cap"
             size="lg"
             class="w-full"
