@@ -2,6 +2,7 @@
 const router = useRouter();
 const sessionStore = useSessionStore();
 const userStore = useUserStore();
+const defaultAsideStore = useDefaultAsideStore();
 
 function signOut() {
   sessionStore.signOut();
@@ -23,9 +24,15 @@ function signOut() {
     </div>
   </div>
   <div
-    class="sticky left-0 top-0 z-10 flex h-[56px] w-full items-center px-8 py-2"
+    class="sticky left-0 top-0 z-10 flex h-[56px] w-full items-center px-4 sm:px-8 py-2"
   >
     <div class="flex flex-1 items-center gap-2">
+      <MIconButton
+        class="md:hidden"
+        @click="defaultAsideStore.opened = !defaultAsideStore.opened"
+        icon="bars"
+        variant="glass"
+      />
       <MIconButton @click="router.back()" icon="arrow-left" variant="glass" />
       <MIconButton
         @click="router.forward()"

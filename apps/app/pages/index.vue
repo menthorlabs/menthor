@@ -17,7 +17,7 @@ useSeoMeta({
 </script>
 
 <template>
-  <div class="px-8">
+  <div class="px-4 sm:px-8">
     <h1 class="mb-4 text-xl font-bold">
       {{ title }}
     </h1>
@@ -28,7 +28,9 @@ useSeoMeta({
       <RoadMapCard />
     </div>
     <h2 class="mb-4 text-lg font-bold">Recomendados para você</h2> -->
-    <div class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(180px,_1fr))]">
+    <div
+      class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] sm:grid-cols-[repeat(auto-fill,_minmax(180px,_1fr))]"
+    >
       <ContentNavigation v-slot="{ navigation }">
         <NuxtLink
           v-for="item of navigation"

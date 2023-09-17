@@ -23,7 +23,7 @@ onMounted(() => {
       </div>
     </div>
     <div
-      class="relative z-10 my-auto w-full max-w-[480px] rounded-lg border border-slate-200 bg-white p-10 shadow-2xl"
+      class="relative z-10 my-auto w-full max-w-[480px] rounded-lg sm:border border-slate-200 sm:bg-white p-6 sm:p-10 sm:shadow-2xl"
     >
       <nuxt-img
         loading="lazy"

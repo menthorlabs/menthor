@@ -79,7 +79,7 @@ onMounted(async () => {
     />
     <TaskModal :current-lesson="currentLesson" @next="redirectToNextLesson" />
 
-    <div class="mb-10 flex items-center gap-6 px-8">
+    <div class="mb-10 flex flex-wrap items-center gap-6 px-6 sm:px-8">
       <div
         class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
       >
@@ -105,12 +105,12 @@ onMounted(async () => {
         <p class="mb-3 text-base text-zinc-700">
           {{ currentCourse.description }}
         </p>
-        <div class="flex items-center gap-2">
+        <div class="flex items-center gap-2 overflow-x-auto">
           <AppIconButton v-for="tag in currentCourse.tags" :app="tag" />
         </div>
       </div>
     </div>
-    <div class="mx-auto max-w-[816px] px-8 pb-10">
+    <div class="mx-auto max-w-[816px] px-6 sm:px-8 pb-10">
       <ContentDoc id="nuxt_content" />
 
       <nuxt-link
@@ -163,13 +163,13 @@ onMounted(async () => {
         </div>
         <template v-else-if="coursesStore.isEnrolled">
           <div
-            class="mt-10 flex justify-between gap-4"
+            class="mt-10 flex flex-wrap justify-between gap-4"
             :class="{ '!justify-end': !previousLesson }"
           >
             <nuxt-link
               v-if="previousLesson"
               :to="previousLesson._path"
-              class="cursor-pointer rounded w-full max-w-[214px] border border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
+              class="cursor-pointer rounded w-full sm:max-w-[214px] border border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
               :title="previousLesson.title"
             >
               <div class="mb-1 text-right text-xs font-medium text-zinc-700">
@@ -187,7 +187,7 @@ onMounted(async () => {
             <div
               v-if="nextLesson"
               @click="openSubmission"
-              class="cursor-pointer rounded border w-full max-w-[214px] border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
+              class="cursor-pointer rounded border w-full sm:max-w-[214px] border-zinc-300 px-4 py-3 transition-all hover:border-zinc-400 hover:bg-zinc-50"
               :title="nextLesson.title"
             >
               <div class="mb-1 text-xs font-medium text-zinc-700">
@@ -204,7 +204,7 @@ onMounted(async () => {
             </div>
           </div>
           <div
-            class="mt-6 flex items-center justify-center gap-2 border-t border-dashed border-zinc-300 pt-6"
+            class="mt-6 flex flex-wrap items-center justify-center gap-2 border-t border-dashed border-zinc-300 pt-6"
           >
             <nuxt-link
               v-if="currentLesson?._file"

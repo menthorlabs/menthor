@@ -3,6 +3,7 @@ import type { NavItem } from "../../../../node_modules/@nuxt/content/dist/runtim
 const { navigation } = defineProps<{
   navigation: NavItem;
 }>();
+const defaultAsideStore = useDefaultAsideStore();
 </script>
 
 <template>
@@ -15,6 +16,7 @@ const { navigation } = defineProps<{
       :to="item._path"
       class="group"
       exact-active-class="is-active"
+      @click="defaultAsideStore.opened = false"
     >
       <LeftMenuLessonItem :navigation="item" />
     </nuxt-link>

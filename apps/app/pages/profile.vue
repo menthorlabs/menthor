@@ -15,7 +15,7 @@ function openProfileModal() {
 <template>
   <main class="relative">
     <ProfileModal v-if="userStore.user" />
-    <div class="mb-10 flex items-center gap-6 px-8">
+    <div class="mb-10 flex flex-wrap items-center gap-6 px-4 sm:px-8">
       <div
         class="group h-[160px] w-[160px] min-w-[160px] cursor-pointer overflow-hidden rounded shadow-lg"
         @click="openProfileModal"
@@ -42,7 +42,7 @@ function openProfileModal() {
         </div>
       </div>
     </div>
-    <div class="px-8 pb-8">
+    <div class="px-4 sm:px-8 pb-8">
       <h2 class="mb-4 text-lg font-bold">Suas conquistas</h2>
       <div class="grid grid-cols-[repeat(auto-fill,_minmax(190px,_1fr))]">
         <AchievementCard

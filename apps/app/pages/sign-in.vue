@@ -70,9 +70,10 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
   <div>
     <h1 class="mb-6 text-center text-2xl font-bold">Continue a sua jornada!</h1>
     <div
-      class="mb-6 grid grid-cols-2 gap-4 border-b border-dashed border-zinc-300 pb-6"
+      class="mb-6 flex flex-wrap gap-2 sm:gap-4 border-b border-dashed border-zinc-300 pb-6"
     >
       <MButton
+        class="flex-1 min-w-[186px]"
         variant="outline"
         :icon-left="['fab', 'github']"
         text="Entre com GitHub"
@@ -80,6 +81,7 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
         @click="clerkOAuth({ strategy: 'oauth_github' })"
       />
       <MButton
+        class="flex-1 min-w-[186px]"
         variant="outline"
         :icon-left="['fab', 'google']"
         text="Entre com Google"

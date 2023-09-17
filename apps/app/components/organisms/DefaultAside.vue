@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const searchModalStore = useSearchModalStore();
 const route = useRoute();
+const defaultAsideStore = useDefaultAsideStore();
 
 const queryBuilder = computed(() => {
   return queryContent(`/${route.params?.slug ? route.params.slug[0] : ""}`);
@@ -21,10 +22,16 @@ const isLesson = computed(() => {
 
 <template>
   <aside
-    class="flex w-[270px] min-w-[270px] flex-col border-r border-solid border-zinc-200 overflow-hidden"
+    class="bg-white z-20 md:bg-inherit fixed -left-[270px] transition-all top-0 min-h-screen md:relative md:left-0 flex w-[270px] min-w-[270px] flex-col border-r border-solid border-zinc-200 overflow-hidden"
+    :class="{ 'left-0': defaultAsideStore.opened }"
   >
     <div class="w-full border-b border-solid border-zinc-200 p-3">
-      <nuxt-link to="/" class="group" exact-active-class="is-active">
+      <nuxt-link
+        to="/"
+        class="group"
+        exact-active-class="is-active"
+        @click="defaultAsideStore.opened = false"
+      >
         <LeftMenuItem
           icon="home"
           text="Início"
@@ -32,7 +39,10 @@ const isLesson = computed(() => {
         />
       </nuxt-link>
       <LeftMenuItem
-        @click="searchModalStore.opened = true"
+        @click="
+          searchModalStore.opened = true;
+          defaultAsideStore.opened = false;
+        "
         icon="magnifying-glass"
         text="Buscar"
       >
