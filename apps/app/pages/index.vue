@@ -2,8 +2,9 @@
 const userStore = useUserStore();
 
 const title = computed(() => {
-  return `Bem-vindo${userStore.user ? ` ${userStore.user?.firstName}` : ""}, o
-      que vamos aprender hoje?`;
+  return `Bem-vindo${
+    userStore.user?.firstName ? `, ${userStore.user.firstName}` : ""
+  }, o que vamos aprender hoje?`;
 });
 
 const description =
