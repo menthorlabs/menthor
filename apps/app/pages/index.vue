@@ -2,7 +2,7 @@
 const userStore = useUserStore();
 
 const title = computed(() => {
-  return `Boas-vindas${
+  return `Bem-vindo${
     userStore.user?.firstName ? `, ${userStore.user.firstName}` : ""
   }, o que vamos aprender hoje?`;
 });
