@@ -84,7 +84,7 @@ onMounted(async () => {
         class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
       >
         <nuxt-img
-          :src="currentCourse.image"
+          :src="currentCourse?.image"
           :quality="85"
           format="webp"
           width="320"

@@ -123,6 +123,15 @@ async function shareCourse() {
           title="Habilite o curso no Discord"
           description="Obtenha acesso aos canais desse curso no discord e comece a tirar dúvida com outros alunos."
         >
+          <nuxt-link
+            class="underline text-zinc-500 mb-2 block"
+            to="https://discord.gg/8BCByyXxq8"
+            target="_blank"
+            external
+          >
+            Clique aqui e entre no nosso discord antes de habilitar
+          </nuxt-link>
+
           <MButton
             @click="requestDiscordRole()"
             variant="outline"
@@ -139,6 +148,7 @@ async function shareCourse() {
           </template>
         </EnrollmentStep>
         <EnrollmentStep
+          class="!mb-0"
           title="Construa em público"
           description="Mostre para as pessoas o que você está aprendendo e aumente seu networking."
           :active="coursesStore.course?.EnrollStatus === 'discord'"
