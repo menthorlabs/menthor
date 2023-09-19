@@ -68,11 +68,15 @@ async function sendSubmission(status: "Pending" | "Draft") {
       await submissionsStore.updateSubmission();
     }
     coursesStore.updateCourseLessons(currentLesson._id);
-    taskModalStore.opened = false;
-    emit("next");
+    goToNextLesson();
   } finally {
     loadingButton.value = false;
   }
+}
+
+function goToNextLesson() {
+  taskModalStore.opened = false;
+  emit("next");
 }
 
 async function uploadFile(file: File) {
@@ -144,8 +148,8 @@ async function uploadFile(file: File) {
             <div class="flex gap-3 items-center">
               <MButton
                 variant="outline"
-                text="Cancelar"
-                @click="taskModalStore.opened = false"
+                text="Enviar depois"
+                @click="goToNextLesson()"
               />
               <MButton
                 variant="primary"
