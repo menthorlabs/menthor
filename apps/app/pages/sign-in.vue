@@ -105,7 +105,16 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
         v-model="password"
         :rules="['password']"
         required
-      />
+      >
+        <template #label>
+          <nuxt-link
+            to="/forgot-password"
+            class="underline text-zinc-500 hover:text-zinc-900 transition"
+          >
+            Esqueci minha senha
+          </nuxt-link>
+        </template>
+      </MTextField>
       <MButton
         variant="secondary"
         class="mb-4 w-full"

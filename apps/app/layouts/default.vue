@@ -8,6 +8,8 @@ const content = ref();
 const nuxtApp = useNuxtApp();
 
 nuxtApp.hook("page:finish", () => {
+  if (!content.value) return;
+
   content.value.scrollTo({
     top: 0,
     behavior: "smooth",

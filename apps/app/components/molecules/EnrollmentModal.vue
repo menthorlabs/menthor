@@ -31,7 +31,6 @@ const redirectUri = computed(() => {
 
 function openDiscordOAuth() {
   localStorage.setItem("m-discord-role", course.discordRole);
-  console.log({ redirectUri });
   const discordUrl = `https://discord.com/api/oauth2/authorize?client_id=1125151922958106734&redirect_uri=${encodeURIComponent(
     redirectUri.value
   )}&response_type=code&scope=identify%20email`;

@@ -23,7 +23,6 @@ export const useSessionStore = defineStore("session", {
     },
     async refreshSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
-      console.log({ clientSession });
       await this.$clerk.setSession(clientSession);
     },
     async signOut() {

@@ -40,7 +40,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     app.config.globalProperties.$toastItems.push({
       title,
       variant: "danger",
-      time: 5000,
+      time: 8000,
     });
   };
 
@@ -48,7 +48,7 @@ export default defineNuxtPlugin((nuxtApp) => {
     app.config.globalProperties.$toastItems.push({
       title,
       variant: "success",
-      time: 5000,
+      time: 8000,
     });
   };
 
