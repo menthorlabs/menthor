@@ -97,7 +97,7 @@ onMounted(async () => {
         <div
           class="mb-2 w-fit rounded-full bg-zinc-900 px-3 py-[2px] text-xs font-medium text-white"
         >
-          {{ $filters.level(currentCourse.level) }}
+          {{ $filters?.level(currentCourse?.level) }}
         </div>
         <h1 class="text-3xl font-extrabold">
           {{ currentCourse.title }}
