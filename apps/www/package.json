@@ -25,9 +25,9 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@nuxt/image-edge": "1.0.0-rc.1-28180077.d51e794",
+    "@vueuse/nuxt": "^10.3.0",
     "eslint-config-custom": "workspace:*",
     "humps": "^2.0.1",
-    "nuxt-delay-hydration": "^1.2.1",
     "nuxt-umami": "^2.5.2",
     "tailwind-config": "workspace:*"
   }

@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { useScroll } from "@vueuse/core";
+const { arrivedState } = useScroll(document);
 const route = useRoute();
 useSchemaOrg([
   defineOrganization({
@@ -70,11 +72,13 @@ const menuOpened = ref<boolean>(false);
 <template>
   <main class="font-sans" :class="{ 'mt-[60px] md:mt-0': menuOpened }">
     <header
-      class="top-0 z-10 flex w-full flex-col items-center justify-between md:container md:flex-row md:py-[11.5px]"
+      class="top-0 z-10 flex w-full flex-col items-center justify-between md:container md:flex-row md:py-[11.5px] blur-performance"
       :class="{
-        'fixed h-screen bg-zinc-300/40 backdrop-blur-sm blur-performance md:sticky md:h-fit md:bg-inherit md:backdrop-blur-none':
+        'fixed h-screen bg-zinc-300/40 backdrop-blur-sm md:sticky md:h-fit md:bg-inherit md:backdrop-blur-none':
           menuOpened,
         sticky: !menuOpened,
+        'backdrop-blur-sm border-b border-zinc-100/50 bg-zinc-100/40':
+          !arrivedState.top,
       }"
     >
       <div
@@ -129,7 +133,7 @@ const menuOpened = ref<boolean>(false);
           target="_blank"
           external
         >
-          <MIconButton variant="glass" icon="fa-brands fa-discord" />
+          <MIconButton icon="fa-brands fa-discord" />
         </nuxt-link>
         <nuxt-link
           class="block md:hidden"

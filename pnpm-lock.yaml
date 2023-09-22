@@ -124,6 +124,9 @@ importers:
       '@nuxt/image-edge':
         specifier: 1.0.0-rc.1-28180077.d51e794
         version: 1.0.0-rc.1-28180077.d51e794
+      '@vueuse/nuxt':
+        specifier: ^10.3.0
+        version: 10.3.0(nuxt@3.6.5)(vue@3.3.4)
       eslint-config-custom:
         specifier: workspace:*
         version: link:../../packages/eslint-config-custom
@@ -1605,7 +1608,7 @@ packages:
       std-env: 3.3.3
       ufo: 1.2.0
     optionalDependencies:
-      ipx: 1.2.0
+      ipx: 1.3.0
     transitivePeerDependencies:
       - rollup
       - supports-color
@@ -1965,7 +1968,6 @@ packages:
       - vls
       - vti
       - vue-tsc
-    dev: true
 
   /@nuxtjs/fontaine@0.2.5:
     resolution: {integrity: sha512-nnIYc41cNGxz4A89dkVS5e3SgGC0PRq9ND1dyDP9t5TDuUeF2+BcVs7EbOTKirxdKPRqI4pMNQb2vN77xyVMgQ==}
@@ -3036,6 +3038,24 @@ packages:
       '@vueuse/metadata': 10.3.0
       local-pkg: 0.4.3
       nuxt: 3.5.3(@types/node@20.4.6)(typescript@5.1.6)
+      vue-demi: 0.14.5(vue@3.3.4)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - rollup
+      - supports-color
+      - vue
+    dev: false
+
+  /@vueuse/nuxt@10.3.0(nuxt@3.6.5)(vue@3.3.4):
+    resolution: {integrity: sha512-Dmkm9H5Ubq279+FHhlJtlFP99wKrn2apuo4hk/0GbEi/6+zif7MJRtAjDBBV4VjmY6XV3kO8dQR8940FStbxsA==}
+    peerDependencies:
+      nuxt: ^3.0.0
+    dependencies:
+      '@nuxt/kit': 3.7.3
+      '@vueuse/core': 10.3.0(vue@3.3.4)
+      '@vueuse/metadata': 10.3.0
+      local-pkg: 0.4.3
+      nuxt: 3.6.5(@types/node@20.4.6)(typescript@5.1.6)
       vue-demi: 0.14.5(vue@3.3.4)
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -4580,7 +4600,7 @@ packages:
       enhanced-resolve: 5.15.0
       mlly: 1.4.0
       pathe: 1.1.1
-      ufo: 1.2.0
+      ufo: 1.3.0
 
   /fast-deep-equal@3.1.3:
     resolution: {integrity: sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q==}
@@ -5039,7 +5059,7 @@ packages:
       destr: 2.0.1
       iron-webcrypto: 0.8.0
       radix3: 1.0.1
-      ufo: 1.2.0
+      ufo: 1.3.0
       uncrypto: 0.1.3
       unenv: 1.6.1
 
@@ -5371,26 +5391,6 @@ packages:
       standard-as-callback: 2.1.0
     transitivePeerDependencies:
       - supports-color
-
-  /ipx@1.2.0:
-    resolution: {integrity: sha512-FkEP56C08HdlqlWKm3pMhatywPtDBTlePTdzskksCR1+7xnB6fQs6pXOTXPTG5i+gGPgCOxbNMUSZEH/DQcWDA==}
-    hasBin: true
-    requiresBuild: true
-    dependencies:
-      '@fastify/accept-negotiator': 1.1.0
-      consola: 3.2.3
-      defu: 6.1.2
-      destr: 1.2.2
-      etag: 1.8.1
-      image-meta: 0.1.1
-      listhen: 1.2.2
-      node-fetch-native: 1.2.0
-      pathe: 1.1.1
-      sharp: 0.32.4
-      ufo: 1.2.0
-      xss: 1.0.14
-    dev: false
-    optional: true
 
   /ipx@1.3.0:
     resolution: {integrity: sha512-Jfu+zQ0NGZwSeZ11CGMOnqWFlIyVcT8dW48e5UxKnMjQXXDy8VLTl8FIP7vRIJ9hd3ZPaJ/RIXXLJfZmBqRXWQ==}
@@ -6815,7 +6815,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
 
   /nuxt-delay-hydration@1.2.1:
     resolution: {integrity: sha512-yTftEhVIBfThhc/wEUxKy+b9GJVEGyepR8m16VbAen2d+7qFZ98xXMeUZVl32nTHs0RwjN+vTW4BIBHxap+ZdA==}
@@ -7121,7 +7120,6 @@ packages:
       - vls
       - vti
       - vue-tsc
-    dev: true
 
   /nypm@0.2.2:
     resolution: {integrity: sha512-O7bumfWgUXlJefT1Y41SF4vsCvzeUYmnKABuOKStheCObzrkWPDmqJc+RJVU+57oFu9bITcrUq8sKFIHgjCnTg==}
@@ -8490,22 +8488,6 @@ packages:
   /setprototypeof@1.2.0:
     resolution: {integrity: sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==}
 
-  /sharp@0.32.4:
-    resolution: {integrity: sha512-exUnZewqVZC6UXqXuQ8fyJJv0M968feBi04jb9GcUHrWtkRoAKnbJt8IfwT4NJs7FskArbJ14JAFGVuooszoGg==}
-    engines: {node: '>=14.15.0'}
-    requiresBuild: true
-    dependencies:
-      color: 4.2.3
-      detect-libc: 2.0.2
-      node-addon-api: 6.1.0
-      prebuild-install: 7.1.1
-      semver: 7.5.4
-      simple-get: 4.0.1
-      tar-fs: 3.0.4
-      tunnel-agent: 0.6.0
-    dev: false
-    optional: true
-
   /sharp@0.32.5:
     resolution: {integrity: sha512-0dap3iysgDkNaPOaOL4X/0akdu0ma62GcdC2NBQ+93eqpePdDdr2/LM0sFdDSMmN7yS+odyZtPsb7tx/cYBKnQ==}
     engines: {node: '>=14.15.0'}
@@ -9216,7 +9198,6 @@ packages:
 
   /ufo@1.3.0:
     resolution: {integrity: sha512-bRn3CsoojyNStCZe0BG0Mt4Nr/4KF+rhFlnNXybgqt5pXHNFRlqinSoQaTrGyzE4X8aHplSb+TorH+COin9Yxw==}
-    dev: false
 
   /ultrahtml@1.3.0:
     resolution: {integrity: sha512-xmXvE8tC8t4PVqy0/g1fe7H9USY/Brr425q4dD/0QbQMQit7siCtb06+SCqE4GfU24nwsZz8Th1g7L7mm1lL5g==}
@@ -9663,7 +9644,6 @@ packages:
       - sugarss
       - supports-color
       - terser
-    dev: true
 
   /vite-plugin-checker@0.6.1(typescript@5.1.6)(vite@4.3.9):
     resolution: {integrity: sha512-4fAiu3W/IwRJuJkkUZlWbLunSzsvijDf0eDN6g/MGh6BUK4SMclOTGbLJCPvdAcMOQvVmm8JyJeYLYd4//8CkA==}
