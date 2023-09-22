@@ -10,13 +10,13 @@
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/fontaine": "^0.4.1",
-    "@types/node": "^20.6.3",
-    "nuxt": "^3.7.3",
-    "nuxt-schema-org": "^3.0.0",
-    "nuxt-simple-robots": "^3.1.5",
-    "nuxt-simple-sitemap": "^3.3.4",
-    "typescript": "^5.2.2"
+    "@nuxtjs/fontaine": "^0.2.5",
+    "@types/node": "^20.4.6",
+    "nuxt": "^3.6.5",
+    "nuxt-schema-org": "^2.2.0",
+    "nuxt-simple-robots": "^3.1.0",
+    "nuxt-simple-sitemap": "^3.1.4",
+    "typescript": "^5.1.6"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",
@@ -24,12 +24,11 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
-    "@nuxt/image-edge": "1.0.0-rc.2-28252196.34e7c67",
-    "@vueuse/nuxt": "^10.4.1",
+    "@nuxt/image-edge": "1.0.0-rc.1-28180077.d51e794",
+    "@vueuse/nuxt": "^10.3.0",
     "eslint-config-custom": "workspace:*",
     "humps": "^2.0.1",
-    "nuxt-umami": "^2.5.4",
-    "tailwind-config": "workspace:*",
-    "unstorage": "^1.8.0"
+    "nuxt-umami": "^2.5.2",
+    "tailwind-config": "workspace:*"
   }
 }

@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { useScroll } from "@vueuse/core";
-const { arrivedState } = useScroll(document);
 const route = useRoute();
 useSchemaOrg([
   defineOrganization({
@@ -67,6 +66,13 @@ const { data: gitHub } = await useFetch<GitHubRepository>(
 );
 
 const menuOpened = ref<boolean>(false);
+
+const arrivedState = ref({ top: true });
+
+onMounted(() => {
+  const scroll = useScroll(document);
+  arrivedState.value = scroll.arrivedState;
+});
 </script>
 
 <template>

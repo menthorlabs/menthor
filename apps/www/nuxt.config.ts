@@ -2,7 +2,7 @@ import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
 
 export default defineNuxtConfig({
-  ssr: false,
+  // ssr: false,
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
     public: {
