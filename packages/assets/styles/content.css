@@ -24,12 +24,16 @@
     @apply text-zinc-800 mb-4;
   }
 
-  #nuxt_content p a {
-    @apply font-bold border-b border-pink-500 hover:border-b-[2px];
-  }
-
   #nuxt_content code .line {
     @apply px-4;
+  }
+
+  #nuxt_content a code {
+    @apply !border-dashed border-2 hover:border-pink-500;
+  }
+
+  #nuxt_content a a {
+    @apply !border-none;
   }
 
   #nuxt_content code .line.highlight {

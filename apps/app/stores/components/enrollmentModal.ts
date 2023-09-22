@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 
-export type RootState = {
+export type Enrollment = {
   opened: boolean;
 };
 
 export const useEnrollmentModalStore = defineStore("enrollmentModal", {
-  state: (): RootState => ({
+  state: (): Enrollment => ({
     opened: false,
   }),
 });

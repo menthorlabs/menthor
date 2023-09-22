@@ -22,6 +22,9 @@ const apps: { [key: string]: { url: string } } = {
   solidity: {
     url: "https://soliditylang.org/?utm_source=menthor.io",
   },
+  html: {
+    url: "https://developer.mozilla.org/pt-BR/docs/Web/HTML?utm_source=menthor.io",
+  },
 };
 </script>
 
