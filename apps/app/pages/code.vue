@@ -23,8 +23,9 @@ async function sendCode() {
     await signUpStore.attemptEmailAddressVerification({
       code: code.join(""),
     });
-    await sessionStore.refreshSession();
     userStore.setUser();
+    await sessionStore.refreshSession();
+
     router.push("/");
   } catch (e) {
     toast?.error("Código incorreto ou expirado.");

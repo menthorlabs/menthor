@@ -36,11 +36,12 @@ export const useUserStore = defineStore("user", {
       const userData = this.$clerk.user
         ? this.$clerk.user
         : this.$clerk.client.sessions[0]?.user;
+
       if (!userData) return;
 
       this.user = userData;
       const userCookie = useCookies([]);
-      userCookie.set("rise-user", userData);
+      userCookie.set("m-user", userData);
     },
     async updateUser() {
       await this.$clerk.user.update<UpdateUserParams>({

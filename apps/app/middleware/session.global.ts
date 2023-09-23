@@ -1,19 +1,15 @@
-import { useCookies } from "@vueuse/integrations/useCookies";
-
 export default defineNuxtRouteMiddleware(async (to) => {
+  const userStore = useUserStore();
+  const serverUser = useCookie("m-user");
+
+  if (serverUser) {
+    userStore.user = serverUser.value as typeof userStore.user;
+  }
+
   if (to.query.oauth) return;
 
   const sessionStore = useSessionStore();
-  const userStore = useUserStore();
-
-  const userCookie = useCookies([]);
-  const userCookieValue = userCookie.get("m-user");
-  if (userCookieValue) {
-    userStore.user = userCookieValue;
-    console.log({ userCookieValue });
-  }
-
-  const serverHasSession = sessionStore.hasSession();
+  const serverHasSession = !!serverUser.value || sessionStore.hasSession();
 
   if (["profile"].includes(String(to.name)) && !serverHasSession) {
     return navigateTo("/sign-in");

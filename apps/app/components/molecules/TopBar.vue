@@ -3,11 +3,6 @@ const router = useRouter();
 const sessionStore = useSessionStore();
 const userStore = useUserStore();
 const defaultAsideStore = useDefaultAsideStore();
-
-function signOut() {
-  sessionStore.signOut();
-  router.push("/sign-in");
-}
 </script>
 
 <template>
@@ -58,11 +53,9 @@ function signOut() {
               <NuxtLink to="/profile">
                 <DropdownItem icon="circle-user" name="Perfil" />
               </NuxtLink>
-              <DropdownItem
-                icon="arrow-right-from-bracket"
-                name="Sair"
-                @click="signOut"
-              />
+              <NuxtLink to="/sign-out">
+                <DropdownItem icon="arrow-right-from-bracket" name="Sair" />
+              </NuxtLink>
             </div>
           </template>
         </VDropdown>

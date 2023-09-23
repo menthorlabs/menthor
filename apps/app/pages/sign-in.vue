@@ -100,7 +100,7 @@ async function clerkOAuth({ strategy }: { strategy: string }) {
       />
       <MTextField
         class="mb-6"
-        label="Password"
+        label="Senha"
         type="password"
         v-model="password"
         :rules="['password']"
