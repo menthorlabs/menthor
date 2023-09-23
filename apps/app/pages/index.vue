@@ -37,7 +37,11 @@ useSeoMeta({
           v-for="item of navigation"
           :key="item._path"
           :nav-item="item"
-          :href="item.children[0].children[0]._path"
+          :href="
+            item.children && item.children[0].children
+              ? item.children[0].children[0]._path
+              : ''
+          "
         >
           <CourseCard
             :title="item.title"
