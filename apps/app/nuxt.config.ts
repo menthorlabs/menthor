@@ -97,7 +97,6 @@ export default defineNuxtConfig({
     "nuxt-schema-org",
     "@nuxtjs/fontaine",
     "@nuxt/content",
-    "@vueuse/nuxt",
     "@pinia/nuxt",
   ],
   vite: {

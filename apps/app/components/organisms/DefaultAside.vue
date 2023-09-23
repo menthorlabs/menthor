@@ -7,7 +7,7 @@ const queryBuilder = computed(() => {
   return queryContent(`/${route.params?.slug ? route.params.slug[0] : ""}`);
 });
 
-const { data: navigation } = await useAsyncData(
+const { data: navigation, refresh } = await useAsyncData(
   route.params?.slug ? route.params.slug[0] : "navigation",
   () => fetchContentNavigation(queryBuilder.value),
   {
@@ -17,6 +17,10 @@ const { data: navigation } = await useAsyncData(
 
 const isLesson = computed(() => {
   return !!route.meta?.lesson;
+});
+
+watch(isLesson, async () => {
+  refresh();
 });
 </script>
 

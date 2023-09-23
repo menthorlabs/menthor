@@ -2,6 +2,7 @@
 const userStore = useUserStore();
 const sessionStore = useSessionStore();
 const defaultAsideStore = useDefaultAsideStore();
+sessionStore.refreshSession();
 
 const content = ref();
 

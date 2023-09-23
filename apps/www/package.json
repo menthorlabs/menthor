@@ -12,7 +12,7 @@
   "devDependencies": {
     "@nuxtjs/fontaine": "^0.2.5",
     "@types/node": "^20.4.6",
-    "nuxt": "^3.6.5",
+    "nuxt": "^3.7.3",
     "nuxt-schema-org": "^2.2.0",
     "nuxt-simple-robots": "^3.1.0",
     "nuxt-simple-sitemap": "^3.1.4",

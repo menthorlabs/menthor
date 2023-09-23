@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { ParsedContent } from "../../../../node_modules/@nuxt/content/dist/runtime/types";
+import { useDebounceFn } from "@vueuse/core";
 
 import { useMagicKeys } from "@vueuse/core";
 const { escape } = useMagicKeys();
@@ -23,7 +24,7 @@ function resetNavigatedIndex() {
 }
 
 const searchModalStore = useSearchModalStore();
-
+const loading = ref(false);
 const search = ref(null);
 
 const { data: coursesAndCategories } = await useAsyncData(
@@ -61,6 +62,11 @@ function resetSearch() {
     };
   });
 }
+
+const searchDebounce = useDebounceFn(() => {
+  searchContent();
+  loading.value = false;
+}, 1000);
 
 async function searchContent() {
   resetNavigatedIndex();
@@ -130,10 +136,17 @@ watch(searchModalStore, async (newValue) => {
             ref="searchInput"
             type="search"
             v-model="search"
-            @input="searchContent"
+            @input="
+              loading = true;
+              searchDebounce();
+            "
             autocomplete="off"
             placeholder="Pesquise aulas ou escreva um comando..."
             class="mb-3 block w-full pt-2 text-base font-medium text-zinc-950 !outline-none placeholder:text-zinc-500"
+          />
+          <MSpinner
+            v-if="loading"
+            class="absolute top-[24px] right-[24px] w-[14px] h-[14px] border-zinc-400"
           />
           <div class="flex items-center text-sm">
             <div class="flex flex-1 items-center gap-2 text-zinc-700">
