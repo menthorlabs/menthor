@@ -1,4 +1,5 @@
 import { defineStore } from "pinia";
+import { useCookies } from "@vueuse/integrations/useCookies";
 
 export const useSessionStore = defineStore("session", {
   state: (): { token: string | null; cleared: boolean } => ({
@@ -26,10 +27,10 @@ export const useSessionStore = defineStore("session", {
       await this.$clerk.setSession(clientSession);
     },
     async signOut() {
-      const clerkToken = useCookie("__session");
-      const userCookie = useCookie("m-user");
-      userCookie.value = null;
-      clerkToken.value = null;
+      const clerkToken = useCookies([]);
+      const userCookie = useCookies([]);
+      userCookie.remove("m-user");
+      clerkToken.remove("__session");
       this.cleared = true;
 
       await this.$clerk.signOut();
