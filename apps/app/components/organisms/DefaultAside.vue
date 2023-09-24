@@ -26,7 +26,7 @@ watch(isLesson, async () => {
 
 <template>
   <aside
-    class="bg-white z-20 md:z-0 md:bg-inherit fixed -left-[270px] transition-all top-0 h-screen overflow-y-auto md:relative md:left-0 flex w-[270px] min-w-[270px] flex-col border-r border-solid border-zinc-200 overflow-hidden"
+    class="bg-white z-20 md:z-0 md:bg-inherit fixed -left-[270px] transition-all top-0 h-full overflow-y-auto md:relative md:left-0 flex w-[270px] min-w-[270px] flex-col border-r border-solid border-zinc-200 overflow-hidden"
     :class="{ 'left-0': defaultAsideStore.opened }"
   >
     <div class="w-full border-b border-solid border-zinc-200 p-3">
