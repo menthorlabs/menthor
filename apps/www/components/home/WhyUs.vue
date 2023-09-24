@@ -200,11 +200,21 @@ const stacks: { logo: string; name: string; link: string }[] = [
             <h3 class="relative mb-6">Networking com todo o Brasil</h3>
           </div>
           <div
-            class="hidden min-h-[200px] items-center justify-center overflow-hidden rounded-lg border border-solid border-zinc-200 p-6 text-3xl font-semibold lg:flex"
+            class="relative hidden min-h-[200px] overflow-hidden rounded-lg border border-solid border-zinc-200 py-6 px-8 text-3xl font-semibold lg:flex items-end text-right"
           >
-            <span class="text-sm font-normal text-zinc-500"
-              >Ainda quer mais?</span
-            >
+            <div class="absolute top-0 left-0 w-full h-[99px]">
+              <nuxt-img
+                loading="lazy"
+                src="/vectors/courses.svg"
+                alt="Lista de cursos da plataforma menthor.io"
+                width="354"
+                height="99"
+                class="w-full h-full object-cover object-center"
+              />
+            </div>
+            <h3 class="block text-3xl font-semibold">
+              Cursos escritos por devs experientes
+            </h3>
           </div>
         </div>
       </div>
