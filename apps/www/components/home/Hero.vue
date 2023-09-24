@@ -99,11 +99,14 @@ const cards = [
           />
         </nuxt-link>
       </div>
-      <div
-        class="mx-auto mb-10 w-fit rounded-full bg-zinc-900 px-4 py-1 text-center text-[10px] font-semibold text-white md:text-xs"
+      <nuxt-link
+        class="block mx-auto mb-10 w-fit rounded-full bg-zinc-900 hover:bg-zinc-800 px-4 py-1 text-center text-[10px] font-semibold text-white md:text-xs"
+        to="https://discord.gg/8BCByyXxq8"
+        target="_blank"
+        external
       >
-        ✨ Seja um dos 1000 primeiros alunos e ganhe uma conquista!
-      </div>
+        ✨ Junte-se a uma comunidade de mais de 2000 alunos!
+      </nuxt-link>
       <!-- <h2
         class="mb-3 text-center text-xs font-semibold uppercase text-zinc-500"
       >
