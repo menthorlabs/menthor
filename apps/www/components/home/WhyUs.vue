@@ -49,7 +49,7 @@ const stacks: { logo: string; name: string; link: string }[] = [
       <h2
         class="mx-auto mb-6 max-w-[664px] text-3xl font-bold md:text-center md:text-4xl"
       >
-        Porque a menthor?
+        Por que a menthor?
       </h2>
       <p
         class="mx-auto mb-10 max-w-[664px] text-zinc-700 md:text-center md:text-lg"

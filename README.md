@@ -51,7 +51,7 @@
 ### Apps
 
 - `app`: plataforma da Menthor desenvolvida com [Nuxt](https://nuxt.com/)
-- `email`: templates de e-mail da Menthor desenvolvidos com [React Email](https://react.email/)
+- `email`: templates de e-mail da Menthor desenvolvidos com [Vue Email](https://vue-email.vercel.app)
 - `www`: landing page da Menthor desenvolvida com [Nuxt](https://nuxt.com/)
 
 ### Como rodar na sua máquina
