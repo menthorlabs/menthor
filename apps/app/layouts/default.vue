@@ -2,12 +2,15 @@
 const userStore = useUserStore();
 const sessionStore = useSessionStore();
 const defaultAsideStore = useDefaultAsideStore();
+sessionStore.refreshSession();
 
 const content = ref();
 
 const nuxtApp = useNuxtApp();
 
 nuxtApp.hook("page:finish", () => {
+  if (!content.value) return;
+
   content.value.scrollTo({
     top: 0,
     behavior: "smooth",

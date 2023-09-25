@@ -2,6 +2,7 @@ import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
 
 export default defineNuxtConfig({
+  // ssr: false,
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
     public: {
@@ -40,9 +41,9 @@ export default defineNuxtConfig({
     "@nuxt/image-edge",
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
-    "nuxt-delay-hydration",
     "nuxt-simple-robots",
     "@nuxtjs/fontaine",
+    "@vueuse/nuxt",
   ],
   vite: {
     plugins: [eslintPlugin()],

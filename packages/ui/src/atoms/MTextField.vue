@@ -41,9 +41,10 @@ function checkError() {
   <div :class="class">
     <label
       :for="$attrs.id"
-      class="mb-2 block text-sm font-medium text-zinc-900"
+      class="mb-2 flex items-center justify-between text-sm font-medium text-zinc-900"
     >
-      {{ label }}
+      <span>{{ label }}</span>
+      <slot name="label" />
     </label>
     <div class="relative">
       <input

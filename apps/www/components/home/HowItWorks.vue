@@ -83,6 +83,7 @@ const cards: card[] = [
         <nuxt-link
           to="https://discord.gg/8BCByyXxq8"
           target="_blank"
+          external
           class="block w-full sm:w-fit"
         >
           <MButton

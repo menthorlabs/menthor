@@ -1,15 +1,15 @@
 export default defineNuxtRouteMiddleware(async (to) => {
+  const userStore = useUserStore();
+  const serverUser = useCookie("m-user");
+
+  if (serverUser) {
+    userStore.user = serverUser.value as typeof userStore.user;
+  }
+
   if (to.query.oauth) return;
 
   const sessionStore = useSessionStore();
-  const userStore = useUserStore();
-
-  const userCookie: Ref<typeof userStore.user> = useCookie("m-user");
-  if (userCookie.value) {
-    userStore.user = userCookie.value;
-  }
-
-  const serverHasSession = userCookie.value || sessionStore.hasSession();
+  const serverHasSession = !!serverUser.value || sessionStore.hasSession();
 
   if (["profile"].includes(String(to.name)) && !serverHasSession) {
     return navigateTo("/sign-in");

@@ -79,7 +79,10 @@ onMounted(async () => {
     />
     <TaskModal :current-lesson="currentLesson" @next="redirectToNextLesson" />
 
-    <div class="mb-10 flex flex-wrap items-center gap-6 px-6 sm:px-8">
+    <div
+      v-if="currentCourse"
+      class="mb-10 flex flex-wrap items-center gap-6 px-6 sm:px-8"
+    >
       <div
         class="h-[160px] w-[160px] min-w-[160px] overflow-hidden rounded shadow-lg"
       >
@@ -97,7 +100,7 @@ onMounted(async () => {
         <div
           class="mb-2 w-fit rounded-full bg-zinc-900 px-3 py-[2px] text-xs font-medium text-white"
         >
-          {{ $filters.level(currentCourse.level) }}
+          {{ $filters?.level(currentCourse?.level) }}
         </div>
         <h1 class="text-3xl font-extrabold">
           {{ currentCourse.title }}

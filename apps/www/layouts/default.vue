@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { useScroll } from "@vueuse/core";
 const route = useRoute();
 useSchemaOrg([
   defineOrganization({
@@ -65,98 +66,119 @@ const { data: gitHub } = await useFetch<GitHubRepository>(
 );
 
 const menuOpened = ref<boolean>(false);
+
+const arrivedState = ref({ top: true });
+
+onMounted(() => {
+  const scroll = useScroll(document);
+  arrivedState.value = scroll.arrivedState;
+});
 </script>
 
 <template>
   <main class="font-sans" :class="{ 'mt-[60px] md:mt-0': menuOpened }">
     <header
-      class="top-0 z-10 flex w-full flex-col items-center justify-between md:container md:flex-row md:py-[11.5px]"
+      class="top-0 z-10 blur-performance w-full"
       :class="{
-        'fixed h-screen bg-zinc-300/40 backdrop-blur-sm blur-performance md:sticky md:h-fit md:bg-inherit md:backdrop-blur-none':
+        'fixed h-screen bg-zinc-300/40 backdrop-blur-sm md:sticky md:h-fit md:bg-inherit md:backdrop-blur-none':
           menuOpened,
         sticky: !menuOpened,
+        'backdrop-blur-sm border-b border-zinc-100/50 bg-zinc-100/40':
+          !arrivedState.top,
       }"
     >
       <div
-        class="relative flex w-full justify-between px-4 py-[16px] md:w-fit md:px-0 md:py-0"
+        class="md:container flex w-full flex-col items-center justify-between md:flex-row md:py-[11.5px]"
       >
-        <nuxt-img
-          loading="lazy"
-          class="h-[28px] w-auto"
-          src="/brand/menthor-logo-dark.svg"
-          alt="Menthor logo"
-          height="28"
-          width="155"
-        />
         <div
-          class="absolute right-0 top-0 flex h-full w-[60px] cursor-pointer items-center justify-center md:hidden"
-          @click="menuOpened = !menuOpened"
+          class="relative flex w-full justify-between px-4 py-[16px] md:w-fit md:px-0 md:py-0"
         >
-          <font-awesome-icon v-show="!menuOpened" icon="bars" class="text-xl" />
-          <font-awesome-icon v-show="menuOpened" icon="times" class="text-xl" />
+          <nuxt-img
+            loading="lazy"
+            class="h-[28px] w-auto"
+            src="/brand/menthor-logo-dark.svg"
+            alt="Menthor logo"
+            height="28"
+            width="155"
+          />
+          <div
+            class="absolute right-0 top-0 flex h-full w-[60px] cursor-pointer items-center justify-center md:hidden"
+            @click="menuOpened = !menuOpened"
+          >
+            <font-awesome-icon
+              v-show="!menuOpened"
+              icon="bars"
+              class="text-xl"
+            />
+            <font-awesome-icon
+              v-show="menuOpened"
+              icon="times"
+              class="text-xl"
+            />
+          </div>
         </div>
-      </div>
-      <div
-        class="w-full flex-1 gap-6 space-y-4 p-4 md:flex md:h-fit md:items-center md:justify-end md:space-y-0 md:p-0"
-        :class="{ block: menuOpened, hidden: !menuOpened }"
-      >
-        <nuxt-link
-          to="https://github.com/menthorlabs/menthor"
-          target="_blank"
-          external
-          class="group flex w-full cursor-pointer items-center justify-center gap-2 text-zinc-700 no-underline hover:text-zinc-900 md:w-fit"
+        <div
+          class="w-full flex-1 gap-6 space-y-4 p-4 md:flex md:h-fit md:items-center md:justify-end md:space-y-0 md:p-0"
+          :class="{ block: menuOpened, hidden: !menuOpened }"
         >
-          <font-awesome-icon :icon="['fab', 'github']" class="text-xl" />
-          <div>
-            <div class="text-[13px]">menthorlabs/menthor</div>
-            <div class="flex items-center gap-2">
-              <div class="flex items-center gap-1 text-xs">
-                <font-awesome-icon icon="star" />
-                <span>{{ gitHub?.items[0].stargazers_count }}</span>
-              </div>
-              <div
-                class="flex items-center gap-1 text-xs text-zinc-600 group-hover:text-zinc-800"
-              >
-                <font-awesome-icon icon="code-fork" />
-                <span>{{ gitHub?.items[0].forks_count }}</span>
+          <nuxt-link
+            to="https://github.com/menthorlabs/menthor"
+            target="_blank"
+            external
+            class="group flex w-full cursor-pointer items-center justify-center gap-2 text-zinc-700 no-underline hover:text-zinc-900 md:w-fit"
+          >
+            <font-awesome-icon :icon="['fab', 'github']" class="text-xl" />
+            <div>
+              <div class="text-[13px]">menthorlabs/menthor</div>
+              <div class="flex items-center gap-2">
+                <div class="flex items-center gap-1 text-xs">
+                  <font-awesome-icon icon="star" />
+                  <span>{{ gitHub?.items[0].stargazers_count }}</span>
+                </div>
+                <div
+                  class="flex items-center gap-1 text-xs text-zinc-600 group-hover:text-zinc-800"
+                >
+                  <font-awesome-icon icon="code-fork" />
+                  <span>{{ gitHub?.items[0].forks_count }}</span>
+                </div>
               </div>
             </div>
-          </div>
-        </nuxt-link>
-        <nuxt-link
-          class="hidden md:block"
-          to="https://discord.gg/8BCByyXxq8"
-          target="_blank"
-          external
-        >
-          <MIconButton variant="glass" icon="fa-brands fa-discord" />
-        </nuxt-link>
-        <nuxt-link
-          class="block md:hidden"
-          to="https://discord.gg/8BCByyXxq8"
-          target="_blank"
-          external
-        >
-          <MButton
-            icon-left="fa-brands fa-discord"
-            text="Entre no discord"
-            variant="outline"
-            size="sm"
-            class="w-full md:w-fit"
-          />
-        </nuxt-link>
-        <nuxt-link
-          class="block"
-          :to="`${$config.public.appUrl}sign-in?utm_source=landing_page`"
-        >
-          <MButton
-            icon-right="arrow-right"
-            text="Acessar plataforma"
-            variant="secondary"
-            size="sm"
-            class="w-full md:w-fit"
-          />
-        </nuxt-link>
+          </nuxt-link>
+          <nuxt-link
+            class="hidden md:block"
+            to="https://discord.gg/8BCByyXxq8"
+            target="_blank"
+            external
+          >
+            <MIconButton icon="fa-brands fa-discord" />
+          </nuxt-link>
+          <nuxt-link
+            class="block md:hidden"
+            to="https://discord.gg/8BCByyXxq8"
+            target="_blank"
+            external
+          >
+            <MButton
+              icon-left="fa-brands fa-discord"
+              text="Entre no discord"
+              variant="outline"
+              size="sm"
+              class="w-full md:w-fit"
+            />
+          </nuxt-link>
+          <nuxt-link
+            class="block"
+            :to="`${$config.public.appUrl}sign-in?utm_source=landing_page`"
+          >
+            <MButton
+              icon-right="arrow-right"
+              text="Acessar plataforma"
+              variant="secondary"
+              size="sm"
+              class="w-full md:w-fit"
+            />
+          </nuxt-link>
+        </div>
       </div>
     </header>
     <slot />

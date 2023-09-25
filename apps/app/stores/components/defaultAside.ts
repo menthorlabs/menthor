@@ -1,11 +1,11 @@
 import { defineStore } from "pinia";
 
-export type RootState = {
+export type DefaultAside = {
   opened: boolean;
 };
 
 export const useDefaultAsideStore = defineStore("defaultAside", {
-  state: (): RootState => ({
+  state: (): DefaultAside => ({
     opened: false,
   }),
 });
