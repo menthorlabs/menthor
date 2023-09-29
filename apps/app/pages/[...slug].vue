@@ -150,6 +150,7 @@ onMounted(async () => {
               path: '/sign-in',
               query: { redirect: encodeURIComponent($route.path) },
             }"
+            @click="sessionStore.signOut()"
           >
             <MButton
               icon-right="arrow-right"

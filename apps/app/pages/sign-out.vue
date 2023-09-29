@@ -1,4 +1,8 @@
 <script setup lang="ts">
+definePageMeta({
+  ignoreMiddleware: true,
+});
+
 const sessionStore = useSessionStore();
 const router = useRouter();
 

@@ -67,7 +67,7 @@ onMounted(async () => {
       <p class="text-xs text-center text-zinc-500 mb-2">
         Entre agora e comece a salvar seu progresso 🚀
       </p>
-      <NuxtLink to="/sign-in">
+      <NuxtLink @click="sessionStore.signOut()" to="/sign-in">
         <MButton
           text="Fazer login"
           size="sm"

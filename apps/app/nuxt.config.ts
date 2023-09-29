@@ -17,6 +17,7 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
+    "/sign-in": { ssr: false },
     "/": { prerender: true },
     "/profile": { ssr: true },
   },
