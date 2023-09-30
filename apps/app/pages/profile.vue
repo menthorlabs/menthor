@@ -31,6 +31,10 @@ function openProfileModal() {
           @click="openProfileModal"
         >
           {{ userStore.user?.fullName || "Sem nome" }}
+          <font-awesome-icon
+            icon="edit"
+            class="text-base text-zinc-500 group-hover:text-zinc-950"
+          />
         </h1>
         <div class="flex flex-wrap items-center gap-8">
           <StatsCard
