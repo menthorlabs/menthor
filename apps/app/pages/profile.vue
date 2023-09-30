@@ -33,9 +33,10 @@ function openProfileModal() {
           {{ userStore.user?.fullName || "Sem nome" }}
         </h1>
         <div class="flex flex-wrap items-center gap-8">
-          <StatsCard label="Conquistas" :value="userStore.badges?.length || 0">
-            <span class="font-normal text-zinc-400">/???</span>
-          </StatsCard>
+          <StatsCard
+            label="Conquistas"
+            :value="userStore.badges?.length || 0"
+          />
           <!-- <StatsCard label="Cursos completos" value="6">
             <span class="font-normal text-zinc-400">/28</span>
           </StatsCard> -->
