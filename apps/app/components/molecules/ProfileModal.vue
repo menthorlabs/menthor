@@ -10,6 +10,7 @@ async function updateUser() {
   try {
     loading.value = true;
     await userStore.updateUser();
+    userStore.modalOpened = false;
   } catch (e) {
     toast?.error(e);
   } finally {
