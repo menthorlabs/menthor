@@ -1,21 +1,28 @@
-## Summary
+## Resumo
 
-<!-- Provide a concise summary "Why are the changes needed"?
-Include any relevant links. -->
+<!-- 
+Forneça um resumo conciso "Por que as mudanças são necessárias"? Inclua quaisquer links relevantes. 
+-->
 
-## Changes Made
+## Mudanças Realizadas
 
-<!-- Describe the specific changes that have been made in this pull
-request. Provide details on the approach taken to address the problem
-and any notable implementation details. -->
+<!--
+- Descreva as mudanças específicas feitas neste pedido de pull request.
+- Forneça detalhes sobre a abordagem adotada para resolver o problema e quaisquer detalhes de implementação notáveis 
+-->
 
-## Type of change
+## Tipo de Mudança
 
-<!--  Please delete options that are not relevant or write your own. -->
-<!-- Example -->
-<!-- - [ ] Bug fix (non-breaking change which fixes an issue)   -->
+<!-- Por favor, exclua as opções que não se aplicam ou escreva a sua própria.
+- [ ] feat: uma nova funcionalidade
+- [ ] fix: uma correção de bug
+- [ ] docs: somente modificações de documentação
+- [ ] style: modificações que não afetam a lógica (espaços em branco, formatação, etc)
+- [ ] refactor: uma modificação de código já existente que corrige um bug ou aprimora a funcionalidade.
+- [ ] perf: uma modificação para melhorar a performace
+- [ ] test: adicionar novos testes
+-->
 
-## Screenshots
+## Capturas de tela
 
-<!-- If the changes are visual, including screenshots or GIFs can
-help reviewers understand them more easily. -->
+<!-- Se as mudanças forem visuais, inclua capturas de tela ou GIFs pode ajudar os revisores a compreendê-las mais facilmente. -->
