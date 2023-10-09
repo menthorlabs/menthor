@@ -6,8 +6,8 @@ definePageMeta({
 const sessionStore = useSessionStore();
 const router = useRouter();
 
-onMounted(() => {
-  sessionStore.signOut();
+onMounted(async () => {
+  await sessionStore.signOut();
   router.push("/sign-in");
 });
 </script>

@@ -1,5 +1,5 @@
-export default defineNuxtRouteMiddleware(async (to) => {
-  if (to.meta.ignoreMiddleware) return;
+export default defineNuxtRouteMiddleware(async (to, from) => {
+  if (from.meta.ignoreMiddleware) return;
 
   const userStore = useUserStore();
   const serverUser = useCookie("m-user");
@@ -10,15 +10,14 @@ export default defineNuxtRouteMiddleware(async (to) => {
 
   if (to.query.oauth) return;
 
-  const router = useRouter();
   const sessionStore = useSessionStore();
   const serverHasSession = !!serverUser.value || sessionStore.hasSession();
 
   if (["profile"].includes(String(to.name)) && !serverHasSession) {
-    router.push("/sign-in");
+    navigateTo("/sign-in");
   }
   if (["sign-in", "sign-up"].includes(String(to.name)) && serverHasSession) {
-    router.push("/");
+    navigateTo("/");
   }
   sessionStore.cleared = false;
 });

@@ -38,12 +38,11 @@ export const useSessionStore = defineStore("session", {
       }
     },
     async signOut() {
+      this.cleared = true;
       const clerkToken = useCookies([]);
       const userCookie = useCookies([]);
-      userCookie.remove("m-user");
-      clerkToken.remove("__session");
-      this.cleared = true;
-
+      await userCookie.remove("m-user");
+      await clerkToken.remove("__session");
       await this.$clerk.signOut();
     },
   },

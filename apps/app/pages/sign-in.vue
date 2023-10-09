@@ -18,6 +18,7 @@ const runtimeConfig = useRuntimeConfig();
 const route = useRoute();
 
 onMounted(async () => {
+  await sessionStore.signOut();
   sessionStore.cleared = false;
 
   if (route.query?.error) {

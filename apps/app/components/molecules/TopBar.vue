@@ -61,7 +61,7 @@ const defaultAsideStore = useDefaultAsideStore();
         </VDropdown>
       </div>
       <div v-else>
-        <NuxtLink to="/sign-in" @click="sessionStore.signOut()">
+        <NuxtLink to="/sign-in">
           <MButton text="Fazer login" variant="outline" size="sm" />
         </NuxtLink>
       </div>
