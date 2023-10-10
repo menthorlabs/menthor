@@ -62,4 +62,6 @@ Para rodar um projeto você precisa ter o node instalado (versão 16 pra cima) e
 
 - `npm i -g pnpm`: esse comando vai instalar o pnpm globalmente na sua máquina
 - `pnpm install`: esse comando vai instalar todas as dependências do projeto
-- `pnpm dev --filter=www`: esse comando vai rodar o app `www` localmente, se quiser rodar outro é só usar o comando `pnpm dev --filter={nome-do-app}`
+- `pnpm dev --filter=www`: esse comando vai rodar o app `www` localmente
+- `pnpm dev --filter=app`: esse comando vai rodar o app `app` localmente
+- se quiser rodar outra app é só usar o comando `pnpm dev --filter={nome-do-app}`
