@@ -15,13 +15,12 @@ export const useSessionStore = defineStore("session", {
     checkSessionStatus() {
       const clientSession = this.$clerk?.client?.sessions[0];
       if (clientSession?.status === "expired") {
-        this.signOut();
-        this.$router.push("/sign-in");
+        this.$router.push("/sign-out");
       }
     },
     hasSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
-      return !this.cleared && clientSession;
+      return Boolean(!this.cleared && clientSession);
     },
     async refreshSession() {
       const clientSession = this.$clerk?.client?.sessions[0];

@@ -42,6 +42,8 @@ export const useUserStore = defineStore("user", {
       this.user = userData;
       const userCookie = useCookies([]);
       userCookie.set("m-user", userData);
+
+      console.log("set user");
     },
     async updateUser() {
       await this.$clerk.user.update<UpdateUserParams>({
