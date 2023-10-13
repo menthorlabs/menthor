@@ -65,3 +65,11 @@ Para rodar um projeto você precisa ter o node instalado (versão 16 pra cima) e
 - `pnpm dev --filter=www`: esse comando vai rodar o app `www` localmente
 - `pnpm dev --filter=app`: esse comando vai rodar o app `app` localmente
 - se quiser rodar outra app é só usar o comando `pnpm dev --filter={nome-do-app}`
+
+### Deseja contribuir para o Projeto?
+
+O Menthor.io é um projeto de código aberto e nós adoramos contribuições da comunidade. Se você está interessado em contribuir, siga as diretrizes do nosso [Guia de Contribuição](./.github/CONTRIBUTING.md). Ele fornece informações detalhadas sobre como relatar problemas, sugerir melhorias e enviar suas contribuições. 
+
+Não se preocupe se você é novo na contribuição para projetos de código aberto. Nós fornecemos orientações claras para facilitar sua participação. Se você não tem tempo para contribuir diretamente, ainda há maneiras de apoiar o projeto, como dar uma estrela ou mencionar o Menthor.io em eventos e entre amigos. Sua ajuda é valiosa para nós!
+
+Se você tiver alguma dúvida ou precisar de ajuda, entre em contato conosco no [nosso servidor no Discord](https://discord.gg/8BCByyXxq8).
