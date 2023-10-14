@@ -16,6 +16,7 @@ declare module "vue" {
     $pinia?: string;
     $toastItems: { push: Function };
     $toastError: Function;
+    $toastSuccess: Function;
     $clerk: Clerk;
     $filters: {
       level: Function;
