@@ -29,7 +29,7 @@ closeWhenTimeExpires();
 
 <template>
   <div
-    class="relative w-full rounded-md border border-zinc-200 p-4 text-zinc-700 shadow-sm"
+    class="relative w-full rounded-md p-4 text-white shadow-sm bg-zinc-900"
     :class="[variants[variant]]"
     role="alert"
   >
@@ -38,32 +38,34 @@ closeWhenTimeExpires();
       icon="xmark"
       @click="$emit('close')"
     />
-    <div class="flex items-center">
-      <font-awesome-icon
-        v-if="variant === 'success'"
-        icon="circle-check"
-        class="mr-2 h-[16px] w-[16px] text-green-600"
-      />
-      <font-awesome-icon
-        v-if="variant === 'danger'"
-        icon="circle-xmark"
-        class="mr-2 h-[16px] w-[16px] text-red-600"
-      />
-      <div class="pr-[40px] text-sm font-semibold">{{ title }}</div>
-    </div>
-    <p v-if="description" class="mb-2 mt-2 text-sm font-normal">
-      {{ description }}
-    </p>
-    <div
-      v-if="buttons?.length > 0"
-      class="actions mt-2 flex flex-wrap items-center"
-    >
-      <MButton
-        v-for="button in buttons"
-        :variant="variant"
-        :text="button.text"
-        @click="button.click"
-      />
+    <div class="space-y-2">
+      <div class="flex items-center gap-4">
+        <font-awesome-icon
+          v-if="variant === 'success'"
+          icon="circle-check"
+          class="h-[16px] w-[16px] text-green-600"
+        />
+        <font-awesome-icon
+          v-if="variant === 'danger'"
+          icon="circle-xmark"
+          class="h-[16px] w-[16px] text-red-600"
+        />
+        <div class="pr-[40px] text-sm font-medium flex-1">{{ title }}</div>
+      </div>
+      <p v-if="description" class="text-sm font-normal text-zinc-400">
+        {{ description }}
+      </p>
+      <div
+        v-if="buttons?.length > 0"
+        class="actions flex flex-wrap items-center"
+      >
+        <MButton
+          v-for="button in buttons"
+          :variant="variant"
+          :text="button.text"
+          @click="button.click"
+        />
+      </div>
     </div>
   </div>
 </template>
