@@ -6,3 +6,7 @@ account_id = "d8803c6a6253e9267bf1000ca69db18d"
 
 [site]
 bucket = "apps/app/.output/public"
+
+[env.dev]
+bucket = "apps/app/.output/public"
+route = "*dev.menthor.io/app*"

@@ -17,7 +17,6 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
-    "/sign-in": { ssr: false },
     "/": { prerender: true },
     "/profile": { ssr: true },
   },
@@ -25,7 +24,7 @@ export default defineNuxtConfig({
     preset: "cloudflare",
     baseURL: process.env.NODE_ENV === "development" ? "/" : baseURL,
     prerender: {
-      crawlLinks: true,
+      routes: ["/api/search.json"],
     },
     runtimeConfig: {
       app: {
