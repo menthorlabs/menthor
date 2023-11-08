@@ -1,8 +1,15 @@
 <script setup lang="ts">
+import { Color } from "colorthief";
+
 const router = useRouter();
 const sessionStore = useSessionStore();
 const userStore = useUserStore();
 const defaultAsideStore = useDefaultAsideStore();
+const shadowStore = useShadowStore();
+
+const shadowGenerator = (color: Array<Color>): string => {
+  return `radial-gradient(50% 50% at 50% 50%, rgba(${color[0][0]}, ${color[0][1]}, ${color[0][2]}, 0.2) 0%, rgba(${color[0][0]}, ${color[0][1]}, ${color[0][2]}, 0) 100%)`;
+};
 </script>
 
 <template>
@@ -11,10 +18,16 @@ const defaultAsideStore = useDefaultAsideStore();
   >
     <div class="relative h-full w-full max-w-[1017px]">
       <div
-        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(236,_72,_153,_0.2)_0%,_rgba(236,_72,_153,_0)_100%)] absolute bottom-0 left-0 h-[179px] w-[678px]"
+        class="absolute bottom-0 left-0 h-[179px] w-[678px]"
+        :style="{
+          background: shadowGenerator(shadowStore.primaryColors),
+        }"
       ></div>
       <div
-        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(37,_99,_235,_0.2)_0%,_rgba(28,_100,_242,_0)_100%)] absolute bottom-0 right-0 h-[179px] w-[678px]"
+        class="absolute bottom-0 right-0 h-[179px] w-[678px]"
+        :style="{
+          background: shadowGenerator(shadowStore.secondaryColors),
+        }"
       ></div>
     </div>
   </div>
