@@ -53,6 +53,9 @@ const defaultAsideStore = useDefaultAsideStore();
               <NuxtLink to="/profile">
                 <DropdownItem icon="circle-user" name="Perfil" />
               </NuxtLink>
+              <NuxtLink to="/creators/images">
+                <DropdownItem icon="star" name="Creators" />
+              </NuxtLink>
               <NuxtLink to="/sign-out">
                 <DropdownItem icon="arrow-right-from-bracket" name="Sair" />
               </NuxtLink>
