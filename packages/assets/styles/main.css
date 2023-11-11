@@ -36,6 +36,12 @@
   }
 }
 
+@layer base {
+  .link {
+    @apply font-bold text-zinc-950 border-b border-pink-500 hover:border-b-[2px];
+  }
+}
+
 
 
 body {

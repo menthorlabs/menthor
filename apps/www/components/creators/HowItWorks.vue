@@ -7,22 +7,21 @@ interface card {
 
 const cards: card[] = [
   {
-    icon: "bookmark",
-    title: "Aulas em texto",
-    description:
-      "Busque os conteúdos de forma rápida e faça anotações durante seus estudos.",
+    icon: "keyboard",
+    title: "Aulas em markdown",
+    description: "Utilize seu próprio editor de texto para escrever as aulas.",
   },
   {
-    icon: "users",
-    title: "Open source",
+    icon: "spell-check",
+    title: "Controle de qualidade",
     description:
-      "Contribua com melhorias na plataforma e no conteúdo das aulas.",
+      "Siga os padrões da menthor e escreva cursos de alta qualidade.",
   },
   {
-    icon: "earth-americas",
-    title: "Aprendizagem colaborativa",
+    icon: "lightbulb",
+    title: "Foco na criação",
     description:
-      "Tire dúvidas com os alunos que estão estudando junto com você.",
+      "Preocupe-se em escrever cursos, as dúvidas dos alunos a gente resolve.",
   },
 ];
 </script>
@@ -33,14 +32,21 @@ const cards: card[] = [
       <h2
         class="mx-auto mb-6 max-w-[664px] text-3xl font-bold md:text-center md:text-4xl"
       >
-        Como a menthor funciona?
+        Como funciona a criação de cursos?
       </h2>
       <p
         class="mx-auto mb-10 max-w-[664px] text-zinc-700 md:text-center md:text-lg"
       >
-        Nós reimaginamos a forma de estudar. Aqui você é livre para aprender,
-        livre para ajudar seus colegas e livre para contribuir com o conteúdo
-        das aulas.
+        A menthor é uma plataforma totalmente gratuita e open-source, todos os
+        nossos cursos estão
+        <nuxt-link
+          to="https://github.com/menthorlabs/courses"
+          external
+          target="_blank_"
+          class="link"
+          >disponíveis no GitHub</nuxt-link
+        >
+        com a licensa MIT.
       </p>
       <div
         class="-ml-4 mb-12 flex w-[calc(100%_+_2rem)] flex-nowrap gap-4 overflow-x-auto md:grid md:w-full md:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] md:gap-6 md:overflow-x-hidden"
@@ -54,17 +60,6 @@ const cards: card[] = [
         />
       </div>
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-6">
-        <nuxt-link
-          :to="`${$config.public.appUrl}sign-up?utm_source=landing_page`"
-          class="block w-full sm:w-fit"
-        >
-          <MButton
-            text="Criar minha conta"
-            icon-left="graduation-cap"
-            size="lg"
-            class="w-full"
-          />
-        </nuxt-link>
         <nuxt-link
           to="https://discord.gg/8BCByyXxq8"
           target="_blank"

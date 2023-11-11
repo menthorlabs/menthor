@@ -1,0 +1,4 @@
+<template>
+  <CreatorsHero />
+  <CreatorsHowItWorks />
+</template>
