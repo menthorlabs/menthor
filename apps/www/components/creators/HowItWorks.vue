@@ -27,7 +27,7 @@ const cards: card[] = [
 </script>
 
 <template>
-  <section id="how_it_works" class="my-20 md:my-32">
+  <section id="how_it_works" class="my-10">
     <div class="container">
       <h2
         class="mx-auto mb-6 max-w-[664px] text-3xl font-bold md:text-center md:text-4xl"

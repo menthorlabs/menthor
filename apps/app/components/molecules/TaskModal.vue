@@ -40,6 +40,7 @@ async function sendSubmission(status: "Pending" | "Draft") {
     if (!currentLesson) return;
 
     const payload: typeof submissionsStore.submission = {
+      Filename: submissionsStore.submission?.Filename || "",
       Content: submissionsStore.submission?.Content || "",
       SubmissionType: currentLesson.submissionContent,
       SubmissionStatus: status,
@@ -62,9 +63,11 @@ async function sendSubmission(status: "Pending" | "Draft") {
       submissionsStore.submission?.SubmissionType === "Image" &&
       uploadedFile.value
     ) {
-      await submissionsStore.requestUrl(uploadedFile.value.type);
-      await submissionsStore.uploadFileOnUrl(uploadedFile.value);
-      submissionsStore.submission.Content = `https://menthor-lessons.s3.sa-east-1.amazonaws.com/${submissionsStore.uploadUrl?.fileName}`;
+      const response = await submissionsStore.requestUrl(
+        uploadedFile.value.type
+      );
+      await submissionsStore.uploadFileOnUrl(uploadedFile.value, response.url);
+      submissionsStore.submission.Filename = response.fileName;
       await submissionsStore.updateSubmission();
     }
     coursesStore.updateCourseLessons(currentLesson._id);
@@ -90,7 +93,7 @@ async function uploadFile(file: File) {
 
   if (!submissionsStore.submission) return;
   uploadedFile.value = file;
-  submissionsStore.submission.Content = URL.createObjectURL(file);
+  submissionsStore.submission.Filename = URL.createObjectURL(file);
 }
 </script>
 
@@ -119,9 +122,13 @@ async function uploadFile(file: File) {
               class="mb-4"
             />
             <nuxt-img
-              v-if="submissionsStore.submission.Content"
+              v-if="submissionsStore.submission.Filename"
               class="rounded overflow-hidden"
-              :src="submissionsStore.submission.Content"
+              :src="
+                submissionsStore.submission.Filename.includes('blob')
+                  ? submissionsStore.submission.Filename
+                  : `https://menthor-lessons.s3.sa-east-1.amazonaws.com/${submissionsStore.submission.Filename}`
+              "
               alt="Submission Image"
             />
           </template>

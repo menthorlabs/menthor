@@ -28,6 +28,7 @@
     "@vueuse/nuxt": "^10.3.0",
     "eslint-config-custom": "workspace:*",
     "humps": "^2.0.1",
+    "floating-vue": "2.0.0-beta.24",
     "nuxt-umami": "^2.5.2",
     "tailwind-config": "workspace:*"
   }

@@ -31,7 +31,7 @@ const variants: Record<Variant, string> = {
 const sizes: Record<Size, string> = {
   sm: "px-3 py-[8px] text-sm leading-[19px]",
   base: "px-5 py-[9.5px] text-sm leading-[19px]",
-  lg: "px-5 py-[13.5px] text-base leading-[23px]",
+  lg: "px-5 py-[11.5px] text-base leading-[23px]",
 };
 </script>
 

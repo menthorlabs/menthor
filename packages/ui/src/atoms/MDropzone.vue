@@ -20,7 +20,10 @@ const isDragging = ref(false);
 type dropzoneFile = File & { loading: boolean; accepted: boolean };
 
 function onInput(event: Event) {
-  onChange((event.target as HTMLInputElement).files);
+  const allFiles = (event.target as HTMLInputElement).files as FileList;
+
+  const files: File[] = Array.from(allFiles);
+  onChange(files as dropzoneFile[]);
 }
 
 function onChange(files: dropzoneFile[]) {

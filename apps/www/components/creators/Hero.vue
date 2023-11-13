@@ -49,7 +49,7 @@
           class="w-full md:w-fit"
         >
           <MButton
-            text="Leia a documentação"
+            text="Ver como funciona"
             icon-left="book"
             class="w-full md:w-fit"
             variant="secondary"
