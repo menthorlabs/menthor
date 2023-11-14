@@ -8,6 +8,12 @@ onMounted(async () => {
   loading.value = false;
 });
 
+function getSizePercentage(bytes: number) {
+  const tenGigabytes = 10737418240;
+
+  return Number((bytes * 100) / tenGigabytes).toFixed(2);
+}
+
 function onInput(event: Event) {
   const allFiles = (event.target as HTMLInputElement).files;
 
@@ -20,11 +26,11 @@ function onInput(event: Event) {
 }
 
 async function uploadFile(file: File) {
+  loading.value = true;
   const response = await creatorsStore.signUrl(file.type);
-  console.log(response);
-
   await uploadStore.uploadFileOnUrl(file, response.signedUrl.url);
   await creatorsStore.addImage(response.signedUrl.fileName);
+  loading.value = false;
 }
 </script>
 
@@ -55,18 +61,21 @@ async function uploadFile(file: File) {
       <div class="space-y-[4px] w-full max-w-[240px] pt-2">
         <div class="rounded-full bg-zinc-200 h-[4px]">
           <div
-            class="w-full max-w-[60%] h-full rounded-full bg-emerald-500"
+            class="w-full h-full rounded-full bg-emerald-500"
+            :style="`max-width: ${getSizePercentage(
+              creatorsStore.filesSize
+            )}%;`"
           ></div>
         </div>
         <div class="flex text-zinc-500 text-sm">
           <div class="flex-1">
             Usado:
             <span class="text-zinc-950 font-medium">{{
-              creatorsStore.filesSize
+              $filters.bytesToSize(creatorsStore.filesSize)
             }}</span>
-            de 10GB
+            de 10 GB
           </div>
-          <div>50%</div>
+          <div>{{ getSizePercentage(creatorsStore.filesSize) }} %</div>
         </div>
       </div>
     </div>
@@ -84,7 +93,7 @@ async function uploadFile(file: File) {
       v-else
     >
       <CreatorsImageCard
-        v-for="fileName in creatorsStore.images"
+        v-for="fileName in creatorsStore.images.reverse()"
         :key="fileName"
         :fileUrl="`https://menthor-content.s3.sa-east-1.amazonaws.com/${fileName}`"
       />

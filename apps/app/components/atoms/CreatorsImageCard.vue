@@ -1,7 +1,11 @@
 <script setup lang="ts">
-defineProps<{
+import { useClipboard } from "@vueuse/core";
+const { fileUrl = "" } = defineProps<{
   fileUrl: string;
 }>();
+
+const source = ref(fileUrl);
+const { copy, copied } = useClipboard({ source });
 </script>
 
 <template>
@@ -33,8 +37,11 @@ defineProps<{
 
     <div
       class="absolute z-10 top-0 left-0 w-full h-full items-center justify-center bg-black/50 cursor-pointer hidden group-hover:flex"
+      @click="copy()"
     >
-      <span class="font-semibold text-sm text-white"> Copiar url </span>
+      <span class="font-semibold text-sm text-white">
+        {{ copied ? "Copiado!" : "Copiar url" }}
+      </span>
     </div>
     <div class="aspect-video w-full overflow-hidden bg-zinc-100">
       <nuxt-img
