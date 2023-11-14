@@ -45,12 +45,14 @@
         class="mb-4 flex flex-wrap items-center gap-4 justify-center md:mb-10"
       >
         <nuxt-link
-          :to="`${$config.public.appUrl}sign-up?utm_source=landing_page`"
+          to="https://nge5la4zlyy.typeform.com/to/nI55iu4u"
+          external
+          target="_blank"
           class="w-full md:w-fit"
         >
           <MButton
-            text="Ver como funciona"
-            icon-left="book"
+            text="Torne-se um creator"
+            icon-left="star"
             class="w-full md:w-fit"
             variant="secondary"
             size="lg"

@@ -13,7 +13,16 @@ const { data: gitHub } = await useFetch<GitHubRepository>(
   "https://api.github.com/search/repositories?q=menthorlabs/menthor"
 );
 
+const route = useRoute();
+
 const menuOpened = defineModel();
+
+watch(
+  () => route.fullPath,
+  () => {
+    menuOpened.value = false;
+  }
+);
 
 const arrivedState = ref({ top: true });
 
@@ -61,32 +70,52 @@ onMounted(() => {
         class="w-full flex-1 gap-6 space-y-4 p-4 md:flex md:h-fit md:items-center md:justify-end md:space-y-0 md:p-0"
         :class="{ block: menuOpened, hidden: !menuOpened }"
       >
-        <div class="flex items-center gap-1">
+        <div
+          class="border-t border-b border-zinc-300 py-2 md:py-0 md:!border-none md:flex items-center gap-1"
+        >
           <nuxt-link to="/creators">
             <AtomsHeaderLink title="Escreva cursos" />
           </nuxt-link>
 
-          <AtomsHeaderLink title="Documentação" />
+          <!-- <AtomsHeaderLink title="Documentação" /> -->
 
-          <VDropdown :distance="6" placement="bottom-end">
+          <VDropdown :distance="6" placement="bottom">
             <AtomsHeaderLink title="Comunidade" chevron />
             <template #popper="{ hide }">
               <div @click="hide()" class="py-2">
-                <AtomsHeaderCardLink
-                  icon="fab fa-discord"
-                  title="Discord"
-                  description="Junte-se a mais de 2000 alunos."
-                />
-                <AtomsHeaderCardLink
-                  icon="fab fa-github"
-                  title="GitHub"
-                  description="Deixe uma estrela e apoie-nos."
-                />
-                <AtomsHeaderCardLink
-                  icon="hand-holding-dollar"
-                  title="Doação"
-                  description="Seja um doador e divulgue sua marca."
-                />
+                <nuxt-link
+                  external
+                  target="_blank"
+                  to="https://discord.gg/8BCByyXxq8"
+                >
+                  <AtomsHeaderCardLink
+                    icon="fab fa-discord"
+                    title="Discord"
+                    description="Junte-se a mais de 2000 alunos."
+                  />
+                </nuxt-link>
+                <nuxt-link
+                  external
+                  target="_blank"
+                  to="https://github.com/menthorlabs/menthor"
+                >
+                  <AtomsHeaderCardLink
+                    icon="fab fa-github"
+                    title="GitHub"
+                    description="Deixe uma estrela e apoie-nos."
+                  />
+                </nuxt-link>
+                <nuxt-link
+                  external
+                  target="_blank"
+                  to="https://pixmeacoffee.vercel.app/menthor"
+                >
+                  <AtomsHeaderCardLink
+                    icon="hand-holding-dollar"
+                    title="Doação"
+                    description="Seja um doador e divulgue sua marca."
+                  />
+                </nuxt-link>
               </div>
             </template>
           </VDropdown>

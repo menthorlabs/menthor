@@ -17,12 +17,19 @@
               escreverem um curso para a menthor terão uma conquista exclusiva
               dentro da plataforma.
             </p>
-            <MButton
-              variant="secondary"
-              text="Torne-se um creator"
-              icon-right="arrow-right"
-              size="lg"
-            />
+            <nuxt-link
+              to="https://nge5la4zlyy.typeform.com/to/nI55iu4u"
+              external
+              target="_blank"
+              class="w-full md:w-fit"
+            >
+              <MButton
+                variant="secondary"
+                text="Inscreva-se agora"
+                icon-right="arrow-right"
+                size="lg"
+              />
+            </nuxt-link>
           </div>
           <div
             class="mx-auto lg:w-[508px] lg:h-[508px] lg:absolute lg:-right-[40px] lg:-top-[69px] aspect-square"

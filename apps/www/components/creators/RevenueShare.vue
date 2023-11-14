@@ -25,7 +25,7 @@
             O dinheiro proveniente de doações, parcerias e outros canais serão
             utilizados para pagar os custos e boa parte do lucro será
             distribuído entre os
-            <strong class="font-semibold text-zinc-950">creators</strong> .
+            <strong class="font-semibold text-zinc-950">creators</strong>.
           </p>
         </div>
       </div>
