@@ -15,6 +15,7 @@ const shadowGenerator = (color: Array<Color>): string => {
 <template>
   <div
     class="absolute left-0 top-0 flex h-[90px] w-full justify-center overflow-hidden pointer-events-none"
+    v-if="shadowStore.primaryColors && shadowStore.secondaryColors"
   >
     <div class="relative h-full w-full max-w-[1017px]">
       <div
@@ -65,6 +66,12 @@ const shadowGenerator = (color: Array<Color>): string => {
             <div class="min-w-[140px] py-1" @click="hide()">
               <NuxtLink to="/profile">
                 <DropdownItem icon="circle-user" name="Perfil" />
+              </NuxtLink>
+              <NuxtLink
+                to="/creators/images"
+                v-if="userStore.user?.publicMetadata?.isCreator"
+              >
+                <DropdownItem icon="star" name="Creators" />
               </NuxtLink>
               <NuxtLink to="/sign-out">
                 <DropdownItem icon="arrow-right-from-bracket" name="Sair" />

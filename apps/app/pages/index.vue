@@ -46,7 +46,7 @@ useSeoMeta({
     </div>
     <h2 class="mb-4 text-lg font-bold">Recomendados para você</h2> -->
     <div
-      class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] sm:grid-cols-[repeat(auto-fill,_minmax(180px,_1fr))]"
+      class="mb-6 grid grid-cols-[repeat(auto-fill,_minmax(160px,_1fr))] sm:grid-cols-[repeat(auto-fill,_minmax(180px,_1fr))] gap-4 sm:gap-0"
     >
       <ContentNavigation v-slot="{ navigation }">
         <NuxtLink

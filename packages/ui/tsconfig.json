@@ -1,4 +1,16 @@
 {
-  // https://nuxt.com/docs/guide/concepts/typescript
-  "extends": ["../../apps/app/.nuxt/tsconfig.json"],
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "jsx": "preserve",
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "allowImportingTsExtensions": true,
+    "typeRoots": ["types"]
+  },
+  "vueCompilerOptions": {
+    "target": 3.3
+  }
 }
