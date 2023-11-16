@@ -20,6 +20,7 @@ declare module "vue" {
     $clerk: Clerk;
     $filters: {
       level: Function;
+      bytesToSize: Function;
     };
   }
 }

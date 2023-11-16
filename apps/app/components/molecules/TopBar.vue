@@ -1,20 +1,34 @@
 <script setup lang="ts">
+import type { Color } from "colorthief";
+
 const router = useRouter();
 const sessionStore = useSessionStore();
 const userStore = useUserStore();
 const defaultAsideStore = useDefaultAsideStore();
+const shadowStore = useShadowStore();
+
+const shadowGenerator = (color: Array<Color>): string => {
+  return `radial-gradient(50% 50% at 50% 50%, rgba(${color[0][0]}, ${color[0][1]}, ${color[0][2]}, 0.2) 0%, rgba(${color[0][0]}, ${color[0][1]}, ${color[0][2]}, 0) 100%)`;
+};
 </script>
 
 <template>
   <div
     class="absolute left-0 top-0 flex h-[90px] w-full justify-center overflow-hidden pointer-events-none"
+    v-if="shadowStore.primaryColors && shadowStore.secondaryColors"
   >
     <div class="relative h-full w-full max-w-[1017px]">
       <div
-        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(236,_72,_153,_0.2)_0%,_rgba(236,_72,_153,_0)_100%)] absolute bottom-0 left-0 h-[179px] w-[678px]"
+        class="absolute bottom-0 left-0 h-[179px] w-[678px]"
+        :style="{
+          background: shadowGenerator(shadowStore.primaryColors),
+        }"
       ></div>
       <div
-        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(37,_99,_235,_0.2)_0%,_rgba(28,_100,_242,_0)_100%)] absolute bottom-0 right-0 h-[179px] w-[678px]"
+        class="absolute bottom-0 right-0 h-[179px] w-[678px]"
+        :style="{
+          background: shadowGenerator(shadowStore.secondaryColors),
+        }"
       ></div>
     </div>
   </div>
@@ -52,6 +66,12 @@ const defaultAsideStore = useDefaultAsideStore();
             <div class="min-w-[140px] py-1" @click="hide()">
               <NuxtLink to="/profile">
                 <DropdownItem icon="circle-user" name="Perfil" />
+              </NuxtLink>
+              <NuxtLink
+                to="/creators/images"
+                v-if="userStore.user?.publicMetadata?.isCreator"
+              >
+                <DropdownItem icon="star" name="Creators" />
               </NuxtLink>
               <NuxtLink to="/sign-out">
                 <DropdownItem icon="arrow-right-from-bracket" name="Sair" />

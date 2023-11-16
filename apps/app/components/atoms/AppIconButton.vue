@@ -29,23 +29,19 @@ const apps: { [key: string]: { url: string } } = {
 </script>
 
 <template>
-  <VTooltip v-if="apps[app]">
-    <nuxt-link
-      :to="apps[app].url"
-      target="_blank"
-      external
-      class="flex h-[40px] w-[40px] min-w-[40px] cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white/90 px-2 py-3 hover:bg-zinc-100/90"
-    >
-      <nuxt-img
-        :src="`/app/logos/${app}.svg`"
-        :alt="app"
-        class="w-full h-full object-contain object-center"
-        height="16"
-        width="auto"
-      />
-    </nuxt-link>
-    <template #popper>
-      <span class="capitalize">{{ app }}</span>
-    </template>
-  </VTooltip>
+  <nuxt-link
+    v-if="apps[app]"
+    :to="apps[app].url"
+    target="_blank"
+    external
+    class="flex h-[40px] w-[40px] min-w-[40px] cursor-pointer items-center justify-center rounded-full border border-zinc-200 bg-white/90 px-2 py-3 hover:bg-zinc-100/90"
+  >
+    <nuxt-img
+      :src="`/app/logos/${app}.svg`"
+      :alt="app"
+      class="w-full h-full object-contain object-center"
+      height="16"
+      width="auto"
+    />
+  </nuxt-link>
 </template>

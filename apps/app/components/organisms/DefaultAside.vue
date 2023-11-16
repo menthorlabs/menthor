@@ -19,6 +19,10 @@ const isLesson = computed(() => {
   return !!route.meta?.lesson;
 });
 
+const isCreators = computed(() => {
+  return route.path.includes("/creators");
+});
+
 watch(isLesson, async () => {
   refresh();
 });
@@ -66,7 +70,12 @@ watch(isLesson, async () => {
         </div>
       </Transition>
       <Transition name="slide-fade-reverse">
-        <div v-if="!isLesson">
+        <div v-if="!isLesson && isCreators">
+          <LeftMenuCreators />
+        </div>
+      </Transition>
+      <Transition name="slide-fade-reverse">
+        <div v-if="!isLesson && !isCreators">
           <LeftMenuDefault />
         </div>
       </Transition>

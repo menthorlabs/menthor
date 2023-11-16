@@ -11,7 +11,10 @@ export type user = {
   firstName: string;
   lastName: string;
   username: string;
-  publicMetadata: Record<"badges", any>;
+  publicMetadata: {
+    badges: string;
+    isCreator: boolean;
+  };
 };
 
 export const useUserStore = defineStore("user", {
