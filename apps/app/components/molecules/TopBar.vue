@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { Color } from "colorthief";
+import type { Color } from "colorthief";
 
 const router = useRouter();
 const sessionStore = useSessionStore();

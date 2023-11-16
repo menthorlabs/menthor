@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ColorThief, { Color } from "colorthief";
+import ColorThief, { type Color } from "colorthief";
 const userStore = useUserStore();
 const shadowStore = useShadowStore();
 
@@ -26,7 +26,7 @@ const checkLeave = () => {
 const description =
   "Plataforma gratuita de ensino de programação web para pessoas que estão buscando o primeiro emprego na área ou que querem construir seu próprio negócio.";
 useSeoMeta({
-  title: title,
+  title: title.value,
   description: description,
   ogDescription: description,
   ogImage: "https://menthor.io/brand/menthor-cover.jpg",

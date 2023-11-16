@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 declare module "colorthief" {
   type Color = [number, number, number];
   export default class ColorThief {

@@ -1,5 +1,5 @@
 import { defineStore } from "pinia";
-import { Color } from "colorthief";
+import { type Color } from "colorthief";
 
 const DEFAULT_COLORS: Array<Color> = [
   [236, 72, 153],
