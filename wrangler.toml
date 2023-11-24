@@ -4,6 +4,10 @@ workers_dev = true
 compatibility_date = "2022-09-10"
 account_id = "d8803c6a6253e9267bf1000ca69db18d"
 
+rules = [
+  { type = "ESModule", globs = ["**/*.js", "**/*.mjs"]},
+]
+
 [site]
 bucket = "apps/app/.output/public"
 

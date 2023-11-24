@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "dotenv -e .env.development -- turbo run dev --parallel --no-daemon",
     "build": "dotenv -e .env.production -- turbo run build --no-daemon",
+    "analyze": "dotenv -e .env.production -- turbo run analyze --no-daemon",
     "build:production": "dotenv -e .env.production -- turbo run build --no-daemon",
     "build:development": "dotenv -e .env.development -- turbo run build --no-daemon",
     "generate": "dotenv -e .env.production -- turbo run generate --no-daemon",
@@ -21,6 +22,9 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
+  },
+  "resolutions": {
+    "globby": "13.2.2"
   },
   "name": "my-turborepo",
   "packageManager": "pnpm@8.6.9"

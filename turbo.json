@@ -5,6 +5,9 @@
     "build": {
       "outputs": [".nuxt/**", "!.nuxt/content-cache/**"]
     },
+    "analyze": {
+      "outputs": [".nuxt/**", "!.nuxt/content-cache/**"]
+    },
     "generate": {
       "cache": false
     },

@@ -7,6 +7,9 @@ const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/";
 const baseURL = "/app/";
 
 export default defineNuxtConfig({
+  experimental: {
+    payloadExtraction: true,
+  },
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
     public: {
@@ -17,13 +20,15 @@ export default defineNuxtConfig({
     },
   },
   routeRules: {
+    "/sign-in": { ssr: false },
     "/": { prerender: true },
     "/profile": { ssr: true },
   },
   nitro: {
-    preset: "cloudflare",
+    preset: "aws_amplify",
     baseURL: process.env.NODE_ENV === "development" ? "/" : baseURL,
     prerender: {
+      crawlLinks: true,
       routes: ["/api/search.json"],
     },
     runtimeConfig: {
