@@ -4,6 +4,7 @@ node_modules
 .nitro
 .cache
 .output
+.amplify-hosting
 .env
 dist
 .DS_Store
