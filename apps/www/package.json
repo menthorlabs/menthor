@@ -12,7 +12,7 @@
   "devDependencies": {
     "@nuxtjs/fontaine": "^0.2.5",
     "@types/node": "^20.4.6",
-    "nuxt": "^3.7.3",
+    "nuxt": "^3.8.2",
     "nuxt-schema-org": "^2.2.0",
     "nuxt-simple-robots": "^3.1.0",
     "nuxt-simple-sitemap": "^3.1.4",
@@ -27,8 +27,8 @@
     "@nuxt/image-edge": "1.0.0-rc.1-28180077.d51e794",
     "@vueuse/nuxt": "^10.3.0",
     "eslint-config-custom": "workspace:*",
-    "humps": "^2.0.1",
     "floating-vue": "2.0.0-beta.24",
+    "humps": "^2.0.1",
     "nuxt-umami": "^2.5.2",
     "tailwind-config": "workspace:*"
   }
