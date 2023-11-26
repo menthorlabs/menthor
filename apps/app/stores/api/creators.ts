@@ -12,6 +12,8 @@ export const useCreatorsStore = defineStore("creators", {
     async getImages() {
       try {
         const response = await this.$api(`/creators/images`);
+        if (!response.images) return;
+
         this.images = response.images;
         this.filesSize = response.filesSize;
         return response;
