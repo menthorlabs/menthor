@@ -35,11 +35,9 @@ jobs:
       - name: Build
         run: pnpm build:${{ inputs.NODE_ENV }} --filter=${{ inputs.APP_NAME }}
 
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
           accountId: d8803c6a6253e9267bf1000ca69db18d
-          projectName: ${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.APP_NAME }}
-          directory: apps/${{ inputs.APP_NAME }}/dist
-          branch: main
+          command: pages deploy apps/${{ inputs.APP_NAME }}/dist --project-name=${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.APP_NAME }}
