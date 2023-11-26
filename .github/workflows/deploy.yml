@@ -21,20 +21,19 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Setup Node
-        uses: actions/setup-node@v3
+      - uses: actions/setup-node@v3
         with:
           node-version: 19
-
-      - name: Setup Yarn
-        uses: borales/actions-yarn@v4
+      
+      - uses: pnpm/action-setup@v2
         with:
-          cmd: install
+          version: 8
+      
+      - name: Install Dependencies
+        run: pnpm install
 
-      - name: Build Production Bundle
-        uses: borales/actions-yarn@v4
-        with:
-          cmd: build:${{ inputs.NODE_ENV }} --filter=${{ inputs.APP_NAME }}
+      - name: Build
+        run: pnpm build:${{ inputs.NODE_ENV }} --filter=${{ inputs.APP_NAME }}
 
       - name: Publish to Cloudflare Pages
         uses: cloudflare/pages-action@v1
