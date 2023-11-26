@@ -1,4 +1,5 @@
 name: Build and Deploy - Cloudflare Pages
+
 on:
   workflow_call:
     inputs:
@@ -14,13 +15,14 @@ on:
         required: true
         type: string
 
+permissions:
+  deployments: write
+
 jobs:
   setup-build-publish-deploy:
     name: Publish to Cloudflare Pages
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
+    
     steps:
       - uses: actions/checkout@v3
 
