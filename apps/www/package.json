@@ -11,12 +11,12 @@
   },
   "devDependencies": {
     "@nuxtjs/fontaine": "^0.2.5",
-    "@types/node": "^20.4.6",
+    "@types/node": "^20.10.0",
     "nuxt": "^3.8.2",
     "nuxt-schema-org": "^2.2.0",
     "nuxt-simple-robots": "^3.1.0",
     "nuxt-simple-sitemap": "^3.1.4",
-    "typescript": "^5.1.6"
+    "typescript": "^5.3.2"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.4.2",

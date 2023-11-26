@@ -23,9 +23,6 @@
       "path": "cz-conventional-changelog"
     }
   },
-  "resolutions": {
-    "globby": "13.2.2"
-  },
   "name": "my-turborepo",
   "packageManager": "pnpm@8.6.9"
 }

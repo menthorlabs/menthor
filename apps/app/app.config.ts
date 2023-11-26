@@ -2,7 +2,7 @@ export default defineAppConfig({
   ui: {
     tooltip: {
       container: "z-50 group",
-      background: "bg-red-500",
+      background: "bg-white",
     },
   },
 });
