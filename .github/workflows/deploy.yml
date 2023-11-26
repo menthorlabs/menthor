@@ -13,9 +13,6 @@ on:
       APP_NAME:
         required: true
         type: string
-      CLOUDFLARE_PROJECT_NAME:
-        required: true
-        type: string
 
 jobs:
   setup-build-publish-deploy:
@@ -47,6 +44,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
           accountId: d8803c6a6253e9267bf1000ca69db18d
-          projectName: ${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.CLOUDFLARE_PROJECT_NAME }}
+          projectName: ${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.APP_NAME }}
           directory: apps/${{ inputs.APP_NAME }}/dist
           branch: main
