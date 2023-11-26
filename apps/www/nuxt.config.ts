@@ -11,6 +11,9 @@ export default defineNuxtConfig({
       appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
     },
   },
+  nitro: {
+    preset: "cloudflare_pages_static",
+  },
   imports: {
     dirs: ["composables", "../../packages/composables"],
   },

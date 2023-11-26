@@ -1,55 +1,51 @@
-# name: Menthor Apps Deployment
+name: Apps Monorepo Deployment
 
-# on:
-#   push:
-#     branches:
-#     - main
+on:
+  push:
+    branches:
+    - dev
+    - staging
+    - main
 
-# permissions:
-#   id-token: write
-#   contents: read
+jobs:
+  changes:
+    name: Path filter
+    runs-on: ubuntu-latest
 
-# jobs:
-#   changes:
-#     name: Path filter
-#     runs-on: ubuntu-latest
-
-#     outputs:
-#       app: ${{ steps.filter.outputs.app }}
-#       www: ${{ steps.filter.outputs.www }}
+    outputs:
+      www: ${{ steps.filter.outputs.www }}
+      app: ${{ steps.filter.outputs.app }}
     
-#     steps:
-#     - name: Checkout
-#       uses: 'actions/checkout@v3'
+    steps:
+    - name: Checkout
+      uses: 'actions/checkout@v3'
 
-#     - uses: dorny/paths-filter@v2
-#       id: filter
-#       with:
-#         base: ${{ github.ref }}
-#         filters: |
-#           app:
-#             - '.env.*'
-#             - 'apps/app/**'
-#             - 'packages/**'
-#           www:
-#             - '.env.*'
-#             - 'apps/www/**'
-#             - 'packages/**'
+    - uses: dorny/paths-filter@v2
+      id: filter
+      with:
+        base: ${{ github.ref }}
+        filters: |
+          www:
+            - '.env.*'
+            - 'apps/www/**'
+            - 'packages/**'
+          app:
+            - '.env.*'
+            - 'apps/app/**'
+            - 'packages/**'
 
-#   app-deploy:
-#     needs: changes
-#     if: ${{ needs.changes.outputs.app == 'true' }}
-#     secrets: inherit
-#     uses: ./.github/workflows/deploy.yml
-#     with:
-#       APP_NAME: app
-#       BUCKET: s3://menthor.io-app/app
+  www-deploy:
+    needs: changes
+    if: ${{ needs.changes.outputs.www == 'true' }}
+    secrets: inherit
+    uses: ./.github/workflows/deploy-cloudrun.yaml
+    with:
+      APP_NAME: www
 
-#   www-deploy:
-#     needs: changes
-#     if: ${{ needs.changes.outputs.www == 'true' }}
-#     secrets: inherit
-#     uses: ./.github/workflows/deploy.yml
-#     with:
-#       APP_NAME: www
-#       BUCKET: s3://menthor.io
+  app-deploy:
+    needs: changes
+    if: ${{ needs.changes.outputs.app == 'true' }}
+    secrets: inherit
+    uses: ./.github/workflows/deploy-cloudrun.yaml
+    with:
+      APP_NAME: app

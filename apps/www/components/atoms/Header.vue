@@ -79,7 +79,7 @@ onMounted(() => {
 
           <!-- <AtomsHeaderLink title="Documentação" /> -->
 
-          <VDropdown :distance="6" placement="bottom">
+          <!-- <VDropdown :distance="6" placement="bottom">
             <AtomsHeaderLink title="Comunidade" chevron />
             <template #popper="{ hide }">
               <div @click="hide()" class="py-2">
@@ -118,7 +118,7 @@ onMounted(() => {
                 </nuxt-link>
               </div>
             </template>
-          </VDropdown>
+          </VDropdown> -->
         </div>
 
         <nuxt-link

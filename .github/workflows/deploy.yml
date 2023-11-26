@@ -1,47 +1,52 @@
-# name: Build and Deploy
+name: Build and Deploy - Cloudflare Pages
+on:
+  workflow_call:
+    inputs:
+      CLOUDFLARE_ENV:
+        required: false
+        type: string
+        default: ${{ contains(github.ref, 'main') && 'prod' || contains(github.ref, 'staging') && 'staging' || 'dev'}}
+      NODE_ENV:
+        required: false
+        type: string
+        default: ${{ contains(github.ref, 'main') && 'production' || contains(github.ref, 'staging') && 'staging' || 'development'}}
+      APP_NAME:
+        required: true
+        type: string
+      CLOUDFLARE_PROJECT_NAME:
+        required: true
+        type: string
 
-# on:
-#   workflow_call:
-#     inputs:
-#       APP_NAME:
-#         required: true
-#         type: string
-#       BUCKET:
-#         required: true
-#         type: string
+jobs:
+  setup-build-publish-deploy:
+    name: Publish to Cloudflare Pages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      deployments: write
+    steps:
+      - uses: actions/checkout@v3
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 19
 
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 19
-      
-#       - uses: pnpm/action-setup@v2
-#         with:
-#           version: 8
-      
-#       - name: Install Dependencies
-#         run: pnpm install
+      - name: Setup Yarn
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: install
 
-#       - name: Build
-#         run: pnpm generate --filter=${{ inputs.APP_NAME }}
+      - name: Build Production Bundle
+        uses: borales/actions-yarn@v4
+        with:
+          cmd: build:${{ inputs.NODE_ENV }} --filter=${{ inputs.APP_NAME }}
 
-#       - name: Configure AWS Credentials
-#         uses: aws-actions/configure-aws-credentials@v2
-#         with:
-#           aws-region: sa-east-1
-#           role-to-assume: arn:aws:iam::928571631969:role/gh-actions-menthorlabs-menthor
-
-#       - name: Install AWS CLI
-#         id: install-aws-cli
-#         uses: unfor19/install-aws-cli-action@master
-
-#       - name: Push to S3
-#         run: aws s3 cp apps/${{ inputs.APP_NAME }}/dist ${{ inputs.BUCKET }} --recursive
-
-#       - name: Invalidate CloudFront
-#         run: aws cloudfront create-invalidation --distribution-id E2B0K34D9WKXHA --paths "/*"
+      - name: Publish to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
+          accountId: d8803c6a6253e9267bf1000ca69db18d
+          projectName: ${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.CLOUDFLARE_PROJECT_NAME }}
+          directory: apps/${{ inputs.APP_NAME }}/dist
+          branch: main

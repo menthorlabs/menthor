@@ -23,13 +23,8 @@ export default defineNuxtConfig({
       appUrl: process.env.NUXT_PUBLIC_APP_URL,
     },
   },
-  routeRules: {
-    "/sign-in": { ssr: false },
-    "/": { prerender: true },
-    "/profile": { ssr: true },
-  },
   nitro: {
-    preset: "cloudflare",
+    preset: "cloudflare_pages",
     baseURL: process.env.NODE_ENV === "development" ? "/" : baseURL,
     prerender: {
       crawlLinks: true,
@@ -40,6 +35,9 @@ export default defineNuxtConfig({
         buildAssetsDir: "_nuxt",
       },
     },
+    // output: {
+    //   publicDir: "../www/dist/app",
+    // },
   },
   app: {
     baseURL: process.env.NODE_ENV === "development" ? "/" : baseURL,
