@@ -7,8 +7,12 @@ const siteUrl = process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/";
 const baseURL = "/app/";
 
 export default defineNuxtConfig({
+  colorMode: {
+    preference: "light",
+  },
   experimental: {
     payloadExtraction: true,
+    inlineSSRStyles: false,
   },
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
@@ -25,7 +29,7 @@ export default defineNuxtConfig({
     "/profile": { ssr: true },
   },
   nitro: {
-    preset: "aws_amplify",
+    preset: "cloudflare",
     baseURL: process.env.NODE_ENV === "development" ? "/" : baseURL,
     prerender: {
       crawlLinks: true,
@@ -80,25 +84,16 @@ export default defineNuxtConfig({
       },
     },
   },
-  css: [
-    "@/styles/main.css",
-    "@/styles/font.css",
-    "@fortawesome/fontawesome-svg-core/styles.css",
-  ],
+  css: ["@/styles/font.css", "@fortawesome/fontawesome-svg-core/styles.css"],
   components: [
     { path: "../../packages/ui/src", pathPrefix: false },
     { path: "~/components", pathPrefix: false },
     { path: "~/components/content", pathPrefix: false },
   ],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
   modules: [
+    "@nuxt/ui",
     "nuxt-simple-sitemap",
-    "@nuxt/image-edge",
+    "@nuxt/image",
     "nuxt-schema-org",
     "@nuxtjs/fontaine",
     "@nuxt/content",
@@ -120,5 +115,8 @@ export default defineNuxtConfig({
       id: process.env.NUXT_PUBLIC_APP_UMAMI_ID,
       host: process.env.NUXT_PUBLIC_UMAMI_HOST,
     },
+  },
+  tailwindcss: {
+    cssPath: "@/styles/main.css",
   },
 });

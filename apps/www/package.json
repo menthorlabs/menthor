@@ -24,7 +24,7 @@
     "@fortawesome/free-regular-svg-icons": "^6.4.2",
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
-    "@nuxt/image-edge": "1.0.0-rc.1-28180077.d51e794",
+    "@nuxt/image": "^1.1.0",
     "@vueuse/nuxt": "^10.3.0",
     "eslint-config-custom": "workspace:*",
     "floating-vue": "2.0.0-beta.24",

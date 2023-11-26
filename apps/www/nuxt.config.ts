@@ -38,7 +38,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    "@nuxt/image-edge",
+    "@nuxt/image",
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
     "nuxt-simple-robots",

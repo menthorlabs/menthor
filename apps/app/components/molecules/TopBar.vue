@@ -1,34 +1,20 @@
 <script setup lang="ts">
-import type { Color } from "colorthief";
-
 const router = useRouter();
 const sessionStore = useSessionStore();
 const userStore = useUserStore();
 const defaultAsideStore = useDefaultAsideStore();
-const shadowStore = useShadowStore();
-
-const shadowGenerator = (color: Array<Color>): string => {
-  return `radial-gradient(50% 50% at 50% 50%, rgba(${color[0][0]}, ${color[0][1]}, ${color[0][2]}, 0.2) 0%, rgba(${color[0][0]}, ${color[0][1]}, ${color[0][2]}, 0) 100%)`;
-};
 </script>
 
 <template>
   <div
     class="absolute left-0 top-0 flex h-[90px] w-full justify-center overflow-hidden pointer-events-none"
-    v-if="shadowStore.primaryColors && shadowStore.secondaryColors"
   >
     <div class="relative h-full w-full max-w-[1017px]">
       <div
-        class="absolute bottom-0 left-0 h-[179px] w-[678px]"
-        :style="{
-          background: shadowGenerator(shadowStore.primaryColors),
-        }"
+        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(236,_72,_153,_0.2)_0%,_rgba(236,_72,_153,_0)_100%)] absolute bottom-0 left-0 h-[179px] w-[678px]"
       ></div>
       <div
-        class="absolute bottom-0 right-0 h-[179px] w-[678px]"
-        :style="{
-          background: shadowGenerator(shadowStore.secondaryColors),
-        }"
+        class="bg-[radial-gradient(50%_50%_at_50%_50%,_rgba(37,_99,_235,_0.2)_0%,_rgba(28,_100,_242,_0)_100%)] absolute bottom-0 right-0 h-[179px] w-[678px]"
       ></div>
     </div>
   </div>
@@ -52,18 +38,19 @@ const shadowGenerator = (color: Array<Color>): string => {
     <div class="flex items-center gap-2">
       <!-- <MIconButton icon="bell" variant="glass" /> -->
       <div v-if="sessionStore.isConnected()">
-        <VDropdown
-          :distance="6"
-          class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"
-          placement="bottom-end"
-        >
-          <img
-            :src="userStore.user?.profileImageUrl"
-            alt="Profile"
-            class="h-full w-full object-cover object-center"
-          />
-          <template #popper="{ hide }">
-            <div class="min-w-[140px] py-1" @click="hide()">
+        <UPopover :popper="{ placement: 'bottom-end' }">
+          <div
+            class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"
+          >
+            <img
+              :src="userStore.user?.profileImageUrl"
+              alt="Profile"
+              class="h-full w-full object-cover object-center"
+            />
+          </div>
+
+          <template #panel>
+            <div class="min-w-[140px] py-1">
               <NuxtLink to="/profile">
                 <DropdownItem icon="circle-user" name="Perfil" />
               </NuxtLink>
@@ -78,7 +65,7 @@ const shadowGenerator = (color: Array<Color>): string => {
               </NuxtLink>
             </div>
           </template>
-        </VDropdown>
+        </UPopover>
       </div>
       <div v-else>
         <NuxtLink to="/sign-in">

@@ -1,9 +1,10 @@
 <script setup lang="ts">
-useShortcuts();
+useSearchShortcuts();
 </script>
 
 <template>
-  <NuxtLayout class="z-0 text-zinc-950">
+  <NuxtLayout class="z-0 text-zinc-950 bg-white">
+    <NuxtLoadingIndicator />
     <NuxtPage />
   </NuxtLayout>
   <SearchModal />

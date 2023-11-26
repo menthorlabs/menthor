@@ -66,7 +66,7 @@ function resetSearch() {
 const searchDebounce = useDebounceFn(() => {
   searchContent();
   loading.value = false;
-}, 1000);
+}, 500);
 
 async function searchContent() {
   resetNavigatedIndex();
