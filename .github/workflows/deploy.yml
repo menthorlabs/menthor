@@ -38,7 +38,7 @@ jobs:
       - name: Deploy
         uses: cloudflare/wrangler-action@v3
         with:
-          wranglerVersion: "* -w"
+          packageManager: pnpm
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
           accountId: d8803c6a6253e9267bf1000ca69db18d
           command: pages deploy apps/${{ inputs.APP_NAME }}/dist --project-name=${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.APP_NAME }} --branch=production
