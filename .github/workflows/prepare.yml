@@ -38,7 +38,7 @@ jobs:
     needs: changes
     if: ${{ needs.changes.outputs.www == 'true' }}
     secrets: inherit
-    uses: ./.github/workflows/deploy-cloudrun.yaml
+    uses: ./.github/workflows/deploy.yml
     with:
       APP_NAME: www
 
@@ -46,6 +46,6 @@ jobs:
     needs: changes
     if: ${{ needs.changes.outputs.app == 'true' }}
     secrets: inherit
-    uses: ./.github/workflows/deploy-cloudrun.yaml
+    uses: ./.github/workflows/deploy.yml
     with:
       APP_NAME: app
