@@ -11,6 +11,11 @@ export default defineNuxtConfig({
       appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
     },
   },
+  routeRules: {
+    "/sign-in": { ssr: false },
+    "/": { prerender: true },
+    "/profile": { ssr: true },
+  },
   nitro: {
     preset: "cloudflare_pages_static",
   },
