@@ -7,6 +7,10 @@ on:
     - staging
     - main
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   changes:
     name: Path filter
