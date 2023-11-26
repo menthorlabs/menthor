@@ -42,4 +42,4 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
           accountId: d8803c6a6253e9267bf1000ca69db18d
           workingDirectory: 'apps/${{ inputs.APP_NAME }}'
-          command: pages deploy /dist --project-name=${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.APP_NAME }} --branch=production
+          command: pages deploy dist --project-name=${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.APP_NAME }} --branch=production
