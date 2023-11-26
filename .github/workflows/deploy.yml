@@ -15,14 +15,9 @@ on:
         required: true
         type: string
 
-permissions:
-  deployments: write
-
 jobs:
-  setup-build-publish-deploy:
-    name: Publish to Cloudflare Pages
+  build:
     runs-on: ubuntu-latest
-    
     steps:
       - uses: actions/checkout@v3
 
