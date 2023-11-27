@@ -90,7 +90,7 @@ async function uploadFile(file: File) {
     </div>
     <div
       class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-1"
-      v-else
+      v-else-if="creatorsStore.images?.length > 0"
     >
       <CreatorsImageCard
         v-for="fileName in creatorsStore.images.reverse()"

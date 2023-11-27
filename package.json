@@ -23,6 +23,10 @@
       "path": "cz-conventional-changelog"
     }
   },
+  "resolutions": {
+    "nitropack": "2.7.2",
+    "@nuxt/kit": "3.7.4"
+  },
   "name": "my-turborepo",
   "packageManager": "pnpm@8.6.9"
 }
