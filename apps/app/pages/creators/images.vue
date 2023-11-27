@@ -27,10 +27,14 @@ function onInput(event: Event) {
 
 async function uploadFile(file: File) {
   loading.value = true;
-  const response = await creatorsStore.signUrl(file.type);
-  await uploadStore.uploadFileOnUrl(file, response.signedUrl.url);
-  await creatorsStore.addImage(response.signedUrl.fileName);
-  loading.value = false;
+
+  try {
+    const response = await creatorsStore.signUrl(file.type);
+    await uploadStore.uploadFileOnUrl(file, response.signedUrl.url);
+    await creatorsStore.addImage(response.signedUrl.fileName);
+  } finally {
+    loading.value = false;
+  }
 }
 </script>
 
@@ -97,6 +101,9 @@ async function uploadFile(file: File) {
         :key="fileName"
         :fileUrl="`https://menthor-content.s3.sa-east-1.amazonaws.com/${fileName}`"
       />
+    </div>
+    <div v-else class="text-center text-sm text-zinc-500 pt-10">
+      Você ainda não subiu nenhuma imagem.
     </div>
   </div>
 </template>
