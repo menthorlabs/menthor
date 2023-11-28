@@ -1,11 +1,13 @@
 <script setup lang="ts">
-const userStore = useUserStore();
-const router = useRouter();
+definePageMeta({
+  middleware: ["auth"],
+});
 
-if (!userStore.user) router.push("/sign-in");
 useSeoMeta({
   title: "Seu perfil",
 });
+
+const userStore = useUserStore();
 
 function openProfileModal() {
   userStore.user ? (userStore.modalOpened = true) : null;

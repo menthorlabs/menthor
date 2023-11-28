@@ -1,5 +1,7 @@
 <script setup lang="ts">
-onMounted(() => {
+onMounted(async () => {
+  const sessionStore = useSessionStore();
+  await sessionStore.signOut();
   new useSakura("#login_background");
 });
 </script>

@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import type { UpdateUserParams, SetProfileImageParams } from "@clerk/types";
-import { useCookies } from "@vueuse/integrations/useCookies";
 
 export type user = {
   profileImageUrl: string;
@@ -43,10 +42,6 @@ export const useUserStore = defineStore("user", {
       if (!userData) return;
 
       this.user = userData;
-      const userCookie = useCookies([]);
-      userCookie.set("m-user", userData);
-
-      console.log("set user");
     },
     async updateUser() {
       await this.$clerk.user.update<UpdateUserParams>({

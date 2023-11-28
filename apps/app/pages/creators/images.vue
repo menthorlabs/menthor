@@ -1,4 +1,7 @@
 <script setup lang="ts">
+definePageMeta({
+  middleware: ["auth"],
+});
 const creatorsStore = useCreatorsStore();
 const uploadStore = useUploadStore();
 const loading = ref(true);
@@ -97,7 +100,7 @@ async function uploadFile(file: File) {
       v-else-if="creatorsStore.images?.length > 0"
     >
       <CreatorsImageCard
-        v-for="fileName in creatorsStore.images.reverse()"
+        v-for="fileName in creatorsStore.orderedImages"
         :key="fileName"
         :fileUrl="`https://menthor-content.s3.sa-east-1.amazonaws.com/${fileName}`"
       />

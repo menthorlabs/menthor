@@ -1,12 +1,8 @@
 import { defineStore } from "pinia";
-import { useCookies } from "@vueuse/integrations/useCookies";
 import { ClerkAPIError } from "@clerk/types";
 
 export const useSessionStore = defineStore("session", {
-  state: (): { token: string | null; cleared: boolean } => ({
-    token: null,
-    cleared: false,
-  }),
+  state: () => ({}),
   actions: {
     isConnected(): boolean {
       const userStore = useUserStore();
@@ -19,13 +15,14 @@ export const useSessionStore = defineStore("session", {
       }
     },
     hasSession() {
-      const clientSession = this.$clerk?.client?.sessions[0];
-      return Boolean(!this.cleared && clientSession);
+      const mSession = localStorage.getItem("m-session");
+      return mSession === "true";
     },
     async refreshSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
       if (!clientSession) return;
       try {
+        localStorage.setItem("m-session", "true");
         await this.$clerk.setSession(clientSession);
       } catch (e) {
         const clerkError: { errors: ClerkAPIError[] } | any = e;
@@ -37,11 +34,7 @@ export const useSessionStore = defineStore("session", {
       }
     },
     async signOut() {
-      this.cleared = true;
-      const clerkToken = useCookies([]);
-      const userCookie = useCookies([]);
-      await userCookie.remove("m-user");
-      await clerkToken.remove("__session");
+      localStorage.removeItem("m-session");
       await this.$clerk.signOut();
     },
   },
