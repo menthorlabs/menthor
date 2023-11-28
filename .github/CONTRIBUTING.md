@@ -116,7 +116,7 @@ As sugestões são rastreadas com as [issues do GitHub](https://github.com/menth
 - Você pode querer **incluir capturas de tela e GIFs animados** para ajudar a demonstrar os passos ou destacar a parte à qual a sugestão se refere. 
 - **Explique por que esta funcionalidade seria útil** para a maioria dos usuários. Você também pode indicar outros projetos de referência que poderiam servir como inspiração.
 
-Dê uma olhada no nosso [modelo de issue](./ISSUE_TEMPLATE.md) para se basear ao sugerir uma nova funcionalidade.
+Dê uma olhada no nosso [modelo de issue](./issue_template.md) para se basear ao sugerir uma nova funcionalidade.
 
 ### Pull Requests (PR)
 
@@ -135,7 +135,7 @@ Em geral, seguimos o fluxo de trabalho [Git Fork-and-Pull](https://github.com/su
 Agora que você entendeu o fluxo padrão, leia atentamente as orientações a seguir:
 
 - Certifique-se de que seu PR está atualizado com a branch principal.
-- Siga nosso [modelo de PR](./PULL_REQUEST_TEMPLATE.md) para que possamos revisar seu PR. Esse modelo ajuda os revisores a entender suas alterações e o propósito do seu pull request.
+- Siga nosso [modelo de PR](./pull_request_template.md) para que possamos revisar seu PR. Esse modelo ajuda os revisores a entender suas alterações e o propósito do seu pull request.
 - Siga também nosso [Guia de Estilo](#guia-de-estilo) para padronizar as mensagens de _commit_ e a língua utilizada.
 - Se estiver resolvendo uma _issue_ aberta, não se esqueça de [vinculá-la ao PR](https://docs.github.com/pt/issues/tracking-your-work-with-issues/linking-a-pull-request-to-an-issue).
 - Depois de enviar sua PR, membros da equipe e comunidade vão revisar sua proposta. Podemos fazer perguntas ou solicitar informações adicionais.
