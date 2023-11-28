@@ -45,7 +45,7 @@
         class="mb-4 flex flex-wrap items-center gap-4 justify-center md:mb-10"
       >
         <nuxt-link
-          to="https://nge5la4zlyy.typeform.com/to/nI55iu4u"
+          to="https://tally.so/r/wa2jEv"
           external
           target="_blank"
           class="w-full md:w-fit"

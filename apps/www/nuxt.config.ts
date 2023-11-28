@@ -2,7 +2,9 @@ import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
 
 export default defineNuxtConfig({
-  // ssr: false,
+  colorMode: {
+    preference: "light",
+  },
   sourcemap: { server: true, client: false }, // Disable sourcemap errors
   runtimeConfig: {
     public: {
@@ -10,11 +12,6 @@ export default defineNuxtConfig({
       apiUrl: process.env.NUXT_PUBLIC_API_URL,
       appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
     },
-  },
-  routeRules: {
-    "/sign-in": { ssr: false },
-    "/": { prerender: true },
-    "/profile": { ssr: true },
   },
   nitro: {
     preset: "cloudflare_pages_static",
@@ -27,11 +24,7 @@ export default defineNuxtConfig({
     defineModel: true,
   },
   extends: ["nuxt-umami"],
-  css: [
-    "@/styles/main.css",
-    "@/styles/font.css",
-    "@fortawesome/fontawesome-svg-core/styles.css",
-  ],
+  css: ["@/styles/font.css", "@fortawesome/fontawesome-svg-core/styles.css"],
   alias: {
     "@": path.resolve(__dirname, "../../packages/assets"),
   },
@@ -46,6 +39,7 @@ export default defineNuxtConfig({
     },
   },
   modules: [
+    "@nuxt/ui",
     "@nuxt/image",
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
@@ -65,5 +59,8 @@ export default defineNuxtConfig({
       version: 2,
       ignoreLocalhost: true,
     },
+  },
+  tailwindcss: {
+    cssPath: "@/styles/main.css",
   },
 });

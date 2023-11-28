@@ -79,10 +79,11 @@ onMounted(() => {
 
           <!-- <AtomsHeaderLink title="Documentação" /> -->
 
-          <!-- <VDropdown :distance="6" placement="bottom">
+          <UPopover :popper="{ placement: 'bottom-end' }">
             <AtomsHeaderLink title="Comunidade" chevron />
-            <template #popper="{ hide }">
-              <div @click="hide()" class="py-2">
+
+            <template #panel>
+              <div class="py-2">
                 <nuxt-link
                   external
                   target="_blank"
@@ -118,7 +119,7 @@ onMounted(() => {
                 </nuxt-link>
               </div>
             </template>
-          </VDropdown> -->
+          </UPopover>
         </div>
 
         <nuxt-link
@@ -128,8 +129,8 @@ onMounted(() => {
           class="group flex w-full h-[37px] p-2 cursor-pointer items-center justify-center gap-2 text-zinc-700 no-underline hover:text-zinc-900 md:w-fit"
         >
           <font-awesome-icon :icon="['fab', 'github']" class="text-xl" />
-          <span class="text-sm font-medium">{{
-            gitHub?.items[0].stargazers_count
+          <span v-if="gitHub" class="text-sm font-medium">{{
+            gitHub.items[0].stargazers_count
           }}</span>
         </nuxt-link>
         <nuxt-link

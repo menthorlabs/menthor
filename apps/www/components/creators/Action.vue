@@ -18,7 +18,7 @@
               dentro da plataforma.
             </p>
             <nuxt-link
-              to="https://nge5la4zlyy.typeform.com/to/nI55iu4u"
+              to="https://tally.so/r/wa2jEv"
               external
               target="_blank"
               class="w-full md:w-fit"
