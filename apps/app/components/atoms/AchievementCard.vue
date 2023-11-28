@@ -14,27 +14,27 @@ const badges: Record<availableBadges, badgeState> = {
   FIRST_1000: {
     title: "Mapa do Aventureiro",
     description: "Seja um dos 1000 primeiros alunos.",
-    image: "/app/achievements/map.png",
+    image: "/app/achievements/map.webp",
   },
   FE_MASTER: {
     title: "",
     description: "",
-    image: "/app/achievements/sword.png",
+    image: "/app/achievements/sword.webp",
   },
   BE_MASTER: {
     title: "",
     description: "",
-    image: "/app/achievements/bow.png",
+    image: "/app/achievements/bow.webp",
   },
   DESIGN_MASTER: {
     title: "",
     description: "",
-    image: "/app/achievements/hammer.png",
+    image: "/app/achievements/hammer.webp",
   },
   DEVOPS_MASTER: {
     title: "",
     description: "",
-    image: "/app/achievements/shield.png",
+    image: "/app/achievements/shield.webp",
   },
 };
 </script>
