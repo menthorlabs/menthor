@@ -11,7 +11,7 @@ export type user = {
   lastName: string;
   username: string;
   publicMetadata: {
-    badges: string;
+    badges: availableBadges[];
     isCreator: boolean;
   };
 };
@@ -27,7 +27,7 @@ export const useUserStore = defineStore("user", {
     triggerPictureInput: false,
   }),
   getters: {
-    badges(state) {
+    badges(state): availableBadges[] {
       if (!state.user?.publicMetadata) return [];
 
       return state.user?.publicMetadata?.badges;

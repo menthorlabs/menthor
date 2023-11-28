@@ -1,11 +1,4 @@
 <script setup lang="ts">
-type availableBadges =
-  | "FIRST_1000"
-  | "FE_MASTER"
-  | "BE_MASTER"
-  | "DESIGN_MASTER"
-  | "DEVOPS_MASTER";
-
 const { badge, disabled = false } = defineProps<{
   badge: availableBadges;
   disabled?: boolean;

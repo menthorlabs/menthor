@@ -61,7 +61,7 @@ function openProfileModal() {
           ]"
           :key="badge"
           disabled
-          :badge="(badge as 'FIRST_1000' | 'FE_MASTER' | 'BE_MASTER' | 'DESIGN_MASTER' | 'DEVOPS_MASTER')"
+          :badge="(badge as availableBadges)"
         />
       </div>
     </div>
