@@ -54,8 +54,13 @@ const hasTask = computed(() => {
   return ["Content", "Image"].includes(currentLesson?.submissionContent);
 });
 
-function redirectToNextLesson() {
+async function redirectToNextLesson() {
   if (!nextLesson) return;
+
+  if (sessionStore.isConnected()) {
+    await coursesStore.updateCourseLessons(currentLesson._id);
+  }
+
   router.push(nextLesson._path as RouteLocationRaw);
 }
 

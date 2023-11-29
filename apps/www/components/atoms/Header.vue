@@ -79,7 +79,10 @@ onMounted(() => {
 
           <!-- <AtomsHeaderLink title="Documentação" /> -->
 
-          <UPopover :popper="{ placement: 'bottom-end' }">
+          <UPopover
+            :popper="{ placement: 'bottom' }"
+            class="[&>*]:block [&>*]:md:inline-flex"
+          >
             <AtomsHeaderLink title="Comunidade" chevron />
 
             <template #panel>
@@ -135,7 +138,7 @@ onMounted(() => {
         </nuxt-link>
         <nuxt-link
           class="block"
-          :to="`${$config.public.appUrl}sign-in?utm_source=landing_page`"
+          :to="`${$config.public.appUrl}?utm_source=landing_page`"
         >
           <MButton
             icon-right="arrow-right"

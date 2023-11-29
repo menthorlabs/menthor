@@ -116,5 +116,6 @@ export default defineNuxtConfig({
   },
   tailwindcss: {
     cssPath: "@/styles/main.css",
+    viewer: false,
   },
 });

@@ -7,11 +7,11 @@ const emit = defineEmits(["next"]);
 const taskModalStore = useTaskModalStore();
 
 const submissionsStore = useSubmissionsStore();
-const coursesStore = useCoursesStore();
 const config = useRuntimeConfig();
 const loadingButton = ref(false);
 const loading = ref(true);
-const toast: { error: Function } | undefined = inject("toast");
+const toast: { error: Function; success: Function } | undefined =
+  inject("toast");
 const uploadedFile: Ref<File | null> = ref(null);
 
 watch(taskModalStore, async (newValue) => {
@@ -19,6 +19,10 @@ watch(taskModalStore, async (newValue) => {
     loadSubmission();
   }
 });
+
+const taskNotSent = computed(
+  () => submissionsStore.submission?.SubmissionStatus === "Draft"
+);
 
 async function loadSubmission() {
   loading.value = true;
@@ -70,7 +74,7 @@ async function sendSubmission(status: "Pending" | "Draft") {
       submissionsStore.submission.Filename = response.fileName;
       await submissionsStore.updateSubmission();
     }
-    coursesStore.updateCourseLessons(currentLesson._id);
+    toast?.success("Tarefa enviada com sucesso!");
     goToNextLesson();
   } finally {
     loadingButton.value = false;
@@ -146,11 +150,7 @@ async function uploadFile(file: File) {
                   submissionsStore.submission?.SubmissionStatus || 'Pending'
                 )
               "
-              :status="
-                submissionsStore.submission?.SubmissionStatus === 'Draft'
-                  ? 'warning'
-                  : 'success'
-              "
+              :status="taskNotSent ? 'warning' : 'success'"
             />
             <div class="flex gap-3 items-center">
               <MButton
@@ -160,7 +160,7 @@ async function uploadFile(file: File) {
               />
               <MButton
                 variant="primary"
-                text="Enviar"
+                :text="taskNotSent ? 'Enviar' : 'Reenviar'"
                 type="submit"
                 :loading="loadingButton"
               />

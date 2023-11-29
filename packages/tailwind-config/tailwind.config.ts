@@ -26,6 +26,8 @@ export default <Partial<Config>>{
           sm: "2rem",
           md: "2.5rem",
           lg: "2.5rem",
+          xl: "2.5rem",
+          "2xl": "2.5rem",
         },
       },
       screens: {
@@ -33,6 +35,7 @@ export default <Partial<Config>>{
         md: "768px",
         lg: "1024px",
         xl: "1190px",
+        "2xl": "1190px",
       },
     },
   },

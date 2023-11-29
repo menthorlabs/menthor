@@ -28,7 +28,6 @@
     "@vueuse/nuxt": "^10.3.0",
     "eslint-config-custom": "workspace:*",
     "humps": "^2.0.1",
-    "nuxt-umami": "^2.5.2",
-    "tailwind-config": "workspace:*"
+    "nuxt-umami": "^2.5.2"
   }
 }
