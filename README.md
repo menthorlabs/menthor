@@ -29,6 +29,9 @@
       Feito com ❤︎ pelos
       <a href="https://github.com/menthorlabs/menthor/graphs/contributors">
         contribuidores
+        <p>
+        <img src="https://contrib.rocks/image?repo=menthorlabs/menthor&anon=0&columns=20&max=100&align=center" />
+        </p>
       </a>
     </sub>
   </p>
