@@ -53,6 +53,7 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     "@nuxtjs/fontaine",
     "@vueuse/nuxt",
+    "@nuxt/content",
   ],
   vite: {
     plugins: [eslintPlugin()],
@@ -66,5 +67,13 @@ export default defineNuxtConfig({
   tailwindcss: {
     cssPath: "@/styles/main.css",
     viewer: false,
+  },
+  content: {
+    highlight: {
+      theme: "github-light",
+    },
+    navigation: {
+      fields: ["description", "icon"],
+    },
   },
 });
