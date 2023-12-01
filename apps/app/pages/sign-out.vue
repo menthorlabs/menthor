@@ -1,8 +1,10 @@
 <script setup lang="ts">
 const router = useRouter();
 const sessionStore = useSessionStore();
-await sessionStore.signOut();
-router.push("/sign-in");
+onMounted(async () => {
+  await sessionStore.signOut();
+  router.push("/sign-in");
+});
 </script>
 
 <template>
