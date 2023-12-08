@@ -8,7 +8,7 @@ defineProps<{
 <template>
   <nuxt-link
     v-if="nav"
-    class="flex items-center gap-2 text-zinc-500"
+    class="flex items-center gap-2 text-zinc-500 py-[6px] hover:text-zinc-700 transition-colors"
     active-class="!text-zinc-950 font-medium"
     :to="nav._path"
   >

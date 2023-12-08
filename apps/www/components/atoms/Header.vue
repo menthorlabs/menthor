@@ -73,7 +73,7 @@ onMounted(() => {
         <div
           class="border-t border-b border-zinc-300 py-2 md:py-0 md:!border-none md:flex items-center gap-1"
         >
-          <nuxt-link to="/creators">
+          <nuxt-link to="/escreva-cursos">
             <AtomsHeaderLink title="Escreva cursos" />
           </nuxt-link>
 
