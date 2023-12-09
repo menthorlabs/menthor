@@ -43,4 +43,8 @@
   #nuxt_content iframe {
     @apply w-full aspect-video h-auto mb-4;
   }
+
+  #nuxt_content kbd {
+    @apply border border-zinc-200 rounded-md py-[3px] px-[5px] text-xs bg-zinc-50;
+  }
 }

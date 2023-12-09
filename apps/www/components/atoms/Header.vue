@@ -76,9 +76,9 @@ onMounted(() => {
           <nuxt-link to="/escreva-cursos">
             <AtomsHeaderLink title="Escreva cursos" />
           </nuxt-link>
-
-          <!-- <AtomsHeaderLink title="Documentação" /> -->
-
+          <nuxt-link to="/creators/estruturando-um-curso">
+            <AtomsHeaderLink title="Docs" />
+          </nuxt-link>
           <UPopover
             :popper="{ placement: 'bottom' }"
             class="[&>*]:block [&>*]:md:inline-flex"
