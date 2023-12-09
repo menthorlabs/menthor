@@ -15,6 +15,9 @@ export default defineNuxtConfig({
   },
   nitro: {
     preset: "cloudflare_pages_static",
+    prerender: {
+      crawlLinks: true,
+    },
   },
   // imports: {
   //   dirs: ["./composables", "../../packages/composables"],

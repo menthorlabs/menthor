@@ -58,6 +58,15 @@
             size="lg"
           />
         </nuxt-link>
+        <nuxt-link to="/creators/estruturando-um-curso" class="w-full md:w-fit">
+          <MButton
+            text="Veja a documentação"
+            icon-left="book"
+            class="w-full md:w-fit"
+            variant="outline"
+            size="lg"
+          />
+        </nuxt-link>
       </div>
     </div>
   </section>
