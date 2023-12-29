@@ -21,7 +21,7 @@
   </p>
   <p>
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fmenthor.io&logo=menthor)](https://menthor.io) [![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fmenthor.io%2F)](https://twitter.com/intent/tweet?text=%F0%9F%93%9AConhe%C3%A7a%20a%20menthor,%20plataforma%20gratuita%20e%20open-source%20de%20ensino%20de%20programa%C3%A7%C3%A3o.%20https%3A//menthor.io%20%23menthor%20via%20%40menthorlabs)
+[![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fmenthor.io%2F)](https://twitter.com/intent/tweet?text=%F0%9F%93%9AConhe%C3%A7a%20a%20menthor,%20plataforma%20gratuita%20e%20open-source%20de%20ensino%20de%20programa%C3%A7%C3%A3o.%20https%3A//menthor.io%20%23menthor%20via%20%40menthorlabs)
 
   </p>
   <p>
