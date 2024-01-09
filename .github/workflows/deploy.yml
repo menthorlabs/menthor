@@ -1,47 +1,45 @@
-# name: Build and Deploy
+name: Build and Deploy - Cloudflare Pages
 
-# on:
-#   workflow_call:
-#     inputs:
-#       APP_NAME:
-#         required: true
-#         type: string
-#       BUCKET:
-#         required: true
-#         type: string
+on:
+  workflow_call:
+    inputs:
+      CLOUDFLARE_ENV:
+        required: false
+        type: string
+        default: ${{ contains(github.ref, 'main') && 'prod' || contains(github.ref, 'staging') && 'staging' || 'dev'}}
+      NODE_ENV:
+        required: false
+        type: string
+        default: ${{ contains(github.ref, 'main') && 'production' || contains(github.ref, 'staging') && 'staging' || 'development'}}
+      APP_NAME:
+        required: true
+        type: string
 
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v3
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
 
-#       - uses: actions/setup-node@v3
-#         with:
-#           node-version: 19
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 19
       
-#       - uses: pnpm/action-setup@v2
-#         with:
-#           version: 8
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
       
-#       - name: Install Dependencies
-#         run: pnpm install
+      - name: Install Dependencies
+        run: pnpm install
 
-#       - name: Build
-#         run: pnpm generate --filter=${{ inputs.APP_NAME }}
+      - name: Build
+        run: pnpm build:${{ inputs.NODE_ENV }} --filter=${{ inputs.APP_NAME }}
 
-#       - name: Configure AWS Credentials
-#         uses: aws-actions/configure-aws-credentials@v2
-#         with:
-#           aws-region: sa-east-1
-#           role-to-assume: arn:aws:iam::928571631969:role/gh-actions-menthorlabs-menthor
-
-#       - name: Install AWS CLI
-#         id: install-aws-cli
-#         uses: unfor19/install-aws-cli-action@master
-
-#       - name: Push to S3
-#         run: aws s3 cp apps/${{ inputs.APP_NAME }}/dist ${{ inputs.BUCKET }} --recursive
-
-#       - name: Invalidate CloudFront
-#         run: aws cloudfront create-invalidation --distribution-id E2B0K34D9WKXHA --paths "/*"
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          packageManager: pnpm
+          apiToken: ${{ secrets.CLOUDFLARE_PAGES_API_TOKEN }}
+          accountId: d8803c6a6253e9267bf1000ca69db18d
+          workingDirectory: 'apps/${{ inputs.APP_NAME }}'
+          command: pages deploy dist --project-name=${{ inputs.CLOUDFLARE_ENV }}-${{ inputs.APP_NAME }} --branch=main

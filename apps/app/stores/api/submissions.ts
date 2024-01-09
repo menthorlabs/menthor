@@ -9,6 +9,7 @@ export type SubmissionStatus =
 
 export type SubmissionParams = {
   Content: string;
+  Filename: string;
   SubmissionType: "Content" | "Image";
   SubmissionStatus: SubmissionStatus;
   LessonUrl: string;
@@ -20,11 +21,9 @@ export const useSubmissionsStore = defineStore("submissions", {
   state: (): {
     submission: SubmissionParams | null;
     submissions: SubmissionParams[] | null;
-    uploadUrl: { fileName: string; url: string } | null;
   } => ({
     submission: null,
     submissions: null,
-    uploadUrl: null,
   }),
   getters: {
     hasSubmission(state) {
@@ -75,22 +74,26 @@ export const useSubmissionsStore = defineStore("submissions", {
           }
         );
 
-        this.uploadUrl = response.url;
+        console.log(response);
+
+        return response;
       } catch (e) {
         throw new Error((e as Error).message);
       }
     },
-    async uploadFileOnUrl(file: File) {
-      if (!this.uploadUrl?.url) return;
+    async uploadFileOnUrl(file: File, url: string) {
+      console.log({ file, url });
 
       try {
-        const response = await $fetch(this.uploadUrl.url, {
+        const response = await $fetch(url, {
           method: "PUT",
           body: file,
           headers: {
             "Content-Type": file.type,
           },
         });
+
+        console.log(response);
 
         return response;
       } catch (e) {

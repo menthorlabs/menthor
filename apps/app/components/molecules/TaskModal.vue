@@ -7,11 +7,11 @@ const emit = defineEmits(["next"]);
 const taskModalStore = useTaskModalStore();
 
 const submissionsStore = useSubmissionsStore();
-const coursesStore = useCoursesStore();
 const config = useRuntimeConfig();
 const loadingButton = ref(false);
 const loading = ref(true);
-const toast: { error: Function } | undefined = inject("toast");
+const toast: { error: Function; success: Function } | undefined =
+  inject("toast");
 const uploadedFile: Ref<File | null> = ref(null);
 
 watch(taskModalStore, async (newValue) => {
@@ -19,6 +19,10 @@ watch(taskModalStore, async (newValue) => {
     loadSubmission();
   }
 });
+
+const taskNotSent = computed(
+  () => submissionsStore.submission?.SubmissionStatus === "Draft"
+);
 
 async function loadSubmission() {
   loading.value = true;
@@ -40,6 +44,7 @@ async function sendSubmission(status: "Pending" | "Draft") {
     if (!currentLesson) return;
 
     const payload: typeof submissionsStore.submission = {
+      Filename: submissionsStore.submission?.Filename || "",
       Content: submissionsStore.submission?.Content || "",
       SubmissionType: currentLesson.submissionContent,
       SubmissionStatus: status,
@@ -62,12 +67,14 @@ async function sendSubmission(status: "Pending" | "Draft") {
       submissionsStore.submission?.SubmissionType === "Image" &&
       uploadedFile.value
     ) {
-      await submissionsStore.requestUrl(uploadedFile.value.type);
-      await submissionsStore.uploadFileOnUrl(uploadedFile.value);
-      submissionsStore.submission.Content = `https://menthor-lessons.s3.sa-east-1.amazonaws.com/${submissionsStore.uploadUrl?.fileName}`;
+      const response = await submissionsStore.requestUrl(
+        uploadedFile.value.type
+      );
+      await submissionsStore.uploadFileOnUrl(uploadedFile.value, response.url);
+      submissionsStore.submission.Filename = response.fileName;
       await submissionsStore.updateSubmission();
     }
-    coursesStore.updateCourseLessons(currentLesson._id);
+    toast?.success("Tarefa enviada com sucesso!");
     goToNextLesson();
   } finally {
     loadingButton.value = false;
@@ -90,7 +97,7 @@ async function uploadFile(file: File) {
 
   if (!submissionsStore.submission) return;
   uploadedFile.value = file;
-  submissionsStore.submission.Content = URL.createObjectURL(file);
+  submissionsStore.submission.Filename = URL.createObjectURL(file);
 }
 </script>
 
@@ -119,9 +126,13 @@ async function uploadFile(file: File) {
               class="mb-4"
             />
             <nuxt-img
-              v-if="submissionsStore.submission.Content"
+              v-if="submissionsStore.submission.Filename"
               class="rounded overflow-hidden"
-              :src="submissionsStore.submission.Content"
+              :src="
+                submissionsStore.submission.Filename.includes('blob')
+                  ? submissionsStore.submission.Filename
+                  : `https://menthor-lessons.s3.sa-east-1.amazonaws.com/${submissionsStore.submission.Filename}`
+              "
               alt="Submission Image"
             />
           </template>
@@ -139,11 +150,7 @@ async function uploadFile(file: File) {
                   submissionsStore.submission?.SubmissionStatus || 'Pending'
                 )
               "
-              :status="
-                submissionsStore.submission?.SubmissionStatus === 'Draft'
-                  ? 'warning'
-                  : 'success'
-              "
+              :status="taskNotSent ? 'warning' : 'success'"
             />
             <div class="flex gap-3 items-center">
               <MButton
@@ -153,7 +160,7 @@ async function uploadFile(file: File) {
               />
               <MButton
                 variant="primary"
-                text="Enviar"
+                :text="taskNotSent ? 'Enviar' : 'Reenviar'"
                 type="submit"
                 :loading="loadingButton"
               />

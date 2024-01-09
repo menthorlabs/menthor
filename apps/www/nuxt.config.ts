@@ -1,9 +1,11 @@
+// @ts-expect-error avoid lint error
 import eslintPlugin from "vite-plugin-eslint";
 import path from "node:path";
 
 export default defineNuxtConfig({
-  // ssr: false,
-  sourcemap: { server: true, client: false }, // Disable sourcemap errors
+  colorMode: {
+    preference: "light",
+  },
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/",
@@ -11,19 +13,28 @@ export default defineNuxtConfig({
       appUrl: process.env.NUXT_PUBLIC_APP_URL || "https://menthor.io/app",
     },
   },
-  imports: {
-    dirs: ["composables", "../../packages/composables"],
+  nitro: {
+    preset: "cloudflare_pages_static",
+    prerender: {
+      crawlLinks: true,
+    },
   },
+  // imports: {
+  //   dirs: ["./composables", "../../packages/composables"],
+  // },
   vue: {
     propsDestructure: true,
     defineModel: true,
   },
   extends: ["nuxt-umami"],
-  css: [
-    "@/styles/main.css",
-    "@/styles/font.css",
-    "@fortawesome/fontawesome-svg-core/styles.css",
-  ],
+  typescript: {
+    tsConfig: {
+      compilerOptions: {
+        moduleResolution: "bundler",
+      },
+    },
+  },
+  css: ["@/styles/font.css", "@fortawesome/fontawesome-svg-core/styles.css"],
   alias: {
     "@": path.resolve(__dirname, "../../packages/assets"),
   },
@@ -38,24 +49,34 @@ export default defineNuxtConfig({
     },
   },
   modules: [
-    "@nuxt/image-edge",
+    "@nuxt/ui",
+    "@nuxt/image",
     "nuxt-simple-sitemap",
     "nuxt-schema-org",
     "nuxt-simple-robots",
     "@nuxtjs/fontaine",
     "@vueuse/nuxt",
+    "@nuxt/content",
   ],
   vite: {
     plugins: [eslintPlugin()],
-  },
-  delayHydration: {
-    mode: "mount",
-    debug: process.env.NODE_ENV === "development",
   },
   appConfig: {
     umami: {
       version: 2,
       ignoreLocalhost: true,
+    },
+  },
+  tailwindcss: {
+    cssPath: "@/styles/main.css",
+    viewer: false,
+  },
+  content: {
+    highlight: {
+      theme: "github-light",
+    },
+    navigation: {
+      fields: ["description", "icon"],
     },
   },
 });

@@ -28,6 +28,8 @@ module.exports = {
     fetchContentNavigation: "readonly",
     authenticate: "readonly",
     navigationItem: "readonly",
+    useColorMode: "readonly",
+    availableBadges: "readonly",
   },
   parser: "vue-eslint-parser",
   parserOptions: {

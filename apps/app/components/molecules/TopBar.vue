@@ -38,30 +38,37 @@ const defaultAsideStore = useDefaultAsideStore();
     <div class="flex items-center gap-2">
       <!-- <MIconButton icon="bell" variant="glass" /> -->
       <div v-if="sessionStore.isConnected()">
-        <VDropdown
-          :distance="6"
-          class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"
-          placement="bottom-end"
-        >
-          <img
-            :src="userStore.user?.profileImageUrl"
-            alt="Profile"
-            class="h-full w-full object-cover object-center"
-          />
-          <template #popper="{ hide }">
-            <div class="min-w-[140px] py-1" @click="hide()">
+        <UPopover :popper="{ placement: 'bottom-end' }">
+          <div
+            class="h-[32px] w-[32px] cursor-pointer overflow-hidden rounded-full text-sm text-zinc-700 transition-all hover:scale-110"
+          >
+            <img
+              :src="userStore.user?.profileImageUrl"
+              alt="Profile"
+              class="h-full w-full object-cover object-center"
+            />
+          </div>
+
+          <template #panel>
+            <div class="min-w-[140px] py-1">
               <NuxtLink to="/profile">
                 <DropdownItem icon="circle-user" name="Perfil" />
+              </NuxtLink>
+              <NuxtLink
+                to="/creators/images"
+                v-if="userStore.user?.publicMetadata?.isCreator"
+              >
+                <DropdownItem icon="star" name="Creators" />
               </NuxtLink>
               <NuxtLink to="/sign-out">
                 <DropdownItem icon="arrow-right-from-bracket" name="Sair" />
               </NuxtLink>
             </div>
           </template>
-        </VDropdown>
+        </UPopover>
       </div>
       <div v-else>
-        <NuxtLink to="/sign-in" @click="sessionStore.signOut()">
+        <NuxtLink to="/sign-in">
           <MButton text="Fazer login" variant="outline" size="sm" />
         </NuxtLink>
       </div>

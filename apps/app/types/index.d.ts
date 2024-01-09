@@ -9,6 +9,13 @@ declare global {
     redirectUrl?: string;
     redirectUrlComplete?: string;
   };
+
+  type availableBadges =
+    | "FIRST_1000"
+    | "FE_MASTER"
+    | "BE_MASTER"
+    | "DESIGN_MASTER"
+    | "DEVOPS_MASTER";
 }
 
 declare module "vue" {
@@ -16,9 +23,11 @@ declare module "vue" {
     $pinia?: string;
     $toastItems: { push: Function };
     $toastError: Function;
+    $toastSuccess: Function;
     $clerk: Clerk;
     $filters: {
       level: Function;
+      bytesToSize: Function;
     };
   }
 }

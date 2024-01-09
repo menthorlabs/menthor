@@ -9,14 +9,11 @@ useSeoMeta({
 const router = useRouter();
 const signInStore = useSignInStore();
 const email = ref(null);
-const sessionStore = useSessionStore();
 const loading = ref(false);
 const toast: { error: Function } | undefined = inject("toast");
 const route = useRoute();
 
 onMounted(async () => {
-  sessionStore.cleared = false;
-
   if (route.query?.error) {
     toast?.error(route.query?.error);
   }

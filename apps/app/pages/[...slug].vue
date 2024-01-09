@@ -8,38 +8,59 @@ const sessionStore = useSessionStore();
 const taskModalStore = useTaskModalStore();
 const coursesStore = useCoursesStore();
 const enrollmentModalStore = useEnrollmentModalStore();
-const { params } = useRoute();
+const { params, path } = useRoute();
 const router = useRouter();
 const loading = ref(true);
 
-const { data } = await useAsyncData(`course${params.slug[0]}`, async () => {
-  const [course, lesson, surround] = await Promise.all([
-    queryContent(`/${params.slug[0]}`).findOne(),
-    queryContent(
-      `/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}`
-    ).findOne(),
-    queryContent()
-      .where({
-        _type: "markdown",
-        _id: { $contains: `github:${params.slug[0]}` },
-      })
-      .findSurround(`/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}`),
-  ]);
-  return { data: { course, lesson, surround } };
+const { data: course } = await useAsyncData(`course-${path}`, () =>
+  queryContent(`/${params.slug[0]}`).findOne()
+);
+
+if (!course.value) {
+  throw createError({ statusCode: 404, statusMessage: "Page not found" });
+}
+
+const { data: lesson } = await useAsyncData(`lesson-${path}`, () =>
+  queryContent(path).findOne()
+);
+
+if (!lesson.value) {
+  throw createError({ statusCode: 404, statusMessage: "Page not found" });
+}
+
+const { data: surround } = await useAsyncData(`lesson-${path}-surround`, () => {
+  return queryContent()
+    .where({
+      _type: "markdown",
+      _id: { $contains: `github:${params.slug[0]}` },
+    })
+    .findSurround(`/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}`);
 });
 
-const previousLesson = data.value?.data.surround[0];
-const nextLesson = data.value?.data.surround[1];
-const currentLesson = data.value?.data.lesson;
+useSeoMeta({
+  title: lesson.value.title,
+  ogTitle: lesson.value.title,
+  description: lesson.value.description,
+  ogDescription: lesson.value.description,
+});
 
-const currentCourse = data.value?.data.course._dir;
+const previousLesson = surround.value ? surround.value[0] : null;
+const nextLesson = surround.value ? surround.value[1] : null;
+const currentLesson = lesson.value;
+
+const currentCourse = course.value._dir;
 
 const hasTask = computed(() => {
   return ["Content", "Image"].includes(currentLesson?.submissionContent);
 });
 
-function redirectToNextLesson() {
+async function redirectToNextLesson() {
   if (!nextLesson) return;
+
+  if (sessionStore.isConnected()) {
+    await coursesStore.updateCourseLessons(currentLesson._id);
+  }
+
   router.push(nextLesson._path as RouteLocationRaw);
 }
 
@@ -114,7 +135,11 @@ onMounted(async () => {
       </div>
     </div>
     <div class="mx-auto max-w-[816px] px-6 sm:px-8 pb-10">
-      <ContentDoc id="nuxt_content" />
+      <ContentRenderer
+        v-if="currentLesson.body"
+        :value="currentLesson"
+        id="nuxt_content"
+      />
 
       <nuxt-link
         v-if="previousLesson"

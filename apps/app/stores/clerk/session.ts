@@ -1,12 +1,8 @@
 import { defineStore } from "pinia";
-import { useCookies } from "@vueuse/integrations/useCookies";
 import { ClerkAPIError } from "@clerk/types";
 
 export const useSessionStore = defineStore("session", {
-  state: (): { token: string | null; cleared: boolean } => ({
-    token: null,
-    cleared: false,
-  }),
+  state: () => ({}),
   actions: {
     isConnected(): boolean {
       const userStore = useUserStore();
@@ -15,18 +11,18 @@ export const useSessionStore = defineStore("session", {
     checkSessionStatus() {
       const clientSession = this.$clerk?.client?.sessions[0];
       if (clientSession?.status === "expired") {
-        this.signOut();
-        this.$router.push("/sign-in");
+        this.$router.push("/sign-out");
       }
     },
     hasSession() {
-      const clientSession = this.$clerk?.client?.sessions[0];
-      return !this.cleared && clientSession;
+      const mSession = localStorage.getItem("m-session");
+      return mSession === "true";
     },
     async refreshSession() {
       const clientSession = this.$clerk?.client?.sessions[0];
       if (!clientSession) return;
       try {
+        localStorage.setItem("m-session", "true");
         await this.$clerk.setSession(clientSession);
       } catch (e) {
         const clerkError: { errors: ClerkAPIError[] } | any = e;
@@ -38,12 +34,7 @@ export const useSessionStore = defineStore("session", {
       }
     },
     async signOut() {
-      const clerkToken = useCookies([]);
-      const userCookie = useCookies([]);
-      userCookie.remove("m-user");
-      clerkToken.remove("__session");
-      this.cleared = true;
-
+      localStorage.removeItem("m-session");
       await this.$clerk.signOut();
     },
   },

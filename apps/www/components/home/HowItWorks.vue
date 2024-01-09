@@ -45,28 +45,13 @@ const cards: card[] = [
       <div
         class="-ml-4 mb-12 flex w-[calc(100%_+_2rem)] flex-nowrap gap-4 overflow-x-auto md:grid md:w-full md:grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] md:gap-6 md:overflow-x-hidden"
       >
-        <div
+        <AtomsInfoCard
           v-for="card in cards"
           :key="card.title"
-          class="relative min-w-[80%] overflow-hidden rounded-lg border border-solid border-zinc-200 bg-white px-6 pb-8 pt-20 first:ml-4 last:mr-4 md:min-w-0 md:first:ml-0 md:last:mr-0"
-        >
-          <div
-            class="pointer-events-none absolute -right-[836px] -top-[448px] flex h-[651px] w-[1314px] justify-center"
-          >
-            <div class="mask-radial h-full w-full bg-pattern" />
-          </div>
-          <div class="relative">
-            <div
-              class="mb-4 flex h-[32px] w-[32px] items-center justify-center rounded-full border border-solid border-zinc-300 text-sm text-zinc-700"
-            >
-              <font-awesome-icon :icon="card.icon" />
-            </div>
-            <h3 class="text-lg font-medium">{{ card.title }}</h3>
-            <p class="text-base font-normal text-zinc-600">
-              {{ card.description }}
-            </p>
-          </div>
-        </div>
+          :title="card.title"
+          :description="card.description"
+          :icon="card.icon"
+        />
       </div>
       <div class="flex flex-wrap items-center justify-center gap-2 sm:gap-6">
         <nuxt-link

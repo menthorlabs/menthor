@@ -8,9 +8,6 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "autoprefixer": "^10.4.14",
-    "eslint-config-custom": "workspace:*",
-    "postcss": "^8.4.27",
-    "tailwindcss": "^3.3.3"
+    "eslint-config-custom": "workspace:*"
   }
 }

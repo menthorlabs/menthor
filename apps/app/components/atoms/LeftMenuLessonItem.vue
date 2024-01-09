@@ -28,12 +28,13 @@ function finishTask() {
       class="hidden group-hover:flex"
       v-if="!done && coursesStore.isEnrolled"
     >
-      <font-awesome-icon
-        @click="finishTask"
-        v-tooltip="`Finalizar aula`"
-        class="hover:text-zinc-950 transition-all text-zinc-500"
-        icon="check"
-      />
+      <UTooltip text="Finalizar tarefa" :popper="{ placement: 'right' }">
+        <font-awesome-icon
+          @click="finishTask"
+          class="hover:text-zinc-950 transition-all text-zinc-500"
+          icon="check"
+        />
+      </UTooltip>
     </button>
   </div>
 </template>

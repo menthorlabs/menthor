@@ -1,11 +1,13 @@
 <script setup lang="ts">
-const userStore = useUserStore();
-const router = useRouter();
+definePageMeta({
+  middleware: ["auth"],
+});
 
-if (!userStore.user) router.push("/sign-in");
 useSeoMeta({
   title: "Seu perfil",
 });
+
+const userStore = useUserStore();
 
 function openProfileModal() {
   userStore.user ? (userStore.modalOpened = true) : null;
@@ -64,7 +66,7 @@ function openProfileModal() {
           ]"
           :key="badge"
           disabled
-          :badge="(badge as 'FIRST_1000' | 'FE_MASTER' | 'BE_MASTER' | 'DESIGN_MASTER' | 'DEVOPS_MASTER')"
+          :badge="(badge as availableBadges)"
         />
       </div>
     </div>

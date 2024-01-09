@@ -3,17 +3,29 @@
   "scripts": {
     "dev": "dotenv -e .env.development -- turbo run dev --parallel --no-daemon",
     "build": "dotenv -e .env.production -- turbo run build --no-daemon",
+    "analyze": "dotenv -e .env.production -- turbo run analyze --no-daemon",
     "build:production": "dotenv -e .env.production -- turbo run build --no-daemon",
     "build:development": "dotenv -e .env.development -- turbo run build --no-daemon",
     "generate": "dotenv -e .env.production -- turbo run generate --no-daemon",
     "generate:production": "dotenv -e .env.production -- turbo run generate --no-daemon",
     "generate:development": "dotenv -e .env.development -- turbo run generate --no-daemon",
     "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "commit": "cz"
   },
   "devDependencies": {
     "dotenv-cli": "^7.2.1",
-    "turbo": "^1.10.12"
+    "turbo": "^1.10.12",
+    "commitizen": "4.3.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "resolutions": {
+    "nitropack": "2.7.2",
+    "@nuxt/kit": "3.7.4"
   },
   "name": "my-turborepo",
   "packageManager": "pnpm@8.6.9"

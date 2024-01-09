@@ -1,13 +1,8 @@
 <script setup lang="ts">
-definePageMeta({
-  ignoreMiddleware: true,
-});
-
-const sessionStore = useSessionStore();
 const router = useRouter();
-
-onMounted(() => {
-  sessionStore.signOut();
+const sessionStore = useSessionStore();
+onMounted(async () => {
+  await sessionStore.signOut();
   router.push("/sign-in");
 });
 </script>

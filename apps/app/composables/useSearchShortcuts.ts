@@ -1,5 +1,5 @@
 import { useMagicKeys, whenever } from "@vueuse/core";
-export function useShortcuts() {
+export function useSearchShortcuts() {
   const searchModalStore = useSearchModalStore();
 
   const { ctrl_k } = useMagicKeys({

@@ -1,6 +1,5 @@
 import { defineStore } from "pinia";
 import type { UpdateUserParams, SetProfileImageParams } from "@clerk/types";
-import { useCookies } from "@vueuse/integrations/useCookies";
 
 export type user = {
   profileImageUrl: string;
@@ -11,7 +10,10 @@ export type user = {
   firstName: string;
   lastName: string;
   username: string;
-  publicMetadata: Record<"badges", any>;
+  publicMetadata: {
+    badges: availableBadges[];
+    isCreator: boolean;
+  };
 };
 
 export const useUserStore = defineStore("user", {
@@ -25,7 +27,7 @@ export const useUserStore = defineStore("user", {
     triggerPictureInput: false,
   }),
   getters: {
-    badges(state) {
+    badges(state): availableBadges[] {
       if (!state.user?.publicMetadata) return [];
 
       return state.user?.publicMetadata?.badges;
@@ -40,8 +42,6 @@ export const useUserStore = defineStore("user", {
       if (!userData) return;
 
       this.user = userData;
-      const userCookie = useCookies([]);
-      userCookie.set("m-user", userData);
     },
     async updateUser() {
       await this.$clerk.user.update<UpdateUserParams>({

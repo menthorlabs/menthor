@@ -1,22 +1,13 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
-const defaultTheme = require("tailwindcss/defaultTheme");
-
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{vue,js,ts,jsx,tsx}",
-    "../../packages/ui/src/**/*.{vue,js,ts,jsx,tsx}",
-    "../../packages/plugins/src/**/*.{vue,js,ts,jsx,tsx}",
-    // nuxt
-    "./components/**/*.{js,vue,ts}",
-    "./layouts/**/*.vue",
-    "./pages/**/*.vue",
-    "./service-worker/**/*.vue",
-    "./plugins/**/*.{js,ts}",
-    "./nuxt.config.{js,ts}",
-  ],
+export default <Partial<Config>>{
   theme: {
+    aspectRatio: {
+      auto: "auto",
+      square: "1 / 1",
+      video: "16 / 9",
+    },
     extend: {
       fontFamily: {
         sans: [
@@ -28,27 +19,24 @@ export default {
       backgroundImage: {
         pattern: "url('/patterns/default.svg')",
       },
-    },
-    container: {
-      center: true,
-      padding: {
-        DEFAULT: "1rem",
-        sm: "2rem",
-        md: "2.5rem",
-        lg: "2.5rem",
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "2rem",
+          md: "2.5rem",
+          lg: "2.5rem",
+          xl: "2.5rem",
+          "2xl": "2.5rem",
+        },
+      },
+      screens: {
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1190px",
+        "2xl": "1190px",
       },
     },
-    screens: {
-      sm: "640px",
-      md: "768px",
-      lg: "1024px",
-      xl: "1190px",
-    },
   },
-  plugins: [],
-  safelist: [
-    {
-      pattern: /fa.*/,
-    },
-  ],
-} satisfies Config;
+};

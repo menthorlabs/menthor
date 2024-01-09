@@ -21,7 +21,7 @@
   </p>
   <p>
 
-[![Website](https://img.shields.io/website?url=https%3A%2F%2Fmenthor.io&logo=menthor)](https://menthor.io) [![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fmenthor.io%2F)](https://twitter.com/intent/tweet?text=%F0%9F%93%9AConhe%C3%A7a%20a%20menthor,%20plataforma%20gratuita%20e%20open-source%20de%20ensino%20de%20programa%C3%A7%C3%A3o.%20https%3A//menthor.io%20%23menthor%20via%20%40menthorlabs)
+[![Tweet](https://img.shields.io/twitter/url?url=https%3A%2F%2Fmenthor.io%2F)](https://twitter.com/intent/tweet?text=%F0%9F%93%9AConhe%C3%A7a%20a%20menthor,%20plataforma%20gratuita%20e%20open-source%20de%20ensino%20de%20programa%C3%A7%C3%A3o.%20https%3A//menthor.io%20%23menthor%20via%20%40menthorlabs)
 
   </p>
   <p>
@@ -30,6 +30,11 @@
       <a href="https://github.com/menthorlabs/menthor/graphs/contributors">
         contribuidores
       </a>
+        <p>
+          <a href="https://github.com/menthorlabs/menthor/graphs/contributors">
+            <img src="https://contrib.rocks/image?repo=menthorlabs/menthor&anon=0&columns=20&max=100&align=center" />
+          </a>
+        </p>
     </sub>
   </p>
   <br />
@@ -62,4 +67,14 @@ Para rodar um projeto você precisa ter o node instalado (versão 16 pra cima) e
 
 - `npm i -g pnpm`: esse comando vai instalar o pnpm globalmente na sua máquina
 - `pnpm install`: esse comando vai instalar todas as dependências do projeto
-- `pnpm dev --filter=www`: esse comando vai rodar o app `www` localmente, se quiser rodar outro é só usar o comando `pnpm dev --filter={nome-do-app}`
+- `pnpm dev --filter=www`: esse comando vai rodar o app `www` localmente
+- `pnpm dev --filter=app`: esse comando vai rodar o app `app` localmente
+- se quiser rodar outra app é só usar o comando `pnpm dev --filter={nome-do-app}`
+
+### Deseja contribuir para o Projeto?
+
+O Menthor.io é um projeto de código aberto e nós adoramos contribuições da comunidade. Se você está interessado em contribuir, siga as diretrizes do nosso [Guia de Contribuição](./.github/CONTRIBUTING.md). Ele fornece informações detalhadas sobre como relatar problemas, sugerir melhorias e enviar suas contribuições. 
+
+Não se preocupe se você é novo na contribuição para projetos de código aberto. Nós fornecemos orientações claras para facilitar sua participação. Se você não tem tempo para contribuir diretamente, ainda há maneiras de apoiar o projeto, como dar uma estrela ou mencionar o Menthor.io em eventos e entre amigos. Sua ajuda é valiosa para nós!
+
+Se você tiver alguma dúvida ou precisar de ajuda, entre em contato conosco no [nosso servidor no Discord](https://discord.gg/8BCByyXxq8).
