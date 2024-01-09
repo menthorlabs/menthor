@@ -40,7 +40,17 @@ const badges: Record<availableBadges, badgeState> = {
 </script>
 
 <template>
-  <div class="group rounded-md p-4 text-sm">
+  <div
+    v-if="disabled"
+    class="w-full h-full min-h-[190px] flex items-center justify-center"
+  >
+    <p
+      class="px-[10px] py-[2px] bg-zinc-200 font-medium text-zinc-900 text-xs rounded-3xl"
+    >
+      Não disponível
+    </p>
+  </div>
+  <div class="group rounded-md p-4 text-sm" v-if="!disabled">
     <div class="mb-3 aspect-square w-full rounded relative">
       <div
         v-if="!disabled"

@@ -8,6 +8,6 @@ const { label = "", value = "" } = defineProps<{
 <template>
   <div>
     <div class="mb-2 text-sm font-normal text-zinc-700">{{ label }}</div>
-    <div class="text-3xl font-bold">{{ value }} <slot /></div>
+    <div class="text-3xl font-bold">{{ value }}</div>
   </div>
 </template>

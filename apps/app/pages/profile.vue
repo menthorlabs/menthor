@@ -19,25 +19,37 @@ function openProfileModal() {
     <ProfileModal v-if="userStore.user" />
     <div class="mb-10 flex flex-wrap items-center gap-6 px-4 sm:px-8">
       <div
-        class="group h-[160px] w-[160px] min-w-[160px] cursor-pointer overflow-hidden rounded shadow-lg"
+        class="group h-[160px] w-[160px] min-w-[160px] cursor-pointer overflow-hidden rounded shadow-lg relative"
         @click="openProfileModal"
       >
+        <div
+          class="absolute bg-zinc-900 opacity-50 z-10 w-full h-full flex justify-center items-center invisible group-hover:visible"
+        >
+          <font-awesome-icon icon="edit" class="text-lg text-white" />
+        </div>
         <img
           :src="userStore.user?.profileImageUrl"
           class="h-full w-full object-cover object-center transition-all group-hover:scale-110"
         />
       </div>
       <div class="flex-1">
-        <h1
-          class="mb-4 cursor-pointer text-4xl font-extrabold hover:text-zinc-700"
-          @click="openProfileModal"
-        >
-          {{ userStore.user?.fullName || "Sem nome" }}
-        </h1>
+        <div class="group flex items-center mb-4 gap-2">
+          <h1
+            class="cursor-pointer text-4xl font-extrabold hover:text-zinc-700"
+            @click="openProfileModal"
+          >
+            {{ userStore.user?.fullName || "Sem nome" }}
+          </h1>
+          <font-awesome-icon
+            icon="edit"
+            class="text-base text-zinc-500 invisible group-hover:visible"
+          />
+        </div>
         <div class="flex flex-wrap items-center gap-8">
-          <StatsCard label="Conquistas" :value="userStore.badges?.length || 0">
-            <span class="font-normal text-zinc-400">/???</span>
-          </StatsCard>
+          <StatsCard
+            label="Conquistas"
+            :value="userStore.badges?.length || 0"
+          />
           <!-- <StatsCard label="Cursos completos" value="6">
             <span class="font-normal text-zinc-400">/28</span>
           </StatsCard> -->
@@ -61,7 +73,7 @@ function openProfileModal() {
           ]"
           :key="badge"
           disabled
-          :badge="(badge as availableBadges)"
+          :badge="badge as availableBadges"
         />
       </div>
     </div>
