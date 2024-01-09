@@ -33,16 +33,18 @@ function openProfileModal() {
         />
       </div>
       <div class="flex-1">
-        <h1
-          class="mb-4 cursor-pointer text-4xl font-extrabold hover:text-zinc-700 group"
-          @click="openProfileModal"
-        >
-          {{ userStore.user?.fullName || "Sem nome" }}
+        <div class="group flex items-center mb-4 gap-2">
+          <h1
+            class="cursor-pointer text-4xl font-extrabold hover:text-zinc-700"
+            @click="openProfileModal"
+          >
+            {{ userStore.user?.fullName || "Sem nome" }}
+          </h1>
           <font-awesome-icon
             icon="edit"
             class="text-base text-zinc-500 invisible group-hover:visible"
           />
-        </h1>
+        </div>
         <div class="flex flex-wrap items-center gap-8">
           <StatsCard
             label="Conquistas"
