@@ -25,6 +25,15 @@ const apps: { [key: string]: { url: string } } = {
   html: {
     url: "https://developer.mozilla.org/pt-BR/docs/Web/HTML?utm_source=menthor.io",
   },
+  medusajs: {
+    url: "https://medusajs.com/?utm_source=menthor.io",
+  },
+  render: {
+    url: "https://render.com/?utm_source=menthor.io",
+  },
+  nuxt: {
+    url: "https://nuxt.com/?utm_source=menthor.io",
+  },
 };
 </script>
 

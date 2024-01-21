@@ -59,7 +59,7 @@ onMounted(() => {
         hasExpand = false;
         expanded = true;
       "
-      class="absolute bottom-0 left-0 w-full h-[70px] rounded-bl-lg rounded-br-lg bg-gradient-to-t from-white flex items-center justify-center text-sm text-gray-500 cursor-pointer hover:text-gray-950 transition"
+      class="absolute bottom-0 left-0 w-full h-[70px] rounded-bl-lg rounded-br-lg bg-gradient-to-t from-white to-white/80 flex items-center justify-center text-sm text-gray-500 cursor-pointer hover:text-gray-950 transition"
     >
       Clique aqui para expandir
     </div>
