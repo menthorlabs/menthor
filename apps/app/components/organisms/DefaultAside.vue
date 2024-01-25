@@ -3,6 +3,8 @@ const searchModalStore = useSearchModalStore();
 const route = useRoute();
 const defaultAsideStore = useDefaultAsideStore();
 
+const fullPath = computed(() => route.fullPath);
+
 const queryBuilder = computed(() => {
   return queryContent(`/${route.params?.slug ? route.params.slug[0] : ""}`);
 });
@@ -10,10 +12,14 @@ const queryBuilder = computed(() => {
 const { data: navigation, refresh } = await useAsyncData(
   route.params?.slug ? route.params.slug[0] : "navigation",
   () => fetchContentNavigation(queryBuilder.value),
-  {
-    watch: [route],
-  }
+  { watch: [fullPath] }
 );
+
+const navigationItem = computed(() => {
+  if (!navigation.value || navigation.value.length <= 0) return;
+
+  return navigation.value[0];
+});
 
 const isLesson = computed(() => {
   return !!route.meta?.lesson;
@@ -61,9 +67,13 @@ watch(isLesson, async () => {
     </div>
     <div class="relative flex-1 overflow-auto">
       <Transition name="slide-fade">
-        <div class="px-3 py-4" v-if="isLesson && navigation && navigation[0]">
+        <div
+          class="px-3 py-4"
+          v-if="isLesson && navigation && navigationItem"
+          :key="navigationItem._id"
+        >
           <LeftMenuLessons
-            v-for="item in navigation[0].children"
+            v-for="item in navigationItem.children"
             :key="item._path"
             :navigation="item"
           />
