@@ -24,8 +24,7 @@
     }
   },
   "resolutions": {
-    "nitropack": "2.7.2",
-    "@nuxt/kit": "3.7.4"
+    "vue": "3.4.15"
   },
   "name": "my-turborepo",
   "packageManager": "pnpm@8.6.9"

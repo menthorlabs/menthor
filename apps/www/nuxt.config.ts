@@ -6,6 +6,9 @@ export default defineNuxtConfig({
   colorMode: {
     preference: "light",
   },
+  experimental: {
+    payloadExtraction: true,
+  },
   runtimeConfig: {
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || "https://menthor.io/",
@@ -58,6 +61,9 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxt/content",
   ],
+  schemaOrg: {
+    identity: "Organization",
+  },
   vite: {
     plugins: [eslintPlugin()],
   },

@@ -105,7 +105,7 @@ const cards = [
         target="_blank"
         external
       >
-        ✨ Junte-se a uma comunidade de mais de 2000 alunos!
+        ✨ Faça networking com mais de 3000 alunos!
       </nuxt-link>
       <!-- <h2
         class="mb-3 text-center text-xs font-semibold uppercase text-zinc-500"

@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { useScroll } from "@vueuse/core";
 
-interface Item {
+type Item = {
   stargazers_count: number;
   forks_count: number;
-}
+};
 
-interface GitHubRepository {
+type GitHubRepository = {
   items: Item[];
-}
+};
 const { data: gitHub } = await useFetch<GitHubRepository>(
   "https://api.github.com/search/repositories?q=menthorlabs/menthor"
 );
@@ -95,7 +95,7 @@ onMounted(() => {
                   <AtomsHeaderCardLink
                     icon="fab fa-discord"
                     title="Discord"
-                    description="Junte-se a mais de 2000 alunos."
+                    description="Junte-se a mais de 3000 alunos."
                   />
                 </nuxt-link>
                 <nuxt-link
@@ -112,7 +112,7 @@ onMounted(() => {
                 <nuxt-link
                   external
                   target="_blank"
-                  to="https://pixmeacoffee.vercel.app/menthor"
+                  to="https://github.com/sponsors/menthorlabs"
                 >
                   <AtomsHeaderCardLink
                     icon="hand-holding-dollar"

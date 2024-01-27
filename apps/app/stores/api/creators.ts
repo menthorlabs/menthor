@@ -8,11 +8,6 @@ export const useCreatorsStore = defineStore("creators", {
     images: [],
     filesSize: 0,
   }),
-  getters: {
-    orderedImages(state) {
-      return state.images.reverse();
-    },
-  },
   actions: {
     async getImages() {
       try {
