@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { ParsedContent } from "../../../node_modules/@nuxt/content/dist/runtime/types";
 import type { RouteLocationRaw } from "~/.nuxt/vue-router";
 definePageMeta({
   lesson: true,
@@ -37,18 +38,17 @@ const { data: surround } = await useAsyncData(`lesson-${path}-surround`, () => {
     .findSurround(`/${params.slug[0]}/${params.slug[1]}/${params.slug[2]}`);
 });
 
-useSeoMeta({
-  title: lesson.value.title,
-  ogTitle: lesson.value.title,
-  description: lesson.value.description,
-  ogDescription: lesson.value.description,
-});
-
 const previousLesson = surround.value ? surround.value[0] : null;
 const nextLesson = surround.value ? surround.value[1] : null;
 const currentLesson = lesson.value;
+const currentCourse = course.value._dir as ParsedContent;
 
-const currentCourse = course.value._dir;
+useSeoMeta({
+  title: `${currentCourse.title} - ${currentLesson.title}`,
+  ogTitle: `${currentCourse.title} - ${currentLesson.title}`,
+  description: currentLesson.description,
+  ogDescription: currentLesson.description,
+});
 
 const hasTask = computed(() => {
   return ["Content", "Image"].includes(currentLesson?.submissionContent);
