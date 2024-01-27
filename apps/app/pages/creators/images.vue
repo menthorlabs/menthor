@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { useMagicKeys } from "@vueuse/core";
+definePageMeta({
+  middleware: ["auth"],
+});
+
 const { control, v } = useMagicKeys();
 const toast: { error: Function; success: Function } | undefined =
   inject("toast");
@@ -26,9 +30,6 @@ watchEffect(async () => {
   }
 });
 
-definePageMeta({
-  middleware: ["auth"],
-});
 const creatorsStore = useCreatorsStore();
 const uploadStore = useUploadStore();
 const loading = ref(true);
@@ -36,10 +37,6 @@ const loading = ref(true);
 onMounted(async () => {
   await creatorsStore.getImages();
   loading.value = false;
-});
-
-const reversedImages = computed(() => {
-  return creatorsStore.images.reverse();
 });
 
 function getSizePercentage(bytes: number) {
@@ -143,7 +140,7 @@ function removeImage(fileName: string) {
       v-else-if="creatorsStore.images?.length > 0"
     >
       <CreatorsImageCard
-        v-for="fileName in reversedImages"
+        v-for="fileName in creatorsStore.images"
         :key="fileName"
         :fileUrl="`https://menthor-content.s3.sa-east-1.amazonaws.com/${fileName}`"
         @remove="removeImage(fileName)"
