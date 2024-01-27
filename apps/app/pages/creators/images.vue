@@ -1,4 +1,31 @@
 <script setup lang="ts">
+import { useMagicKeys } from "@vueuse/core";
+const { control, v } = useMagicKeys();
+const toast: { error: Function; success: Function } | undefined =
+  inject("toast");
+
+watchEffect(async () => {
+  if (control.value && v.value) {
+    const text = await navigator.clipboard.readText();
+    console.log({ text });
+    console.log("Ctrl + V have been pressed");
+
+    try {
+      const clipboardItems = await navigator.clipboard.read();
+
+      for (const clipboardItem of clipboardItems) {
+        for (const type of clipboardItem.types) {
+          const blob = await clipboardItem.getType(type);
+          const file = new File([blob], "newFile.png", { type: "image/png" });
+          uploadFile(file);
+        }
+      }
+    } catch (e) {
+      toast?.error((e as Error).message);
+    }
+  }
+});
+
 definePageMeta({
   middleware: ["auth"],
 });
@@ -9,6 +36,10 @@ const loading = ref(true);
 onMounted(async () => {
   await creatorsStore.getImages();
   loading.value = false;
+});
+
+const reversedImages = computed(() => {
+  return creatorsStore.images.reverse();
 });
 
 function getSizePercentage(bytes: number) {
@@ -24,6 +55,7 @@ function onInput(event: Event) {
 
   for (let i = 0; i < allFiles.length; ++i) {
     const file = allFiles[i];
+    console.log({ file });
     uploadFile(file);
   }
 }
@@ -39,6 +71,11 @@ async function uploadFile(file: File) {
     loading.value = false;
   }
 }
+
+function removeImage(fileName: string) {
+  creatorsStore.images = creatorsStore.images.filter((e) => e !== fileName);
+  creatorsStore.deleteImage(fileName);
+}
 </script>
 
 <template>
@@ -48,12 +85,18 @@ async function uploadFile(file: File) {
   >
     <h1 class="text-4xl font-extrabold mb-4">Suas imagens</h1>
     <div class="flex items-center gap-4 mb-8">
-      <MButton
-        variant="outline"
-        text="Fazer upload"
-        icon-left="cloud-arrow-up"
-        @click="($refs['creators_image'] as HTMLInputElement).click()"
-      />
+      <UTooltip
+        text="Ou cole uma imagem"
+        :shortcuts="['Ctrl', 'V']"
+        :popper="{ placement: 'top' }"
+      >
+        <MButton
+          variant="outline"
+          text="Fazer upload"
+          icon-left="cloud-arrow-up"
+          @click="($refs['creators_image'] as HTMLInputElement).click()"
+        />
+      </UTooltip>
       <input
         ref="creators_image"
         id="creators_image"
@@ -100,9 +143,10 @@ async function uploadFile(file: File) {
       v-else-if="creatorsStore.images?.length > 0"
     >
       <CreatorsImageCard
-        v-for="fileName in creatorsStore.orderedImages"
+        v-for="fileName in reversedImages"
         :key="fileName"
         :fileUrl="`https://menthor-content.s3.sa-east-1.amazonaws.com/${fileName}`"
+        @remove="removeImage(fileName)"
       />
     </div>
     <div v-else class="text-center text-sm text-zinc-500 pt-10">

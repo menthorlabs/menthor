@@ -6,6 +6,8 @@ const { fileUrl = "" } = defineProps<{
 
 const source = ref(fileUrl);
 const { copy, copied } = useClipboard({ source });
+
+defineEmits(["remove"]);
 </script>
 
 <template>
@@ -32,7 +34,7 @@ const { copy, copied } = useClipboard({ source });
       <nuxt-link external target="_blank" :to="fileUrl">
         <MIconButton icon="external-link-alt" class="!text-white" />
       </nuxt-link>
-      <MIconButton icon="times" class="!text-white" />
+      <MIconButton icon="times" class="!text-white" @click="$emit('remove')" />
     </div>
 
     <div
