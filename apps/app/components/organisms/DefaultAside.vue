@@ -5,12 +5,16 @@ const defaultAsideStore = useDefaultAsideStore();
 
 const fullPath = computed(() => route.fullPath);
 
+const isLesson = computed(() => {
+  return !!route.meta?.lesson;
+});
+
 const queryBuilder = computed(() => {
-  return queryContent(`/${route.params?.slug ? route.params.slug[0] : ""}`);
+  return queryContent(isLesson.value ? route.params.slug[0] : "not_found");
 });
 
 const { data: navigation, refresh } = await useAsyncData(
-  route.params?.slug ? route.params.slug[0] : "navigation",
+  "aside_nav",
   () => fetchContentNavigation(queryBuilder.value),
   { watch: [fullPath] }
 );
@@ -19,10 +23,6 @@ const navigationItem = computed(() => {
   if (!navigation.value || navigation.value.length <= 0) return;
 
   return navigation.value[0];
-});
-
-const isLesson = computed(() => {
-  return !!route.meta?.lesson;
 });
 
 const isCreators = computed(() => {
@@ -69,7 +69,7 @@ watch(isLesson, async () => {
       <Transition name="slide-fade">
         <div
           class="px-3 py-4"
-          v-if="isLesson && navigation && navigationItem"
+          v-if="isLesson && navigationItem"
           :key="navigationItem._id"
         >
           <LeftMenuLessons
