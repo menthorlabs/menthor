@@ -30,6 +30,7 @@ module.exports = {
     navigationItem: "readonly",
     useColorMode: "readonly",
     availableBadges: "readonly",
+    useSchemaOrg: "readonly",
   },
   parser: "vue-eslint-parser",
   parserOptions: {

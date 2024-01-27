@@ -1,21 +1,6 @@
 <script setup lang="ts">
 const route = useRoute();
-useSchemaOrg([
-  defineOrganization({
-    name: "Menthor",
-    logo: "/brand/menthor-icon-dark.svg",
-    sameAs: [
-      "https://twitter.com/menthorlabs",
-      "https://github.com/menthorlabs/menthor",
-      "https://www.linkedin.com/company/menthorlabs",
-      "https://www.instagram.com/menthorlabs/",
-    ],
-  }),
-  defineWebSite({
-    name: route.meta.title ? `Menthor | ${route.meta.title}` : "Menthor",
-  }),
-  defineWebPage(),
-]);
+
 useHead({
   titleTemplate: (): string =>
     route.meta.title ? `Menthor | ${route.meta.title}` : "Menthor",
