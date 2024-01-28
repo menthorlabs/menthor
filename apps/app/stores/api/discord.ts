@@ -20,8 +20,6 @@ export const useDiscordStore = defineStore("discord", {
       code: string;
       redirectUri: string;
     }) {
-      const sessionStore = useSessionStore();
-      if (!sessionStore.isConnected()) return;
       try {
         const response = await this.$api(
           `/discord/request-role/${payload.roleId}`,
