@@ -37,7 +37,7 @@ export const useCreatorsStore = defineStore("creators", {
     },
     async deleteImage(fileName: string) {
       try {
-        await this.$api(`/creators/${fileName}`, {
+        await this.$api(`/creators/images/${fileName}`, {
           method: "DELETE",
         });
 

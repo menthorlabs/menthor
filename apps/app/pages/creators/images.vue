@@ -136,7 +136,7 @@ function removeImage(fileName: string) {
       ></div>
     </div>
     <div
-      class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-1"
+      class="grid grid-cols-[repeat(auto-fill,_minmax(200px,_1fr))] gap-1 pb-20"
       v-else-if="creatorsStore.images?.length > 0"
     >
       <CreatorsImageCard

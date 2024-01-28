@@ -13,7 +13,7 @@ defineEmits(["remove"]);
 <template>
   <div
     v-if="fileUrl === 'loading'"
-    class="flex items-center justify-center w-full aspect-video bg-zinc-100 animate-pulse"
+    class="flex items-center justify-center w-full aspect-video bg-zinc-100"
   >
     <svg
       class="w-10 h-10 text-zinc-200"
@@ -46,14 +46,12 @@ defineEmits(["remove"]);
       </span>
     </div>
     <div class="aspect-video w-full overflow-hidden bg-zinc-100">
-      <nuxt-img
+      <img
         :src="fileUrl"
-        :quality="85"
-        format="webp"
         width="250"
         height="140"
-        alt="Roadmap"
-        class="h-full w-full object-cover object-center transition-all group-hover:scale-110"
+        alt="Menthor image"
+        class="h-full w-full object-cover object-center"
       />
     </div>
   </div>
