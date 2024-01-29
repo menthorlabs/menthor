@@ -44,13 +44,36 @@ const apps: { [key: string]: { url: string; text: string } } = {
     text: "NuxtJS",
     url: "https://nuxt.com/?utm_source=menthor.io",
   },
+  nextjs: {
+    text: "NextJS",
+    url: "https://nextjs.org/?utm_source=menthor.io",
+  },
+  prisma: {
+    text: "Prisma",
+    url: "https://www.prisma.io/?utm_source=menthor.io",
+  },
+  javascript: {
+    text: "JavaScript",
+    url: "https://en.wikipedia.org/wiki/JavaScript?utm_source=menthor.io",
+  },
+  trpc: {
+    text: "tRPC",
+    url: "https://trpc.io/?utm_source=menthor.io",
+  },
+  react: {
+    text: "React",
+    url: "https://react.dev/?utm_source=menthor.io",
+  },
 };
 </script>
 
 <template>
-  <UTooltip :text="apps[app].text" :popper="{ placement: 'top' }">
+  <UTooltip
+    v-if="apps[app]"
+    :text="apps[app].text"
+    :popper="{ placement: 'top' }"
+  >
     <nuxt-link
-      v-if="apps[app]"
       :to="apps[app].url"
       target="_blank"
       external
