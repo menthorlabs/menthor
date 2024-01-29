@@ -27,13 +27,15 @@ const refinedSrc = computed(() => {
 </script>
 
 <template>
-  <nuxt-img
-    format="webp"
-    quality="80"
-    :src="refinedSrc"
-    :alt="alt"
-    :width="width"
-    :height="height"
-    densities="x1 x1"
-  />
+  <nuxt-link external target="_blank" :to="refinedSrc">
+    <nuxt-img
+      format="webp"
+      quality="80"
+      :src="refinedSrc"
+      :alt="alt"
+      :width="width"
+      :height="height"
+      densities="x1 x1"
+    />
+  </nuxt-link>
 </template>

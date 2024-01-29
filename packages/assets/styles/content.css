@@ -16,6 +16,14 @@
     @apply text-zinc-800 mb-4;
   }
 
+  #nuxt_content details {
+    @apply text-zinc-800 mb-4;
+  }
+
+  #nuxt_content summary {
+    @apply mb-2;
+  }
+
   #nuxt_content ul {
     @apply text-zinc-800 mb-4;
   }
@@ -24,7 +32,7 @@
     @apply text-zinc-800 mb-4;
   }
 
-  #nuxt_content code .line {
+  #nuxt_content pre {
     @apply px-4;
   }
 
@@ -46,5 +54,9 @@
 
   #nuxt_content kbd {
     @apply border border-zinc-200 rounded-md py-[3px] px-[5px] text-xs bg-zinc-50;
+  }
+
+  #nuxt_content img {
+    @apply mb-4;
   }
 }
