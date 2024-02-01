@@ -9,8 +9,8 @@ export const useSignUpStore = defineStore("signUp", {
       emailAddress,
       password,
     }: {
-      emailAddress: string;
-      password: string;
+      emailAddress: string | null;
+      password: string | null;
     }) {
       this.signUp = await this.$clerk.client.signUp.create({
         emailAddress,

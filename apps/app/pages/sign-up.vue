@@ -85,11 +85,12 @@ async function clerkOAuth(strategy) {
         @click="clerkOAuth('oauth_google')"
       />
     </div>
-    <MForm>
+    <MForm @submit="createAccount()">
       <MTextField
         class="mb-4"
         label="Email"
         type="email"
+        required
         v-model="email"
         :rules="['email']"
       />
@@ -98,6 +99,7 @@ async function clerkOAuth(strategy) {
         label="Senha"
         type="password"
         v-model="password"
+        required
         :rules="['password']"
       />
       <MButton
@@ -105,7 +107,7 @@ async function clerkOAuth(strategy) {
         class="mb-4 w-full"
         text="Criar conta"
         icon-right="arrow-right"
-        @click="createAccount()"
+        type="submit"
         :loading="loading"
       />
     </MForm>
