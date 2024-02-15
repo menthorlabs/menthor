@@ -6,6 +6,7 @@ useSeoMeta({
   title: "Entre agora",
 });
 
+const router = useRouter();
 const signInStore = useSignInStore();
 const email = ref(null);
 const password = ref(null);
@@ -31,9 +32,7 @@ async function signIn() {
       password: password.value,
     });
     await sessionStore.refreshSession();
-    return await navigateTo("/", {
-      external: true,
-    });
+    router.push("/");
   } catch (e) {
     toast?.error("Email ou senha incorretos.");
   } finally {
